@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout/activity_connection.xml" value="0.19972826086956522" />
+        <entry key="app/src/main/res/layout/activity_patients_list.xml" value="0.19972826086956522" />
         <entry key="app/src/main/res/layout/activity_schermata0.xml" value="0.14361702127659576" />
-        <entry key="app/src/main/res/layout/activity_schermata1.xml" value="0.14361702127659576" />
+        <entry key="app/src/main/res/layout/activity_schermata1.xml" value="0.5950025907038727" />
       </map>
     </option>
   </component>

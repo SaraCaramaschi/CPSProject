@@ -17,4 +17,7 @@ class Schermata0 : AppCompatActivity() {
         startActivity(intent)
         }
     }
+
+
+
 }

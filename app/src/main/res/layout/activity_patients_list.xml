@@ -28,7 +28,8 @@
         android:layout_width="409dp"
         android:layout_height="662dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAddPatient" />
+        app:layout_constraintTop_toBottomOf="@+id/btnAddPatient"
+        tools:listitem="@layout/activity_patient"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

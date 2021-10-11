@@ -13,6 +13,7 @@ class PatientsList : AppCompatActivity() {
     private lateinit var adapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>
     lateinit var rvPatients: RecyclerView
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patients_list)
@@ -28,6 +29,4 @@ class PatientsList : AppCompatActivity() {
             //val intent = Intent(this, Patient::class.java)
             //startActivity(intent) }
         }
-
-
     }

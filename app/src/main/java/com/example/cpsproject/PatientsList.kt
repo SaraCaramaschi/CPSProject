@@ -11,13 +11,14 @@ class PatientsList : AppCompatActivity() {
 
     private lateinit var layoutMan: RecyclerView.LayoutManager
     private lateinit var adapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>
-    var rvPatients = findViewById<RecyclerView>(R.id.rvPatients)
+    lateinit var rvPatients: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patients_list)
 
         layoutMan = LinearLayoutManager(this)
+        rvPatients = findViewById<RecyclerView>(R.id.rvPatients)
         rvPatients.layoutManager = layoutMan
         adapter = PatientAdapter()
         rvPatients.adapter = adapter

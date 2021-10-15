@@ -7,7 +7,7 @@
     tools:context=".Schermata1">
 
     <Button
-        android:id="@+id/btnConnection"
+        android:id="@+id/btnPenConnection"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
@@ -33,10 +33,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
-        android:layout_marginTop="0dp"
         android:text="Patients' list"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnConnection" />
+        app:layout_constraintTop_toBottomOf="@+id/btnPenConnection" />
 
     <EditText
         android:id="@+id/time"

@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import com.example.cpsproject.ble.MainConnection
 
 class Schermata1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,10 +23,11 @@ class Schermata1 : AppCompatActivity() {
             val intent = Intent(this, PatientsList::class.java)
             startActivity(intent)
         }
+
         // bottone CONNESSIONE PENNA
-        val btnConnection = findViewById<Button>(R.id.btnConnection)
+        val btnConnection = findViewById<Button>(R.id.btnPenConnection)
         btnConnection.setOnClickListener {
-            val intent = Intent(this, Connection::class.java)
+            val intent = Intent(this, MainConnection::class.java)
             startActivity(intent)
         }
     }

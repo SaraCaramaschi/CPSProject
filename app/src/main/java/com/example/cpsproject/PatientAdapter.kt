@@ -1,19 +1,18 @@
 package com.example.cpsproject
 
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.RecyclerView
 
 class PatientAdapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>() {
     private var patientsName = arrayOf("Mario Rossi", "Sara Caram","Vichi Attols Dj")
     private var patientsPhase = arrayOf("Phase1","Phase1","Phase2")
     private var patientsItems = intArrayOf(R.drawable.user,R.drawable.user,R.drawable.user)
+
     inner class ViewHolder(itemView: View ): RecyclerView.ViewHolder(itemView){
 
         var itemImage: ImageView
@@ -28,11 +27,12 @@ class PatientAdapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>() {
             itemView.setOnClickListener{
                 val position: Int = adapterPosition
                 Toast.makeText(itemView.context, "you clicked on ${patientsName[position]} ", Toast.LENGTH_LONG).show()
+                // codice che fa passare a profilo del paziente
+
             }
         }
 
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientAdapter.ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.activity_patient, parent, false)

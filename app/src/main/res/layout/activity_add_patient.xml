@@ -44,7 +44,6 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="Fill up all the requested information"
                 android:textSize="15sp"
                 app:layout_constraintStart_toEndOf="@+id/tvNewpatient" />
@@ -74,19 +73,20 @@
                 android:id="@+id/tvName"
                 android:layout_width="100dp"
                 android:layout_height="39dp"
+                android:inputType="text"
                 android:text="Name"
                 android:textSize="20sp"
-                android:inputType="text"
                 app:layout_constraintStart_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <EditText
                 android:id="@+id/etName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@+id/tvName" />
+                app:layout_constraintStart_toEndOf="@+id/tvName"
+                tools:ignore="SpeakableTextPresentCheck" />
         </LinearLayout>
 
         <LinearLayout
@@ -104,11 +104,12 @@
                 android:id="@+id/tvSurname"
                 android:layout_width="100dp"
                 android:layout_height="39dp"
-                android:text="Surname"
                 android:inputType="text"
+                android:text="Surname"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <EditText
                 android:id="@+id/etSurname"
@@ -116,7 +117,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@+id/tvSurname" />
+                app:layout_constraintStart_toEndOf="@+id/tvSurname"
+                tools:ignore="SpeakableTextPresentCheck" />
 
         </LinearLayout>
 
@@ -213,7 +215,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@+id/tvPlace" />
+                app:layout_constraintStart_toEndOf="@+id/tvPlace"
+                tools:ignore="SpeakableTextPresentCheck" />
 
         </LinearLayout>
         <LinearLayout
@@ -241,7 +244,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@+id/tvPlace" />
+                app:layout_constraintStart_toEndOf="@+id/tvPlace"
+                tools:ignore="SpeakableTextPresentCheck" />
 
         </LinearLayout>
         <LinearLayout
@@ -302,7 +306,8 @@
                 android:layout_height="150dp"
                 android:layout_weight="1"
                 android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@+id/tvPlace" />
+                app:layout_constraintStart_toEndOf="@+id/tvPlace"
+                tools:ignore="SpeakableTextPresentCheck" />
 
         </LinearLayout>
     </LinearLayout>

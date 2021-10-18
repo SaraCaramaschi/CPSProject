@@ -9,9 +9,9 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
 class PatientAdapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>() {
-    private var patientsName = arrayOf("Mario Rossi", "Sara Caram","Vichi Attols Dj")
-    private var patientsPhase = arrayOf("Phase1","Phase1","Phase2")
-    private var patientsItems = intArrayOf(R.drawable.user,R.drawable.user,R.drawable.user)
+    private var patientsName = arrayOf("Mario Rossi", "Alfonso Maisano","Vittoria Attolini","Lino Piso")
+    private var patientsPhase = arrayOf("Phase1","Phase1","Phase2","Phase 1")
+    private var patientsItems = intArrayOf(R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user)
 
     inner class ViewHolder(itemView: View ): RecyclerView.ViewHolder(itemView){
 

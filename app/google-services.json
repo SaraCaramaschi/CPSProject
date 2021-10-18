@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "872914185365",
+    "project_id": "cpsprova-31dcd",
+    "storage_bucket": "cpsprova-31dcd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:872914185365:android:2cd0058ed47ad6667eff9c",
+        "android_client_info": {
+          "package_name": "com.example.cpsproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "872914185365-06jonkude3meoejncdlv054ri3a9p36n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDya5CnYCUJ3tOCzZgfsr1KGVwJ-r3yIg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "872914185365-06jonkude3meoejncdlv054ri3a9p36n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

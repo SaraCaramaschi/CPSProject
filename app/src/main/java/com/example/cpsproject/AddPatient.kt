@@ -5,8 +5,15 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
+import com.example.cpsproject.databinding.ActivityAddPatientBinding
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class AddPatient : AppCompatActivity() {
+/*   // https://www.youtube.com/watch?v=y4npeX35B34 TOP VIDEOOOOOOOOOOOOOOOOOO
+    private lateinit var binding: ActivityAddPatientBinding
+    //private lateinit var aut: FirebaseAuth manca anche nelle dependencies
+    private lateinit var databaseReference: DatabaseReference
 
     lateinit var etName: EditText
     lateinit var etSurname:EditText
@@ -20,9 +27,36 @@ class AddPatient : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // https://www.youtube.com/watch?v=y4npeX35B34
+
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_patient)
-        viewInitializations()
+
+        binding = ActivityAddPatientBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        //authentication * missing code
+        databaseReference = FirebaseDatabase.getInstance().getReference("Patients")
+        binding.btnAddPat.setOnClickListener {
+            val name = binding.etName.text.toString()
+            val surname = binding.etSurname.text.toString()
+            val birthPlace = binding.etPlace.text.toString()
+            val notes = binding.etNotes.text.toString()
+
+            val patient = Patient(name,surname,birthPlace,notes)
+            databaseReference.child().setValue(patient).addOnCompleteListener{
+                if (it.isSuccessful){
+
+                }else{
+                    Toast.makeText(this@AddPatient, "Failed operation",Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+
+
+
+        // codice di prima:
+        //setContentView(R.layout.activity_add_patient)
+        //viewInitializations()
     }
 
     fun viewInitializations() {
@@ -61,15 +95,15 @@ class AddPatient : AppCompatActivity() {
 
     fun performAddPatient(view: View) {
         if (validateInput()) {  // Input is valid, here send data to your server
-            val Name = etName.text.toString()
-            val Surname = etSurname.text.toString()
-            val TaxCode = etTax.text.toString()
-            val BirthDate = etBirthDate.text.toString()
-            val BirthPlace = etBirthPlace.text.toString()
-            val extraNotes = etNotes.text.toString()
+            val name = etName.text.toString()
+            val surname = etSurname.text.toString()
+            val taxCode = etTax.text.toString()
+            val birthDate = etBirthDate.text.toString()
+            val birthPlace = etBirthPlace.text.toString()
+            val notes = etNotes.text.toString()
             Toast.makeText(this, "Patient added successfully ", Toast.LENGTH_SHORT).show()
             // Here you can call you API NON FUNZIONA QUESTO TOAST
         }
     }
-
+*/
 }

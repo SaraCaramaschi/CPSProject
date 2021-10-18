@@ -1,11 +1,12 @@
 package com.example.cpsproject
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+data class Patient(
+    var name: String ?= null,
+    var surname: String ?= null,
+    var birthPlace: String ?= null,
+    var notes: String ?= null
+    //var Gender: Boolean,
+    //var Birthdate: String ?= null,
+    //var DomHand: Boolean,
 
-class Patient : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_patient)
-    }
-}
+)

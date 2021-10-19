@@ -10,7 +10,7 @@
         android:id="@+id/btnPenConnection"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="368dp"
         android:text="Pen Connection "
         app:layout_constraintStart_toStartOf="parent"
@@ -20,7 +20,7 @@
         android:id="@+id/btnLogOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
+        android:layout_marginStart="40dp"
         android:layout_marginBottom="60dp"
         android:text="Log Out"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -32,20 +32,11 @@
         android:id="@+id/btnPatients"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
+        android:layout_marginStart="40dp"
         android:text="Patients' list"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnPenConnection" />
 
-    <EditText
-        android:id="@+id/time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
 
     <LinearLayout
         android:id="@+id/LL_clinician"
@@ -57,19 +48,22 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/time"
-        app:layout_constraintVertical_bias="0.074">
+        app:layout_constraintHorizontal_bias="0.0"
 
-        <EditText
-            android:id="@+id/editTextTextPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.108">
+
+        <TextView
+            android:id="@+id/tvClinician"
             android:layout_width="226dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginStart="40dp"
             android:ems="10"
-            android:inputType="textPersonName"
             android:minHeight="48dp"
-            android:text="Dott. Mario Rossi" />
+            android:text="Dott. Mario Rossi"
+            android:textSize="40sp" />
     </LinearLayout>
 
 

@@ -10,6 +10,13 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
 class AddPatient : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_add_patient)
+
+    }
+}
+
 /*   // https://www.youtube.com/watch?v=y4npeX35B34 TOP VIDEOOOOOOOOOOOOOOOOOO
     private lateinit var binding: ActivityAddPatientBinding
     //private lateinit var aut: FirebaseAuth manca anche nelle dependencies
@@ -106,4 +113,4 @@ class AddPatient : AppCompatActivity() {
         }
     }
 */
-}
+//}

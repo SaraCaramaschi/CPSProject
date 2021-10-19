@@ -48,8 +48,6 @@
                 android:textSize="15sp"
                 app:layout_constraintStart_toEndOf="@+id/tvNewpatient" />
         </LinearLayout>
-
-
     </LinearLayout>
 
     <LinearLayout

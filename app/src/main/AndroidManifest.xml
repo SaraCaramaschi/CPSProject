@@ -24,19 +24,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CPSProject">
         <activity
-            android:name=".AddPatient"
+            android:name=".AddPatientActivity"
             android:exported="true" />
         <activity
             android:name=".AddClinician"
             android:exported="true" />
         <activity
-            android:name=".Patient"
+            android:name=".model.Patient"
             android:exported="true" />
         <activity
             android:name=".ble.MainConnection"
             android:exported="true" />
         <activity
-            android:name=".PatientsList"
+            android:name=".PatientsListActivity"
             android:exported="true" />
         <activity
             android:name=".Schermata1"

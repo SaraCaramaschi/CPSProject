@@ -1,20 +1,30 @@
 package com.example.cpsproject
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.EditText
-import android.widget.Toast
-import com.example.cpsproject.databinding.ActivityAddPatientBinding
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import androidx.appcompat.app.AppCompatActivity
+import com.example.cpsproject.managers.PatientsManager
+import com.example.cpsproject.model.Patient
+import kotlinx.android.synthetic.main.activity_add_patient.*
+import timber.log.Timber
 
-class AddPatient : AppCompatActivity() {
+class AddPatientActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_patient)
+
+        //TODO cambiare nome a uno dei due btnaddpat se no casino
+        btnAddPat.setOnClickListener {
+            PatientsManager.addPatient(
+                Patient(etName.text.toString(), etSurname.text.toString()),
+                etNotes.text.toString()
+            )
+
+            Timber.d(PatientsManager.patientsList.elementAt(0).name)
+            Timber.d(PatientsManager.patientsList.elementAt(0).surname)
+        }
     }
 }
+
 
 /*   // https://www.youtube.com/watch?v=y4npeX35B34 TOP VIDEOOOOOOOOOOOOOOOOOO
     private lateinit var binding: ActivityAddPatientBinding

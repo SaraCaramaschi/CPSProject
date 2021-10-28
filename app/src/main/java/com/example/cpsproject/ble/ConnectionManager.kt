@@ -38,6 +38,7 @@ import java.util.concurrent.ConcurrentLinkedQueue
 private const val GATT_MIN_MTU_SIZE = 23
 /** Maximum BLE MTU size as defined in gatt_api.h. */
 private const val GATT_MAX_MTU_SIZE = 517
+//private const val UUID_BATTERIA = 00020000-0001-11E1-AC36-0002A5D5C51B
 
 object ConnectionManager {
 
@@ -372,9 +373,11 @@ object ConnectionManager {
                     }
 
                     // 00020000-0001-11E1-AC36-0002A5D5C51B : UUID Batteria
-                    gatt.getService(UUID.randomUUID()).characteristics.forEach { //per ogni caratteristiche faccio cose
-                        when(it.uuid){                                           //se è batteria fai certe cose
+                    gatt.getService(UUID.fromString("00020000-0001-11E1-AC36-0002A5D5C51B")).characteristics.forEach { //per ogni caratteristiche faccio cose
+                        when(it.uuid){
+                            //Timber.e("Questa e' la batteria della penna")
 
+                            //se è batteria fai certe cose
                         } //when freccette grafe
                     }
 

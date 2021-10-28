@@ -375,7 +375,7 @@ object ConnectionManager {
                     // 00020000-0001-11E1-AC36-0002A5D5C51B : UUID Batteria
                     gatt.getService(serviceuuid).characteristics.forEach { //per ogni caratteristiche faccio cose
                         when(it.uuid){
-                            //Timber.e("Questa e' la batteria della penna")
+                            //Timber.e("Questa e' la batteria della penna") .e sono robe di errori
 
                             //se è batteria fai certe cose
                         } //when freccette grafe
@@ -393,6 +393,9 @@ object ConnectionManager {
                     // if uuid==... prendilo  gatt.getservice
                     // readable ecc --> read.char..
                     //timber.d compare in modalità debug
+
+                    // servizi: service e debug
+                    // caratteristiche: data, calendar, battery, console, error
 
                 } else {
                     Timber.e("Service discovery failed due to status $status")

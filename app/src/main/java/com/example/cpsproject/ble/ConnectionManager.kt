@@ -371,6 +371,7 @@ object ConnectionManager {
                     listeners.forEach { it.get()?.onConnectionSetupComplete?.invoke(this)             // ciclo con tutti i listeners
                     }
 
+                    // 00020000-0001-11E1-AC36-0002A5D5C51B : UUID Batteria
                     gatt.getService(UUID.randomUUID()).characteristics.forEach { //per ogni caratteristiche faccio cose
                         when(it.uuid){                                           //se è batteria fai certe cose
 

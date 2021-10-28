@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 
+// ok ultima versione
 class Schermata0 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,7 +17,6 @@ class Schermata0 : AppCompatActivity() {
             val intent = Intent(this, Schermata1::class.java)
             startActivity(intent)
         }
-
 
         val btnSignIn = findViewById<Button>(R.id.btnSignIn)
         btnSignIn.setOnClickListener {

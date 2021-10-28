@@ -9,12 +9,14 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
 class PatientAdapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>() {
-    private var patientsName = arrayOf("Mario Rossi", "Alfonso Maisano","Vittoria Attolini","Lino Piso")
-    private var patientsPhase = arrayOf("Phase1","Phase1","Phase2","Phase 1")
-    private var patientsItems = intArrayOf(R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user)
+    // ne ho messi tanti cosi vediamo il recycler view scorrere.
+    // parte che andrà cambiata per collegare i dati
+    private var patientsName = arrayOf("Mario Rossi", "Alfonso Maisano","Vittoria Attolini","Lino Piso","Mario Rossi", "Alfonso Maisano","Vittoria Attolini","Lino Piso")
+    private var patientsPhase = arrayOf("Phase1","Phase1","Phase2","Phase 1","Phase1","Phase1","Phase2","Phase 1")
+    private var patientsItems = intArrayOf(R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user)
 
     inner class ViewHolder(itemView: View ): RecyclerView.ViewHolder(itemView){
-
+        // scopo: prendere oggetto dalla lista creata e mostrarlo al recycler view
         var itemImage: ImageView
         var itemName: TextView
         var itemPhase: TextView
@@ -28,10 +30,8 @@ class PatientAdapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>() {
                 val position: Int = adapterPosition
                 Toast.makeText(itemView.context, "you clicked on ${patientsName[position]} ", Toast.LENGTH_LONG).show()
                 // codice che fa passare a profilo del paziente
-
             }
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientAdapter.ViewHolder {

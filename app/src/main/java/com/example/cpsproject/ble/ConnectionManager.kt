@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.punchthrough.blestarterappandroid.ble
 
 import android.bluetooth.BluetoothDevice
@@ -46,6 +45,7 @@ object ConnectionManager {
     private val deviceGattMap = ConcurrentHashMap<BluetoothDevice, BluetoothGatt>()
     private val operationQueue = ConcurrentLinkedQueue<BleOperationType>()
     private var pendingOperation: BleOperationType? = null
+    private val serviceuuid = UUID.fromString("00000000-0001-11E1-9AB4-0002A5D5C51B")
 
     fun servicesOnDevice(device: BluetoothDevice): List<BluetoothGattService>? =
         deviceGattMap[device]?.services
@@ -373,7 +373,7 @@ object ConnectionManager {
                     }
 
                     // 00020000-0001-11E1-AC36-0002A5D5C51B : UUID Batteria
-                    gatt.getService(UUID.fromString("00020000-0001-11E1-AC36-0002A5D5C51B")).characteristics.forEach { //per ogni caratteristiche faccio cose
+                    gatt.getService(serviceuuid).characteristics.forEach { //per ogni caratteristiche faccio cose
                         when(it.uuid){
                             //Timber.e("Questa e' la batteria della penna")
 

@@ -12,7 +12,7 @@ class AddPatientActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_patient)
 
-        //TODO cambiare nome a uno dei due btnaddpat se no casino
+        //TODO cambiare nome a uno dei due btnaddpat se no  --> dovrei averlo fatto ma verifica(ila)
         btnAddPat.setOnClickListener {
             PatientsManager.addPatient(
                 Patient(etName.text.toString(), etSurname.text.toString()),

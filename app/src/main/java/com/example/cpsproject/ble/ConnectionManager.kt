@@ -46,7 +46,17 @@ object ConnectionManager {
     private val operationQueue = ConcurrentLinkedQueue<BleOperationType>()
     private var pendingOperation: BleOperationType? = null
     private val serviceuuid = UUID.fromString("00000000-0001-11E1-9AB4-0002A5D5C51B")
+    private val batteryuuid = UUID.fromString("00020000-0001-11E1-AC36-0002A5D5C51B ")
 
+    // funzione copiata dalla guida, non ho inserito: reserved/tohexstrin/toint
+    // che sono cose che chiara aveva citato quando ha parlato con me e ale.
+    private fun readBattery(gatt: BluetoothGatt, characteristic: BluetoothGattCharacteristic) { // NON SO IN QUALE POSIZIONE QUESTA FUNZIONE VADA. DENTRO CALLBACK??? O QUI ??
+        val batteryLevelChar = gatt.getService(batteryuuid).getCharacteristic(characteristic.uuid)
+        if (batteryLevelChar?.isReadable() == true) {
+            Timber.d("Battery is READABLE")
+            gatt.readCharacteristic(batteryLevelChar) // quale output ci da ???
+        }
+    }
     fun servicesOnDevice(device: BluetoothDevice): List<BluetoothGattService>? =
         deviceGattMap[device]?.services
 
@@ -374,10 +384,12 @@ object ConnectionManager {
 
                     // 00020000-0001-11E1-AC36-0002A5D5C51B : UUID Batteria
                     gatt.getService(serviceuuid).characteristics.forEach { //per ogni caratteristiche faccio cose
-                        when(it.uuid){
-                            //Timber.e("Questa e' la batteria della penna") .e sono robe di errori
+                        when(it.uuid){ // it è una BLUETOOTHGATTCHARACTERISTIC: (lo si vede se si appoggia il cursore sopra it)
+                            batteryuuid -> {
+                                Timber.e("Questa e' la batteria della penna") // messaggio
+                                onCharacteristicRead(gatt, it, status)                 // funzione che chiamiamo per leggere la caratteristica (?) corretto (?)
+                            } //se è batteria fai certe cose: ottieni il dato della batteria
 
-                            //se è batteria fai certe cose
                         } //when freccette grafe
                     }
 
@@ -418,23 +430,31 @@ object ConnectionManager {
         }
 
         override fun onCharacteristicRead(
-            gatt: BluetoothGatt,
-            characteristic: BluetoothGattCharacteristic,
-            status: Int
+            gatt: BluetoothGatt, // la connessione
+            characteristic: BluetoothGattCharacteristic, // input: una caratteristica specifica
+            status: Int // stato di connessione (?)
         ) {
             with(characteristic) { //ASSOCIA L'INPUT
                 when (status) {
                     BluetoothGatt.GATT_SUCCESS -> {
-                        Timber.i("Read characteristic $uuid | value: ${value.toHexString()}")
-                        //inserire altro when per descriminare quali caratteristiche stanno arrivando
-                        // readBatterydata da creare funzione reserved/tohexstrin/toint
+                        Timber.i("Read characteristic $uuid | value: ${value.toHexString()}") // cosa stampa questo???
+
+                        //inserire altro when per descriminare quali caratteristiche stanno arrivando e cosa fare per ognuna:
+                        when(characteristic.uuid){
+                            batteryuuid -> {
+                                Timber.d("Ora sono in onCharacteristicRead e vado a leggere la batteria tramite private fun readBattery")
+                                readBattery(gatt,characteristic) // OK: fai cose per la batteria ==> readBatterydata da creare funzione reserved/tohexstrin/toint
+                            }
+                            //altrouuid -> { ... }
+                        }
+
                         //sessionmanager che raccoglie tutte le variabili, companion object, singleton kotlin
                         // accessibili ovunque
                         //tutto ciò per caratteristiche READABLE
                         //la caratteristica console invia i messaggi
                         //descrittore attributo a cui diamo un valore per attivare le notifiche
                         // oncharacteristicchange leggi solo quando cambia
-                        listeners.forEach { it.get()?.onCharacteristicRead?.invoke(gatt.device, this) }
+                        listeners.forEach { it.get()?.onCharacteristicRead?.invoke(gatt.device, this) }  // cosa fa questo ???
                     }
                     BluetoothGatt.GATT_READ_NOT_PERMITTED -> {
                         Timber.e("Read not permitted for $uuid!")

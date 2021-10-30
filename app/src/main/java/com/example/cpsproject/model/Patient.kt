@@ -8,5 +8,5 @@ data class Patient(
     //var birthdate: String,
     //TODO verificare che il compleanno sia una stringa
 //    var dominantHand: Hand,
-//    var gender: Gender
+    var gender: Gender
 )

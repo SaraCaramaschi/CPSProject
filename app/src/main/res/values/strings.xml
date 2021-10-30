@@ -6,4 +6,10 @@
         <item>male</item>
         <item>female</item>
     </string-array>
+
+    <string-array name="dominanthand">
+    <item>right</item>
+    <item>left</item>
+    </string-array>
+
 </resources>

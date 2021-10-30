@@ -1,23 +1,44 @@
 package com.example.cpsproject
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.model.Patient
 import kotlinx.android.synthetic.main.activity_add_patient.*
+import org.jetbrains.anko.toast
 import timber.log.Timber
+
 
 class AddPatientActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_patient)
 
+
         //TODO cambiare nome a uno dei due btnaddpat se no  --> dovrei averlo fatto ma verifica(ila)
-        btnAddPat.setOnClickListener {
-            PatientsManager.addPatient(
-                Patient(etName.text.toString(), etSurname.text.toString()),
-                etNotes.text.toString(), etTax.text.toString()
-            )
+        btnAddPat.setOnClickListener{
+
+            if (etName.text.toString().trim().isEmpty()) {
+                etName.error = "Name Required";
+                return@setOnClickListener
+            } else if(etSurname.text.toString().trim().isEmpty()){
+                etSurname.error="Surnema Required"
+                return@setOnClickListener
+
+
+
+                PatientsManager.addPatient(
+                    Patient(etName.text.toString(), etSurname.text.toString(),
+                        etNotes.text.toString(), etTax.text.toString()
+                    )
+
+            }
+
+
+
+
 
             Timber.d(PatientsManager.patientsList.elementAt(0).name)
             Timber.d(PatientsManager.patientsList.elementAt(0).surname)

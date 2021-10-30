@@ -133,28 +133,23 @@
 
             <TextView
                 android:id="@+id/tvGender"
-                android:layout_width="100dp"
-                android:layout_height="39dp"
+                android:layout_width="96dp"
+                android:layout_height="match_parent"
                 android:text="Gender"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <CheckBox
-                android:id="@+id/chFemale"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="Female"
-                tools:layout_editor_absoluteX="162dp"
-                tools:layout_editor_absoluteY="542dp" />
-
-            <CheckBox
-                android:id="@+id/chMale"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="Male"
-                tools:layout_editor_absoluteX="280dp"
-                tools:layout_editor_absoluteY="545dp" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="247dp"
+                android:layout_height="match_parent"
+                android:gravity="end"
+                android:padding="15dp"
+                android:textAlignment="gravity"
+                android:textColor="@color/colorPrimary"
+                android:textColorHighlight="#2894A1"
+                android:textSize="16sp" />
 
         </LinearLayout>
         <LinearLayout
@@ -226,6 +221,23 @@
                 tools:ignore="SpeakableTextPresentCheck" />
 
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:context=".MainActivity">
+
+            <Spinner
+                android:id="@+id/mySpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dialog" />
+            <?xml version="1.0" encoding="utf-8"?>
+        </LinearLayout>
+
         <LinearLayout
             android:id="@+id/LinearLayout7"
             android:layout_width="match_parent"
@@ -299,31 +311,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
     <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:id="@+id/linearLayout"
-        android:gravity="center"
-        tools:context=".MainActivity">
-
-        <Spinner
-            android:id="@+id/mySpinner"
-            android:layout_width="match_parent"
-            android:spinnerMode="dialog"
-            android:layout_height="wrap_content" />
-        <?xml version="1.0" encoding="utf-8"?>
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="end"
-            android:padding="15dp"
-            android:textAlignment="gravity"
-            android:textColor="@color/colorPrimary"
-            android:textColorHighlight="#2994A1"
-            android:textSize="16sp" />
-    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

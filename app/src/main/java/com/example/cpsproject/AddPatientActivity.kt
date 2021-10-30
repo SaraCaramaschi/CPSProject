@@ -16,7 +16,7 @@ class AddPatientActivity : AppCompatActivity() {
         btnAddPat.setOnClickListener {
             PatientsManager.addPatient(
                 Patient(etName.text.toString(), etSurname.text.toString()),
-                etNotes.text.toString(), etTax.text.toString()
+                etNotes.text.toString(), etTax.text.toString(),enum
             )
 
             Timber.d(PatientsManager.patientsList.elementAt(0).name)
@@ -24,6 +24,7 @@ class AddPatientActivity : AppCompatActivity() {
             Timber.d(PatientsManager.patientsList.elementAt(0).notes)
             Timber.d(PatientsManager.patientsList.elementAt(0).taxcode)
             //TODO impostare un avviso se il taxcode non è composto da un tot di caratteri
+            Timber.d(PatientsManager.patientsList.)
 
         }
     }

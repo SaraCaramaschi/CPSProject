@@ -3,6 +3,7 @@ package com.example.cpsproject
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.model.Patient
@@ -17,22 +18,31 @@ class AddPatientActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_patient)
 
 
-        //TODO cambiare nome a uno dei due btnaddpat se no  --> dovrei averlo fatto ma verifica(ila)
+        //TODO cambiare nome a uno dei due btnaddpat se no  --> dovrei averlo fatto ma verifica(ila). Mi sembra giusto(gine)
         btnAddPat.setOnClickListener{
 
             if (etName.text.toString().trim().isEmpty()) {
-                etName.error = "Name Required";
+                Toast.makeText(this, "Name required", Toast.LENGTH_SHORT).show();
+                //etName.error = "Name Required";
                 return@setOnClickListener
-            } else if(etSurname.text.toString().trim().isEmpty()){
-                etSurname.error="Surnema Required"
+            } else if(etSurname.text.toString().trim().isEmpty()) {
+                etSurname.error = "Surname Required"
                 return@setOnClickListener
+            }else if (etTax.text.toString().trim().isEmpty()) {
+                etTax.error = "Tax Code Required"
+                return@setOnClickListener
+            } else if (etTax.text.toString().trim().length!=16){
+                etTax.error="Tax Code not correct"
+                return@setOnClickListener
+            }
 
+        // TODO capire come mai non esce notifica
 
 
                 PatientsManager.addPatient(
                     Patient(etName.text.toString(), etSurname.text.toString(),
-                        etNotes.text.toString(), etTax.text.toString()
-                    )
+                        etNotes.text.toString(), etTax.text.toString()))
+
 
             }
 
@@ -48,7 +58,7 @@ class AddPatientActivity : AppCompatActivity() {
 
         }
     }
-}
+
 
 
 /*   // https://www.youtube.com/watch?v=y4npeX35B34 TOP VIDEOOOOOOOOOOOOOOOOOO, si ma per firebase

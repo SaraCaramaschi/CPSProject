@@ -17,6 +17,17 @@ class AddPatientActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_patient)
 
+        //TODO i text rossi qui sotto dovrebbero essere delle caselle di testo nella pagina del singolo pz
+        chFemale.setOnCheckedChangeListener{buttonView, isChecked ->
+            if(isChecked==true) {
+                textview.setText("Female")
+            }
+            chMale.setOnCheckedChangeListener{buttonView, isChecked ->
+                if(isChecked==true) {
+                    textview.setText("Male")
+                }
+        }
+
         //TODO cambiare nome a uno dei due btnaddpat se no  --> dovrei averlo fatto ma verifica(ila)
         btnAddPat.setOnClickListener {
             PatientsManager.addPatient(

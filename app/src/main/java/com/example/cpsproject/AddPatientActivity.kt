@@ -17,6 +17,12 @@ class AddPatientActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_patient)
 
+        //TODO cambiare nome a uno dei due btnaddpat se no  --> dovrei averlo fatto ma verifica(ila)
+        btnAddPat.setOnClickListener {
+            PatientsManager.addPatient(
+                Patient(etName.text.toString(), etSurname.text.toString()),
+                etNotes.text.toString(), etTax.text.toString()
+            )
 
         //TODO cambiare nome a uno dei due btnaddpat se no  --> dovrei averlo fatto ma verifica(ila). Mi sembra giusto(gine)
         btnAddPat.setOnClickListener{
@@ -55,6 +61,7 @@ class AddPatientActivity : AppCompatActivity() {
             Timber.d(PatientsManager.patientsList.elementAt(0).notes)
             Timber.d(PatientsManager.patientsList.elementAt(0).taxcode)
             //TODO impostare un avviso se il taxcode non è composto da un tot di caratteri
+            Timber.d(PatientsManager.patientsList.)
 
         }
     }

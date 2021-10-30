@@ -30,13 +30,7 @@ class AddPatientActivity : AppCompatActivity() {
 
         //TODO cambiare nome a uno dei due btnaddpat se no  --> dovrei averlo fatto ma verifica(ila)
         btnAddPat.setOnClickListener {
-            PatientsManager.addPatient(
-                Patient(etName.text.toString(), etSurname.text.toString()),
-                etNotes.text.toString(), etTax.text.toString()
-            )
 
-        //TODO cambiare nome a uno dei due btnaddpat se no  --> dovrei averlo fatto ma verifica(ila). Mi sembra giusto(gine)
-        btnAddPat.setOnClickListener{
 
             if (etName.text.toString().trim().isEmpty()) {
                 Toast.makeText(this, "Name required", Toast.LENGTH_SHORT).show();
@@ -53,12 +47,15 @@ class AddPatientActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-        // TODO capire come mai non esce notifica
+            // TODO capire come mai non esce notifica
 
+            PatientsManager.addPatient(
+                Patient(etName.text.toString(), etSurname.text.toString(),
+                etNotes.text.toString(), etTax.text.toString())
+            )
 
-                PatientsManager.addPatient(
-                    Patient(etName.text.toString(), etSurname.text.toString(),
-                        etNotes.text.toString(), etTax.text.toString()))
+        //TODO cambiare nome a uno dei due btnaddpat se no  --> dovrei averlo fatto ma verifica(ila). Mi sembra giusto(gine)
+                  
 
 
             }

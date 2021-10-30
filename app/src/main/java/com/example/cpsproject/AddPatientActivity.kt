@@ -16,17 +16,21 @@ class AddPatientActivity : AppCompatActivity() {
         btnAddPat.setOnClickListener {
             PatientsManager.addPatient(
                 Patient(etName.text.toString(), etSurname.text.toString()),
-                etNotes.text.toString()
+                etNotes.text.toString(), etTax.text.toString()
             )
 
             Timber.d(PatientsManager.patientsList.elementAt(0).name)
             Timber.d(PatientsManager.patientsList.elementAt(0).surname)
+            Timber.d(PatientsManager.patientsList.elementAt(0).notes)
+            Timber.d(PatientsManager.patientsList.elementAt(0).taxcode)
+            //TODO impostare un avviso se il taxcode non è composto da un tot di caratteri
+
         }
     }
 }
 
 
-/*   // https://www.youtube.com/watch?v=y4npeX35B34 TOP VIDEOOOOOOOOOOOOOOOOOO
+/*   // https://www.youtube.com/watch?v=y4npeX35B34 TOP VIDEOOOOOOOOOOOOOOOOOO, si ma per firebase
     private lateinit var binding: ActivityAddPatientBinding
     //private lateinit var aut: FirebaseAuth manca anche nelle dependencies
     private lateinit var databaseReference: DatabaseReference

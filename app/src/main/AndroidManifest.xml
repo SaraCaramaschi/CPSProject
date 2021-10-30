@@ -27,7 +27,7 @@
             android:name=".AddPatientActivity"
             android:exported="true" />
         <activity
-            android:name=".AddClinician"
+            android:name=".AddClinicianActivity"
             android:exported="true" />
         <activity
             android:name=".model.Patient"

@@ -36,7 +36,7 @@ class AddPatientActivity : AppCompatActivity() {
             //ArrayAdapter<CharSequence>() adapter=Arrayadapter.createfrom
 
 
-        //TODO cambiare nome a uno dei due btnaddpat se no  --> dovrei averlo fatto ma verifica(ila)
+
         btnAddPat.setOnClickListener {
 
 

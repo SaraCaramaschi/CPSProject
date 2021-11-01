@@ -7,7 +7,7 @@ import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class PatientsList : AppCompatActivity() {
+class PatientsListActivity : AppCompatActivity() {
 
     private lateinit var layoutMan: RecyclerView.LayoutManager
     private lateinit var adapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>
@@ -23,9 +23,9 @@ class PatientsList : AppCompatActivity() {
         adapter = PatientAdapter()
         rvPatients.adapter = adapter
 
-        val btnAddPatient = findViewById<Button>(R.id.btnAddPatient)
+        val btnAddPatient = findViewById<Button>(R.id.btnNewPatient)
         btnAddPatient.setOnClickListener {
-            val intent = Intent(this, AddPatient::class.java)
+            val intent = Intent(this, AddPatientActivity::class.java)
             startActivity(intent) }
         }
     }

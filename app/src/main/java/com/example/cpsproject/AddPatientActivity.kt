@@ -1,22 +1,91 @@
 package com.example.cpsproject
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.example.cpsproject.databinding.ActivityAddPatientBinding
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import androidx.appcompat.app.AppCompatActivity
+import com.example.cpsproject.managers.PatientsManager
+import com.example.cpsproject.model.Gender
+import com.example.cpsproject.model.Patient
+import kotlinx.android.synthetic.main.activity_add_patient.*
+import org.jetbrains.anko.toast
+import timber.log.Timber
 
-class AddPatient : AppCompatActivity() {
+
+class AddPatientActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_patient)
-    }
-}
 
-/*   // https://www.youtube.com/watch?v=y4npeX35B34 TOP VIDEOOOOOOOOOOOOOOOOOO
+        //TODO i text rossi qui sotto dovrebbero essere delle caselle di testo nella pagina del singolo pz
+        //chFemale.setOnCheckedChangeListener{buttonView, isChecked ->
+          //  if(isChecked==true) {
+            //    textview.setText("Female")
+            //}
+            //chMale.setOnCheckedChangeListener{buttonView, isChecked ->
+              //  if(isChecked==true) {
+                //    textview.setText("Male")
+
+
+
+// CAPIRE COSA FARE NELLA ACTIVITY PER GLI SPINNER
+           // val gender: Gender
+            //spinnerGender.adapter=ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,gender)
+            //ArrayAdapter<CharSequence>() adapter=Arrayadapter.createfrom
+
+
+        //TODO cambiare nome a uno dei due btnaddpat se no  --> dovrei averlo fatto ma verifica(ila)
+        btnAddPat.setOnClickListener {
+
+
+            if (etName.text.toString().trim().isEmpty()) {
+                Toast.makeText(this, "Name required", Toast.LENGTH_SHORT).show();
+                //etName.error = "Name Required";
+                return@setOnClickListener
+            } else if(etSurname.text.toString().trim().isEmpty()) {
+                etSurname.error = "Surname Required"
+                return@setOnClickListener
+            }else if (etTax.text.toString().trim().isEmpty()) {
+                etTax.error = "Tax Code Required"
+                return@setOnClickListener
+            } else if (etTax.text.toString().trim().length!=16){
+                etTax.error="Tax Code not correct"
+                return@setOnClickListener
+            }
+
+            // TODO capire come mai non esce notifica
+
+            //PatientsManager.addPatient(
+              //  Patient(etName.text.toString(), etSurname.text.toString(),
+                //etNotes.text.toString(), etTax.text.toString())
+            //)
+
+        //TODO cambiare nome a uno dei due btnaddpat se no  --> dovrei averlo fatto ma verifica(ila). Mi sembra giusto(gine)
+
+
+
+            }
+
+
+
+
+
+            Timber.d(PatientsManager.patientsList.elementAt(0).name)
+            Timber.d(PatientsManager.patientsList.elementAt(0).surname)
+            Timber.d(PatientsManager.patientsList.elementAt(0).notes)
+            Timber.d(PatientsManager.patientsList.elementAt(0).taxcode)
+            //TODO impostare un avviso se il taxcode non è composto da un tot di caratteri
+            //Timber.d(PatientsManager.patientsList.)
+
+        }    }
+
+
+
+
+
+/*   // https://www.youtube.com/watch?v=y4npeX35B34 TOP VIDEOOOOOOOOOOOOOOOOOO, si ma per firebase
     private lateinit var binding: ActivityAddPatientBinding
     //private lateinit var aut: FirebaseAuth manca anche nelle dependencies
     private lateinit var databaseReference: DatabaseReference

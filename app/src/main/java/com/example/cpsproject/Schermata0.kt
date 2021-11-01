@@ -20,7 +20,7 @@ class Schermata0 : AppCompatActivity() {
 
         val btnSignIn = findViewById<Button>(R.id.btnSignIn)
         btnSignIn.setOnClickListener {
-            val intent = Intent(this, AddClinician::class.java)
+            val intent = Intent(this, AddClinicianActivity::class.java)
             startActivity(intent)
         }
     }

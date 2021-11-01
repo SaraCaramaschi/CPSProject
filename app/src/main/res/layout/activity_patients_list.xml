@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PatientsList">
+    tools:context=".PatientsListActivity">
 
 
     <Button
-        android:id="@+id/btnAddPatient"
+        android:id="@+id/btnNewPatient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add a new patient"

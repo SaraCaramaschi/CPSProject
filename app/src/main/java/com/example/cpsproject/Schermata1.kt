@@ -20,7 +20,7 @@ class Schermata1 : AppCompatActivity() {
         // bottone LISTA PAZIENTI
         val btnPatients = findViewById<Button>(R.id.btnPatients)
         btnPatients.setOnClickListener {
-            val intent = Intent(this, PatientsList::class.java)
+            val intent = Intent(this, PatientsListActivity::class.java)
             startActivity(intent)
         }
 

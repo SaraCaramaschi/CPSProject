@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddPatient">
+    tools:context=".AddPatientActivity">
 
     <LinearLayout
         android:id="@+id/LinearLayout0"
@@ -124,11 +124,11 @@
             android:id="@+id/LinearLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:ignore="MissingConstraints"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
-            tools:layout_editor_absoluteX="45dp"
-            android:layout_marginTop="4dp">
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="45dp">
 
 
             <TextView
@@ -140,32 +140,28 @@
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <CheckBox
-                android:id="@+id/chFemale"
-                android:layout_width="100dp"
+            <Spinner
+                android:id="@+id/spinnerGender"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Female"
-                tools:layout_editor_absoluteX="162dp"
-                tools:layout_editor_absoluteY="542dp" />
+                android:layout_weight="1"
+                android:minHeight="48dp"
+                android:entries="@array/gender"
+                app:layout_constraintStart_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <CheckBox
-                android:id="@+id/chMale"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="Male"
-                tools:layout_editor_absoluteX="280dp"
-                tools:layout_editor_absoluteY="545dp" />
 
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/LinearLayout4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:ignore="MissingConstraints"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
-            tools:layout_editor_absoluteX="45dp"
-            android:layout_marginTop="4dp">
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="45dp">
 
 
             <TextView
@@ -180,14 +176,15 @@
             <EditText
                 android:id="@+id/etBirthDate"
                 android:layout_width="match_parent"
-                android:hint="DD.MM.YYYY"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="20sp"
+                android:hint="DD.MM.YYYY"
                 android:inputType="date"
+                android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/tvBirthDate" />
 
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/LinearLayout5"
             android:layout_width="match_parent"
@@ -196,27 +193,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             tools:layout_editor_absoluteX="45dp"
-            android:layout_marginTop="4dp">
-
-            <TextView
-                android:id="@+id/tvPlace"
-                android:layout_width="100dp"
-                android:layout_height="39dp"
-                android:text="Birth Place"
-                android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <EditText
-                android:id="@+id/etPlace"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@+id/tvPlace"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-        </LinearLayout>
+            android:layout_marginTop="4dp"/>
         <LinearLayout
             android:id="@+id/LinearLayout6"
             android:layout_width="match_parent"
@@ -265,20 +242,16 @@
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <CheckBox
-                android:id="@+id/chLeft"
-                android:layout_width="100dp"
+            <Spinner
+                android:id="@+id/spinnerDominantHand"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Left"
-                tools:layout_editor_absoluteX="153dp"
-                tools:layout_editor_absoluteY="612dp" />
-            <CheckBox
-                android:id="@+id/chRight"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="Right"
-                tools:layout_editor_absoluteX="270dp"
-                tools:layout_editor_absoluteY="624dp" />
+                android:layout_weight="1"
+                android:minHeight="48dp"
+                android:entries="@array/dominanthand"
+                app:layout_constraintStart_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
         </LinearLayout>
         <LinearLayout
             android:id="@+id/LinearLayout8"

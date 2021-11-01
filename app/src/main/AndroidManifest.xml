@@ -29,9 +29,7 @@
         <activity
             android:name=".AddClinicianActivity"
             android:exported="true" />
-        <activity
-            android:name=".model.Patient"
-            android:exported="true" />
+
         <activity
             android:name=".ble.MainConnection"
             android:exported="true" />

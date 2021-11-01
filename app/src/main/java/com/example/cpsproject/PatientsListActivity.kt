@@ -12,7 +12,7 @@ import com.example.cpsproject.databinding.ActivityPatientsList4Binding
 
 class PatientsListActivity : AppCompatActivity() {
 
-    private lateinit var binding:ActivityPatientsList4Binding
+    //private lateinit var binding:ActivityPatientsList4Binding         CON QUESTO VIENE ERRORE
     private lateinit var layoutMan: RecyclerView.LayoutManager
     private lateinit var adapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>
     lateinit var rvPatients: RecyclerView
@@ -20,12 +20,11 @@ class PatientsListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patients_list)
-        binding= ActivityPatientsList4Binding.inflate(LayoutInflater)
-        setContentView(binding.root)
+        //binding= ActivityPatientsList4Binding.inflate(layoutInflater) CON QUESTO VIENE ERRORE
+        //setContentView(binding.root)                                  CON QUESTO VIENE ERRORE
 
         //DA FARE SE VOGLIAMO LE FOTO
-        // val imageId=intArray of(
-        )
+        // val imageId=intArray of
 
         //TODO per INSERIRE LE VARIABILI NON A MANO COME FARE?
 

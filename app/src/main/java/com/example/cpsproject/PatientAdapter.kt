@@ -11,9 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 class PatientAdapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>() {
     // ne ho messi tanti cosi vediamo il recycler view scorrere.
     // parte che andrà cambiata per collegare i dati
-    private var patientsName = arrayOf("Mario Rossi", "Alfonso Maisano","Vittoria Attolini","Lino Piso","Mario Rossi", "Alfonso Maisano","Vittoria Attolini","Lino Piso")
-    private var patientsPhase = arrayOf("Phase1","Phase1","Phase2","Phase 1","Phase1","Phase1","Phase2","Phase 1")
-    private var patientsItems = intArrayOf(R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user)
+     private var patientsName = arrayOf("Mario Rossi", "Alfonso Maisano","Vittoria Attolini","Lino Piso","Mario Rossi", "Alfonso Maisano","Vittoria Attolini","Lino Piso")
+     private var patientsPhase = arrayOf("Phase1","Phase1","Phase2","Phase 1","Phase1","Phase1","Phase2","Phase 1")
+     private var patientsItems = intArrayOf(R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user)
+    
 
     inner class ViewHolder(itemView: View ): RecyclerView.ViewHolder(itemView){
         // scopo: prendere oggetto dalla lista creata e mostrarlo al recycler view

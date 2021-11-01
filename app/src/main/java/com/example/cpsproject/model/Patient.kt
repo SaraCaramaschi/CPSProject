@@ -1,5 +1,7 @@
 package com.example.cpsproject.model
 
+
+
 data class Patient(
     var name: String,
     var surname: String,

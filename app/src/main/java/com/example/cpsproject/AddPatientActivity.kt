@@ -60,9 +60,20 @@ class AddPatientActivity : AppCompatActivity() {
                Patient(etName.text.toString(), etSurname.text.toString(),
                 etNotes.text.toString(), etTax.text.toString()) )
 
-            // Create Json file
+            /* Create Json file
             PatientsManager.createJson(Patient(etName.text.toString(), etSurname.text.toString(),
-                etNotes.text.toString(), etTax.text.toString()))
+                etNotes.text.toString(), etTax.text.toString()))*/
+            val json = Json.encodeToString(
+                Patient(
+                    etName.text.toString(),
+                    etSurname.text.toString(),
+                    etNotes.text.toString(),
+                    etTax.text.toString()
+                )
+            )
+
+            var filename: String = "/Users/saracaramaschi/SecondoAnnoM/paziente"
+            File(filename).writeText(json) // UTF-8 (default)
         }
 
         //TODO NON SO SE VA MESSO QUI O IN PATIENTSMANAGER (E MOLTI ALTRI DUBBI)

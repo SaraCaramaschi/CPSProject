@@ -1,14 +1,11 @@
 package com.example.cpsproject
 
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cpsproject.managers.PatientsManager
-import com.example.cpsproject.model.Gender
 import com.example.cpsproject.model.Patient
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_add_patient.*
 import org.jetbrains.anko.toast
 import timber.log.Timber
@@ -57,16 +54,24 @@ class AddPatientActivity : AppCompatActivity() {
 
             // TODO capire come mai non esce notifica
 
-            //PatientsManager.addPatient(
-              //  Patient(etName.text.toString(), etSurname.text.toString(),
-                //etNotes.text.toString(), etTax.text.toString())
-            //)
+            PatientsManager.addPatient(
+               Patient(etName.text.toString(), etSurname.text.toString(),
+                etNotes.text.toString(), etTax.text.toString()) )
+        //)
 
         //TODO cambiare nome a uno dei due btnaddpat se no  --> dovrei averlo fatto ma verifica(ila). Mi sembra giusto(gine)
 
 
 
             }
+        //TODO NON SO SE VA MESSO QUI O IN PATIENTSMANAGER
+
+        val jsonList= Gson().toJson(PatientsManager.patientsList)
+
+
+
+
+
 
 
 
@@ -79,7 +84,8 @@ class AddPatientActivity : AppCompatActivity() {
             //TODO impostare un avviso se il taxcode non è composto da un tot di caratteri
             //Timber.d(PatientsManager.patientsList.)
 
-        }    }
+        }
+}
 
 
 

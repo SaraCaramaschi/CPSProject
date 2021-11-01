@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cpsproject.databinding.ActivityMainConnectionBinding
-import com.example.cpsproject.databinding.ActivityPatientsList4Binding
+//import com.example.cpsproject.databinding.ActivityMainConnectionBinding
+//import com.example.cpsproject.databinding.ActivityPatientsList4Binding
 
 class PatientsListActivity : AppCompatActivity() {
 
@@ -34,8 +34,8 @@ class PatientsListActivity : AppCompatActivity() {
         adapter = PatientAdapter()
         rvPatients.adapter = adapter
 
-        val btnAddPatient = findViewById<Button>(R.id.btnNewPatient)
-        btnAddPatient.setOnClickListener {
+        val btnNewPatient = findViewById<Button>(R.id.btnNewPatient)
+        btnNewPatient.setOnClickListener {
             val intent = Intent(this, AddPatientActivity::class.java)
             startActivity(intent) }
         }

@@ -76,10 +76,11 @@ class AddPatientActivity : AppCompatActivity() {
         File("JsonFiles").writeText(jsonList)
         */
 
-        Timber.d(PatientsManager.patientsList.elementAt(0).name)
+        /*Timber.d(PatientsManager.patientsList.elementAt(0).name)
         Timber.d(PatientsManager.patientsList.elementAt(0).surname)
         Timber.d(PatientsManager.patientsList.elementAt(0).notes)
         Timber.d(PatientsManager.patientsList.elementAt(0).taxcode)
+         */
     }
 
 }

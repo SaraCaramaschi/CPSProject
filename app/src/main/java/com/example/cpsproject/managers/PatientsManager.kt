@@ -2,11 +2,12 @@ package com.example.cpsproject.managers
 
 import com.example.cpsproject.model.Patient
 import com.google.gson.Gson
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.io.File
 
-
+@Serializable
 object PatientsManager {
     public var patientsList: ArrayList<Patient> = ArrayList()
 
@@ -17,7 +18,7 @@ object PatientsManager {
     public fun createJson(patient: Patient) {
         val json = Json.encodeToString(patient)
 
-        var filename: String = "/Users/Saracaramaschi/paziente"
+        var filename: String = "/Users/saracaramaschi/paziente"
         File(filename).writeText(json) // UTF-8 (default)
     }
 

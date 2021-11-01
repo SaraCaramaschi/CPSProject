@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cpsproject.managers.PatientsManager
+import com.example.cpsproject.managers.PatientsManager.patientsList
 import com.example.cpsproject.model.Patient
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_add_patient.*
 import org.jetbrains.anko.toast
 import timber.log.Timber
+import java.io.File
 
 
 class AddPatientActivity : AppCompatActivity() {
@@ -64,10 +66,23 @@ class AddPatientActivity : AppCompatActivity() {
 
 
             }
-        //TODO NON SO SE VA MESSO QUI O IN PATIENTSMANAGER
+        //TODO NON SO SE VA MESSO QUI O IN PATIENTSMANAGER (E MOLTI ALTRI DUBBI)
+        
 
-        val jsonList= Gson().toJson(PatientsManager.patientsList)
+        var newpatient = patientsList.last()
+        val gson= Gson()
 
+        //AGGIUNGO VARIABILE NEWPATIENT O CONSIDERO TUTTA LA LISTA?: val jsonList= gson.toJson(PatientsManager.patientsList, new Filewriter(JsonList))
+
+        val jsonList= gson.toJson(newpatient)
+
+        //COME CREO FILE IN CUI SALVARE IL JSON? HO CREATO PACKAGE IN CPSPROJECT
+
+        File("JsonFiles").writeText(jsonList)
+
+
+
+    }
 
 
 

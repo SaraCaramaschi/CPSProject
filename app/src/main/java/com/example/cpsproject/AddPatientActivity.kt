@@ -20,15 +20,15 @@ class AddPatientActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_patient)
 
         //TODO i text rossi qui sotto dovrebbero essere delle caselle di testo nella pagina del singolo pz
-        chFemale.setOnCheckedChangeListener{buttonView, isChecked ->
-            if(isChecked==true) {
-                textview.setText("Female")
-            }
-            chMale.setOnCheckedChangeListener{buttonView, isChecked ->
-                if(isChecked==true) {
-                    textview.setText("Male")
-                }
-        }
+        //chFemale.setOnCheckedChangeListener{buttonView, isChecked ->
+          //  if(isChecked==true) {
+            //    textview.setText("Female")
+            //}
+            //chMale.setOnCheckedChangeListener{buttonView, isChecked ->
+              //  if(isChecked==true) {
+                //    textview.setText("Male")
+
+
 
 // CAPIRE COSA FARE NELLA ACTIVITY PER GLI SPINNER
            // val gender: Gender
@@ -57,10 +57,10 @@ class AddPatientActivity : AppCompatActivity() {
 
             // TODO capire come mai non esce notifica
 
-            PatientsManager.addPatient(
-                Patient(etName.text.toString(), etSurname.text.toString(),
-                etNotes.text.toString(), etTax.text.toString())
-            )
+            //PatientsManager.addPatient(
+              //  Patient(etName.text.toString(), etSurname.text.toString(),
+                //etNotes.text.toString(), etTax.text.toString())
+            //)
 
         //TODO cambiare nome a uno dei due btnaddpat se no  --> dovrei averlo fatto ma verifica(ila). Mi sembra giusto(gine)
 
@@ -77,10 +77,11 @@ class AddPatientActivity : AppCompatActivity() {
             Timber.d(PatientsManager.patientsList.elementAt(0).notes)
             Timber.d(PatientsManager.patientsList.elementAt(0).taxcode)
             //TODO impostare un avviso se il taxcode non è composto da un tot di caratteri
-            Timber.d(PatientsManager.patientsList.)
+            //Timber.d(PatientsManager.patientsList.)
 
-        }
-    }
+        }    }
+
+
 
 
 

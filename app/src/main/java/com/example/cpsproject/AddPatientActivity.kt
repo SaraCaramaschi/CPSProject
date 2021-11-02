@@ -3,6 +3,7 @@ package com.example.cpsproject
 import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cpsproject.databinding.ActivityAddPatientBinding
 import com.example.cpsproject.managers.PatientsManager
@@ -14,10 +15,14 @@ import kotlinx.android.synthetic.main.activity_add_patient.*
 import org.jetbrains.anko.toast
 import timber.log.Timber
 
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.descriptors.StructureKind
+import kotlinx.serialization.json.Json
 //import kotlinx.serialization.Serializable
 //import kotlinx.serialization.json.Json
 import java.io.*
 import java.lang.Exception
+import java.sql.Savepoint
 
 
 class AddPatientActivity : AppCompatActivity() {
@@ -44,8 +49,8 @@ binding.phaseProfile.text= phase
         // Activity related to the button add patient, notifica OK !!!
         btnAddPat.setOnClickListener {
             if (etName.text.toString().trim().isEmpty()) {
-                Toast.makeText(this, "Name required", Toast.LENGTH_SHORT).show();
-                //etName.error = "Name Required";
+                //Toast.makeText(this, "Name required", Toast.LENGTH_SHORT).show();
+                etName.error = "Name Required";
                 return@setOnClickListener
             } else if (etSurname.text.toString().trim().isEmpty()) {
                 etSurname.error = "Surname Required"
@@ -68,24 +73,49 @@ binding.phaseProfile.text= phase
             )
 
             //Create Json file
-            PatientsManager.createJson(
+          /*  PatientsManager.createJson(
                 Patient(
                     etName.text.toString(), etSurname.text.toString(),
                     etNotes.text.toString(), etTax.text.toString()
                 )
-            )
+            )*/
 
 
             //TODO NON SO SE VA MESSO QUI O IN PATIENTSMANAGER (E MOLTI ALTRI DUBBI)
             // PARTE DI GINEVRA TRASPORTATA IN PATIENT MANAGER IN FUNZIONE CREATEJSON
-            /*var newpatient = patientsList.last()
+               var newpatient = patientsList.last()
         val gson= Gson()
+
         //AGGIUNGO VARIABILE NEWPATIENT O CONSIDERO TUTTA LA LISTA?: val jsonList= gson.toJson(PatientsManager.patientsList, new Filewriter(JsonList))
         val jsonList= gson.toJson(newpatient)
 
         //COME CREO FILE IN CUI SALVARE IL JSON? HO CREATO PACKAGE IN CPSPROJECT
-        File("JsonFiles").writeText(jsonList)
-        */
+
+
+            val fileOutputStream:FileOutputStream
+            try {
+                fileOutputStream = openFileOutput(file, Context.MODE_PRIVATE)
+                fileOutputStream.write(jsonList.toByteArray())
+            }catch (e: Exception){
+                e.printStackTrace()
+            }
+
+
+/* VIDEO PER SCRIVERE IN UN FILE
+            val fileOutputStream: FileOutputStream
+            try {
+                fileOutputStream = openFileOutput("JsonList", Context.MODE_PRIVATE)
+                fileOutputStream.write(jsonList.toByteArray())
+            }
+            catch (e:FileNotFoundException) {
+                e.printStackTrace()
+            }
+            catch (e: Exception){
+                e.printStackTrace()
+            }
+
+*/
+
 
             /*Timber.d(PatientsManager.patientsList.elementAt(0).name)
         Timber.d(PatientsManager.patientsList.elementAt(0).surname)

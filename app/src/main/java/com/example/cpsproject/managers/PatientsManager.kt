@@ -21,7 +21,7 @@ object PatientsManager {
     public fun addPatient(patient: Patient){
         patientsList.add(patient)
     }
-
+/*
     public fun createJson(patient: Patient) {
         val json = Json.encodeToString(patient)
         Log.d("This is the json data:", json) // LO STAMPA OK SUPER !
@@ -32,7 +32,18 @@ object PatientsManager {
         var fileDirectory = "/Users/saracaramaschi/SecondoAnnoM/"
         var filepath = "/Users/saracaramaschi/SecondoAnnoM/paziente.js"
 
+*/
 
+
+/*
+    val gson= Gson()
+
+    //AGGIUNGO VARIABILE NEWPATIENT O CONSIDERO TUTTA LA LISTA?: val jsonList= gson.toJson(PatientsManager.patientsList, new Filewriter(JsonList))
+    val jsonList= gson.toJson(patientsList)
+
+    //COME CREO FILE IN CUI SALVARE IL JSON? HO CREATO PACKAGE IN CPSPROJECT
+    File("File.json").writeText(jsonList)
+*/
             //METODO 1: NON VA, questo penso proprio non vada bene
             /*
             var newfile = File(fileDirectory, fileName)
@@ -63,7 +74,7 @@ object PatientsManager {
             e.printStackTrace()
         }*/
         //METODO non so quale: NON VA
-        file.bufferedWriter().use { bw -> bw.write(json) }
+       // file.bufferedWriter().use { bw -> bw.write(json) }
 
         //METODO 4: non va
         // https://medium.com/android-news/android-saving-model-object-in-shared-preferences-ce3c1d4f4573
@@ -119,4 +130,3 @@ object PatientsManager {
 
     }
 
-}

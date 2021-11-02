@@ -4,34 +4,36 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.cpsproject.databinding.ActivityAddPatientBinding
 import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.managers.PatientsManager.patientsList
 import com.example.cpsproject.model.Patient
-import com.google.gson.Gson
+//import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_add_patient.*
-import kotlinx.serialization.encodeToString
+//import kotlinx.serialization.encodeToString
 import org.jetbrains.anko.toast
 import timber.log.Timber
 
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
+//import kotlinx.serialization.Serializable
+//import kotlinx.serialization.json.Json
 import java.io.*
 import java.lang.Exception
 
 
 class AddPatientActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityAddPatientBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_patient)
+        val name= intent.getStringExtra("name")
+        val phase= intent.getStringExtra("phase")
+        //aggiungere lo stesso per la foto se la vogliamo
 
-        //TODO i text rossi qui sotto dovrebbero essere delle caselle di testo nella pagina del singolo pz
-        //chFemale.setOnCheckedChangeListener{buttonView, isChecked ->
-        //  if(isChecked==true) {
-        //    textview.setText("Female")
-        //}
-        //chMale.setOnCheckedChangeListener{buttonView, isChecked ->
-        //  if(isChecked==true) {
-        //    textview.setText("Male")
+binding.nameProfile.text= name
+binding.phaseProfile.text= phase
+//TODO perchè sono rossi????
+
 
 // CAPIRE COSA FARE NELLA ACTIVITY PER GLI SPINNER
         // val gender: Gender

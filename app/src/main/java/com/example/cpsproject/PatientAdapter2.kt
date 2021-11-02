@@ -1,4 +1,4 @@
-/*package com.example.cpsproject
+package com.example.cpsproject
 
 import android.app.Activity
 import android.view.LayoutInflater
@@ -36,4 +36,4 @@ R.layout.list_item, arrayList) {
 
 
 
-}*/
+}

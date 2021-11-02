@@ -50,6 +50,7 @@ object ConnectionManager {
 
     // funzione copiata dalla guida, non ho inserito: reserved/tohexstrin/toint
     // che sono cose che chiara aveva citato quando ha parlato con me e ale.
+    //TODO va bene messa qui, poi ne parliamo giovedì di come implementarla bene
     private fun readBattery(gatt: BluetoothGatt, characteristic: BluetoothGattCharacteristic) { // NON SO IN QUALE POSIZIONE QUESTA FUNZIONE VADA. DENTRO CALLBACK??? O QUI ??
         val batteryLevelChar = gatt.getService(batteryuuid).getCharacteristic(characteristic.uuid)
         if (batteryLevelChar?.isReadable() == true) {
@@ -387,7 +388,9 @@ object ConnectionManager {
                         when(it.uuid){ // it è una BLUETOOTHGATTCHARACTERISTIC: (lo si vede se si appoggia il cursore sopra it)
                             batteryuuid -> {
                                 Timber.e("Questa e' la batteria della penna") // messaggio
-                                onCharacteristicRead(gatt, it, status)                 // funzione che chiamiamo per leggere la caratteristica (?) corretto (?)
+                                //TODO qui dovrebbe essere readCharacteristic
+                                //onCharacteristicRead(gatt, it, status)                 // funzione che chiamiamo per leggere la caratteristica (?) corretto (?)
+                                readCharacteristic(it)
                             } //se è batteria fai certe cose: ottieni il dato della batteria
 
                         } //when freccette grafe

@@ -1,9 +1,10 @@
 package com.example.cpsproject.model
 
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.encodeToString
+import androidx.annotation.Keep
 
+// con keep funziona (cambia errore in realtà)
+@Keep // arriva da qui https://github.com/seventhmoon/hello-kotlin-serialization/blob/master/app/src/main/java/com/google/sample/hellokotlinserialization/Device.kt
 @Serializable // arriva da qui https://kotlinlang.org/docs/serialization.html#example-json-serialization
 data class Patient( // ora ci sono 4 input
     var name: String,

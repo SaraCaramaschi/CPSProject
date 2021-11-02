@@ -2,7 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
-    //id 'kotlinx-serialization-json'
+    id "org.jetbrains.kotlin.plugin.serialization" version "1.6.0-M1"
 }
 
 android {

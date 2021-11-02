@@ -193,15 +193,6 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             tools:layout_editor_absoluteX="45dp"
-            android:layout_marginTop="4dp"/>
-        <LinearLayout
-            android:id="@+id/LinearLayout6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:ignore="MissingConstraints"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            tools:layout_editor_absoluteX="45dp"
             android:layout_marginTop="4dp">
 
             <TextView
@@ -224,7 +215,7 @@
 
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/LinearLayout7"
+            android:id="@+id/LinearLayout6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:ignore="MissingConstraints"
@@ -254,7 +245,7 @@
 
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/LinearLayout8"
+            android:id="@+id/LinearLayout7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:ignore="MissingConstraints"

@@ -47,17 +47,24 @@ object ConnectionManager {
     private var pendingOperation: BleOperationType? = null
     private val serviceuuid = UUID.fromString("00000000-0001-11E1-9AB4-0002A5D5C51B")
     private val batteryuuid = UUID.fromString("00020000-0001-11E1-AC36-0002A5D5C51B ")
+    private val datauuid = UUID.fromString("00E00000-0001-11E1-AC36-0002A5D5C51B")
 
     // funzione copiata dalla guida, non ho inserito: reserved/tohexstrin/toint
     // che sono cose che chiara aveva citato quando ha parlato con me e ale.
     //TODO va bene messa qui, poi ne parliamo giovedì di come implementarla bene
-    private fun readBattery(gatt: BluetoothGatt, characteristic: BluetoothGattCharacteristic) { // NON SO IN QUALE POSIZIONE QUESTA FUNZIONE VADA. DENTRO CALLBACK??? O QUI ??
+    private fun readBattery(gatt: BluetoothGatt, characteristic: BluetoothGattCharacteristic) {
         val batteryLevelChar = gatt.getService(batteryuuid).getCharacteristic(characteristic.uuid)
         if (batteryLevelChar?.isReadable() == true) {
             Timber.d("Battery is READABLE")
             gatt.readCharacteristic(batteryLevelChar) // quale output ci da ???
         }
     }
+
+    /* ??
+    fun BluetoothGattCharacteristic.isNotifiable(): Boolean =
+        containsProperty(BluetoothGattCharacteristic.PROPERTY_NOTIFY)
+    */
+
     fun servicesOnDevice(device: BluetoothDevice): List<BluetoothGattService>? =
         deviceGattMap[device]?.services
 
@@ -385,14 +392,21 @@ object ConnectionManager {
 
                     // 00020000-0001-11E1-AC36-0002A5D5C51B : UUID Batteria
                     gatt.getService(serviceuuid).characteristics.forEach { //per ogni caratteristiche faccio cose
-                        when(it.uuid){ // it è una BLUETOOTHGATTCHARACTERISTIC: (lo si vede se si appoggia il cursore sopra it)
+                        when(it.uuid){ // it è una BLUETOOTHGATTCHARACTERISTIC
                             batteryuuid -> {
-                                Timber.e("Questa e' la batteria della penna") // messaggio
+                                Timber.e("Questa e' la batteria della penna")
                                 //TODO qui dovrebbe essere readCharacteristic
-                                //onCharacteristicRead(gatt, it, status)                 // funzione che chiamiamo per leggere la caratteristica (?) corretto (?)
+                                //onCharacteristicRead(gatt, it, status)
+                                enableNotifications( gatt.device,it)
                                 readCharacteristic(it)
                             } //se è batteria fai certe cose: ottieni il dato della batteria
-
+                            datauuid -> {
+                                Timber.e("Questi sono i dati della penna")
+                                //TODO qui dovrebbe essere readCharacteristic
+                                //onCharacteristicRead(gatt, it, status)
+                                enableNotifications( gatt.device,it)
+                                readCharacteristic(it)
+                            }
                         } //when freccette grafe
                     }
 
@@ -448,7 +462,11 @@ object ConnectionManager {
                                 Timber.d("Ora sono in onCharacteristicRead e vado a leggere la batteria tramite private fun readBattery")
                                 readBattery(gatt,characteristic) // OK: fai cose per la batteria ==> readBatterydata da creare funzione reserved/tohexstrin/toint
                             }
-                            //altrouuid -> { ... }
+                            datauuid -> {
+                                Timber.d("Ora sono in onCharacteristicRead e vado a leggere i dati tramite private fun readData ?? ")
+                                //readData(gatt,characteristic)  (?)
+                            }
+
                         }
 
                         //sessionmanager che raccoglie tutte le variabili, companion object, singleton kotlin

@@ -27,13 +27,15 @@ class PatientsListActivity : AppCompatActivity() {
         //DA FARE SE VOGLIAMO LE FOTO
         // val imageId=intArray of
 //TODO qui ci sarebbero da mettere tutte le variabili del pz
+
         val name =arrayOf(
             "CArlo",
-        "giovanna"
+            "giovanna"
         )
+
        val phase = arrayOf(
-     "phase1",
- "phase2"
+           "phase1",
+           "phase2"
  )
 
 patientArrayList=ArrayList()
@@ -44,7 +46,7 @@ patientArrayList=ArrayList()
         }
 
 binding.patientslist.isClickable=true
-binding.patientslist.adapter= PatientAdapter2
+binding.patientslist.adapter= PatientAdapter2 (this, patientArrayList)
 binding.patientslist.setOnItemClickListener { parent, view, position, id ->
     val name = name[position]
     val phase = phase[position]

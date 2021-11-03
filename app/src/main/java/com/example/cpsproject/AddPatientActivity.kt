@@ -21,18 +21,12 @@ import java.lang.Exception
 
 
 class AddPatientActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityAddPatientBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_patient)
-        val name= intent.getStringExtra("name")
-        val phase= intent.getStringExtra("phase")
-        //aggiungere lo stesso per la foto se la vogliamo
+       super.onCreate(savedInstanceState)
+       setContentView(R.layout.activity_add_patient)
 
-binding.nameProfile.text= name
-binding.phaseProfile.text= phase
-//TODO perchè sono rossi????
 
 
 // CAPIRE COSA FARE NELLA ACTIVITY PER GLI SPINNER

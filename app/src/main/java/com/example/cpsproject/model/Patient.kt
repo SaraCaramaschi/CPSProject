@@ -1,6 +1,6 @@
 package com.example.cpsproject.model
 
-import kotlinx.serialization.Serializable
+//import kotlinx.serialization.Serializable
 import androidx.annotation.Keep
 
 // con keep funziona (cambia errore in realtà)

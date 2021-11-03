@@ -13,7 +13,8 @@ R.layout.list_item, arrayList) {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
 
          val inflater:LayoutInflater= LayoutInflater.from(context)
-         val view: View = inflater.inflate((R.layout.list_item,null));
+         val view: View = inflater.inflate(R.layout.list_item,null)
+
 
        // QUESTA RIGA NON SO SE SERVE PERCHè NON SO SE METTEREMO LE IMMAGINI
         // val imageView: ImageView=view.findViewById<>(R.id.profilr_pic)
@@ -36,4 +37,3 @@ R.layout.list_item, arrayList) {
 
 
 
-}

@@ -2,6 +2,8 @@ package com.example.cpsproject
 
 import android.content.Context
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -18,12 +20,21 @@ import timber.log.Timber
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.descriptors.StructureKind
+import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import org.json.JSONObject
 //import kotlinx.serialization.Serializable
 //import kotlinx.serialization.json.Json
 import java.io.*
 import java.lang.Exception
+import java.security.acl.Owner
 import java.sql.Savepoint
+import android.R
+
+import android.widget.Spinner
+
+
+
 
 
 class AddPatientActivity : AppCompatActivity() {
@@ -32,8 +43,8 @@ class AddPatientActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_patient)
-        val name= intent.getStringExtra("name")
-        val phase= intent.getStringExtra("phase")
+        val name = intent.getStringExtra("name")
+        val phase = intent.getStringExtra("phase")
         //aggiungere lo stesso per la foto se la vogliamo
 
 //binding.nameProfile.text= name
@@ -47,8 +58,10 @@ class AddPatientActivity : AppCompatActivity() {
         //ArrayAdapter<CharSequence>() adapter=Arrayadapter.createfrom
 
 
+
         // Activity related to the button add patient, notifica OK !!!
         btnAddPat.setOnClickListener {
+
             if (etName.text.toString().trim().isEmpty()) {
                 //Toast.makeText(this, "Name required", Toast.LENGTH_SHORT).show();
                 etName.error = "Name Required";
@@ -62,19 +75,24 @@ class AddPatientActivity : AppCompatActivity() {
             } else if (etTax.text.toString().trim().length != 16) {
                 etTax.error = "Tax Code not correct"
                 return@setOnClickListener
-            }
+            } else if (etBirthDate.text.toString().trim().length != 8){
+                etBirthDate.error = "Birth Date not correct"
+            return@setOnClickListener
+        }
 
 
-            // Add patient
-            PatientsManager.addPatient( // ora ci sono 4 input (anche nella data class)
-                Patient(
-                    etName.text.toString(), etSurname.text.toString(),
-                    etNotes.text.toString(), etTax.text.toString()
-                )
+
+        // Add patient
+        PatientsManager.addPatient( // ora ci sono 4 input (anche nella data class)
+            Patient(
+                etName.text.toString(), etSurname.text.toString(),
+                etNotes.text.toString(), etTax.text.toString(), etBirthDate.text.toString(), 
             )
+        )
+
 
             //Create Json file
-          /*  PatientsManager.createJson(
+            /*  PatientsManager.createJson(
                 Patient(
                     etName.text.toString(), etSurname.text.toString(),
                     etNotes.text.toString(), etTax.text.toString()
@@ -84,33 +102,31 @@ class AddPatientActivity : AppCompatActivity() {
 
             //TODO NON SO SE VA MESSO QUI O IN PATIENTSMANAGER (E MOLTI ALTRI DUBBI)
             // PARTE DI GINEVRA TRASPORTATA IN PATIENT MANAGER IN FUNZIONE CREATEJSON
-               var newpatient = patientsList.last()
+            var newpatient = patientsList.last()
 
-            fun main() {
-                val json = Json.encodeToString()
-            }
+            //val json = Json.encodeToString(newpatient)
 
 
 
 
-               val gson= Gson()
+                /*val gson= Gson()
 
-        //AGGIUNGO VARIABILE NEWPATIENT O CONSIDERO TUTTA LA LISTA?: val jsonList= gson.toJson(PatientsManager.patientsList, new Filewriter(JsonList))
-        val jsonPatient= gson.toJson(newpatient)
+            //AGGIUNGO VARIABILE NEWPATIENT O CONSIDERO TUTTA LA LISTA?: val jsonList= gson.toJson(PatientsManager.patientsList, new Filewriter(JsonList))
+            val jsonPatient= gson.toJson(newpatient)
 
-        //COME CREO FILE IN CUI SALVARE IL JSON? HO CREATO PACKAGE IN CPSPROJECT
+            //COME CREO FILE IN CUI SALVARE IL JSON? HO CREATO PACKAGE IN CPSPROJECT
 
-            fun main(args: Array<String>) {
+                fun main(args: Array<String>) {
 
-                val fileName = "Json.txt"
+                    val fileName = "Json.txt"
 
-                var file = File(fileName)
+                    var file = File(fileName)
 
-                // create a new file
-                file.writeText(jsonPatient)
-            }
+                    // create a new file
+                    file.writeText(jsonPatient)
+                }
 
-
+    */
 
 /*
             val fileOutputStream:FileOutputStream
@@ -138,14 +154,17 @@ class AddPatientActivity : AppCompatActivity() {
 */
 
 
-            /*Timber.d(PatientsManager.patientsList.elementAt(0).name)
+                /*Timber.d(PatientsManager.patientsList.elementAt(0).name)
         Timber.d(PatientsManager.patientsList.elementAt(0).surname)
         Timber.d(PatientsManager.patientsList.elementAt(0).notes)
         Timber.d(PatientsManager.patientsList.elementAt(0).taxcode)
          */
-        }
+            }
 
+        }
     }
+
+
 }
 
 // https://www.youtube.com/watch?v=y4npeX35B34 TOP VIDEOOOOOOOOOOOOOOOOOO, si ma per firebase

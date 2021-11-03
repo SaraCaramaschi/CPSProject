@@ -30,6 +30,8 @@ R.layout.list_item, arrayList) {
         username.text=arrayList[position].name
         phase.text=arrayList[position].phase
 
+
+
         return view
     }
     }

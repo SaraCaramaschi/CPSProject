@@ -11,6 +11,8 @@ data class Patient( // ora ci sono 4 input
     var surname: String,
     var notes: String ?= null,
     var taxcode: String,
+    var birthdate: String,
+
 
     //Inserire da qualche parte la variabile della fase, qualcuno dovrà inserirla nell'app per fare in modo che venga visualizzata nella pt list
 

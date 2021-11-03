@@ -25,6 +25,7 @@ R.layout.list_item, arrayList) {
         // imageView.setImageResource(arrayList[position].imageId)
 
         //TODO da modificare per fare in modod che oltra la nome ci sia anche il cognome sulla pt list
+        // OSS (GINEVRA) QUA DOVREMMO RICHIAMARE FILE JSON?
 
         username.text=arrayList[position].name
         phase.text=arrayList[position].phase
@@ -37,3 +38,4 @@ R.layout.list_item, arrayList) {
 
 
 }
+

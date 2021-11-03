@@ -9,6 +9,7 @@ import com.example.cpsproject.databinding.ActivityAddPatientBinding
 import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.managers.PatientsManager.patientsList
 import com.example.cpsproject.model.Patient
+import com.google.gson.Gson
 //import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_add_patient.*
 //import kotlinx.serialization.encodeToString
@@ -35,8 +36,8 @@ class AddPatientActivity : AppCompatActivity() {
         val phase= intent.getStringExtra("phase")
         //aggiungere lo stesso per la foto se la vogliamo
 
-binding.nameProfile.text= name
-binding.phaseProfile.text= phase
+//binding.nameProfile.text= name
+//binding.phaseProfile.text= phase
 //TODO perchè sono rossi????
 
 
@@ -84,22 +85,42 @@ binding.phaseProfile.text= phase
             //TODO NON SO SE VA MESSO QUI O IN PATIENTSMANAGER (E MOLTI ALTRI DUBBI)
             // PARTE DI GINEVRA TRASPORTATA IN PATIENT MANAGER IN FUNZIONE CREATEJSON
                var newpatient = patientsList.last()
-        val gson= Gson()
+
+            fun main() {
+                val json = Json.encodeToString()
+            }
+
+
+
+
+               val gson= Gson()
 
         //AGGIUNGO VARIABILE NEWPATIENT O CONSIDERO TUTTA LA LISTA?: val jsonList= gson.toJson(PatientsManager.patientsList, new Filewriter(JsonList))
-        val jsonList= gson.toJson(newpatient)
+        val jsonPatient= gson.toJson(newpatient)
 
         //COME CREO FILE IN CUI SALVARE IL JSON? HO CREATO PACKAGE IN CPSPROJECT
 
+            fun main(args: Array<String>) {
 
+                val fileName = "Json.txt"
+
+                var file = File(fileName)
+
+                // create a new file
+                file.writeText(jsonPatient)
+            }
+
+
+
+/*
             val fileOutputStream:FileOutputStream
             try {
-                fileOutputStream = openFileOutput(file, Context.MODE_PRIVATE)
-                fileOutputStream.write(jsonList.toByteArray())
+                fileOutputStream = openFileOutput("File", Context.MODE_PRIVATE)
+                fileOutputStream.write(jsonPatient.toByteArray())
             }catch (e: Exception){
                 e.printStackTrace()
             }
-
+*/
 
 /* VIDEO PER SCRIVERE IN UN FILE
             val fileOutputStream: FileOutputStream

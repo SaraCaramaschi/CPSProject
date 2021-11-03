@@ -18,13 +18,17 @@ import java.io.*
 object PatientsManager {
     public var patientsList: ArrayList<Patient> = ArrayList()
 
-    public fun addPatient(patient: Patient){
+    public fun addPatient(patient: Patient) {
         patientsList.add(patient)
     }
+}
+
+
 /*
     public fun createJson(patient: Patient) {
         val json = Json.encodeToString(patient)
-        Log.d("This is the json data:", json) // LO STAMPA OK SUPER !
+        //Log.d("This is the json data:", json) // LO STAMPA OK SUPER !
+    }
 
 
         val file = File(System.getProperty("user.home"), "paziente.js")
@@ -35,16 +39,16 @@ object PatientsManager {
 */
 
 
-/*
+/* QUESTA ERA PARTE DI UNA GINEVRA ILLUSA CHE POTESSE ESSERE COSIì SEMPLICE
     val gson= Gson()
-
-    //AGGIUNGO VARIABILE NEWPATIENT O CONSIDERO TUTTA LA LISTA?: val jsonList= gson.toJson(PatientsManager.patientsList, new Filewriter(JsonList))
     val jsonList= gson.toJson(patientsList)
-
-    //COME CREO FILE IN CUI SALVARE IL JSON? HO CREATO PACKAGE IN CPSPROJECT
     File("File.json").writeText(jsonList)
 */
-            //METODO 1: NON VA, questo penso proprio non vada bene
+
+        //PER FARE FILE
+
+
+    //METODO 1: NON VA, questo penso proprio non vada bene
             /*
             var newfile = File(fileDirectory, fileName)
             newfile.writeText(json) // UTF-8 (default)*/
@@ -73,7 +77,8 @@ object PatientsManager {
         }catch (e: Exception){
             e.printStackTrace()
         }*/
-        //METODO non so quale: NON VA
+
+    //METODO non so quale: NON VA
        // file.bufferedWriter().use { bw -> bw.write(json) }
 
         //METODO 4: non va
@@ -106,12 +111,6 @@ object PatientsManager {
             preferences.edit().putString(key, jsonString).apply()
         }
 */
-        /* METODO GINEVRA: non va (a me)
-        var newpatient = patientsList.last()
-        val gson= Gson()
-        val jsonObj = gson.toJson(newpatient)
-        //COME CREO FILE IN CUI SALVARE IL JSON? HO CREATO PACKAGE IN CPSPROJECT
-        File("JsonFiles").writeText(jsonObj)*/
 
         // altro metodo
         /*FileOutputStream(file).use { fos ->
@@ -121,12 +120,6 @@ object PatientsManager {
         }*/
 
 
-        /*Timber.d(PatientsManager.patientsList.elementAt(0).name)
-    Timber.d(PatientsManager.patientsList.elementAt(0).surname)
-    Timber.d(PatientsManager.patientsList.elementAt(0).notes)
-    Timber.d(PatientsManager.patientsList.elementAt(0).taxcode)
-     */
 
 
-    }
 

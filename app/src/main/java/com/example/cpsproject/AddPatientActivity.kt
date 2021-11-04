@@ -1,40 +1,19 @@
 package com.example.cpsproject
 
-import android.content.Context
+//import com.google.gson.Gson
+//import kotlinx.serialization.encodeToString
+
+//import kotlinx.serialization.Serializable
+//import kotlinx.serialization.json.Json
+
 import android.os.Bundle
-import android.view.View
-import android.widget.AdapterView
-import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cpsproject.databinding.ActivityAddPatientBinding
 import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.managers.PatientsManager.patientsList
 import com.example.cpsproject.model.Patient
-import com.google.gson.Gson
-//import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_add_patient.*
-//import kotlinx.serialization.encodeToString
-import org.jetbrains.anko.toast
-import timber.log.Timber
-
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.descriptors.StructureKind
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
-import org.json.JSONObject
-//import kotlinx.serialization.Serializable
-//import kotlinx.serialization.json.Json
 import java.io.*
-import java.lang.Exception
-import java.security.acl.Owner
-import java.sql.Savepoint
-import android.R
-
-import android.widget.Spinner
-
-
-
 
 
 class AddPatientActivity : AppCompatActivity() {
@@ -58,37 +37,35 @@ class AddPatientActivity : AppCompatActivity() {
         //ArrayAdapter<CharSequence>() adapter=Arrayadapter.createfrom
 
 
-
         // Activity related to the button add patient, notifica OK !!!
         btnAddPat.setOnClickListener {
 
-            if (etName.text.toString().trim().isEmpty()) {
-                //Toast.makeText(this, "Name required", Toast.LENGTH_SHORT).show();
-                etName.error = "Name Required";
-                return@setOnClickListener
-            } else if (etSurname.text.toString().trim().isEmpty()) {
-                etSurname.error = "Surname Required"
-                return@setOnClickListener
-            } else if (etTax.text.toString().trim().isEmpty()) {
-                etTax.error = "Tax Code Required"
-                return@setOnClickListener
-            } else if (etTax.text.toString().trim().length != 16) {
-                etTax.error = "Tax Code not correct"
-                return@setOnClickListener
-            } else if (etBirthDate.text.toString().trim().length != 8){
-                etBirthDate.error = "Birth Date not correct"
-            return@setOnClickListener
-        }
+//            if (etName.text.toString().trim().isEmpty()) {
+//                //Toast.makeText(this, "Name required", Toast.LENGTH_SHORT).show();
+//                etName.error = "Name Required";
+//                return@setOnClickListener
+//            } else if (etSurname.text.toString().trim().isEmpty()) {
+//                etSurname.error = "Surname Required"
+//                return@setOnClickListener
+//            } else if (etTax.text.toString().trim().isEmpty()) {
+//                etTax.error = "Tax Code Required"
+//                return@setOnClickListener
+//            } else if (etTax.text.toString().trim().length != 16) {
+//                etTax.error = "Tax Code not correct"
+//                return@setOnClickListener
+//            } else if (etBirthDate.text.toString().trim().length != 10) {
+//                etBirthDate.error = "Birth Date not correct"
+//                return@setOnClickListener
+//            }
 
 
-
-        // Add patient
-        PatientsManager.addPatient( // ora ci sono 4 input (anche nella data class)
-            Patient(
-                etName.text.toString(), etSurname.text.toString(),
-                etNotes.text.toString(), etTax.text.toString(), etBirthDate.text.toString(), 
+            // Add patient
+            PatientsManager.addPatient( // ora ci sono 4 input (anche nella data class)
+                Patient(
+                    etName.text.toString(), etSurname.text.toString(),
+                    etNotes.text.toString(), etTax.text.toString(), etBirthDate.text.toString(),
+                ), applicationContext
             )
-        )
 
 
             //Create Json file
@@ -107,26 +84,24 @@ class AddPatientActivity : AppCompatActivity() {
             //val json = Json.encodeToString(newpatient)
 
 
+            /*val gson= Gson()
 
+        //AGGIUNGO VARIABILE NEWPATIENT O CONSIDERO TUTTA LA LISTA?: val jsonList= gson.toJson(PatientsManager.patientsList, new Filewriter(JsonList))
+        val jsonPatient= gson.toJson(newpatient)
 
-                /*val gson= Gson()
+        //COME CREO FILE IN CUI SALVARE IL JSON? HO CREATO PACKAGE IN CPSPROJECT
 
-            //AGGIUNGO VARIABILE NEWPATIENT O CONSIDERO TUTTA LA LISTA?: val jsonList= gson.toJson(PatientsManager.patientsList, new Filewriter(JsonList))
-            val jsonPatient= gson.toJson(newpatient)
+            fun main(args: Array<String>) {
 
-            //COME CREO FILE IN CUI SALVARE IL JSON? HO CREATO PACKAGE IN CPSPROJECT
+                val fileName = "Json.txt"
 
-                fun main(args: Array<String>) {
+                var file = File(fileName)
 
-                    val fileName = "Json.txt"
+                // create a new file
+                file.writeText(jsonPatient)
+            }
 
-                    var file = File(fileName)
-
-                    // create a new file
-                    file.writeText(jsonPatient)
-                }
-
-    */
+*/
 
 /*
             val fileOutputStream:FileOutputStream
@@ -154,17 +129,19 @@ class AddPatientActivity : AppCompatActivity() {
 */
 
 
-                /*Timber.d(PatientsManager.patientsList.elementAt(0).name)
-        Timber.d(PatientsManager.patientsList.elementAt(0).surname)
-        Timber.d(PatientsManager.patientsList.elementAt(0).notes)
-        Timber.d(PatientsManager.patientsList.elementAt(0).taxcode)
-         */
-            }
-
+            /*Timber.d(PatientsManager.patientsList.elementAt(0).name)
+    Timber.d(PatientsManager.patientsList.elementAt(0).surname)
+    Timber.d(PatientsManager.patientsList.elementAt(0).notes)
+    Timber.d(PatientsManager.patientsList.elementAt(0).taxcode)
+     */
         }
+
+        btnReadPat.setOnClickListener {
+            PatientsManager.readLastPatient()
+        }
+
     }
-
-
 }
+
 
 // https://www.youtube.com/watch?v=y4npeX35B34 TOP VIDEOOOOOOOOOOOOOOOOOO, si ma per firebase

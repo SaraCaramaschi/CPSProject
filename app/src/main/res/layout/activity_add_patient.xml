@@ -281,8 +281,18 @@ tools:context=".AddPatientActivity">
         android:layout_height="wrap_content"
         android:text="Add Patient"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnReadPat"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnReadPat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Read Patient"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/btnAddPat" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

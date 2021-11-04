@@ -194,7 +194,7 @@ class MainConnection : AppCompatActivity() {
         override fun onScanResult(callbackType: Int, result: ScanResult) {
             val indexQuery = scanResults.indexOfFirst { it.device.address == result.device.address }
             // Filtra nome
-            if (result.device.name == "Expert_F2A26593F7B8") {
+            if (result.device.name == "310") {
                 if (indexQuery != -1) { // A scan result already exists with the same address
                     scanResults[indexQuery] = result
                     scanResultAdapter.notifyItemChanged(indexQuery)

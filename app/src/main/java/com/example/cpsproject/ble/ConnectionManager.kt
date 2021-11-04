@@ -46,7 +46,7 @@ object ConnectionManager {
     private val operationQueue = ConcurrentLinkedQueue<BleOperationType>()
     private var pendingOperation: BleOperationType? = null
     private val serviceuuid = UUID.fromString("00000000-0001-11E1-9AB4-0002A5D5C51B")
-    private val batteryuuid = UUID.fromString("00020000-0001-11E1-AC36-0002A5D5C51B ")
+    private val batteryuuid = UUID.fromString("00020000-0001-11E1-AC36-0002A5D5C51B")
     private val datauuid = UUID.fromString("00E00000-0001-11E1-AC36-0002A5D5C51B")
 
     // funzione copiata dalla guida, non ho inserito: reserved/tohexstrin/toint

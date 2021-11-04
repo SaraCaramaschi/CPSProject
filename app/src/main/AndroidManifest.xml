@@ -30,10 +30,10 @@
             android:name=".AddClinician"
             android:exported="true" />
         <activity
-            android:name=".Patient"
+            android:name=".ble.MainConnection"
             android:exported="true" />
         <activity
-            android:name=".ble.MainConnection"
+            android:name=".ble.BleOperationsActivity"
             android:exported="true" />
         <activity
             android:name=".PatientsList"

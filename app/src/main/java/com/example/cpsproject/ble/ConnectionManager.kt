@@ -51,13 +51,21 @@ object ConnectionManager {
 
     // funzione copiata dalla guida, non ho inserito: reserved/tohexstrin/toint
     // che sono cose che chiara aveva citato quando ha parlato con me e ale.
+
+    // attenzione perchè quando riceviamo i dati controlliamo il service uuid!!!
+
     //TODO va bene messa qui, poi ne parliamo giovedì di come implementarla bene
-    private fun readBattery(gatt: BluetoothGatt, characteristic: BluetoothGattCharacteristic) {
-        val batteryLevelChar = gatt.getService(batteryuuid).getCharacteristic(characteristic.uuid)
-        if (batteryLevelChar?.isReadable() == true) {
-            Timber.d("Battery is READABLE")
-            gatt.readCharacteristic(batteryLevelChar) // quale output ci da ???
-        }
+    private fun readBattery(data: ByteArray) {
+        val battery = data.copyOfRange(2,4).reversedArray().toHexString()
+        Timber.d("eccolaaa" + battery)
+        val soc = data.copyOfRange(2, 4).reversedArray().toHexString().toLong(radix = 16) / 10 //4 escluso
+        val volts = data.copyOfRange(4, 6).reversedArray().toHexString().toLong(radix = 16)
+            .toDouble() / 1000
+        val amps =
+            data.copyOfRange(6, 8).reversedArray().toHexString().toLong(radix = 16).toDouble()
+        val status = data[8].toInt()
+
+        Timber.d("la batteria è " + soc)
     }
 
     /* ??
@@ -277,7 +285,7 @@ object ConnectionManager {
             }
             is CharacteristicRead -> with(operation) {
                 gatt.findCharacteristic(characteristicUuid)?.let { characteristic ->
-                    gatt.readCharacteristic(characteristic)
+                    gatt.readCharacteristic(characteristic) // funzionr nativa che chiama dopo che ha controllato la coda
                 } ?: this@ConnectionManager.run {
                     Timber.e("Cannot find $characteristicUuid to read from")
                     signalEndOfOperation()
@@ -395,14 +403,12 @@ object ConnectionManager {
                         when(it.uuid){ // it è una BLUETOOTHGATTCHARACTERISTIC
                             batteryuuid -> {
                                 Timber.e("Questa e' la batteria della penna")
-                                //TODO qui dovrebbe essere readCharacteristic
                                 //onCharacteristicRead(gatt, it, status)
-                                enableNotifications( gatt.device,it)
-                                readCharacteristic(it)
+                                enableNotifications( gatt.device,it) // NO UNA FUNZIONE DOPO L'ALTRA
+                                readCharacteristic(gatt.device, it)
                             } //se è batteria fai certe cose: ottieni il dato della batteria
                             datauuid -> {
                                 Timber.e("Questi sono i dati della penna")
-                                //TODO qui dovrebbe essere readCharacteristic
                                 //onCharacteristicRead(gatt, it, status)
                                 enableNotifications( gatt.device,it)
                                 readCharacteristic(it)
@@ -446,7 +452,7 @@ object ConnectionManager {
             }
         }
 
-        override fun onCharacteristicRead(
+        override fun onCharacteristicRead( //aggiungiamo cose alla nativa
             gatt: BluetoothGatt, // la connessione
             characteristic: BluetoothGattCharacteristic, // input: una caratteristica specifica
             status: Int // stato di connessione (?)
@@ -454,21 +460,18 @@ object ConnectionManager {
             with(characteristic) { //ASSOCIA L'INPUT
                 when (status) {
                     BluetoothGatt.GATT_SUCCESS -> {
-                        Timber.i("Read characteristic $uuid | value: ${value.toHexString()}") // cosa stampa questo???
-
+                        Timber.w("Read characteristic $uuid | value: ${value.toHexString()}") // cosa stampa questo???
                         //inserire altro when per descriminare quali caratteristiche stanno arrivando e cosa fare per ognuna:
                         when(characteristic.uuid){
                             batteryuuid -> {
-                                Timber.d("Ora sono in onCharacteristicRead e vado a leggere la batteria tramite private fun readBattery")
-                                readBattery(gatt,characteristic) // OK: fai cose per la batteria ==> readBatterydata da creare funzione reserved/tohexstrin/toint
+                                Timber.w("Ora sono in onCharacteristicRead e vado a leggere la batteria tramite private fun readBattery")
+                                readBattery(characteristic.value) // OK: fai cose per la batteria ==> readBatterydata da creare funzione reserved/tohexstrin/toint
                             }
                             datauuid -> {
-                                Timber.d("Ora sono in onCharacteristicRead e vado a leggere i dati tramite private fun readData ?? ")
+                                Timber.w("Ora sono in onCharacteristicRead e vado a leggere i dati tramite private fun readData ?? ")
                                 //readData(gatt,characteristic)  (?)
                             }
-
                         }
-
                         //sessionmanager che raccoglie tutte le variabili, companion object, singleton kotlin
                         // accessibili ovunque
                         //tutto ciò per caratteristiche READABLE
@@ -523,6 +526,14 @@ object ConnectionManager {
             with(characteristic) {
                 Timber.i("Characteristic $uuid changed | value: ${value.toHexString()}")
                 listeners.forEach { it.get()?.onCharacteristicChanged?.invoke(gatt.device, this) }
+                when(characteristic.uuid){
+                    datauuid ->{
+
+                    }
+                    batteryuuid->{
+                        readBattery(characteristic.value)
+                    }
+            }
             }
         }
 

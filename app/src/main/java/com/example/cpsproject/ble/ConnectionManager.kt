@@ -56,8 +56,11 @@ object ConnectionManager {
 
     //TODO va bene messa qui, poi ne parliamo giovedì di come implementarla bene
     private fun readBattery(data: ByteArray) {
-        val battery = data.copyOfRange(2,4).reversedArray().toHexString()
+        var battery = data.copyOfRange(2,4).reversedArray().toHexString()
+        battery = battery.replace(" ", "")
+        battery = battery.substring(2)
         Timber.d("eccolaaa" + battery)
+        Timber.d("prova " + battery.toInt(radix = 16)) // da aggiungere diviso 10
         val soc = data.copyOfRange(2, 4).reversedArray().toHexString().toLong(radix = 16) / 10 //4 escluso
         val volts = data.copyOfRange(4, 6).reversedArray().toHexString().toLong(radix = 16)
             .toDouble() / 1000

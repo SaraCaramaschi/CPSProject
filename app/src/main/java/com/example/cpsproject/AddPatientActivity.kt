@@ -1,11 +1,5 @@
 package com.example.cpsproject
 
-//import com.google.gson.Gson
-//import kotlinx.serialization.encodeToString
-
-//import kotlinx.serialization.Serializable
-//import kotlinx.serialization.json.Json
-
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cpsproject.databinding.ActivityAddPatientBinding
@@ -13,7 +7,6 @@ import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.managers.PatientsManager.patientsList
 import com.example.cpsproject.model.Patient
 import kotlinx.android.synthetic.main.activity_add_patient.*
-import java.io.*
 
 
 class AddPatientActivity : AppCompatActivity() {
@@ -39,7 +32,7 @@ class AddPatientActivity : AppCompatActivity() {
 
         // Activity related to the button add patient, notifica OK !!!
         btnAddPat.setOnClickListener {
-
+            // TODO perchè sono a commento questi controlli? mi sembravano corretti
 //            if (etName.text.toString().trim().isEmpty()) {
 //                //Toast.makeText(this, "Name required", Toast.LENGTH_SHORT).show();
 //                etName.error = "Name Required";
@@ -103,37 +96,6 @@ class AddPatientActivity : AppCompatActivity() {
 
 */
 
-/*
-            val fileOutputStream:FileOutputStream
-            try {
-                fileOutputStream = openFileOutput("File", Context.MODE_PRIVATE)
-                fileOutputStream.write(jsonPatient.toByteArray())
-            }catch (e: Exception){
-                e.printStackTrace()
-            }
-*/
-
-/* VIDEO PER SCRIVERE IN UN FILE
-            val fileOutputStream: FileOutputStream
-            try {
-                fileOutputStream = openFileOutput("JsonList", Context.MODE_PRIVATE)
-                fileOutputStream.write(jsonList.toByteArray())
-            }
-            catch (e:FileNotFoundException) {
-                e.printStackTrace()
-            }
-            catch (e: Exception){
-                e.printStackTrace()
-            }
-
-*/
-
-
-            /*Timber.d(PatientsManager.patientsList.elementAt(0).name)
-    Timber.d(PatientsManager.patientsList.elementAt(0).surname)
-    Timber.d(PatientsManager.patientsList.elementAt(0).notes)
-    Timber.d(PatientsManager.patientsList.elementAt(0).taxcode)
-     */
         }
 
         btnReadPat.setOnClickListener {

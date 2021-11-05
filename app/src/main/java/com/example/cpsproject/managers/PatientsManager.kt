@@ -7,6 +7,7 @@ import timber.log.Timber
 import java.io.*
 
 
+
 object PatientsManager {
     public var patientsList: ArrayList<Patient> = ArrayList()
 
@@ -43,10 +44,13 @@ object PatientsManager {
     public fun readLastPatient() {
         var lastPatient = patientsList.last()
         var taxcode = lastPatient.taxcode
-
         var file = File(taxcode)
+        var jsonText=file.readText()
+        val gson= Gson()
+        var patientNew= gson.fromJson(jsonText, Patient::class.java)
+        Timber.d("questo è il file lettooo %s", patientNew.name)
 
-        //ottengo json da file
+        //ottengo json da file OK
         //encode json in classe Patient
         //stampa tutti i campi
         //chiamo in un modo la classe poi faccio Timber.d( nomedellaclasse.nome + ...)
@@ -54,4 +58,13 @@ object PatientsManager {
 }
 
 
+
+
+//<<<<<<< Updated upstream
+//=======
+//
+//
+//
+//
+//>>>>>>> Stashed changes
 

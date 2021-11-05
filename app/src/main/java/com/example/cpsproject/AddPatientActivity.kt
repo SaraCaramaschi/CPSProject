@@ -61,40 +61,17 @@ class AddPatientActivity : AppCompatActivity() {
             )
 
 
-            //Create Json file
-            /*  PatientsManager.createJson(
-                Patient(
-                    etName.text.toString(), etSurname.text.toString(),
-                    etNotes.text.toString(), etTax.text.toString()
-                )
-            )*/
 
 
             //TODO NON SO SE VA MESSO QUI O IN PATIENTSMANAGER (E MOLTI ALTRI DUBBI)
             // PARTE DI GINEVRA TRASPORTATA IN PATIENT MANAGER IN FUNZIONE CREATEJSON
-            var newpatient = patientsList.last()
-
-            //val json = Json.encodeToString(newpatient)
 
 
-            /*val gson= Gson()
-
-        //AGGIUNGO VARIABILE NEWPATIENT O CONSIDERO TUTTA LA LISTA?: val jsonList= gson.toJson(PatientsManager.patientsList, new Filewriter(JsonList))
-        val jsonPatient= gson.toJson(newpatient)
-
-        //COME CREO FILE IN CUI SALVARE IL JSON? HO CREATO PACKAGE IN CPSPROJECT
-
-            fun main(args: Array<String>) {
-
-                val fileName = "Json.txt"
-
-                var file = File(fileName)
-
-                // create a new file
-                file.writeText(jsonPatient)
-            }
-
-*/
+            /*Timber.d(PatientsManager.patientsList.elementAt(0).name)
+    Timber.d(PatientsManager.patientsList.elementAt(0).surname)
+    Timber.d(PatientsManager.patientsList.elementAt(0).notes)
+    Timber.d(PatientsManager.patientsList.elementAt(0).taxcode)
+     */
 
         }
 

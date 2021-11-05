@@ -1,5 +1,6 @@
 package com.example.cpsproject
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cpsproject.databinding.ActivityAddPatientBinding
@@ -72,6 +73,8 @@ class AddPatientActivity : AppCompatActivity() {
     Timber.d(PatientsManager.patientsList.elementAt(0).notes)
     Timber.d(PatientsManager.patientsList.elementAt(0).taxcode)
      */
+            val intent = Intent(this, PatientsListActivity::class.java)
+            startActivity(intent)
 
         }
 

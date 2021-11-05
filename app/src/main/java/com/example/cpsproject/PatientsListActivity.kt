@@ -64,5 +64,7 @@ class PatientsListActivity : AppCompatActivity() {
             val intent = Intent(this, AddPatientActivity::class.java)
             startActivity(intent)
         }
+
+        //TODO setOnClickListener per entrare nella pagina del paziente
     }
 }

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PatientActivity">
+    tools:context=".PatientPageActivity">
 
     <LinearLayout
         android:id="@+id/LinearLayout0"
@@ -73,6 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:orientation="vertical"
             tools:ignore="MissingConstraints">
 
@@ -91,7 +92,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="17dp"
             android:orientation="vertical"
             tools:ignore="MissingConstraints">
 
@@ -109,7 +111,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="17dp"
             android:orientation="vertical"
             tools:ignore="MissingConstraints">
 
@@ -127,7 +130,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="17dp"
             android:orientation="vertical"
             tools:ignore="MissingConstraints">
 
@@ -146,7 +150,8 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="17dp"
             android:orientation="vertical"
             tools:ignore="MissingConstraints">
 

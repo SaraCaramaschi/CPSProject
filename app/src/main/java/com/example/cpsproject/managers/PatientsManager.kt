@@ -48,10 +48,11 @@ object PatientsManager {
         var jsonText=file.readText()
         val gson= Gson()
         var patientNew= gson.fromJson(jsonText, Patient::class.java)
-        Timber.d("questo è il file lettooo %s", patientNew.name)
+        Timber.d("questo è il nome dell'ultimo paziente %s", patientNew.name)
+        Timber.d("questo è il cognome dell'ultimo paziente %s", patientNew.surname)
 
         //ottengo json da file OK
-        //encode json in classe Patient
+        //encode json in classe Patient CODICE NON DA ERRORI MA NON VA APP
         //stampa tutti i campi
         //chiamo in un modo la classe poi faccio Timber.d( nomedellaclasse.nome + ...)
     }

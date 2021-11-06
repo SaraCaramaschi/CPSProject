@@ -8,11 +8,12 @@ import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cpsproject.databinding.ActivityMainConnectionBinding
-import com.example.cpsproject.databinding.ActivityPatientsList4Binding
+import com.example.cpsproject.databinding.ActivityPatientsListBinding
 import com.example.cpsproject.model.Patient
+import com.example.cpsproject.managers.PatientsManager.patientsList
 
 class PatientsListActivity : AppCompatActivity() {
-    private lateinit var binding:ActivityPatientsList4Binding
+    private lateinit var binding:ActivityPatientsListBinding
     private lateinit var patientArrayList :ArrayList<Patient>
     //private lateinit var layoutMan: RecyclerView.LayoutManager
     //private lateinit var adapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>
@@ -21,7 +22,7 @@ class PatientsListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patients_list)
-        binding= ActivityPatientsList4Binding.inflate(layoutInflater)
+        binding= ActivityPatientsListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         //DA FARE SE VOGLIAMO LE FOTO
@@ -46,7 +47,7 @@ patientArrayList=ArrayList()
         }
 
 binding.patientslist.isClickable=true
-binding.patientslist.adapter= PatientAdapter2 (this, patientArrayList)
+binding.patientslist.adapter= PatientAdapter(this, patientArrayList)
 binding.patientslist.setOnItemClickListener { parent, view, position, id ->
     val name = name[position]
     val phase = phase[position]

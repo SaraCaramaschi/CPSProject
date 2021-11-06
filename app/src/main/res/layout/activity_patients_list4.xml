@@ -6,34 +6,54 @@
     android:layout_height="match_parent"
     tools:context=".PatientsListActivity">
 
-    <Button
-        android:id="@+id/btnNewPatient"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add a new patient"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/patientslist" />
-
-    <Button
-        android:id="@+id/btnDeletePatient"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete patient"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/patientslist"
-        app:layout_constraintVertical_bias="0.523" />
-
-    <ListView
-        android:id="@+id/patientslist"
+    <LinearLayout
+        android:id="@+id/PatientListLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="-16dp"
-        tools:layout_editor_absoluteY="-16dp"
-        tools:listitem="@layout/list_item" />
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rvPatients" >
 
-    //TODO sistemare la grafica
+        <Button
+            android:id="@+id/btnNewPatient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add a new patient"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/patientslist" />
+
+        <Button
+            android:id="@+id/btnDeletePatient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete patient"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/patientslist"
+            app:layout_constraintVertical_bias="0.523" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/RelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="52dp"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rvPatients"
+        tools:layout_editor_absoluteX="-33dp">
+
+        <ListView
+            android:id="@+id/patientslist"
+            android:layout_width="match_parent"
+            android:layout_height="643dp"
+            tools:layout_editor_absoluteX="-16dp"
+            tools:layout_editor_absoluteY="-16dp"
+            tools:listitem="@layout/activity_patient" />
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

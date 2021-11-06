@@ -33,17 +33,19 @@
 
                 <TextView
                     android:id="@+id/PatientName"
-                    android:layout_width="236dp"
+                    android:layout_width="278dp"
                     android:layout_height="39dp"
                     android:layout_marginStart="4dp"
                     android:layout_marginTop="0dp"
-                    android:text="Name"
+                    android:text="Name + Surname"
                     android:textSize="20sp"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
                     app:layout_constraintTop_toTopOf="parent" />
 
+
+
                 <TextView
-                    android:id="@+id/PatientPhase"
+                    android:id="@+id/tvPatientPhase"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rvPatients" >
+        app:layout_constraintTop_toBottomOf="@id/patientslist" >
 
         <Button
             android:id="@+id/btnNewPatient"
@@ -21,7 +21,7 @@
             android:text="Add a new patient"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rvPatients"
+            app:layout_constraintTop_toBottomOf="@+id/patientslist"
             android:layout_marginRight="30dp" />
 
         <Button
@@ -31,15 +31,27 @@
             android:text="Delete patient"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rvPatients"
+            app:layout_constraintTop_toBottomOf="@+id/patientslist"
             app:layout_constraintVertical_bias="0.523"
          />
     </LinearLayout>
-
+<!--
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPatients"
         android:layout_width="409dp"
         android:layout_height="550dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/RelativeLayout"
+        tools:listitem="@layout/activity_patient" /-->
+    <ListView
+        android:id="@+id/patientslist"
+        android:layout_width="match_parent"
+        android:layout_height="643dp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

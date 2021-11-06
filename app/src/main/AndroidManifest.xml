@@ -2,11 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.cpsproject">
 
-    // Writing and reading on storage permission
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
-    // Bluetooth permissions
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
@@ -28,16 +25,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CPSProject">
         <activity
+            android:name=".ble.RealTimeActivity"
+            android:exported="true" />
+        <activity
             android:name=".AddPatientActivity"
             android:exported="true" />
         <activity
             android:name=".AddClinicianActivity"
             android:exported="true" />
-
-        <activity 
+        <activity
             android:name=".ble.BleOperationsActivity"
-            android:exported="true"
-        />
+            android:exported="true" />
         <activity
             android:name=".ble.MainConnection"
             android:exported="true" />

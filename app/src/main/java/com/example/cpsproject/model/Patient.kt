@@ -5,12 +5,14 @@ import androidx.annotation.Keep
 
 // con keep funziona (cambia errore in realtà)
 //@Keep // arriva da qui https://github.com/seventhmoon/hello-kotlin-serialization/blob/master/app/src/main/java/com/google/sample/hellokotlinserialization/Device.kt
-//@Serializable // arriva da qui https://kotlinlang.org/docs/serialization.html#example-json-serialization
+@Serializable // arriva da qui https://kotlinlang.org/docs/serialization.html#example-json-serialization
 data class Patient( // ora ci sono 4 input
     var name: String,
     var surname: String,
     var notes: String ?= null,
     var taxcode: String,
+    var birthdate: String,
+
 
     //Inserire da qualche parte la variabile della fase, qualcuno dovrà inserirla nell'app per fare in modo che venga visualizzata nella pt list
 
@@ -21,6 +23,10 @@ data class Patient( // ora ci sono 4 input
 
     // var dominantHand: Hand,
     // var gender: Gender
+<<<<<<< HEAD
      var phase: Int = 1
+=======
+    // var phase: String
+>>>>>>> master
     // var birthdate: String,
 )

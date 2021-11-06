@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.cpsproject.managers.PatientsManager.patientsList
 
 class PatientAdapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>() {
     // ne ho messi tanti cosi vediamo il recycler view scorrere.
@@ -41,12 +42,14 @@ class PatientAdapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: PatientAdapter.ViewHolder, position: Int) {
+
         holder.itemName.text = patientsName[position]
         holder.itemPhase.text = patientsPhase[position]
         holder.itemImage.setImageResource(patientsItems[position])
     }
 
     override fun getItemCount(): Int {
-       return patientsName.size
+       //return patientsName.size
+        return patientsList.size
     }
 }

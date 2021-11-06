@@ -57,6 +57,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'org.jetbrains.anko:anko:0.10.8'
     implementation 'com.jakewharton.timber:timber:4.7.1'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation "com.benasher44:uuid:0.3.1"
 
     //Listview
     implementation 'de.hdodenhof:circleimageview:3.1.0'
@@ -68,7 +70,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:20.0.0'
     implementation 'com.google.firebase:firebase-database:20.0.0'
 
-    // JSON
+    // JSON  and GSON
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
+    implementation 'com.google.code.gson:gson:2.8.5'
 }
 

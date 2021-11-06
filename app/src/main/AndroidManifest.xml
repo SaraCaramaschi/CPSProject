@@ -34,6 +34,10 @@
             android:name=".AddClinicianActivity"
             android:exported="true" />
 
+        <activity 
+            android:name=".ble.BleOperationsActivity"
+            android:exported="true"
+        />
         <activity
             android:name=".ble.MainConnection"
             android:exported="true" />

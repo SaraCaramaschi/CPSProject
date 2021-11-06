@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.punchthrough.blestarterappandroid.ble
 
 import android.bluetooth.BluetoothDevice
@@ -38,6 +37,7 @@ import java.util.concurrent.ConcurrentLinkedQueue
 private const val GATT_MIN_MTU_SIZE = 23
 /** Maximum BLE MTU size as defined in gatt_api.h. */
 private const val GATT_MAX_MTU_SIZE = 517
+//private const val UUID_BATTERIA = 00020000-0001-11E1-AC36-0002A5D5C51B
 
 object ConnectionManager {
 
@@ -45,6 +45,59 @@ object ConnectionManager {
     private val deviceGattMap = ConcurrentHashMap<BluetoothDevice, BluetoothGatt>()
     private val operationQueue = ConcurrentLinkedQueue<BleOperationType>()
     private var pendingOperation: BleOperationType? = null
+    private val serviceuuid = UUID.fromString("00000000-0001-11E1-9AB4-0002A5D5C51B")
+    private val batteryuuid = UUID.fromString("00020000-0001-11E1-AC36-0002A5D5C51B")
+    private val datauuid = UUID.fromString("00E00000-0001-11E1-AC36-0002A5D5C51B")
+
+    // attenzione perchè quando riceviamo i dati controlliamo il service uuid!!!
+
+    private fun readBattery(data: ByteArray) {
+        var battery = data.copyOfRange(2,4).reversedArray().toHexString()
+            .replace(" ","").substring(2).toInt(radix = 16).toDouble()
+        battery = battery.div(10)
+
+        //battery = battery.substring(2)
+        //Timber.d("Sottostringa: " + battery)
+        Timber.d("Valore batteria: %s",  battery) // da aggiungere diviso 0
+
+        /*val soc = data.copyOfRange(2, 4).reversedArray().toHexString().toLong(radix = 16) / 10 //4 escluso
+        val volts = data.copyOfRange(4, 6).reversedArray().toHexString().toLong(radix = 16)
+            .toDouble() / 1000
+        val amps =
+            data.copyOfRange(6, 8).reversedArray().toHexString().toLong(radix = 16).toDouble()
+        val status = data[8].toInt()
+        Timber.d("la batteria è " + soc)*/
+    }
+
+    private fun readData(data: ByteArray) {
+        val acc_x =
+            data.copyOfRange(2, 4).reversedArray().toHexString()
+                .replace(" ","").substring(2).toInt(radix = 16).toShort()
+                .toDouble() / 100
+
+        Timber.d("Prova con acc_x per vedere se è tutto ok: %s", acc_x) // da aggiungere diviso 0
+        /*val acc_y =
+            data.copyOfRange(4, 6).reversedArray().toHexString()
+                .replace(" ","").substring(4).toInt(radix = 16).toShort()
+                .toDouble() / 100
+        val acc_z =
+            data.copyOfRange(6, 8).reversedArray().toHexString()
+                .replace(" ","").substring(6).toInt(radix = 16).toShort()
+                .toDouble() / 100
+        val gyr_x =
+            data.copyOfRange(8, 10).reversedArray().toHexString()
+                .replace(" ","").substring(8).toInt(radix = 16).toShort()
+                .toDouble() / 100
+        val gyr_y =
+            data.copyOfRange(10, 12).reversedArray().toHexString()
+                .replace(" ","").substring(10).toInt(radix = 16).toShort()
+                .toDouble() / 100
+        val gyr_z =
+            data.copyOfRange(12, 14).reversedArray().toHexString()
+                .replace(" ","").substring(12).toInt(radix = 16).toShort()
+                .toDouble() / 100*/
+
+    }
 
     fun servicesOnDevice(device: BluetoothDevice): List<BluetoothGattService>? =
         deviceGattMap[device]?.services
@@ -258,7 +311,7 @@ object ConnectionManager {
             }
             is CharacteristicRead -> with(operation) {
                 gatt.findCharacteristic(characteristicUuid)?.let { characteristic ->
-                    gatt.readCharacteristic(characteristic)
+                    gatt.readCharacteristic(characteristic) // funzionr nativa che chiama dopo che ha controllato la coda
                 } ?: this@ConnectionManager.run {
                     Timber.e("Cannot find $characteristicUuid to read from")
                     signalEndOfOperation()
@@ -363,17 +416,32 @@ object ConnectionManager {
 
         override fun onServicesDiscovered(gatt: BluetoothGatt, status: Int) {
             with(gatt) {
-                if (status == BluetoothGatt.GATT_SUCCESS) {                                           // quando è connesso
-                    Timber.w("Discovered ${services.size} services for ${device.address}.")   // quanti servizi ci sono per quel device
+                if (status == BluetoothGatt.GATT_SUCCESS) {
+                    Timber.w("Discovered ${services.size} services for ${device.address}.")
                     printGattTable()
-                    requestMtu(device, GATT_MAX_MTU_SIZE)                                             // ottenere questo codice MTU
+                    requestMtu(device, GATT_MAX_MTU_SIZE)
 
-                    listeners.forEach { it.get()?.onConnectionSetupComplete?.invoke(this)             // ciclo con tutti i listeners
+                    listeners.forEach { it.get()?.onConnectionSetupComplete?.invoke(this)
                     }
 
-                    gatt.getService(UUID.randomUUID()).characteristics.forEach { //per ogni caratteristiche faccio cose
-                        when(it.uuid){                                           //se è batteria fai certe cose
+                    gatt.getService(serviceuuid).characteristics.forEach { //per ogni caratteristiche faccio cose
+                        when(it.uuid){ // it è una BLUETOOTHGATTCHARACTERISTIC
+                            batteryuuid -> {
+                                Timber.e("Questa e' la batteria della penna")
+                                /*
+                                Le funzioni NATIVA una dopo l'altra non si possono fare per natura del BLE.
+                                Invece le funzioni che ha creato il tizio si.
+                                */
 
+                                enableNotifications( gatt.device,it)  // funzioni create dal tizio
+                                readCharacteristic(gatt.device, it)
+                            } //se è batteria fai certe cose: ottieni il dato della batteria
+                            datauuid -> {
+                                Timber.e("Questi sono i dati della penna")
+                                //onCharacteristicRead(gatt, it, status)
+                                enableNotifications( gatt.device,it)
+                                readCharacteristic(it)
+                            }
                         } //when freccette grafe
                     }
 
@@ -381,14 +449,8 @@ object ConnectionManager {
                     // io la leggo ma non va nella funz leggi ma nel suo callback
                     // ONCHARACTERISTICREAD
 
-                    // scarica libreria benasher44 stringa-->uuid
-                    // private val messi in uuid
-
-                    // it: iterazione ciclo
-                    // 4 servizi
-                    // if uuid==... prendilo  gatt.getservice
-                    // readable ecc --> read.char..
-                    //timber.d compare in modalità debug
+                    // servizi: service e debug
+                    // caratteristiche: data, calendar, battery, console, error
 
                 } else {
                     Timber.e("Service discovery failed due to status $status")
@@ -410,24 +472,33 @@ object ConnectionManager {
             }
         }
 
-        override fun onCharacteristicRead(
-            gatt: BluetoothGatt,
-            characteristic: BluetoothGattCharacteristic,
-            status: Int
+        override fun onCharacteristicRead( //aggiungiamo cose alla nativa
+            gatt: BluetoothGatt, // la connessione
+            characteristic: BluetoothGattCharacteristic, // input: una caratteristica specifica
+            status: Int // stato di connessione (?)
         ) {
             with(characteristic) { //ASSOCIA L'INPUT
                 when (status) {
                     BluetoothGatt.GATT_SUCCESS -> {
-                        Timber.i("Read characteristic $uuid | value: ${value.toHexString()}")
-                        //inserire altro when per descriminare quali caratteristiche stanno arrivando
-                        // readBatterydata da creare funzione reserved/tohexstrin/toint
+                        // qui ci da proprio il valore!
+                        Timber.w("Read characteristic $uuid | value: ${value.toHexString()}")
+                        when(characteristic.uuid){
+                            batteryuuid -> {
+                                Timber.w("Ora sono in onCharacteristicRead e vado a leggere la batteria tramite private fun readBattery")
+                                readBattery(characteristic.value)
+                            }
+                            datauuid -> {
+                                Timber.w("Ora sono in onCharacteristicRead e vado a leggere i dati tramite private fun readData ?? ")
+                                readData(characteristic.value)
+                            }
+                        }
                         //sessionmanager che raccoglie tutte le variabili, companion object, singleton kotlin
                         // accessibili ovunque
                         //tutto ciò per caratteristiche READABLE
                         //la caratteristica console invia i messaggi
                         //descrittore attributo a cui diamo un valore per attivare le notifiche
                         // oncharacteristicchange leggi solo quando cambia
-                        listeners.forEach { it.get()?.onCharacteristicRead?.invoke(gatt.device, this) }
+                        listeners.forEach { it.get()?.onCharacteristicRead?.invoke(gatt.device, this) }  // cosa fa questo ???
                     }
                     BluetoothGatt.GATT_READ_NOT_PERMITTED -> {
                         Timber.e("Read not permitted for $uuid!")
@@ -475,6 +546,14 @@ object ConnectionManager {
             with(characteristic) {
                 Timber.i("Characteristic $uuid changed | value: ${value.toHexString()}")
                 listeners.forEach { it.get()?.onCharacteristicChanged?.invoke(gatt.device, this) }
+                when(characteristic.uuid){
+                    datauuid ->{
+
+                    }
+                    batteryuuid->{
+                        readBattery(characteristic.value)
+                    }
+            }
             }
         }
 

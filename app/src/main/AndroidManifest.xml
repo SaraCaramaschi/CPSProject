@@ -25,6 +25,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CPSProject">
         <activity
+            android:name=".ble.PenActivity"
+            android:exported="true" />
+        <activity
             android:name=".ble.RealTimeActivity"
             android:exported="true" />
         <activity

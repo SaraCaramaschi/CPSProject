@@ -75,6 +75,8 @@ object ConnectionManager {
                 .replace(" ","").substring(2).toInt(radix = 16).toShort()
                 .toDouble() / 100
 
+        // DUBBIO: MA POSSIAMO TENERE UNA FUNZIONE SOLA OPPURE SPEZZETTARE IN TANTE DIVERSE?
+
         Timber.d("Prova con acc_x per vedere se è tutto ok: %s", acc_x) // da aggiungere diviso 0
         /*val acc_y =
             data.copyOfRange(4, 6).reversedArray().toHexString()

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">THink Pen</string>
     <string name="button">Button</string>
-    
+
     <string-array name="gender">
         <item>male</item>
         <item>female</item>

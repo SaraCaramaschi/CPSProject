@@ -96,6 +96,7 @@ class BleOperationsActivity : AppCompatActivity() {
             title = "BLE Playground"
         }
         setupRecyclerView()
+
         request_mtu_button.setOnClickListener {
             if (mtu_field.text.isNotEmpty() && mtu_field.text.isNotBlank()) {
                 mtu_field.text.toString().toIntOrNull()?.let { mtu ->

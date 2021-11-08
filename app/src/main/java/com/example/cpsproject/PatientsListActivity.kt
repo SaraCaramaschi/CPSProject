@@ -15,9 +15,9 @@ class PatientsListActivity : AppCompatActivity() {
 //<<<<<<< HEAD
     private lateinit var binding:ActivityPatientsListBinding
     private lateinit var patientArrayList :ArrayList<Patient>
-=======
-    private lateinit var binding: ActivityPatientsListBinding
-    private lateinit var patientArrayList: ArrayList<Patient>
+//=======
+   // private lateinit var binding: ActivityPatientsListBinding
+    //private lateinit var patientArrayList: ArrayList<Patient>
 //>>>>>>> master
     //private lateinit var layoutMan: RecyclerView.LayoutManager
     //private lateinit var adapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>
@@ -28,8 +28,8 @@ class PatientsListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_patients_list)
 <<<<<<< HEAD
         binding= ActivityPatientsListBinding.inflate(layoutInflater)
-=======
-        binding = ActivityPatientsListBinding.inflate(layoutInflater)
+//=======
+       // binding = ActivityPatientsListBinding.inflate(layoutInflater)
 >>>>>>> master
         setContentView(binding.root)
 
@@ -55,9 +55,10 @@ class PatientsListActivity : AppCompatActivity() {
 
         }
 
-        binding.patientslist.isClickable = true
-        binding.patientslist.adapter = PatientAdapter(this, patientArrayList)
-        binding.patientslist.setOnItemClickListener { parent, view, position, id ->
+        binding.rvPatients.isClickable = true
+        binding.rvPatients.adapter = PatientAdapter(this, patientArrayList)
+        //PatientAdapter(this, patientArrayList).also { binding.rvPatients.adapter = it } --> mi viene dato come suggerimento questa riga
+        binding.rvPatients.setOnItemClickListener { parent, view, position, id ->
             val name = name[position]
             val phase = phase[position]
 //=======

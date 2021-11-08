@@ -63,7 +63,7 @@ class BleOperationsActivityProva : AppCompatActivity() {
             service.characteristics ?: listOf()
         } ?: listOf()
     }
-    private val characteristicProperties by lazy {
+    /*private val characteristicProperties by lazy {
         characteristics.map { characteristic ->
             characteristic to mutableListOf<CharacteristicProperty>().apply {
                 if (characteristic.isNotifiable()) add(CharacteristicProperty.Notifiable)
@@ -75,12 +75,13 @@ class BleOperationsActivityProva : AppCompatActivity() {
                 }
             }.toList()
         }.toMap()
-    }
-    private val characteristicAdapter: CharacteristicAdapter by lazy {
+    }*/
+
+    // Questa cosa è relativa al recycler view quindi non ci serve
+    /*private val characteristicAdapter: CharacteristicAdapter by lazy {
         CharacteristicAdapter(characteristics) { characteristic ->
             showCharacteristicOptions(characteristic)
-        }
-    }
+       */
     private var notifyingCharacteristics = mutableListOf<UUID>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -93,21 +94,12 @@ class BleOperationsActivityProva : AppCompatActivity() {
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowTitleEnabled(true)
-            title = "BLE Playground"
+            title = "Real Time"
         }
-        setupRecyclerView()
+        //setupRecyclerView()
 
-        request_mtu_button.setOnClickListener {
-            if (mtu_field.text.isNotEmpty() && mtu_field.text.isNotBlank()) {
-                mtu_field.text.toString().toIntOrNull()?.let { mtu ->
-                    log("Requesting for MTU value of $mtu")
-                    ConnectionManager.requestMtu(device, mtu)
-                } ?: log("Invalid MTU value: ${mtu_field.text}")
-            } else {
-                log("Please specify a numeric value for desired ATT MTU (23-517)")
-            }
-            hideKeyboard()
-        }
+        // TODO altro strumento di visualizzazione: adding a view model (?)
+
     }
 
     override fun onDestroy() {
@@ -126,23 +118,6 @@ class BleOperationsActivityProva : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun setupRecyclerView() {
-        characteristics_recycler_view.apply {
-            adapter = characteristicAdapter
-            layoutManager = LinearLayoutManager(
-                this@BleOperationsActivityProva,
-                RecyclerView.VERTICAL,
-                false
-            )
-            isNestedScrollingEnabled = false
-        }
-
-        val animator = characteristics_recycler_view.itemAnimator
-        if (animator is SimpleItemAnimator) {
-            animator.supportsChangeAnimations = false
-        }
-    }
-
     @SuppressLint("SetTextI18n")
     private fun log(message: String) {
         val formattedMessage = String.format("%s: %s", dateFormatter.format(Date()), message)
@@ -154,31 +129,6 @@ class BleOperationsActivityProva : AppCompatActivity() {
             }
             log_text_view.text = "$currentLogText\n$formattedMessage"
             log_scroll_view.post { log_scroll_view.fullScroll(View.FOCUS_DOWN) }
-        }
-    }
-
-    private fun showCharacteristicOptions(characteristic: BluetoothGattCharacteristic) {
-        characteristicProperties[characteristic]?.let { properties ->
-            selector("Select an action to perform", properties.map { it.action }) { _, i ->
-                when (properties[i]) {
-                    CharacteristicProperty.Readable -> {
-                        log("Reading from ${characteristic.uuid}")
-                        ConnectionManager.readCharacteristic(device, characteristic)
-                    }
-                    CharacteristicProperty.Writable, CharacteristicProperty.WritableWithoutResponse -> {
-                        showWritePayloadDialog(characteristic)
-                    }
-                    CharacteristicProperty.Notifiable, CharacteristicProperty.Indicatable -> {
-                        if (notifyingCharacteristics.contains(characteristic.uuid)) {
-                            log("Disabling notifications on ${characteristic.uuid}")
-                            ConnectionManager.disableNotifications(device, characteristic)
-                        } else {
-                            log("Enabling notifications on ${characteristic.uuid}")
-                            ConnectionManager.enableNotifications(device, characteristic)
-                        }
-                    }
-                }
-            }
         }
     }
 
@@ -204,7 +154,7 @@ class BleOperationsActivityProva : AppCompatActivity() {
         hexField.showKeyboard()
     }
 
-    private val connectionEventListener by lazy {
+    private val connectionEventListener by lazy { // questo si, importante: aggiornamento
         ConnectionEventListener().apply {
             onDisconnect = {
                 runOnUiThread {
@@ -242,23 +192,6 @@ class BleOperationsActivityProva : AppCompatActivity() {
                 notifyingCharacteristics.remove(characteristic.uuid)
             }
         }
-    }
-
-    private enum class CharacteristicProperty {
-        Readable,
-        Writable,
-        WritableWithoutResponse,
-        Notifiable,
-        Indicatable;
-
-        val action
-            get() = when (this) {
-                Readable -> "Read"
-                Writable -> "Write"
-                WritableWithoutResponse -> "Write Without Response"
-                Notifiable -> "Toggle Notifications"
-                Indicatable -> "Toggle Indications"
-            }
     }
 
     private fun Activity.hideKeyboard() {

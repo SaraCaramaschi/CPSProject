@@ -51,6 +51,8 @@ object ConnectionManager {
 
     // attenzione perchè quando riceviamo i dati controlliamo il service uuid!!!
 
+    // TODO domanda a chiara: collegato a TODO (101,12)
+    // A noi servono questi dati, possiamo fare le funzioni pubbliche?
     private fun readBattery(data: ByteArray) {
         var battery = data.copyOfRange(2,4).reversedArray().toHexString()
             .replace(" ","").substring(2).toInt(radix = 16).toDouble()
@@ -58,7 +60,7 @@ object ConnectionManager {
 
         //battery = battery.substring(2)
         //Timber.d("Sottostringa: " + battery)
-        Timber.d("Valore batteria: %s",  battery) // da aggiungere diviso 0
+        Timber.d("Valore batteria: %s",  battery)
 
         /*val soc = data.copyOfRange(2, 4).reversedArray().toHexString().toLong(radix = 16) / 10 //4 escluso
         val volts = data.copyOfRange(4, 6).reversedArray().toHexString().toLong(radix = 16)
@@ -76,6 +78,7 @@ object ConnectionManager {
                 .toDouble() / 100
 
         // DUBBIO: MA POSSIAMO TENERE UNA FUNZIONE SOLA OPPURE SPEZZETTARE IN TANTE DIVERSE?
+        // teoricamente dovrebbero esserci uuid diversi
 
         Timber.d("Prova con acc_x per vedere se è tutto ok: %s", acc_x) // da aggiungere diviso 0
         /*val acc_y =

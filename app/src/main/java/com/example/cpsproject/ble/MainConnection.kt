@@ -65,6 +65,7 @@ class MainConnection : AppCompatActivity() {
             with(result.device) {
                 Timber.w("Connecting to $address")
                 ConnectionManager.connect(this, this@MainConnection)
+                // connessione con device
             }
         }
     }

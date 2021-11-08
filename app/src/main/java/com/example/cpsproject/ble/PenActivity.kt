@@ -17,7 +17,7 @@ class PenActivity : AppCompatActivity() {
         btnRealTime.setOnClickListener {
             // poi ufficialmente sarà realtimeactivity
             // alla fine proprio quando funziona tutto cancelliamo Bleoperationsactivity
-            val intent = Intent(this, BleOperationsActivity::class.java)
+            val intent = Intent(this, BleOperationsActivityProva::class.java)
             startActivity(intent)
 
             /*

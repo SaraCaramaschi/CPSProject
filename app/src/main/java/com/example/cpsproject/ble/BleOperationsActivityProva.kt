@@ -89,7 +89,7 @@ class BleOperationsActivityProva : AppCompatActivity() {
         device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE)
             ?: error("Missing BluetoothDevice from MainActivity!")
 
-        setContentView(R.layout.activity_ble_operationsProva)
+        setContentView(R.layout.activity_ble_operationsprova)
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowTitleEnabled(true)

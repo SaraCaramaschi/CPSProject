@@ -3,22 +3,22 @@ package com.example.cpsproject
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-<<<<<<< HEAD
+//<<<<<<< HEAD
 import com.example.cpsproject.databinding.ActivityPatientsListBinding
-=======
+//=======
 import androidx.appcompat.app.AppCompatActivity
-import com.example.cpsproject.databinding.ActivityPatientsListBinding
+//>>>>>>> master
 >>>>>>> master
 import com.example.cpsproject.model.Patient
 
 class PatientsListActivity : AppCompatActivity() {
-<<<<<<< HEAD
+//<<<<<<< HEAD
     private lateinit var binding:ActivityPatientsListBinding
     private lateinit var patientArrayList :ArrayList<Patient>
 =======
     private lateinit var binding: ActivityPatientsListBinding
     private lateinit var patientArrayList: ArrayList<Patient>
->>>>>>> master
+//>>>>>>> master
     //private lateinit var layoutMan: RecyclerView.LayoutManager
     //private lateinit var adapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>
     // lateinit var rvPatients: RecyclerView
@@ -36,31 +36,31 @@ class PatientsListActivity : AppCompatActivity() {
         //DA FARE SE VOGLIAMO LE FOTO
         // val imageId=intArray of
 //TODO qui ci sarebbero da mettere tutte le variabili del pz
-<<<<<<< HEAD
+//<<<<<<< HEAD
 
-        val name =arrayOf(
+        val name = arrayOf(
             "CArlo",
             "giovanna"
         )
 
-       val phase = arrayOf(
-           "phase1",
-           "phase2"
- )
+        val phase = arrayOf(
+            "phase1",
+            "phase2"
+        )
 
-patientArrayList=ArrayList()
-        for ( i in name.indices) {
+        patientArrayList = ArrayList()
+        for (i in name.indices) {
             val patient = Patient(name[i], phase[i])
             patientArrayList.add(patient)
 
         }
 
-binding.patientslist.isClickable=true
-binding.patientslist.adapter= PatientAdapter(this, patientArrayList)
-binding.patientslist.setOnItemClickListener { parent, view, position, id ->
-    val name = name[position]
-    val phase = phase[position]
-=======
+        binding.patientslist.isClickable = true
+        binding.patientslist.adapter = PatientAdapter(this, patientArrayList)
+        binding.patientslist.setOnItemClickListener { parent, view, position, id ->
+            val name = name[position]
+            val phase = phase[position]
+//=======
 //        val name =arrayOf(
 //            "CArlo",
 //        "giovanna"
@@ -75,7 +75,7 @@ binding.patientslist.setOnItemClickListener { parent, view, position, id ->
 //            val patient = Patient(name[i], phase[i])
 //            patientArrayList.add(patient)
 
->>>>>>> master
+//>>>>>>> master
 
 //
 //binding.patientslist.isClickable=true
@@ -87,23 +87,24 @@ binding.patientslist.setOnItemClickListener { parent, view, position, id ->
 //    val i = Intent(this, AddPatientActivity::class.java)
 //    i.putExtra("name", name)
 //    i.putExtra("phase", phase)
-        //  startActivity(i)
+            //  startActivity(i)
 
 
-        //TODO per INSERIRE LE VARIABILI NON A MANO COME FARE?
+            //TODO per INSERIRE LE VARIABILI NON A MANO COME FARE?
 
-        //layoutMan = LinearLayoutManager(this)
-        // rvPatients = findViewById<RecyclerView>(R.id.rvPatients)
-        // rvPatients.layoutManager = layoutMan
-        //adapter = PatientAdapter()
-        //rvPatients.adapter = adapter
+            //layoutMan = LinearLayoutManager(this)
+            // rvPatients = findViewById<RecyclerView>(R.id.rvPatients)
+            // rvPatients.layoutManager = layoutMan
+            //adapter = PatientAdapter()
+            //rvPatients.adapter = adapter
 
-        val btnNewPatient = findViewById<Button>(R.id.btnNewPatient)
-        btnNewPatient.setOnClickListener {
-            val intent = Intent(this, AddPatientActivity::class.java)
-            startActivity(intent)
+            val btnNewPatient = findViewById<Button>(R.id.btnNewPatient)
+            btnNewPatient.setOnClickListener {
+                val intent = Intent(this, AddPatientActivity::class.java)
+                startActivity(intent)
+            }
+
+            //TODO setOnClickListener per entrare nella pagina del paziente
         }
-
-        //TODO setOnClickListener per entrare nella pagina del paziente
     }
 }

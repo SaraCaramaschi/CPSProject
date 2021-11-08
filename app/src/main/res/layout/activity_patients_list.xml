@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/patientslist" >
+        app:layout_constraintTop_toBottomOf="@id/rvPatients" >
 
         <Button
             android:id="@+id/btnNewPatient"
@@ -31,12 +31,12 @@
             android:text="Delete patient"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/patientslist"
+            app:layout_constraintTop_toBottomOf="@+id/RelativeLayout"
             app:layout_constraintVertical_bias="0.523"
          />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
+   <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPatients"
         android:layout_width="409dp"
         android:layout_height="550dp"
@@ -58,7 +58,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/RelativeLayout"
-        tools:listitem="@layout/activity_patient" />
+        tools:listitem="@layout/activity_patient" /-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

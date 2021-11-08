@@ -7,7 +7,7 @@ import android.widget.Button
 import com.example.cpsproject.databinding.ActivityPatientsListBinding
 =======
 import androidx.appcompat.app.AppCompatActivity
-import com.example.cpsproject.databinding.ActivityPatientsList4Binding
+import com.example.cpsproject.databinding.ActivityPatientsListBinding
 >>>>>>> master
 import com.example.cpsproject.model.Patient
 
@@ -16,7 +16,7 @@ class PatientsListActivity : AppCompatActivity() {
     private lateinit var binding:ActivityPatientsListBinding
     private lateinit var patientArrayList :ArrayList<Patient>
 =======
-    private lateinit var binding: ActivityPatientsList4Binding
+    private lateinit var binding: ActivityPatientsListBinding
     private lateinit var patientArrayList: ArrayList<Patient>
 >>>>>>> master
     //private lateinit var layoutMan: RecyclerView.LayoutManager
@@ -29,7 +29,7 @@ class PatientsListActivity : AppCompatActivity() {
 <<<<<<< HEAD
         binding= ActivityPatientsListBinding.inflate(layoutInflater)
 =======
-        binding = ActivityPatientsList4Binding.inflate(layoutInflater)
+        binding = ActivityPatientsListBinding.inflate(layoutInflater)
 >>>>>>> master
         setContentView(binding.root)
 

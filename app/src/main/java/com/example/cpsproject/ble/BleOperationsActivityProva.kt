@@ -16,7 +16,7 @@
 
 //package com.punchthrough.blestarterappandroid
 package com.example.cpsproject.ble
-/*
+
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.bluetooth.BluetoothDevice
@@ -54,7 +54,7 @@ import java.util.Date
 import java.util.Locale
 import java.util.UUID
 
-class BleOperationsActivity : AppCompatActivity() {
+class BleOperationsActivityProva : AppCompatActivity() {
 
     private lateinit var device: BluetoothDevice
     private val dateFormatter = SimpleDateFormat("MMM d, HH:mm:ss", Locale.US)
@@ -89,7 +89,7 @@ class BleOperationsActivity : AppCompatActivity() {
         device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE)
             ?: error("Missing BluetoothDevice from MainActivity!")
 
-        setContentView(R.layout.activity_ble_operations)
+        setContentView(R.layout.activity_ble_operationsProva)
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowTitleEnabled(true)
@@ -130,7 +130,7 @@ class BleOperationsActivity : AppCompatActivity() {
         characteristics_recycler_view.apply {
             adapter = characteristicAdapter
             layoutManager = LinearLayoutManager(
-                this@BleOperationsActivity,
+                this@BleOperationsActivityProva,
                 RecyclerView.VERTICAL,
                 false
             )
@@ -279,4 +279,3 @@ class BleOperationsActivity : AppCompatActivity() {
     private fun String.hexToBytes() =
         this.chunked(2).map { it.toUpperCase(Locale.US).toInt(16).toByte() }.toByteArray()
 }
-*/

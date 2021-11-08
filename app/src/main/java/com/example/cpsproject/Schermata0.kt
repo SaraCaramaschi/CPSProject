@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_schermata0.*
 import timber.log.Timber
 
 // ok ultima versione
@@ -19,8 +21,13 @@ class Schermata0 : AppCompatActivity() {
         // bottone da schermata 0 a schermata 1
         val btnSubmit = findViewById<Button>(R.id.btnSubmit)
         btnSubmit.setOnClickListener {
-            val intent = Intent(this, Schermata1::class.java)
-            startActivity(intent)
+            if (etEmailLog.text.trim().isNotEmpty() || etPasswordLog.text.trim().isNotEmpty()) {
+                val intent = Intent(this, Schermata1::class.java)
+                startActivity(intent)
+                //TODO VERIFICA IDENTITA'
+            } else {
+                Toast.makeText(this, "Imput required", Toast.LENGTH_LONG).show()
+            }
         }
 
         val btnSignIn = findViewById<Button>(R.id.btnSignIn)

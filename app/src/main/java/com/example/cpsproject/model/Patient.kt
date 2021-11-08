@@ -1,11 +1,13 @@
 package com.example.cpsproject.model
 
 //import kotlinx.serialization.Serializable
+import android.os.Parcel
+import android.os.Parcelable
 import androidx.annotation.Keep
 
 // con keep funziona (cambia errore in realtà)
 //@Keep // arriva da qui https://github.com/seventhmoon/hello-kotlin-serialization/blob/master/app/src/main/java/com/google/sample/hellokotlinserialization/Device.kt
-@Serializable // arriva da qui https://kotlinlang.org/docs/serialization.html#example-json-serialization
+//@Serializable // arriva da qui https://kotlinlang.org/docs/serialization.html#example-json-serialization
 data class Patient( // ora ci sono 4 input
     var name: String,
     var surname: String,
@@ -23,10 +25,43 @@ data class Patient( // ora ci sono 4 input
 
     // var dominantHand: Hand,
     // var gender: Gender
-<<<<<<< HEAD
+//<<<<<<< HEAD
      var phase: Int = 1
-=======
+//=======
     // var phase: String
->>>>>>> master
+//>>>>>>> master
     // var birthdate: String,
-)
+) : Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readInt()
+    ) {
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(name)
+        parcel.writeString(surname)
+        parcel.writeString(notes)
+        parcel.writeString(taxcode)
+        parcel.writeString(birthdate)
+        parcel.writeInt(phase)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<Patient> {
+        override fun createFromParcel(parcel: Parcel): Patient {
+            return Patient(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Patient?> {
+            return arrayOfNulls(size)
+        }
+    }
+}

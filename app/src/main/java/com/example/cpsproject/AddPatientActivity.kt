@@ -14,11 +14,11 @@ class AddPatientActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-<<<<<<< HEAD
+//<<<<<<< HEAD
        super.onCreate(savedInstanceState)
        setContentView(R.layout.activity_add_patient)
 
-=======
+//=======
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_patient)
         val name = intent.getStringExtra("name")
@@ -28,7 +28,7 @@ class AddPatientActivity : AppCompatActivity() {
 //binding.nameProfile.text= name
 //binding.phaseProfile.text= phase
 //TODO perchè sono rossi????
->>>>>>> master
+//>>>>>>> master
 
 
 // CAPIRE COSA FARE NELLA ACTIVITY PER GLI SPINNER

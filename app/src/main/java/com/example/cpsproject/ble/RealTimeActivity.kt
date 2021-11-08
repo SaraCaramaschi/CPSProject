@@ -20,8 +20,9 @@ class RealTimeActivity : AppCompatActivity() {
         //bottone per iniziare a riempire la textview con i dati (=iniziare il real time)
         val startrealtime = findViewById<Button>(R.id.Startrealtime)
         Startrealtime.setOnClickListener {
-        //val dato =intent.getStringExtra("acc_x")
-            //textView6.text= dato
+        /*val intent = getIntent()
+            val acc_x = intent.getStringExtra("acc_x")
+            textView6.text= "+acc_x+"*/
         }
 
     }

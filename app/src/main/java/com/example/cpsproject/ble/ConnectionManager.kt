@@ -28,6 +28,8 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.Handler
 import android.os.Looper
+import android.view.View
+import com.example.cpsproject.ble.RealTimeActivity
 import timber.log.Timber
 import java.lang.ref.WeakReference
 import java.util.UUID
@@ -103,6 +105,11 @@ object ConnectionManager {
                 .toDouble() / 100*/
 
     }
+        //funzione per inviare il dato dell'accelerazione (sbagliata)
+    /*fun onSaveButonClick(view: View){
+        val intent = Intent(this@ConnectionManager,RealTimeActivity::class.java)
+        intent.putExtra(name: "acc_x", acc_x)
+        }*/
 
     fun servicesOnDevice(device: BluetoothDevice): List<BluetoothGattService>? =
         deviceGattMap[device]?.services

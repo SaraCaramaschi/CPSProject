@@ -4,16 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 <<<<<<< HEAD
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.cpsproject.databinding.ActivityMainConnectionBinding
 import com.example.cpsproject.databinding.ActivityPatientsListBinding
 =======
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cpsproject.databinding.ActivityPatientsList4Binding
 >>>>>>> master
 import com.example.cpsproject.model.Patient
-import com.example.cpsproject.managers.PatientsManager.patientsList
 
 class PatientsListActivity : AppCompatActivity() {
 <<<<<<< HEAD

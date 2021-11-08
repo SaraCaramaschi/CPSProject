@@ -1,55 +1,68 @@
 package com.example.cpsproject
 
+import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import android.widget.ArrayAdapter
 import android.widget.TextView
-import android.widget.Toast
-import androidx.recyclerview.widget.RecyclerView
-import com.example.cpsproject.managers.PatientsManager.patientsList
+import com.example.cpsproject.model.Patient
 
-class PatientAdapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>() {
-    // ne ho messi tanti cosi vediamo il recycler view scorrere.
-    // parte che andrà cambiata per collegare i dati
-     private var patientsName = arrayOf("Mario Rossi", "Alfonso Maisano","Vittoria Attolini","Lino Piso","Mario Rossi", "Alfonso Maisano","Vittoria Attolini","Lino Piso")
-     private var patientsPhase = arrayOf("Phase1","Phase1","Phase2","Phase 1","Phase1","Phase1","Phase2","Phase 1")
-     private var patientsItems = intArrayOf(R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user,R.drawable.user)
+<<<<<<< HEAD
+class PatientAdapter (private val context:Activity, private val arrayList: ArrayList<Patient>):ArrayAdapter<Patient>(context,
+R.layout.activity_patient
+    , arrayList) {
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+
+         val inflater:LayoutInflater= LayoutInflater.from(context)
+         val view: View = inflater.inflate(R.layout.activity_patient,null)
+
+=======
+class PatientAdapter2(private val context: Activity, private val arrayList: ArrayList<Patient>) :
+    ArrayAdapter<Patient>(
+        context,
+        R.layout.list_item, arrayList
+    ) {
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+
+        val inflater: LayoutInflater = LayoutInflater.from(context)
+        val view: View = inflater.inflate(R.layout.list_item, null)
+>>>>>>> master
+
+        // QUESTA RIGA NON SO SE SERVE PERCHè NON SO SE METTEREMO LE IMMAGINI
+        // val imageView: ImageView=view.findViewById<>(R.id.profilr_pic)
+        //TODO se aggiungi qualcosa da visualizzare nlla lista pz aggiungi qui le variabili
+<<<<<<< HEAD
+        val txusername: TextView=view.findViewById(R.id.PatientName)
+        val txphase: TextView=view.findViewById(R.id.tvPatientPhase)
 
 
-    inner class ViewHolder(itemView: View ): RecyclerView.ViewHolder(itemView){
-        // scopo: prendere oggetto dalla lista creata e mostrarlo al recycler view
-        var itemImage: ImageView
-        var itemName: TextView
-        var itemPhase: TextView
+=======
+        val username: TextView = view.findViewById(R.id.PatientName)
+        val phase: TextView = view.findViewById(R.id.Phase)
+>>>>>>> master
 
-        init{
-            itemImage = itemView.findViewById(R.id.imageView)
-            itemName = itemView.findViewById(R.id.PatientName)
-            itemPhase = itemView.findViewById(R.id.PatientPhase)
+        //DA AGGIUNGERE SOLO SE METTIAMO LE FOTO
+        // imageView.setImageResource(arrayList[position].imageId)
 
-            itemView.setOnClickListener{
-                val position: Int = adapterPosition
-                Toast.makeText(itemView.context, "you clicked on ${patientsName[position]} ", Toast.LENGTH_LONG).show()
-                // codice che fa passare a profilo del paziente
-            }
-        }
-    }
+        //TODO da modificare per fare in modod che oltra la nome ci sia anche il cognome sulla pt list
+        // OSS (GINEVRA) QUA DOVREMMO RICHIAMARE FILE JSON?
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientAdapter.ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.activity_patient, parent, false)
-        return ViewHolder(v)
-    }
+        username.text = arrayList[position].name
+        //phase.text=arrayList[position].phase
 
-    override fun onBindViewHolder(holder: PatientAdapter.ViewHolder, position: Int) {
+<<<<<<< HEAD
+        txusername.text=arrayList[position].name
+        txphase.text= "Fase " + arrayList[position].phase
+=======
+>>>>>>> master
 
-        holder.itemName.text = patientsName[position]
-        holder.itemPhase.text = patientsPhase[position]
-        holder.itemImage.setImageResource(patientsItems[position])
-    }
-
-    override fun getItemCount(): Int {
-       //return patientsName.size
-        return patientsList.size
+        return view
     }
 }
+
+
+
+
+
+

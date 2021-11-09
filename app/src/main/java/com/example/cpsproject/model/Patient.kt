@@ -27,8 +27,7 @@ data class Patient( // ora ci sono 4 input
     // var gender: Gender
 //<<<<<<< HEAD
      var phase: Int = 1
-//=======
-    // var phase: String
+
 //>>>>>>> master
     // var birthdate: String,
 ) : Parcelable {

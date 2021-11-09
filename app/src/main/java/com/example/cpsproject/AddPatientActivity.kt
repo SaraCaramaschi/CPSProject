@@ -17,10 +17,6 @@ class AddPatientActivity : AppCompatActivity() {
 //<<<<<<< HEAD
        super.onCreate(savedInstanceState)
        setContentView(R.layout.activity_add_patient)
-
-//=======
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_patient)
         val name = intent.getStringExtra("name")
         val phase = intent.getStringExtra("phase")
         //aggiungere lo stesso per la foto se la vogliamo

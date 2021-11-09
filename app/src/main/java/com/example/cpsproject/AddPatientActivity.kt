@@ -12,19 +12,12 @@ class AddPatientActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-<<<<<<< Updated upstream
-//<<<<<<< HEAD
-       super.onCreate(savedInstanceState)
-       setContentView(R.layout.activity_add_patient)
-=======
 
-//       super.onCreate(savedInstanceState)
-//       setContentView(R.layout.activity_add_patient)
 
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_patient)
->>>>>>> Stashed changes
+
         val name = intent.getStringExtra("name")
         val phase = intent.getStringExtra("phase")
         //aggiungere lo stesso per la foto se la vogliamo

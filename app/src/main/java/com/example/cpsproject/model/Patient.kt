@@ -25,16 +25,13 @@ data class Patient( // ora ci sono 4 input
 
     // var dominantHand: Hand,
     // var gender: Gender
-//<<<<<<< HEAD
-<<<<<<< Updated upstream
-     var phase: Int = 1
 
-=======
+
      var phase: Int = 1)
-//=======
+
     // var phase: String
->>>>>>> Stashed changes
-//>>>>>>> master
+
+
     // var birthdate: String,
 //) : Parcelable {
 //    constructor(parcel: Parcel) : this(

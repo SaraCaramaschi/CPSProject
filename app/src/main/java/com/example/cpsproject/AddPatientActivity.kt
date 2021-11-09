@@ -3,9 +3,7 @@ package com.example.cpsproject
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.cpsproject.databinding.ActivityAddPatientBinding
 import com.example.cpsproject.managers.PatientsManager
-import com.example.cpsproject.managers.PatientsManager.patientsList
 import com.example.cpsproject.model.Patient
 import kotlinx.android.synthetic.main.activity_add_patient.*
 
@@ -14,9 +12,19 @@ class AddPatientActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+<<<<<<< Updated upstream
 //<<<<<<< HEAD
        super.onCreate(savedInstanceState)
        setContentView(R.layout.activity_add_patient)
+=======
+
+//       super.onCreate(savedInstanceState)
+//       setContentView(R.layout.activity_add_patient)
+
+
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_add_patient)
+>>>>>>> Stashed changes
         val name = intent.getStringExtra("name")
         val phase = intent.getStringExtra("phase")
         //aggiungere lo stesso per la foto se la vogliamo
@@ -75,14 +83,14 @@ class AddPatientActivity : AppCompatActivity() {
     Timber.d(PatientsManager.patientsList.elementAt(0).notes)
     Timber.d(PatientsManager.patientsList.elementAt(0).taxcode)
      */
-            val intent = Intent(this, PatientsListActivityG::class.java)
+            val intent = Intent(this, PatientListActivity::class.java)
             startActivity(intent)
 
         }
 
-        btnReadPat.setOnClickListener {
-            PatientsManager.readLastPatient()
-        }
+//        btnReadPat.setOnClickListener {
+//            PatientsManager.readLastPatient()
+//        }
 
     }
 }

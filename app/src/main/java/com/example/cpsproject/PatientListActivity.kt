@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_patients_list.*
 
-class PatientListActivityG: AppCompatActivity(){
+class PatientListActivity: AppCompatActivity(){
     private var layoutManager: RecyclerView.LayoutManager?=null
-    private var adapter: RecyclerView.Adapter<PatientAdapterG.ViewHolder>?=null
+    private var adapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>?=null
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
@@ -17,7 +17,7 @@ class PatientListActivityG: AppCompatActivity(){
         layoutManager=LinearLayoutManager(this)
         rvPatients.layoutManager= layoutManager
 
-        adapter=PatientAdapterG()
+        adapter=PatientAdapter()
         rvPatients.adapter=adapter
 
 

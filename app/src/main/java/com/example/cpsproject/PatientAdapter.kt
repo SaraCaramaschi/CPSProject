@@ -10,11 +10,11 @@ import com.example.cpsproject.managers.PatientsManager.patientsList
 import com.example.cpsproject.managers.PatientsManager.readPatient
 
 
-class PatientAdapterG: RecyclerView.Adapter<PatientAdapterG.ViewHolder>(){
+class PatientAdapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>(){
     private var names= arrayOf<String>()
     private var phases= arrayOf<String>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientAdapterG.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientAdapter.ViewHolder {
 //        var names= arrayOf<String>()
 //        var phases= arrayOf<String>()
         //Sarebbe da aggiungere anche le immagini https://www.youtube.com/watch?v=UCddGYMQJCo
@@ -27,7 +27,7 @@ class PatientAdapterG: RecyclerView.Adapter<PatientAdapterG.ViewHolder>(){
         return ViewHolder(v)
     }
 
-    override fun onBindViewHolder(holder: PatientAdapterG.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PatientAdapter.ViewHolder, position: Int) {
         holder.itemName.text= names[position]
         holder.itemPhase.text= phases[position]
 

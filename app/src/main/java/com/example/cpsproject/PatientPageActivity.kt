@@ -8,6 +8,8 @@ class PatientPageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patient_page)
 
+
+
     }
 }
 

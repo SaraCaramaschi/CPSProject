@@ -23,10 +23,11 @@ class PatientListActivity: AppCompatActivity(){
         adapter=PatientAdapter()
         rvPatients.adapter=adapter
 
-        val btnAddPatient = findViewById<Button>(R.id.btnNewPatient)
-        btnAddPatient.setOnClickListener {
-            val intent = Intent(this, AddPatientActivity::class.java)
-            startActivity(intent) }
+//        val btnAddPatient = findViewById<Button>(R.id.btnNewPatient)
+       btnAddPatient.setOnClickListener {
+          val intent = Intent(this, AddPatientActivity::class.java)
+           startActivity(intent) }
+
 
     }
 }

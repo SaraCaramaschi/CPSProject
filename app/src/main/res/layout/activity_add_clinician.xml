@@ -86,7 +86,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/tvUsername"
-                tools:ignore="SpeakableTextPresentCheck" />
+                tools:ignore="SpeakableTextPresentCheck"
+                "/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/LinearLayout2"
@@ -116,7 +117,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/tvUsername"
-                tools:ignore="SpeakableTextPresentCheck" />
+                tools:ignore="SpeakableTextPresentCheck"
+                />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/LinearLayout3"
@@ -147,7 +149,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/tvUsername"
-                tools:ignore="SpeakableTextPresentCheck"/>
+                tools:ignore="SpeakableTextPresentCheck"
+                android:inputType="textPassword"/>
 
         </LinearLayout>
 
@@ -180,7 +183,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/tvUsername"
-                tools:ignore="SpeakableTextPresentCheck" />
+                tools:ignore="SpeakableTextPresentCheck"
+                android:inputType="textPassword"/>
         </LinearLayout>
 
         <Button

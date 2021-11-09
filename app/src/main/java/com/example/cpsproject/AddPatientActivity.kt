@@ -11,9 +11,14 @@ import kotlinx.android.synthetic.main.activity_add_patient.*
 
 
 class AddPatientActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityAddPatientBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
+//<<<<<<< HEAD
+       super.onCreate(savedInstanceState)
+       setContentView(R.layout.activity_add_patient)
+
+//=======
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_patient)
         val name = intent.getStringExtra("name")
@@ -23,6 +28,7 @@ class AddPatientActivity : AppCompatActivity() {
 //binding.nameProfile.text= name
 //binding.phaseProfile.text= phase
 //TODO perchè sono rossi????
+//>>>>>>> master
 
 
 // CAPIRE COSA FARE NELLA ACTIVITY PER GLI SPINNER

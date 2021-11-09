@@ -28,17 +28,16 @@ object PatientsManager {
     public fun savePatient(patient: Patient, context: Context) {
         val gson= Gson()
         val jsonPatient= gson.toJson(patient)
-        val folder_main = "NewFolder"
+        //val folder_main = "NewFolder"
 
         Timber.d("json %s", jsonPatient)
-
 
 
 
         //CREATE NEW DIRECOTY IN FILESDIR DIRECOTY (https://developer.android.com/training/data-storage/app-specific#kotlin)
         // anche se volevo metterlo da un'altra parte
         var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)
-
+        Timber.d("questo è nuova cartella: %s", folder.path.toString())
 
 
 
@@ -64,15 +63,29 @@ object PatientsManager {
         return File(fileName).readText(Charsets.UTF_8)
     }
 
-    public fun readLastPatient() {
-        var lastPatient = patientsList.last()
+
+    public fun readPatient(i: Int): Patient {
+        var lastPatient = patientsList[i]
         var taxcode = lastPatient.taxcode
         var file = File(taxcode)
-        var jsonText=file.readText()
+        var jsonText=file.readText(Charsets.UTF_8)
         val gson= Gson()
         var patientNew= gson.fromJson(jsonText, Patient::class.java)
         Timber.d("questo è il nome dell'ultimo paziente %s", patientNew.name)
         Timber.d("questo è il cognome dell'ultimo paziente %s", patientNew.surname)
+        return patientNew
+
+
+        //CHIARA
+//    public fun readLastPatient() {
+//        var lastPatient = patientsList.last()
+//        var taxcode = lastPatient.taxcode
+//        var file = File(taxcode)
+//        var jsonText=file.readText(Charsets.UTF_8)
+//        val gson= Gson()
+//        var patientNew= gson.fromJson(jsonText, Patient::class.java)
+//        Timber.d("questo è il nome dell'ultimo paziente %s", patientNew.name)
+//        Timber.d("questo è il cognome dell'ultimo paziente %s", patientNew.surname)
 
         //ottengo json da file OK
         //encode json in classe Patient CODICE NON DA ERRORI MA NON VA APP

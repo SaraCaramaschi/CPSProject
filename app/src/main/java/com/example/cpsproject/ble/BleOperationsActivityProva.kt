@@ -98,9 +98,9 @@ class BleOperationsActivityProva : AppCompatActivity() {
             setDisplayShowTitleEnabled(true)
             title = "Real Time"
         }
-        //setupRecyclerView()
 
-        // TODO altro strumento di visualizzazione: adding a view model (?)
+        //setupRecyclerView()
+        // TODO altro strumento di visualizzazione: VIEW MODEL? PENSO QUELLO CHE CI SERVE SIA TEXTVIEW
         setupTextView()
 
     }
@@ -121,18 +121,18 @@ class BleOperationsActivityProva : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+
     // QUESTA (BLEOPERATIONSACTIVITYPROVA) DOVREBBE ESSERE GIA' SECONDA ATTIVITA'
     // E QUESTO CODICE DOVREBBE ANDARE IN MAIN CONNECTION
     private fun setupTextView(){/*
         val textView = this.findViewById<TextView>(R.id.tvAccx).text.toString()
-
         val intent = Intent(this, RealTimeActivity::class.java)
         intent.putExtra("Accx", textView)
         startActivity(intent)
-
      */}
 
-    /*private fun setupRecyclerView() {
+
+    /*private fun setupRecyclerView() { FUNZIONE ORIGINALE
         characteristics_recycler_view.apply {
             adapter = characteristicAdapter
             layoutManager = LinearLayoutManager(
@@ -142,7 +142,6 @@ class BleOperationsActivityProva : AppCompatActivity() {
             )
             isNestedScrollingEnabled = false
         }
-
         val animator = characteristics_recycler_view.itemAnimator
         if (animator is SimpleItemAnimator) {
             animator.supportsChangeAnimations = false

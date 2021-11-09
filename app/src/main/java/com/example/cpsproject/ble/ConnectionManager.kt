@@ -55,7 +55,8 @@ object ConnectionManager {
 
     // TODO domanda a chiara: collegato a TODO (101,12)
     // A noi servono questi dati, possiamo fare le funzioni pubbliche?
-    private fun readBattery(data: ByteArray) {
+    //private fun readBattery(data: ByteArray) {
+    public fun readBattery(data: ByteArray) {
         var battery = data.copyOfRange(2,4).reversedArray().toHexString()
             .replace(" ","").substring(2).toInt(radix = 16).toDouble()
         battery = battery.div(10)

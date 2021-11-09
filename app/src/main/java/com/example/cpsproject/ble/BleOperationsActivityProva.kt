@@ -22,11 +22,13 @@ import android.app.Activity
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothGattCharacteristic
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -99,6 +101,7 @@ class BleOperationsActivityProva : AppCompatActivity() {
         //setupRecyclerView()
 
         // TODO altro strumento di visualizzazione: adding a view model (?)
+        setupTextView()
 
     }
 
@@ -117,6 +120,34 @@ class BleOperationsActivityProva : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+    // QUESTA (BLEOPERATIONSACTIVITYPROVA) DOVREBBE ESSERE GIA' SECONDA ATTIVITA'
+    // E QUESTO CODICE DOVREBBE ANDARE IN MAIN CONNECTION
+    private fun setupTextView(){/*
+        val textView = this.findViewById<TextView>(R.id.tvAccx).text.toString()
+
+        val intent = Intent(this, RealTimeActivity::class.java)
+        intent.putExtra("Accx", textView)
+        startActivity(intent)
+
+     */}
+
+    /*private fun setupRecyclerView() {
+        characteristics_recycler_view.apply {
+            adapter = characteristicAdapter
+            layoutManager = LinearLayoutManager(
+                this@BleOperationsActivity,
+                RecyclerView.VERTICAL,
+                false
+            )
+            isNestedScrollingEnabled = false
+        }
+
+        val animator = characteristics_recycler_view.itemAnimator
+        if (animator is SimpleItemAnimator) {
+            animator.supportsChangeAnimations = false
+        }
+    }*/
 
     @SuppressLint("SetTextI18n")
     private fun log(message: String) {

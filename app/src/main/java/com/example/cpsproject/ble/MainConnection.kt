@@ -214,38 +214,23 @@ class MainConnection : AppCompatActivity() {
         }
     }
 
-    // INVECE DI BLEOPERATIONSACTIVITY METTERE "SCHERMATAPENNA"
-    // BLEOPERATIONSACTIVITY SARA' INVIATO QUANDO CLICCO SU REAL-TIME
-    /*
-    private val connectionEventListener by lazy {
-        ConnectionEventListener().apply {
-            onConnectionSetupComplete = { gatt ->
-                Intent(this@MainConnection, BleOperationsActivity::class.java).also {
-                    it.putExtra(BluetoothDevice.EXTRA_DEVICE, gatt.device)
-                    startActivity(it)
-                }
-                ConnectionManager.unregisterListener(this)
-            }
-            onDisconnect = {
-                runOnUiThread {
-                    alert {
-                        title = "Disconnected"
-                        message = "Disconnected or unable to connect to device."
-                        positiveButton("OK") {}
-                    }.show()
-                }
-            }
-        }
-    }*/
 
+    // INVECE DI BLEOPERATIONSACTIVITY(prova) METTERE "SCHERMATAPENNA"
+    // BLEOPERATIONSACTIVITY SARA' INVIATO QUANDO CLICCO SU REAL-TIME
     private val connectionEventListener by lazy {
         ConnectionEventListener().apply {
             onConnectionSetupComplete = { gatt ->
                 // Se vogliamo vedere come funziona realtimeactivity sostituiamo qui nella
                 // attività di destinazione
-                Intent(this@MainConnection, PenActivity::class.java).also {
+                Intent(this@MainConnection, BleOperationsActivityProva::class.java).also {
                     it.putExtra(BluetoothDevice.EXTRA_DEVICE, gatt.device)
                     startActivity(it)
+
+                    // PASSARE DATI A TEXTVIEW IN BLEOPERATIONSPROVA - DA SISTEMARE
+                    //val data = ConnectionManager.readBattery(QUALE DAT0?)
+                    //val intent = Intent(this, BleOperationsActivityProva::class.java)
+                    //intent.putExtra("AccX", textView)
+                    //startActivity(intent)
                 }
                 ConnectionManager.unregisterListener(this)
             }

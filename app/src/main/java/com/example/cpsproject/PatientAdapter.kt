@@ -42,7 +42,7 @@ class PatientAdapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>(){
         // TODO IMPORTARE PATIENTLIST DA JSON
 
         for (i in patientsList.indices) {
-            var patientNew= readPatient(i)
+            var patientNew= readPatient(i,parent.context) //!!parent.context
             names[i]= patientNew.name + patientNew.surname
             phases[i]=patientNew.phase.toString()
         }

@@ -32,15 +32,10 @@ object PatientsManager {
 
         Timber.d("json %s", jsonPatient)
 
-
-
         //CREATE NEW DIRECOTY IN FILESDIR DIRECOTY (https://developer.android.com/training/data-storage/app-specific#kotlin)
         // anche se volevo metterlo da un'altra parte
         var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)
         Timber.d("questo è nuova cartella: %s", folder.path.toString())
-
-
-
 
         //var fileName = context.filesDir.path.toString() + "/" + patient.taxcode + ".txt" (Chiara)
         var fileName = folder.path.toString() + "/" + patient.taxcode + ".txt"
@@ -64,12 +59,23 @@ object PatientsManager {
 //    }
 
 
-    public fun readPatient(i: Int): Patient {
+    public fun readPatient(i: Int, context: Context): Patient {
         var lastPatient = patientsList[i]
         var taxcode = lastPatient.taxcode
-        var file = File(taxcode)
-        var jsonText=file.readText(Charsets.UTF_8)
+
+        // QUESTE DUE RIGHE PURE MI DANNO ERRORE, SARA
+        // var file = File(taxcode)
+        // var jsonText=file.readText(Charsets.UTF_8)
+
+        // QUINDI HO PROVATO A RIPORTARE FOLDER E FILENAME COME SOPRA, mi da errore comunque
+        var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)         // ripresi da savePatient
+        var fileName = folder.path.toString() + "/" + lastPatient.taxcode + ".txt"  // ripresi da savePatient
+        var file = File(fileName)
+        var jsonText=file.absolutePath.toString() //questo è: /data/user/0/com.example.cpsproject/app_PatientsFolder/fs.txt
+        Timber.d("jsonText: %s", jsonText) // OK
         val gson= Gson()
+
+        // ERRORE QUI:
         var patientNew= gson.fromJson(jsonText, Patient::class.java)
         Timber.d("questo è il nome dell'ultimo paziente %s", patientNew.name)
         Timber.d("questo è il cognome dell'ultimo paziente %s", patientNew.surname)

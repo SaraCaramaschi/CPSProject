@@ -2,12 +2,9 @@ package com.example.cpsproject
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.cpsproject.ble.MainConnection
 import kotlinx.android.synthetic.main.activity_add_clinician.*
-import layout.addpatient2
 
 class AddClinicianActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +14,7 @@ class AddClinicianActivity : AppCompatActivity() {
 
         btnSubmitdata.setOnClickListener {
             if (etUsername.text.trim().isNotEmpty()||etPassword1.text.trim().isNotEmpty()|| etPassword2.text.trim().isNotEmpty()|| etEmail.text.trim().isNotEmpty()||etPassword1.text==etPassword2.text){
-                val intent =Intent(this, PatientsListActivity::class.java)
+                val intent =Intent(this, PatientListActivity::class.java)
                 startActivity(intent)
 
 

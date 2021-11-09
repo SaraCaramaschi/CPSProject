@@ -1,68 +1,61 @@
 package com.example.cpsproject
 
-import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
+import android.widget.ImageView
 import android.widget.TextView
-import com.example.cpsproject.model.Patient
-
-<<<<<<< HEAD
-class PatientAdapter (private val context:Activity, private val arrayList: ArrayList<Patient>):ArrayAdapter<Patient>(context,
-R.layout.activity_patient
-    , arrayList) {
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-
-         val inflater:LayoutInflater= LayoutInflater.from(context)
-         val view: View = inflater.inflate(R.layout.activity_patient,null)
-
-=======
-class PatientAdapter2(private val context: Activity, private val arrayList: ArrayList<Patient>) :
-    ArrayAdapter<Patient>(
-        context,
-        R.layout.list_item, arrayList
-    ) {
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-
-        val inflater: LayoutInflater = LayoutInflater.from(context)
-        val view: View = inflater.inflate(R.layout.list_item, null)
->>>>>>> master
-
-        // QUESTA RIGA NON SO SE SERVE PERCHè NON SO SE METTEREMO LE IMMAGINI
-        // val imageView: ImageView=view.findViewById<>(R.id.profilr_pic)
-        //TODO se aggiungi qualcosa da visualizzare nlla lista pz aggiungi qui le variabili
-<<<<<<< HEAD
-        val txusername: TextView=view.findViewById(R.id.PatientName)
-        val txphase: TextView=view.findViewById(R.id.tvPatientPhase)
+import androidx.recyclerview.widget.RecyclerView
+import com.example.cpsproject.managers.PatientsManager.patientsList
+import com.example.cpsproject.managers.PatientsManager.readPatient
 
 
-=======
-        val username: TextView = view.findViewById(R.id.PatientName)
-        val phase: TextView = view.findViewById(R.id.Phase)
->>>>>>> master
+class PatientAdapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>(){
+    private var names= arrayOf<String>()
+    private var phases= arrayOf<String>()
 
-        //DA AGGIUNGERE SOLO SE METTIAMO LE FOTO
-        // imageView.setImageResource(arrayList[position].imageId)
-
-        //TODO da modificare per fare in modod che oltra la nome ci sia anche il cognome sulla pt list
-        // OSS (GINEVRA) QUA DOVREMMO RICHIAMARE FILE JSON?
-
-        username.text = arrayList[position].name
-        //phase.text=arrayList[position].phase
-
-<<<<<<< HEAD
-        txusername.text=arrayList[position].name
-        txphase.text= "Fase " + arrayList[position].phase
-=======
->>>>>>> master
-
-        return view
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientAdapter.ViewHolder {
+//        var names= arrayOf<String>()
+//        var phases= arrayOf<String>()
+        //Sarebbe da aggiungere anche le immagini https://www.youtube.com/watch?v=UCddGYMQJCo
+        for (i in patientsList.indices) {
+            var patientNew= readPatient(i)
+            names[i]= patientNew.name + patientNew.surname
+            phases[i]=patientNew.phase.toString()
+        }
+        val v= LayoutInflater.from(parent.context).inflate(R.layout.activity_patient,parent,false)
+        return ViewHolder(v)
     }
+
+    override fun onBindViewHolder(holder: PatientAdapter.ViewHolder, position: Int) {
+        holder.itemName.text= names[position]
+        holder.itemPhase.text= phases[position]
+
+    }
+
+    override fun getItemCount(): Int {
+        return names.size
+    }
+    inner class ViewHolder (itemView: View): RecyclerView.ViewHolder(itemView) {
+        var itemImage: ImageView
+        var itemName: TextView
+        var itemPhase: TextView
+
+        init {
+            itemImage = itemView.findViewById(R.id.imageView)
+            itemName = itemView.findViewById(R.id.PatientName)
+            itemPhase = itemView.findViewById(R.id.tvPatientPhase)
+        }
+
+    }
+    //TODO NON CAPISCO PERCHE' NON TROVI ARRAY NAMES E PHASES
+//    override fun onCreate(savedInstanceState: Bundle?){
+//     super.onCreate(savedInstanceState)
+//     setContentView(R.layout.activity_patients_list)
+//     setSupportActionBar(toolbar())
+//        recyclerView
+
 }
-
-
-
 
 
 

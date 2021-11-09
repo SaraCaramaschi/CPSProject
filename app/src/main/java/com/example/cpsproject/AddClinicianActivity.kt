@@ -17,7 +17,7 @@ class AddClinicianActivity : AppCompatActivity() {
 
         btnSubmitdata.setOnClickListener {
             if (etUsername.text.trim().isNotEmpty()||etPassword1.text.trim().isNotEmpty()|| etPassword2.text.trim().isNotEmpty()|| etEmail.text.trim().isNotEmpty()||etPassword1.text==etPassword2.text){
-                val intent =Intent(this, PatientsListActivity::class.java)
+                val intent =Intent(this, PatientsListActivityG::class.java)
                 startActivity(intent)
 
 

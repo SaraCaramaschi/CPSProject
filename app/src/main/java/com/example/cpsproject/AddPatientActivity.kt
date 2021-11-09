@@ -79,7 +79,7 @@ class AddPatientActivity : AppCompatActivity() {
     Timber.d(PatientsManager.patientsList.elementAt(0).notes)
     Timber.d(PatientsManager.patientsList.elementAt(0).taxcode)
      */
-            val intent = Intent(this, PatientsListActivity::class.java)
+            val intent = Intent(this, PatientsListActivityG::class.java)
             startActivity(intent)
 
         }

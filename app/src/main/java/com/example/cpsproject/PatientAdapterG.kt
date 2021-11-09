@@ -59,4 +59,3 @@ class PatientAdapterG: RecyclerView.Adapter<PatientAdapterG.ViewHolder>(){
 
 
 
-}

@@ -42,7 +42,7 @@
             android:name=".ble.MainConnection"
             android:exported="true" />
         <activity
-            android:name=".PatientsListActivityG"
+            android:name=".PatientListActivity"
             android:exported="true" />
         <activity
             android:name=".Schermata1"

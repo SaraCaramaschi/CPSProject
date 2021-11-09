@@ -6,7 +6,6 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_patients_list.*
 
 class PatientListActivity: AppCompatActivity(){
     private lateinit var layoutManager: RecyclerView.LayoutManager
@@ -28,9 +27,6 @@ class PatientListActivity: AppCompatActivity(){
         btnAddPatient.setOnClickListener {
             val intent = Intent(this, AddPatientActivity::class.java)
             startActivity(intent) }
-
-
-
 
     }
 }

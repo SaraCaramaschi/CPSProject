@@ -52,16 +52,16 @@ object PatientsManager {
         Timber.d("path %s", file.absolutePath)
 
         file.writeText(jsonPatient)
-        Timber.d("questo è il file lettooo %s", readPatient(fileName))
+       // Timber.d("questo è il file lettooo %s", readPatient(fileName))
     }
 
 
 
-    public fun readPatient(fileName : String) : String {
-        // la funzione readPatient funziona! quindi il file viene creato e salvato da qualche parte veramente
-        // il nome del file è per esempio taxcode, ma al suo interno ha tutti i dati del json. perfetto
-        return File(fileName).readText(Charsets.UTF_8)
-    }
+//    public fun readPatient(fileName : String) : String {
+//        // la funzione readPatient funziona! quindi il file viene creato e salvato da qualche parte veramente
+//        // il nome del file è per esempio taxcode, ma al suo interno ha tutti i dati del json. perfetto
+//        return File(fileName).readText(Charsets.UTF_8)
+//    }
 
 
     public fun readPatient(i: Int): Patient {

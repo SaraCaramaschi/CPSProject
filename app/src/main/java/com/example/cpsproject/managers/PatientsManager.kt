@@ -95,13 +95,3 @@ object PatientsManager {
 }
 
 
-
-
-//<<<<<<< Updated upstream
-//=======
-//
-//
-//
-//
-//>>>>>>> Stashed changes
-

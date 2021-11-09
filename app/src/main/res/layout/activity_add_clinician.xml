@@ -86,8 +86,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/tvUsername"
-                tools:ignore="SpeakableTextPresentCheck"
-                "/>
+                tools:ignore="SpeakableTextPresentCheck" />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/LinearLayout2"

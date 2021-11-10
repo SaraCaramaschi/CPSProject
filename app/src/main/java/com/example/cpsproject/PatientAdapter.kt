@@ -55,7 +55,7 @@ class PatientAdapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>(){
 
     private fun  importPatientList(){
         /*for (i in patientsList.indices) {
-            var patientNew = readPatient(i,parent.context) //!!parent.context
+            var patientNew = readPatient(i, parent.context) //!!parent.context
             names[i]= patientNew.name + patientNew.surname
             phases[i]=patientNew.phase.toString()
         }*/

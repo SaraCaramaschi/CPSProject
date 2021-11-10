@@ -1,25 +1,17 @@
 package com.example.cpsproject.managers
 
+import android.annotation.SuppressLint
 import android.content.Context
-import android.os.Bundle
 import com.example.cpsproject.model.Patient
 import com.google.gson.Gson
 import timber.log.Timber
 import java.io.*
-import android.os.Environment
-import android.util.Log
-import android.util.Log.d
-import java.io.File.separator
-import android.widget.Toast
+import com.example.cpsproject.PatientAdapter
 
 
-
-
-
-
+@SuppressLint("StaticFieldLeak")
 object PatientsManager {
     public var patientsList: ArrayList<Patient> = ArrayList()
-
 
     public fun addPatient(patient: Patient, context: Context) {
         patientsList.add(patient)
@@ -52,7 +44,7 @@ object PatientsManager {
     }
 
 
-    public fun readPatient(i:Int, context: Context) { // FUNZIONA !!!
+    public fun readPatient(i:Int, context: Context): Patient { // FUNZIONA !!!
         var lastPatient = patientsList[i]
         var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)         // ripresi da savePatient
         var fileName = folder.path.toString() + "/" + lastPatient.taxcode + ".txt"  // ripresi da savePatient
@@ -78,6 +70,19 @@ object PatientsManager {
 
         //Display the all Json object in text View
         Timber.d("Stringbuilder: %s", stringBuilder.toString())
+
+        return patient
+    }
+
+    fun  importPatientList(context: Context): ArrayList<Patient> {
+        Timber.d("Dentro a IMPORTPATIENTLIST") // Non lo stampa mai :(
+        var patList: ArrayList<Patient> = ArrayList()
+        for (i in patientsList.indices) {
+            var patientNew = readPatient(i, context)
+            patList.add(patientNew)
+        }
+
+        return patList
     }
 }
 

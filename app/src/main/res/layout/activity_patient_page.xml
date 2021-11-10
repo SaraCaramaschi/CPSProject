@@ -114,59 +114,81 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvSelectPhase"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/llPhases"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="Select the pase:"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LinearLayout0" />
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/LinearLayout0"
+        app:layout_constraintBottom_toTopOf="@id/llEnd">
 
-    <Button
-        android:id="@+id/btnPhase1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="Phase 1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSelectPhase" />
+        <TextView
+            android:id="@+id/tvSelectPhase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="130dp"
+            android:text="Select the pase:"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+          />
 
-    <Button
-        android:id="@+id/btnèhase2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="Phase 2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnPhase1" />
+        <Button
+            android:id="@+id/btnPhase1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:layout_marginLeft="150dp"
+            android:text="Phase 1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498" />
 
-    <Button
-        android:id="@+id/btnPatientRecords"
-        android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/btnPhase2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:layout_marginLeft="150dp"
+            android:text="Phase 2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnPhase1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llEnd"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:orientation="horizontal"
         android:layout_marginBottom="60dp"
-        android:text="Patient's records"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/llPhases"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-    <Button
-        android:id="@+id/btnPenConnectionPatient"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="60dp"
-        android:text="Pen Connection"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <Button
+            android:id="@+id/btnPatientRecords"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="Patient's records" />
 
+        <Button
+            android:id="@+id/btnPenConnectionPatient"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="Pen Connection" />
+
+        <Button
+            android:id="@+id/btnPatListBack"
+            android:layout_width="100dp"
+            android:layout_marginLeft="5dp"
+            android:layout_height="wrap_content"
+            android:text="Back to list"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/btnAddPat" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

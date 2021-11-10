@@ -66,6 +66,11 @@ class AddPatientActivity : AppCompatActivity() {
            //PatientsManager.readPatient()
         }
 
+        btnPatListBack.setOnClickListener {
+            val intent = Intent(this, PatientListActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }
 

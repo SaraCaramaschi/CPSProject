@@ -8,31 +8,29 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_patients_list.*
 
-class PatientListActivity: AppCompatActivity(){
+class PatientListActivity: AppCompatActivity() {
     private lateinit var layoutManager: RecyclerView.LayoutManager
     private lateinit var adapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>
     lateinit var rvPatients: RecyclerView
 
-    override fun onCreate(savedInstanceState: Bundle?){
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patients_list)
 
-        layoutManager=LinearLayoutManager(this)
-        rvPatients=findViewById<RecyclerView>(R.id.rvPatients)
-        rvPatients.layoutManager= layoutManager
+        layoutManager = LinearLayoutManager(this)
+        rvPatients = findViewById<RecyclerView>(R.id.rvPatients)
+        rvPatients.layoutManager = layoutManager
 
-        adapter=PatientAdapter()
-        rvPatients.adapter=adapter
+        adapter = PatientAdapter()
+        rvPatients.adapter = adapter
 
-<<<<<<< Updated upstream
-//        val btnAddPatient = findViewById<Button>(R.id.btnNewPatient)
-       btnNewPatient.setOnClickListener {
-=======
- val btnAddPatient = findViewById<Button>(R.id.btnNewPatient)
-       btnAddPatient.setOnClickListener {
->>>>>>> Stashed changes
-          val intent = Intent(this, AddPatientActivity::class.java)
-           startActivity(intent) }
 
+        val btnAddPatient = findViewById<Button>(R.id.btnNewPatient)
+            btnAddPatient.setOnClickListener {
+
+                val intent = Intent(this, AddPatientActivity::class.java)
+                startActivity(intent)
+            }
+
+        }
     }
-}

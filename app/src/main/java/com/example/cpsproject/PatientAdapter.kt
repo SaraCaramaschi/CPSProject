@@ -1,24 +1,22 @@
 package com.example.cpsproject
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cpsproject.managers.PatientsManager
-import timber.log.Timber
+import com.example.cpsproject.model.Patient
 
+class PatientAdapter(listPatients : ArrayList<Patient>) : RecyclerView.Adapter<PatientAdapter.ViewHolder>(){
 
-class PatientAdapter() : RecyclerView.Adapter<PatientAdapter.ViewHolder>(){
-    private var names= arrayOf<String>()
-    private var phases= arrayOf<String>()
+    // DOMANDONA: noi nella recycler view mostriamo i nomi o mostriamo i codici (per non farci hackerare yass) ???
 
-    // TODO IMPORTARE PATIENTLIST DA JSON
+    // Qui prendo tutti i nomi e le fasi della listaPaziente (che arriva dall'activity principale)
+    private var names = listPatients.map{ it.name }
+    private var phases = listPatients.map{ it.phase }
 
     inner class ViewHolder(itemView: View ): RecyclerView.ViewHolder(itemView){
-        // scopo: prendere oggetto dalla lista creata e mostrarlo al recycler view
         var itemName: TextView
         var itemPhase: TextView
 
@@ -29,38 +27,25 @@ class PatientAdapter() : RecyclerView.Adapter<PatientAdapter.ViewHolder>(){
            itemView.setOnClickListener{
                 val position: Int = adapterPosition
                 Toast.makeText(itemView.context, "you clicked on ${names[position]} ", Toast.LENGTH_LONG).show()
-                // codice che fa passare a profilo del paziente
+                // TODO codice che fa passare a profilo del paziente
             }
-
-            Timber.d("parte importPatientList") // Non lo stampa mai
-            var patList = PatientsManager.importPatientList(itemView.context)
-            for (i in PatientsManager.patientsList.indices) {
-                names[i] = patList[i].name.toString()
-                phases[i] = patList[i].name.toString()
-            }
-
         }
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientAdapter.ViewHolder {
-        //Sarebbe da aggiungere anche le immagini https://www.youtube.com/watch?v=UCddGYMQJCo
         val v = LayoutInflater.from(parent.context).inflate(R.layout.activity_patient,parent,false)
         return ViewHolder(v)
-
     }
 
     override fun onBindViewHolder(holder: PatientAdapter.ViewHolder, position: Int) {
         holder.itemName.text= names[position]
-        holder.itemPhase.text= phases[position]
-
+        holder.itemPhase.text= phases[position].toString()
     }
 
     override fun getItemCount(): Int {
         return names.size
     }
-
-
 }
 
 

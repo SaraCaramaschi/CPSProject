@@ -63,6 +63,7 @@ class AddPatientActivity : AppCompatActivity() {
 
        btnReadPat.setOnClickListener {
             PatientsManager.readPatient(0, applicationContext)
+           //PatientsManager.readPatient()
         }
 
     }

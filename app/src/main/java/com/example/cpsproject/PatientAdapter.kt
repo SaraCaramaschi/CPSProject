@@ -1,20 +1,23 @@
 package com.example.cpsproject
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cpsproject.managers.PatientsManager.patientsList
 import com.example.cpsproject.managers.PatientsManager.readPatient
+import com.example.cpsproject.model.Patient
+import timber.log.Timber
 
 
-class PatientAdapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>(){
+class PatientAdapter(val contesto: Context) : RecyclerView.Adapter<PatientAdapter.ViewHolder>(){
     private var names= arrayOf<String>()
     private var phases= arrayOf<String>()
 
+    // TODO IMPORTARE PATIENTLIST DA JSON
 
     inner class ViewHolder(itemView: View ): RecyclerView.ViewHolder(itemView){
         // scopo: prendere oggetto dalla lista creata e mostrarlo al recycler view
@@ -25,11 +28,19 @@ class PatientAdapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>(){
             itemName = itemView.findViewById(R.id.PatientName)
             itemPhase = itemView.findViewById(R.id.tvPatientPhase)
 
+            Timber.d("parte importPatientList")
+            var patList = importPatientList(contesto)
+            for (i in patientsList.indices) {
+               names[i] = patList[i].name.toString()
+                phases[i] = patList[i].name.toString()
+            }
+
             itemView.setOnClickListener{
                 val position: Int = adapterPosition
                 Toast.makeText(itemView.context, "you clicked on ${names[position]} ", Toast.LENGTH_LONG).show()
                 // codice che fa passare a profilo del paziente
             }
+            //var contesto = itemView.context
         }
     }
 
@@ -37,9 +48,6 @@ class PatientAdapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>(){
         //Sarebbe da aggiungere anche le immagini https://www.youtube.com/watch?v=UCddGYMQJCo
         val v = LayoutInflater.from(parent.context).inflate(R.layout.activity_patient,parent,false)
         return ViewHolder(v)
-
-        // TODO IMPORTARE PATIENTLIST DA JSON
-        importPatientList()
 
     }
 
@@ -53,14 +61,18 @@ class PatientAdapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>(){
         return names.size
     }
 
-    private fun  importPatientList(){
-        /*for (i in patientsList.indices) {
-            var patientNew = readPatient(i, parent.context) //!!parent.context
-            names[i]= patientNew.name + patientNew.surname
-            phases[i]=patientNew.phase.toString()
-        }*/
+    fun getContext(itemView: View): Context? {
+        return itemView.context
+    }
+
+    private fun  importPatientList(context: Context): ArrayList<Patient>{
+        var patList: ArrayList<Patient> = ArrayList()
+        for (i in patientsList.indices) {
+            var patientNew = readPatient(i, context)
+            patList.add(patientNew)
+        }
+        return patList
     }
 }
-
 
 

@@ -1,20 +1,11 @@
 package com.example.cpsproject.managers
 
 import android.content.Context
-import android.os.Bundle
 import com.example.cpsproject.model.Patient
 import com.google.gson.Gson
 import timber.log.Timber
 import java.io.*
-import android.os.Environment
-import android.util.Log
-import android.util.Log.d
-import java.io.File.separator
-import android.widget.Toast
-
-
-
-
+import com.example.cpsproject.PatientAdapter
 
 
 object PatientsManager {
@@ -52,7 +43,7 @@ object PatientsManager {
     }
 
 
-    public fun readPatient(i:Int, context: Context) { // FUNZIONA !!!
+    public fun readPatient(i:Int, context: Context): Patient { // FUNZIONA !!!
         var lastPatient = patientsList[i]
         var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)         // ripresi da savePatient
         var fileName = folder.path.toString() + "/" + lastPatient.taxcode + ".txt"  // ripresi da savePatient
@@ -78,6 +69,8 @@ object PatientsManager {
 
         //Display the all Json object in text View
         Timber.d("Stringbuilder: %s", stringBuilder.toString())
+
+        return patient
     }
 }
 

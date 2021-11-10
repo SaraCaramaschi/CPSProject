@@ -7,13 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cpsproject.managers.PatientsManager.patientsList
-import com.example.cpsproject.managers.PatientsManager.readPatient
-import com.example.cpsproject.model.Patient
+import com.example.cpsproject.managers.PatientsManager
 import timber.log.Timber
 
 
-class PatientAdapter(val contesto: Context) : RecyclerView.Adapter<PatientAdapter.ViewHolder>(){
+class PatientAdapter() : RecyclerView.Adapter<PatientAdapter.ViewHolder>(){
     private var names= arrayOf<String>()
     private var phases= arrayOf<String>()
 
@@ -28,20 +26,21 @@ class PatientAdapter(val contesto: Context) : RecyclerView.Adapter<PatientAdapte
             itemName = itemView.findViewById(R.id.PatientName)
             itemPhase = itemView.findViewById(R.id.tvPatientPhase)
 
-            Timber.d("parte importPatientList")
-            var patList = importPatientList(contesto)
-            for (i in patientsList.indices) {
-               names[i] = patList[i].name.toString()
-                phases[i] = patList[i].name.toString()
-            }
-
-            itemView.setOnClickListener{
+           itemView.setOnClickListener{
                 val position: Int = adapterPosition
                 Toast.makeText(itemView.context, "you clicked on ${names[position]} ", Toast.LENGTH_LONG).show()
                 // codice che fa passare a profilo del paziente
             }
-            //var contesto = itemView.context
+
+            Timber.d("parte importPatientList") // Non lo stampa mai
+            var patList = PatientsManager.importPatientList(itemView.context)
+            for (i in PatientsManager.patientsList.indices) {
+                names[i] = patList[i].name.toString()
+                phases[i] = patList[i].name.toString()
+            }
+
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientAdapter.ViewHolder {
@@ -61,18 +60,7 @@ class PatientAdapter(val contesto: Context) : RecyclerView.Adapter<PatientAdapte
         return names.size
     }
 
-    fun getContext(itemView: View): Context? {
-        return itemView.context
-    }
 
-    private fun  importPatientList(context: Context): ArrayList<Patient>{
-        var patList: ArrayList<Patient> = ArrayList()
-        for (i in patientsList.indices) {
-            var patientNew = readPatient(i, context)
-            patList.add(patientNew)
-        }
-        return patList
-    }
 }
 
 

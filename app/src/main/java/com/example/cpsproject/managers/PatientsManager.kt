@@ -1,5 +1,6 @@
 package com.example.cpsproject.managers
 
+import android.annotation.SuppressLint
 import android.content.Context
 import com.example.cpsproject.model.Patient
 import com.google.gson.Gson
@@ -8,9 +9,9 @@ import java.io.*
 import com.example.cpsproject.PatientAdapter
 
 
+@SuppressLint("StaticFieldLeak")
 object PatientsManager {
     public var patientsList: ArrayList<Patient> = ArrayList()
-
 
     public fun addPatient(patient: Patient, context: Context) {
         patientsList.add(patient)
@@ -71,6 +72,17 @@ object PatientsManager {
         Timber.d("Stringbuilder: %s", stringBuilder.toString())
 
         return patient
+    }
+
+    fun  importPatientList(context: Context): ArrayList<Patient> {
+        Timber.d("Dentro a IMPORTPATIENTLIST") // Non lo stampa mai :(
+        var patList: ArrayList<Patient> = ArrayList()
+        for (i in patientsList.indices) {
+            var patientNew = readPatient(i, context)
+            patList.add(patientNew)
+        }
+
+        return patList
     }
 }
 

@@ -20,7 +20,7 @@ class PatientListActivity: AppCompatActivity() {
         rvPatients = findViewById<RecyclerView>(R.id.rvPatients)
         rvPatients.layoutManager = layoutManager
 
-        adapter = PatientAdapter(this)
+        adapter = PatientAdapter()
         rvPatients.adapter = adapter
 
         val btnAddPatient = findViewById<Button>(R.id.btnNewPatient)

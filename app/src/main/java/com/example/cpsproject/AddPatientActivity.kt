@@ -48,27 +48,22 @@ class AddPatientActivity : AppCompatActivity() {
 //                return@setOnClickListener
 //            }
 
-            // Add patient
-            PatientsManager.addPatient(
-                Patient(
-                    etName.text.toString(), etSurname.text.toString(),
-                    etNotes.text.toString(), etTax.text.toString(), etBirthDate.text.toString(),
-                ), applicationContext
-            )
+            // Variabile patient
+            var patient = Patient( etName.text.toString(), etSurname.text.toString(),
+            etNotes.text.toString(), etTax.text.toString(), etBirthDate.text.toString() ) // Local variable
 
+            // Add patient to patientlist
+            PatientsManager.addPatient(patient, applicationContext)
 
-            /*Timber.d(PatientsManager.patientsList.elementAt(0).name)
-    Timber.d(PatientsManager.patientsList.elementAt(0).surname)
-    Timber.d(PatientsManager.patientsList.elementAt(0).notes)
-    Timber.d(PatientsManager.patientsList.elementAt(0).taxcode)
-     */
-            // questo secondo me non va qui ma va: quando il bottone dentro alla recycler view viene cliccato
+            // Go to patient page
             val intent = Intent(this, PatientPageActivity::class.java)
+            intent.putExtra("keyPatient", patient)
             startActivity(intent)
         }
 
        btnReadPat.setOnClickListener {
             PatientsManager.readPatient(0, applicationContext)
+           //PatientsManager.readPatient()
         }
 
     }

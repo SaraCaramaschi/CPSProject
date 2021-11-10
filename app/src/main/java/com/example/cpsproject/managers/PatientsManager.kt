@@ -7,6 +7,7 @@ import com.google.gson.Gson
 import timber.log.Timber
 import java.io.*
 import android.os.Environment
+import android.util.Log
 import android.util.Log.d
 import java.io.File.separator
 import android.widget.Toast
@@ -51,52 +52,32 @@ object PatientsManager {
     }
 
 
-
-//    public fun readPatient(fileName : String) : String {
-//        // la funzione readPatient funziona! quindi il file viene creato e salvato da qualche parte veramente
-//        // il nome del file è per esempio taxcode, ma al suo interno ha tutti i dati del json. perfetto
-//        return File(fileName).readText(Charsets.UTF_8)
-//    }
-
-
-    public fun readPatient(i: Int, context: Context): Patient {
+    public fun readPatient(i:Int, context: Context) { // FUNZIONA !!!
         var lastPatient = patientsList[i]
-        var taxcode = lastPatient.taxcode
-
-        // QUESTE DUE RIGHE PURE MI DANNO ERRORE, SARA
-        // var file = File(taxcode)
-        // var jsonText=file.readText(Charsets.UTF_8)
-
-        // QUINDI HO PROVATO A RIPORTARE FOLDER E FILENAME COME SOPRA, mi da errore comunque
         var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)         // ripresi da savePatient
         var fileName = folder.path.toString() + "/" + lastPatient.taxcode + ".txt"  // ripresi da savePatient
-        var file = File(fileName)
-        var jsonText=file.absolutePath.toString() //questo è: /data/user/0/com.example.cpsproject/app_PatientsFolder/fs.txt
-        Timber.d("jsonText: %s", jsonText) // OK
-        val gson= Gson()
 
-        // ERRORE QUI:
-        var patientNew= gson.fromJson(jsonText, Patient::class.java)
-        Timber.d("questo è il nome dell'ultimo paziente %s", patientNew.name)
-        Timber.d("questo è il cognome dell'ultimo paziente %s", patientNew.surname)
-        return patientNew
+        //Creating a new Gson object to read data
+        var gson = Gson()
+        //Read the PostJSON.json file
+        val bufferedReader: BufferedReader = File(fileName).bufferedReader()
+        // Read the text from buffferReader and store in String variable
+        val inputString = bufferedReader.use { it.readText() }
 
+        //Convert the Json File to Gson Object
+        var patient = gson.fromJson(inputString, Patient::class.java)
 
-        //CHIARA
-//    public fun readLastPatient() {
-//        var lastPatient = patientsList.last()
-//        var taxcode = lastPatient.taxcode
-//        var file = File(taxcode)
-//        var jsonText=file.readText(Charsets.UTF_8)
-//        val gson= Gson()
-//        var patientNew= gson.fromJson(jsonText, Patient::class.java)
-//        Timber.d("questo è il nome dell'ultimo paziente %s", patientNew.name)
-//        Timber.d("questo è il cognome dell'ultimo paziente %s", patientNew.surname)
+        //Initialize the String Builder
+        var stringBuilder = StringBuilder("Patient Details\n---------------------")
 
-        //ottengo json da file OK
-        //encode json in classe Patient CODICE NON DA ERRORI MA NON VA APP
-        //stampa tutti i campi
-        //chiamo in un modo la classe poi faccio Timber.d( nomedellaclasse.nome + ...)
+        stringBuilder?.append("\nName: " + patient.name.toString())
+        stringBuilder?.append(("\nCognome: " + patient.surname.toString()))
+        stringBuilder?.append(("\nCodice fiscale: " + patient.taxcode.toString()))
+        stringBuilder?.append(("\nNote: " + patient.notes.toString()))
+        stringBuilder?.append(("\nCompleanno: " + patient.birthdate.toString()))
+
+        //Display the all Json object in text View
+        Timber.d("Stringbuilder: %s", stringBuilder.toString())
     }
 }
 

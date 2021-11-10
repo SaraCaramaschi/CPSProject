@@ -34,20 +34,13 @@ class PatientAdapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>(){
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientAdapter.ViewHolder {
-//        var names= arrayOf<String>()
-//        var phases= arrayOf<String>()
         //Sarebbe da aggiungere anche le immagini https://www.youtube.com/watch?v=UCddGYMQJCo
-        val v= LayoutInflater.from(parent.context).inflate(R.layout.activity_patient,parent,false)
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.activity_patient,parent,false)
         return ViewHolder(v)
-        // TODO IMPORTARE PATIENTLIST DA JSON
 
-        for (i in patientsList.indices) {
-            var patientNew= readPatient(i,parent.context) //!!parent.context
-            names[i]= patientNew.name + patientNew.surname
-            phases[i]=patientNew.phase.toString()
-        }
-//        val v= LayoutInflater.from(parent.context).inflate(R.layout.activity_patient,parent,false)
-//        return ViewHolder(v)
+        // TODO IMPORTARE PATIENTLIST DA JSON
+        importPatientList()
+
     }
 
     override fun onBindViewHolder(holder: PatientAdapter.ViewHolder, position: Int) {
@@ -59,25 +52,14 @@ class PatientAdapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>(){
     override fun getItemCount(): Int {
         return names.size
     }
-//    inner class ViewHolder (itemView: View): RecyclerView.ViewHolder(itemView) {
-//        var itemImage: ImageView
-//        var itemName: TextView
-//        var itemPhase: TextView
-//
-//        init {
-//            itemImage = itemView.findViewById(R.id.imageView)
-//            itemName = itemView.findViewById(R.id.PatientName)
-//            itemPhase = itemView.findViewById(R.id.tvPatientPhase)
-//        }
-//
-//    }
-    //TODO NON CAPISCO PERCHE' NON TROVI ARRAY NAMES E PHASES
-//    override fun onCreate(savedInstanceState: Bundle?){
-//     super.onCreate(savedInstanceState)
-//     setContentView(R.layout.activity_patients_list)
-//     setSupportActionBar(toolbar())
-//        recyclerView
 
+    private fun  importPatientList(){
+        /*for (i in patientsList.indices) {
+            var patientNew = readPatient(i, parent.context) //!!parent.context
+            names[i]= patientNew.name + patientNew.surname
+            phases[i]=patientNew.phase.toString()
+        }*/
+    }
 }
 
 

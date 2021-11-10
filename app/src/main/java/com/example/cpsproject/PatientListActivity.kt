@@ -24,8 +24,13 @@ class PatientListActivity: AppCompatActivity(){
         adapter=PatientAdapter()
         rvPatients.adapter=adapter
 
+<<<<<<< Updated upstream
 //        val btnAddPatient = findViewById<Button>(R.id.btnNewPatient)
        btnNewPatient.setOnClickListener {
+=======
+ val btnAddPatient = findViewById<Button>(R.id.btnNewPatient)
+       btnAddPatient.setOnClickListener {
+>>>>>>> Stashed changes
           val intent = Intent(this, AddPatientActivity::class.java)
            startActivity(intent) }
 

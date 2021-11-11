@@ -56,7 +56,7 @@ class PatientPageActivity : AppCompatActivity() {
         tvCognome.setText(patient.surname).toString()
         tvNote.setText(patient.notes).toString()
         tvComple.setText(patient.birthdate).toString()
-        //tvFase.setText(patient.phase.toString())
+        //tvPhase.setText(patient.phase.toString())
     }
 }
 

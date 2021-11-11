@@ -48,15 +48,16 @@ class PatientPageActivity : AppCompatActivity() {
         val tvCognome = findViewById<TextView>(R.id.tvSurname)
         val tvNote = findViewById<TextView>(R.id.tvNotes)
         val tvComple = findViewById<TextView>(R.id.tvBirthDate)
-
+        val tvGenere = findViewById<TextView>(R.id.tvGender)
         // inserire anche phase (default a 1) ERRORE CON LA FASE !!!
         //val tvFase = findViewById<TextView>(R.id.tvTax)
 
-        tvNome.setText(patient.name).toString()
-        tvCognome.setText(patient.surname).toString()
-        tvNote.setText(patient.notes).toString()
-        tvComple.setText(patient.birthdate).toString()
-        //tvPhase.setText(patient.phase.toString())
+        tvNome.setText("Name:"+ " "+(patient.name).toString())
+        tvCognome.setText("Surname:"+ " "+(patient.surname).toString())
+        tvNote.setText("Note:"+ " "+(patient.notes).toString())
+        tvComple.setText("Birth Date:"+ " "+(patient.birthdate).toString())
+        tvPhase.setText("Phase:"+ " "+patient.phase.toString())
+        tvGenere.setText("Gender:"+ " "+patient.gender.toString())
     }
 }
 

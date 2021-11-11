@@ -3,6 +3,7 @@ package com.example.cpsproject
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.model.Patient
@@ -19,6 +20,7 @@ class AddPatientActivity : AppCompatActivity() {
 
         val name = intent.getStringExtra("name")
         val phase = intent.getStringExtra("phase")
+
         //aggiungere lo stesso per la foto se la vogliamo
 
         // TODO spinner
@@ -28,7 +30,8 @@ class AddPatientActivity : AppCompatActivity() {
 
         // Activity related to the button add patient, notifica OK !!!
         val btnAddPat = findViewById<Button>(R.id.btnAddPat)
-        btnAddPat.setOnClickListener {
+        val gender = findViewById<Spinner>(R.id.spinnerGender)
+            btnAddPat.setOnClickListener {
             // TODO togliere commenti vincoli
 //            if (etName.text.toString().trim().isEmpty()) {
 //                //Toast.makeText(this, "Name required", Toast.LENGTH_SHORT).show();
@@ -50,7 +53,8 @@ class AddPatientActivity : AppCompatActivity() {
 
             // Variabile patient
             var patient = Patient( etName.text.toString(), etSurname.text.toString(),
-            etNotes.text.toString(), etTax.text.toString(), etBirthDate.text.toString() ) // Local variable
+            etNotes.text.toString(), etTax.text.toString(), etBirthDate.text.toString(),
+                gender.getSelectedItem().toString().toInt()) // Local variable
 
             // Add patient to patientlist
             PatientsManager.addPatient(patient, applicationContext)

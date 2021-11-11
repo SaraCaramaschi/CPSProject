@@ -15,6 +15,7 @@ class PatientAdapter(listPatients : ArrayList<Patient>) : RecyclerView.Adapter<P
     // Qui prendo tutti i nomi e le fasi della listaPaziente (che arriva dall'activity principale)
     private var names = listPatients.map{ it.name }
     private var phases = listPatients.map{ it.phase }
+    private var surname = listPatients.map{ it.surname }
 
     inner class ViewHolder(itemView: View ): RecyclerView.ViewHolder(itemView){
         var itemName: TextView
@@ -39,8 +40,8 @@ class PatientAdapter(listPatients : ArrayList<Patient>) : RecyclerView.Adapter<P
     }
 
     override fun onBindViewHolder(holder: PatientAdapter.ViewHolder, position: Int) {
-        holder.itemName.text= names[position]
-        holder.itemPhase.text= phases[position].toString()
+        holder.itemName.text= names[position]+ " "+ surname[position]
+        holder.itemPhase.text= "Phase:" + phases[position].toString()
     }
 
     override fun getItemCount(): Int {

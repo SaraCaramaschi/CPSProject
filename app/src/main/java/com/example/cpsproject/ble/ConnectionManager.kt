@@ -30,7 +30,11 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import com.example.cpsproject.ble.RealTimeActivity
+import com.example.cpsproject.managers.PatientsManager
+import com.example.cpsproject.model.Patient
+import com.google.gson.Gson
 import timber.log.Timber
+import java.io.File
 import java.lang.ref.WeakReference
 import java.util.UUID
 import java.util.concurrent.ConcurrentHashMap
@@ -73,6 +77,10 @@ object ConnectionManager {
             data.copyOfRange(6, 8).reversedArray().toHexString().toLong(radix = 16).toDouble()
         val status = data[8].toInt()
         Timber.d("la batteria è " + soc)*/
+
+
+        // saveData(battery,  )
+
     }
 
     private fun readData(data: ByteArray) {
@@ -112,6 +120,29 @@ object ConnectionManager {
         val intent = Intent(this@ConnectionManager,RealTimeActivity::class.java)
         intent.putExtra(name: "acc_x", acc_x)
         }*/
+
+    /*public fun saveData(value: Double) {
+        val gson= Gson()
+        val jsonValue= gson.toJson(value)
+
+        Timber.d("json %s", jsonValue)
+
+        //CREATE NEW DIRECOTY IN FILESDIR DIRECOTY (https://developer.android.com/training/data-storage/app-specific#kotlin)
+        // anche se volevo metterlo da un'altra parte
+        var folder = context.getDir("DataFolder", Context.MODE_PRIVATE)
+
+        //var fileName = context.filesDir.path.toString() + "/" + patient.taxcode + ".txt" (Chiara)
+        var fileName = folder.path.toString() + "/" + patient.taxcode + ".txt"
+        var file = File(fileName) // cartella uguale ma con una roba in più
+
+        val createdFile = file.createNewFile()
+        Timber.d("Il filename e': %s",fileName)
+        Timber.d("the file is created %s", createdFile)
+        Timber.d("path %s", file.absolutePath)
+
+        file.writeText(jsonPatient)
+        Timber.d("questo è il file lettooo %s", PatientsManager.readPatient(fileName))
+    }*/
 
     fun servicesOnDevice(device: BluetoothDevice): List<BluetoothGattService>? =
         deviceGattMap[device]?.services

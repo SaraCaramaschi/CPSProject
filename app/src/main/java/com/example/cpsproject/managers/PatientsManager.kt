@@ -99,9 +99,14 @@ object PatientsManager {
         File(context.getDir("PatientsFolder", Context.MODE_PRIVATE).path).walk().forEach {
             Timber.d(it.path)
             if (it.isFile) {
-                patientsList.add(readPatientJson(it, context))
+                val pat = readPatientJson(it, context)
+                if(!patientsList.contains(pat)) {
+                    patientsList.add(pat)
+                }
+
             }
         }
+
 //        context.getDir("PatientsFolder", Context.MODE_PRIVATE).walk().forEach {
 //            Timber.d(it.path)
 //            //patientsList.add(readPatientJson(it.absoluteFile, context))

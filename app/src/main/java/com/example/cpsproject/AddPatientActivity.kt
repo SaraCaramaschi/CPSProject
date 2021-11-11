@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cpsproject.managers.PatientsManager
+import com.example.cpsproject.model.Gender
 import com.example.cpsproject.model.Patient
 import kotlinx.android.synthetic.main.activity_add_patient.*
 
@@ -31,7 +32,7 @@ class AddPatientActivity : AppCompatActivity() {
         // Activity related to the button add patient, notifica OK !!!
         val btnAddPat = findViewById<Button>(R.id.btnAddPat)
         val gender = findViewById<Spinner>(R.id.spinnerGender)
-            btnAddPat.setOnClickListener {
+        btnAddPat.setOnClickListener {
             // TODO togliere commenti vincoli
 //            if (etName.text.toString().trim().isEmpty()) {
 //                //Toast.makeText(this, "Name required", Toast.LENGTH_SHORT).show();
@@ -51,10 +52,23 @@ class AddPatientActivity : AppCompatActivity() {
 //                return@setOnClickListener
 //            }
 
+            val genderEnum: Gender = when (gender.selectedItem) {
+                "Male" -> {
+                    Gender.M
+                }
+                "Female" -> {
+                    Gender.F
+                }
+                else -> {
+                    Gender.O
+                }
+            }
             // Variabile patient
-            var patient = Patient( etName.text.toString(), etSurname.text.toString(),
-            etNotes.text.toString(), etTax.text.toString(), etBirthDate.text.toString(),
-                gender.getSelectedItem().toString().toInt()) // Local variable
+            var patient = Patient(
+                etName.text.toString(), etSurname.text.toString(),
+                etNotes.text.toString(), etTax.text.toString(), etBirthDate.text.toString(),
+                genderEnum
+            ) // Local variable
 
             // Add patient to patientlist
             PatientsManager.addPatient(patient, applicationContext)
@@ -65,9 +79,9 @@ class AddPatientActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-       btnReadPat.setOnClickListener {
+        btnReadPat.setOnClickListener {
             PatientsManager.readPatient(0, applicationContext)
-           //PatientsManager.readPatient()
+            //PatientsManager.readPatient()
         }
 
         btnPatListBack.setOnClickListener {

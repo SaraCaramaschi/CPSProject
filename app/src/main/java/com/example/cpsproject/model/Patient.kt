@@ -14,7 +14,7 @@ data class Patient(
 
     // TODO variabili da sistemare:
     // var dominantHand: Hand,
-    var gender: Gender,
+    //var gender: Gender,
 
     var phase: Int = 1) : Parcelable {
     constructor(parcel: Parcel) : this(
@@ -22,8 +22,7 @@ data class Patient(
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
-        parcel.readString(),
-        parcel.readValu
+        parcel.readString()
 
     ) {
 }
@@ -33,7 +32,7 @@ data class Patient(
         parcel.writeString(notes)
         parcel.writeString(taxcode)
         parcel.writeString(birthdate)
-        parcel.writeString(this.gender.toString())
+        //parcel.writeString(this.gender.toString())
     }
 
     override fun describeContents(): Int {
@@ -48,8 +47,8 @@ data class Patient(
         override fun newArray(size: Int): Array<Patient?> {
             return arrayOfNulls(size)
         }
-        override fun readEnum(size: Int): Gender{
-            return Gender.valueOf( )        }
+//        override fun readEnum(size: Int): Gender{
+//            return Gender.valueOf( )        }
     }
 }
 

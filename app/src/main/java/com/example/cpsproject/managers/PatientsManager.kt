@@ -74,15 +74,33 @@ object PatientsManager {
         return patient
     }
 
+    fun readPatientJson(file : File, context: Context) : Patient {
+        //Creating a new Gson object to read data
+        var gson = Gson()
+        //Read the PostJSON.json file
+        val bufferedReader: BufferedReader = file.bufferedReader()
+        // Read the text from buffferReader and store in String variable
+        val inputString = bufferedReader.use { it.readText() }
+
+        //Convert the Json File to Gson Object
+        var patient = gson.fromJson(inputString, Patient::class.java)
+        return patient
+    }
+
     fun  importPatientList(context: Context): ArrayList<Patient> {
         Timber.d("Dentro a IMPORTPATIENTLIST") // Non lo stampa mai :(
-        var patList: ArrayList<Patient> = ArrayList()
-        for (i in patientsList.indices) {
-            var patientNew = readPatient(i, context)
-            patList.add(patientNew)
-        }
 
-        return patList
+        context.getDir("PatientsFolder", Context.MODE_PRIVATE).walk().forEach {
+            patientsList.add(readPatientJson(it, context))
+        }
+//        var patList: ArrayList<Patient> = ArrayList()
+//        Timber.d(patientsList.indices.toString())
+//
+//        for (i in patientsList.indices) { //TODO entrare nel folder e passare file
+//            var patientNew = readPatient(i, context)
+//            patList.add(patientNew)
+//        }
+        return patientsList
     }
 }
 

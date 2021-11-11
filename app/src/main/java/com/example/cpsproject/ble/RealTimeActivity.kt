@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.TextView
 import com.example.cpsproject.R
 import com.example.cpsproject.Schermata1
+import com.example.cpsproject.managers.PenManager
 import kotlinx.android.synthetic.main.activity_real_time.*
 import org.jetbrains.anko.find
 
@@ -20,9 +21,7 @@ class RealTimeActivity : AppCompatActivity() {
         //bottone per iniziare a riempire la textview con i dati (=iniziare il real time)
         val startrealtime = findViewById<Button>(R.id.Startrealtime)
         Startrealtime.setOnClickListener {
-        /*val intent = getIntent()
-            val acc_x = intent.getStringExtra("acc_x")
-            textView6.text= "+acc_x+"*/
+        tvBattery.text=PenManager.battery.toString()
         }
 
     }

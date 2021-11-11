@@ -34,6 +34,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SimpleItemAnimator
 import com.example.cpsproject.R
+import com.example.cpsproject.managers.PenManager
 import com.punchthrough.blestarterappandroid.ble.ConnectionEventListener
 import com.punchthrough.blestarterappandroid.ble.ConnectionManager
 import com.punchthrough.blestarterappandroid.ble.isIndicatable
@@ -47,10 +48,12 @@ import kotlinx.android.synthetic.main.activity_ble_operations.log_scroll_view
 import kotlinx.android.synthetic.main.activity_ble_operations.log_text_view
 import kotlinx.android.synthetic.main.activity_ble_operations.mtu_field
 import kotlinx.android.synthetic.main.activity_ble_operations.request_mtu_button
+import kotlinx.android.synthetic.main.activity_ble_operationsprova.*
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.noButton
 import org.jetbrains.anko.selector
 import org.jetbrains.anko.yesButton
+import timber.log.Timber
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -99,10 +102,20 @@ class BleOperationsActivityProva : AppCompatActivity() {
             title = "Real Time"
         }
 
+        Timber.d(PenManager.battery.toString() + " batteriaaaaa")
+
+        buttonBattery.setOnClickListener { tvBatteryProva.text= PenManager.battery.toString() }
+
+
         //setupRecyclerView()
         // TODO altro strumento di visualizzazione: VIEW MODEL? PENSO QUELLO CHE CI SERVE SIA TEXTVIEW
         setupTextView()
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        tvBatteryProva.text = PenManager.battery.toString()
     }
 
     override fun onDestroy() {
@@ -150,16 +163,17 @@ class BleOperationsActivityProva : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun log(message: String) {
-        val formattedMessage = String.format("%s: %s", dateFormatter.format(Date()), message)
-        runOnUiThread {
-            val currentLogText = if (log_text_view.text.isEmpty()) {
-                "Beginning of log."
-            } else {
-                log_text_view.text
-            }
-            log_text_view.text = "$currentLogText\n$formattedMessage"
-            log_scroll_view.post { log_scroll_view.fullScroll(View.FOCUS_DOWN) }
-        }
+        Timber.d(message)
+//        val formattedMessage = String.format("%s: %s", dateFormatter.format(Date()), message)
+//        runOnUiThread {
+//            val currentLogText = if (log_text_view.text.isEmpty()) {
+//                "Beginning of log."
+//            } else {
+//                log_text_view.text
+//            }
+//            log_text_view.text = "$currentLogText\n$formattedMessage"
+//            log_scroll_view.post { log_scroll_view.fullScroll(View.FOCUS_DOWN) }
+//        }
     }
 
     @SuppressLint("InflateParams")

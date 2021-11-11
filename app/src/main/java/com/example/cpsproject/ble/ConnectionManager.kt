@@ -31,8 +31,8 @@ import android.os.Looper
 import android.view.View
 import com.example.cpsproject.ble.RealTimeActivity
 import com.example.cpsproject.managers.PatientsManager
+import com.example.cpsproject.managers.PenManager
 import com.example.cpsproject.model.Patient
-import com.google.gson.Gson
 import timber.log.Timber
 import java.io.File
 import java.lang.ref.WeakReference
@@ -69,6 +69,7 @@ object ConnectionManager {
         //battery = battery.substring(2)
         //Timber.d("Sottostringa: " + battery)
         Timber.d("Valore batteria: %s",  battery)
+        PenManager.battery= battery
 
         /*val soc = data.copyOfRange(2, 4).reversedArray().toHexString().toLong(radix = 16) / 10 //4 escluso
         val volts = data.copyOfRange(4, 6).reversedArray().toHexString().toLong(radix = 16)
@@ -485,7 +486,7 @@ object ConnectionManager {
                                 Timber.e("Questi sono i dati della penna")
                                 //onCharacteristicRead(gatt, it, status)
                                 enableNotifications( gatt.device,it)
-                                readCharacteristic(it)
+                                 //readCharacteristic(gatt.device, it)
                             }
                         } //when freccette grafe
                     }
@@ -593,7 +594,7 @@ object ConnectionManager {
                 listeners.forEach { it.get()?.onCharacteristicChanged?.invoke(gatt.device, this) }
                 when(characteristic.uuid){
                     datauuid ->{
-
+                        readData(characteristic.value)
                     }
                     batteryuuid->{
                         readBattery(characteristic.value)

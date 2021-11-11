@@ -90,9 +90,22 @@ object PatientsManager {
     fun  importPatientList(context: Context): ArrayList<Patient> {
         Timber.d("Dentro a IMPORTPATIENTLIST") // Non lo stampa mai :(
 
-        context.getDir("PatientsFolder", Context.MODE_PRIVATE).walk().forEach {
-            patientsList.add(readPatientJson(it, context))
+        var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)
+        if (folder.listFiles().isEmpty()) {
+            Timber.d("EMPTY FOLDER")
+            return ArrayList()
         }
+
+        File(context.getDir("PatientsFolder", Context.MODE_PRIVATE).path).walk().forEach {
+            Timber.d(it.path)
+            if (it.isFile) {
+                patientsList.add(readPatientJson(it, context))
+            }
+        }
+//        context.getDir("PatientsFolder", Context.MODE_PRIVATE).walk().forEach {
+//            Timber.d(it.path)
+//            //patientsList.add(readPatientJson(it.absoluteFile, context))
+//        }
 //        var patList: ArrayList<Patient> = ArrayList()
 //        Timber.d(patientsList.indices.toString())
 //

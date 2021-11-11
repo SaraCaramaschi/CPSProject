@@ -57,7 +57,7 @@ class PatientPageActivity : AppCompatActivity() {
         tvNote.setText("Note:"+ " "+(patient.notes).toString())
         tvComple.setText("Birth Date:"+ " "+(patient.birthdate).toString())
         tvPhase.setText("Phase:"+ " "+patient.phase.toString())
-        tvGenere.setText("Gender:"+ " "+patient.gender.toString())
+        //tvGenere.setText("Gender:"+ " "+patient.gender.toString())
     }
 }
 

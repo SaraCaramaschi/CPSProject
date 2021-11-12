@@ -59,16 +59,12 @@ object ConnectionManager {
     private val consoleuuid = UUID.fromString("00000001-000E-11E1-AC36-0002A5D5C51B")
     private val format = "FFormat"
 
-    //TODO prima crea tutte le char
     private var batteryChar: BluetoothGattCharacteristic? = null
-
+    private var dataChar: BluetoothGattCharacteristic? = null
+    private var consoleChar: BluetoothGattCharacteristic? = null
     private var currDevice: BluetoothDevice? = null
 
     // attenzione perchè quando riceviamo i dati controlliamo il service uuid!!!
-
-    // TODO domanda a chiara: collegato a TODO (101,12)
-    // A noi servono questi dati, possiamo fare le funzioni pubbliche?
-    //public fun readBattery(data: ByteArray) {
 
     private fun readBattery(data: ByteArray) {
         var battery = data.copyOfRange(2, 4).reversedArray().toHexString()
@@ -94,9 +90,18 @@ object ConnectionManager {
     }
 
     fun format() {
-        //TODO cambia in console
-        enableNotifications(currDevice!!, batteryChar!!)
-        writeCharacteristic(currDevice!!, batteryChar!!, format.toByteArray())
+        enableNotifications(currDevice!!, consoleChar!!)
+        writeCharacteristic(currDevice!!, consoleChar!!, format.toByteArray())
+    }
+    fun readConsole (data:ByteArray) {
+        val consoleString = data.toHexString()
+        if (consoleString.contains("start formatting")) {
+            Timber.d ("format iniziato")
+        } else if (consoleString.contains("formatting done")) {
+            //currGatt.setCharacteristicNotification(consoleChar, false)
+            disableNotifications(currDevice!!, consoleChar!!)
+            Timber.d("format finito")
+        }
     }
 
     private fun readData(data: ByteArray) {
@@ -647,6 +652,9 @@ object ConnectionManager {
                     }
                     batteryuuid -> {
                         readBattery(characteristic.value)
+                    }
+                    consoleuuid -> {
+                        readConsole(format.toByteArray())
                     }
                 }
             }

@@ -106,6 +106,7 @@ class BleOperationsActivityProva : AppCompatActivity() {
 
         buttonBattery.setOnClickListener { tvBatteryProva.text= PenManager.battery.toString() }
 
+        btnFormat.setOnClickListener {ConnectionManager.format()}
 
         //setupRecyclerView()
         // TODO altro strumento di visualizzazione: VIEW MODEL? PENSO QUELLO CHE CI SERVE SIA TEXTVIEW

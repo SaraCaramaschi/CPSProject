@@ -57,7 +57,7 @@ object ConnectionManager {
     private val batteryuuid = UUID.fromString("00020000-0001-11E1-AC36-0002A5D5C51B")
     private val datauuid = UUID.fromString("00E00000-0001-11E1-AC36-0002A5D5C51B")
     private val consoleuuid = UUID.fromString("00000001-000E-11E1-AC36-0002A5D5C51B")
-    //TODO da sistemare come gestire uuid debug / console ERRORE
+    //TODO da sistemare come gestire uuid debug / console - CONTROLLA
     private val debuguuid = UUID.fromString( "00000000-000E-11E1-9AB4-0002A5D5C51B")
 
     private val format = "FFormat"
@@ -66,19 +66,18 @@ object ConnectionManager {
     private var dataChar: BluetoothGattCharacteristic? = null
     private var consoleChar: BluetoothGattCharacteristic? = null
     private var currDevice: BluetoothDevice? = null
+    private var connection: BluetoothGatt ?= null
 
     private fun readBattery(data: ByteArray) {
         var battery = data.copyOfRange(2, 4).reversedArray().toHexString()
             .replace(" ", "").substring(2).toInt(radix = 16).toDouble()
         battery = battery.div(10)
-
-        Timber.d("Valore batteria: %s", battery)
         PenManager.battery = battery
 
+        Timber.d("Valore batteria: %s", battery)
     }
 
     private fun readData(data: ByteArray) {
-        //TODO creare data class che contenga tutte queste cose qui carine in modo ordinato
 
         val acc_x =
             data.copyOfRange(2, 4).reversedArray().toHexString()
@@ -87,10 +86,11 @@ object ConnectionManager {
 
         Timber.d("Prova con acc_x per vedere se è tutto ok: %s", acc_x)
 
-        /*val acc_y =
+        val acc_y =
             data.copyOfRange(4, 6).reversedArray().toHexString()
                 .replace(" ","").substring(4).toInt(radix = 16).toShort()
                 .toDouble() / 100
+
         val acc_z =
             data.copyOfRange(6, 8).reversedArray().toHexString()
                 .replace(" ","").substring(6).toInt(radix = 16).toShort()
@@ -106,7 +106,16 @@ object ConnectionManager {
         val gyr_z =
             data.copyOfRange(12, 14).reversedArray().toHexString()
                 .replace(" ","").substring(12).toInt(radix = 16).toShort()
-                .toDouble() / 100*/
+                .toDouble() / 100
+
+        PenManager.penData!!.acc_x = acc_x
+        PenManager.penData!!.acc_y = acc_y
+        PenManager.penData!!.acc_z = acc_z
+        PenManager.penData!!.gyr_x = gyr_x
+        PenManager.penData!!.gyr_y = gyr_y
+        PenManager.penData!!.gyr_z = gyr_z
+        // PenManager.penData!!.force = ??
+
 
     }
 
@@ -121,7 +130,7 @@ object ConnectionManager {
     }
 
     fun format() {
-        enableNotifications(currDevice!!, consoleChar!!)
+        enableNotifications(currDevice!!, consoleChar!!) // queste sono le funzioni del tizio
         writeCharacteristic(currDevice!!, consoleChar!!, format.toByteArray())
     }
 
@@ -453,34 +462,36 @@ object ConnectionManager {
                         it.get()?.onConnectionSetupComplete?.invoke(this)
                     }
 
+                    connection = gatt
                     currDevice = gatt.device
+                    PenManager.penName = gatt.device.name
 
                     gatt.getService(serviceuuid).characteristics.forEach {
                         when (it.uuid) {
                             batteryuuid -> {
                                 Timber.d("Questa e' la batteria della penna")
 
-                                //TODO poi ve lo salvate qui
                                 batteryChar = it
-
                                 enableNotifications(gatt.device, it)  // funzioni create dal tizio
                                 readCharacteristic(gatt.device, it)
                             } //se è batteria fai certe cose: ottieni il dato della batteria
                             datauuid -> {
                                 Timber.d("Questi sono i dati della penna")
-                                //onCharacteristicRead(gatt, it, status)
+
+                                dataChar = it
                                 enableNotifications(gatt.device, it)
-                                //readCharacteristic(gatt.device, it)
                             }
-
-                            consoleuuid -> {
-                                Timber.d("consoleeeeee")
-                                enableNotifications(gatt.device, it)
-                                writeCharacteristic(gatt.device, it, format.toByteArray())
-                            } //TODO lo stiamo scrivendo appena trovo la penna --> metterlo in un altro posto: bottone !!!
-
-                        }
+                       }
                     } //la console è in un servizio diverso: debugservice
+
+                    gatt.getService(debuguuid).characteristics.forEach {
+                        when(it.uuid){
+                            consoleuuid -> {
+                                Timber.d("Abbiamo trovato il servizio della console OK")
+                                consoleChar = it
+                            }
+                        }
+                    }
 
 
                     //altro servizio impo: console  (debog service uuid)

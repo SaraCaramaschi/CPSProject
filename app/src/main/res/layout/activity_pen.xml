@@ -22,13 +22,13 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="50dp"
             android:text="Real Time"
-            android:layout_marginStart="150dp"
+            android:layout_marginStart="140dp"
             tools:layout_editor_absoluteX="158dp"
             tools:layout_editor_absoluteY="330dp" />
 
         <Button
             android:id="@+id/btnDownload"
-            android:layout_marginStart="146dp"
+            android:layout_marginStart="136dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -38,9 +38,9 @@
             tools:layout_editor_absoluteY="244dp" />
 
         <Button
-            android:id="@+id/btnReset"
+            android:id="@+id/btnFormat"
             android:layout_width="wrap_content"
-            android:layout_marginStart="160dp"
+            android:layout_marginStart="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="50dp"

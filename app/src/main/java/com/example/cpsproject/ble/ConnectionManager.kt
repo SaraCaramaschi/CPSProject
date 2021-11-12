@@ -57,6 +57,9 @@ object ConnectionManager {
     private val batteryuuid = UUID.fromString("00020000-0001-11E1-AC36-0002A5D5C51B")
     private val datauuid = UUID.fromString("00E00000-0001-11E1-AC36-0002A5D5C51B")
     private val consoleuuid = UUID.fromString("00000001-000E-11E1-AC36-0002A5D5C51B")
+    //TODO da sistemare come gestire uuid debug / console ERRORE
+    private val debuguuid = UUID.fromString( "00000000-000E-11E1-9AB4-0002A5D5C51B")
+
     private val format = "FFormat"
 
     private var batteryChar: BluetoothGattCharacteristic? = null
@@ -64,56 +67,26 @@ object ConnectionManager {
     private var consoleChar: BluetoothGattCharacteristic? = null
     private var currDevice: BluetoothDevice? = null
 
-    // attenzione perchè quando riceviamo i dati controlliamo il service uuid!!!
-
     private fun readBattery(data: ByteArray) {
         var battery = data.copyOfRange(2, 4).reversedArray().toHexString()
             .replace(" ", "").substring(2).toInt(radix = 16).toDouble()
         battery = battery.div(10)
 
-        //battery = battery.substring(2)
-        //Timber.d("Sottostringa: " + battery)
         Timber.d("Valore batteria: %s", battery)
         PenManager.battery = battery
 
-        /*val soc = data.copyOfRange(2, 4).reversedArray().toHexString().toLong(radix = 16) / 10 //4 escluso
-        val volts = data.copyOfRange(4, 6).reversedArray().toHexString().toLong(radix = 16)
-            .toDouble() / 1000
-        val amps =
-            data.copyOfRange(6, 8).reversedArray().toHexString().toLong(radix = 16).toDouble()
-        val status = data[8].toInt()
-        Timber.d("la batteria è " + soc)*/
-
-
-        // saveData(battery,  )
-
-    }
-
-    fun format() {
-        enableNotifications(currDevice!!, consoleChar!!)
-        writeCharacteristic(currDevice!!, consoleChar!!, format.toByteArray())
-    }
-    fun readConsole (data:ByteArray) {
-        val consoleString = data.toHexString()
-        if (consoleString.contains("start formatting")) {
-            Timber.d ("format iniziato")
-        } else if (consoleString.contains("formatting done")) {
-            //currGatt.setCharacteristicNotification(consoleChar, false)
-            disableNotifications(currDevice!!, consoleChar!!)
-            Timber.d("format finito")
-        }
     }
 
     private fun readData(data: ByteArray) {
+        //TODO creare data class che contenga tutte queste cose qui carine in modo ordinato
+
         val acc_x =
             data.copyOfRange(2, 4).reversedArray().toHexString()
                 .replace(" ", "").substring(2).toInt(radix = 16).toShort()
                 .toDouble() / 100
 
-        // DUBBIO: MA POSSIAMO TENERE UNA FUNZIONE SOLA OPPURE SPEZZETTARE IN TANTE DIVERSE?
-        // teoricamente dovrebbero esserci uuid diversi
+        Timber.d("Prova con acc_x per vedere se è tutto ok: %s", acc_x)
 
-        Timber.d("Prova con acc_x per vedere se è tutto ok: %s", acc_x) // da aggiungere diviso 0
         /*val acc_y =
             data.copyOfRange(4, 6).reversedArray().toHexString()
                 .replace(" ","").substring(4).toInt(radix = 16).toShort()
@@ -136,34 +109,21 @@ object ConnectionManager {
                 .toDouble() / 100*/
 
     }
-    //funzione per inviare il dato dell'accelerazione (sbagliata)
-    /*fun onSaveButonClick(view: View){
-        val intent = Intent(this@ConnectionManager,RealTimeActivity::class.java)
-        intent.putExtra(name: "acc_x", acc_x)
-        }*/
 
-    /*public fun saveData(value: Double) {
-        val gson= Gson()
-        val jsonValue= gson.toJson(value)
+    fun readConsole (data:ByteArray) {
+        val consoleString = data.toHexString()
+        if (consoleString.contains("start formatting")) {
+            Timber.d ("format iniziato")
+        } else if (consoleString.contains("formatting done")) {
+            disableNotifications(currDevice!!, consoleChar!!)
+            Timber.d("format finito")
+        }
+    }
 
-        Timber.d("json %s", jsonValue)
-
-        //CREATE NEW DIRECOTY IN FILESDIR DIRECOTY (https://developer.android.com/training/data-storage/app-specific#kotlin)
-        // anche se volevo metterlo da un'altra parte
-        var folder = context.getDir("DataFolder", Context.MODE_PRIVATE)
-
-        //var fileName = context.filesDir.path.toString() + "/" + patient.taxcode + ".txt" (Chiara)
-        var fileName = folder.path.toString() + "/" + patient.taxcode + ".txt"
-        var file = File(fileName) // cartella uguale ma con una roba in più
-
-        val createdFile = file.createNewFile()
-        Timber.d("Il filename e': %s",fileName)
-        Timber.d("the file is created %s", createdFile)
-        Timber.d("path %s", file.absolutePath)
-
-        file.writeText(jsonPatient)
-        Timber.d("questo è il file lettooo %s", PatientsManager.readPatient(fileName))
-    }*/
+    fun format() {
+        enableNotifications(currDevice!!, consoleChar!!)
+        writeCharacteristic(currDevice!!, consoleChar!!, format.toByteArray())
+    }
 
     fun servicesOnDevice(device: BluetoothDevice): List<BluetoothGattService>? =
         deviceGattMap[device]?.services
@@ -495,14 +455,10 @@ object ConnectionManager {
 
                     currDevice = gatt.device
 
-                    gatt.getService(serviceuuid).characteristics.forEach { //per ogni caratteristiche faccio cose
-                        when (it.uuid) { // it è una BLUETOOTHGATTCHARACTERISTIC
+                    gatt.getService(serviceuuid).characteristics.forEach {
+                        when (it.uuid) {
                             batteryuuid -> {
                                 Timber.d("Questa e' la batteria della penna")
-                                /*
-                                Le funzioni NATIVA una dopo l'altra non si possono fare per natura del BLE.
-                                Invece le funzioni che ha creato il tizio si.
-                                */
 
                                 //TODO poi ve lo salvate qui
                                 batteryChar = it
@@ -521,9 +477,9 @@ object ConnectionManager {
                                 Timber.d("consoleeeeee")
                                 enableNotifications(gatt.device, it)
                                 writeCharacteristic(gatt.device, it, format.toByteArray())
-                            } //lo stiamo scrivendo appena trovo la penna --> metterlo in un altro posto: bottone
+                            } //TODO lo stiamo scrivendo appena trovo la penna --> metterlo in un altro posto: bottone !!!
 
-                        } //when freccette grafe
+                        }
                     } //la console è in un servizio diverso: debugservice
 
 
@@ -555,14 +511,13 @@ object ConnectionManager {
         }
 
         override fun onCharacteristicRead( //aggiungiamo cose alla nativa
-            gatt: BluetoothGatt, // la connessione
-            characteristic: BluetoothGattCharacteristic, // input: una caratteristica specifica
-            status: Int // stato di connessione (?)
+            gatt: BluetoothGatt,
+            characteristic: BluetoothGattCharacteristic,
+            status: Int
         ) {
-            with(characteristic) { //ASSOCIA L'INPUT
+            with(characteristic) {
                 when (status) {
                     BluetoothGatt.GATT_SUCCESS -> {
-                        // qui ci da proprio il valore!
                         Timber.w("Read characteristic $uuid | value: ${value.toHexString()}")
                         when (characteristic.uuid) {
                             batteryuuid -> {
@@ -585,7 +540,7 @@ object ConnectionManager {
                                 gatt.device,
                                 this
                             )
-                        }  // cosa fa questo ???
+                        }
                     }
                     BluetoothGatt.GATT_READ_NOT_PERMITTED -> {
                         Timber.e("Read not permitted for $uuid!")
@@ -620,7 +575,6 @@ object ConnectionManager {
                         when (characteristic.uuid) { // it è una BLUETOOTHGATTCHARACTERISTIC
                             consoleuuid -> {
                                 Timber.d("ho scritto nella console")
-                                //writeCharacteristic(gatt.device, characteristic, format.toByteArray()) //va messa in un bottone
                             }
                         }
 

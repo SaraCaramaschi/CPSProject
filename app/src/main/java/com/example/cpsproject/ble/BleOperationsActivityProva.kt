@@ -63,30 +63,7 @@ class BleOperationsActivityProva : AppCompatActivity() {
 
     private lateinit var device: BluetoothDevice
     private val dateFormatter = SimpleDateFormat("MMM d, HH:mm:ss", Locale.US)
-    private val characteristics by lazy {
-        ConnectionManager.servicesOnDevice(device)?.flatMap { service ->
-            service.characteristics ?: listOf()
-        } ?: listOf()
-    }
-    /*private val characteristicProperties by lazy {
-        characteristics.map { characteristic ->
-            characteristic to mutableListOf<CharacteristicProperty>().apply {
-                if (characteristic.isNotifiable()) add(CharacteristicProperty.Notifiable)
-                if (characteristic.isIndicatable()) add(CharacteristicProperty.Indicatable)
-                if (characteristic.isReadable()) add(CharacteristicProperty.Readable)
-                if (characteristic.isWritable()) add(CharacteristicProperty.Writable)
-                if (characteristic.isWritableWithoutResponse()) {
-                    add(CharacteristicProperty.WritableWithoutResponse)
-                }
-            }.toList()
-        }.toMap()
-    }*/
 
-    // Questa cosa è relativa al recycler view quindi non ci serve
-    /*private val characteristicAdapter: CharacteristicAdapter by lazy {
-        CharacteristicAdapter(characteristics) { characteristic ->
-            showCharacteristicOptions(characteristic)
-       */
     private var notifyingCharacteristics = mutableListOf<UUID>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -102,16 +79,10 @@ class BleOperationsActivityProva : AppCompatActivity() {
             title = "Real Time"
         }
 
-        Timber.d(PenManager.battery.toString() + " batteriaaaaa")
+        Timber.d("batteriaaaaa:  %s", PenManager.battery.toString())
 
-        buttonBattery.setOnClickListener { tvBatteryProva.text= PenManager.battery.toString() }
-
-        btnFormat.setOnClickListener {ConnectionManager.format()}
-
-        //setupRecyclerView()
-        // TODO altro strumento di visualizzazione: VIEW MODEL? PENSO QUELLO CHE CI SERVE SIA TEXTVIEW
-        setupTextView()
-
+        //buttonBattery.setOnClickListener { tvBatteryProva.text= PenManager.battery.toString() }
+        //btnFormat.setOnClickListener {ConnectionManager.format()}
     }
 
     override fun onResume() {
@@ -136,70 +107,12 @@ class BleOperationsActivityProva : AppCompatActivity() {
     }
 
 
-    // QUESTA (BLEOPERATIONSACTIVITYPROVA) DOVREBBE ESSERE GIA' SECONDA ATTIVITA'
-    // E QUESTO CODICE DOVREBBE ANDARE IN MAIN CONNECTION
-    private fun setupTextView(){/*
-        val textView = this.findViewById<TextView>(R.id.tvAccx).text.toString()
-        val intent = Intent(this, RealTimeActivity::class.java)
-        intent.putExtra("Accx", textView)
-        startActivity(intent)
-     */}
-
-
-    /*private fun setupRecyclerView() { FUNZIONE ORIGINALE
-        characteristics_recycler_view.apply {
-            adapter = characteristicAdapter
-            layoutManager = LinearLayoutManager(
-                this@BleOperationsActivity,
-                RecyclerView.VERTICAL,
-                false
-            )
-            isNestedScrollingEnabled = false
-        }
-        val animator = characteristics_recycler_view.itemAnimator
-        if (animator is SimpleItemAnimator) {
-            animator.supportsChangeAnimations = false
-        }
-    }*/
-
     @SuppressLint("SetTextI18n")
     private fun log(message: String) {
         Timber.d(message)
-//        val formattedMessage = String.format("%s: %s", dateFormatter.format(Date()), message)
-//        runOnUiThread {
-//            val currentLogText = if (log_text_view.text.isEmpty()) {
-//                "Beginning of log."
-//            } else {
-//                log_text_view.text
-//            }
-//            log_text_view.text = "$currentLogText\n$formattedMessage"
-//            log_scroll_view.post { log_scroll_view.fullScroll(View.FOCUS_DOWN) }
-//        }
     }
 
-    @SuppressLint("InflateParams")
-    private fun showWritePayloadDialog(characteristic: BluetoothGattCharacteristic) {
-        val hexField = layoutInflater.inflate(R.layout.edittext_hex_payload, null) as EditText
-        alert {
-            customView = hexField
-            isCancelable = false
-            yesButton {
-                with(hexField.text.toString()) {
-                    if (isNotBlank() && isNotEmpty()) {
-                        val bytes = hexToBytes()
-                        log("Writing to ${characteristic.uuid}: ${bytes.toHexString()}")
-                        ConnectionManager.writeCharacteristic(device, characteristic, bytes)
-                    } else {
-                        log("Please enter a hex payload to write to ${characteristic.uuid}")
-                    }
-                }
-            }
-            noButton {}
-        }.show()
-        hexField.showKeyboard()
-    }
-
-    private val connectionEventListener by lazy { // questo si, importante: aggiornamento
+    private val connectionEventListener by lazy {
         ConnectionEventListener().apply {
             onDisconnect = {
                 runOnUiThread {
@@ -238,22 +151,4 @@ class BleOperationsActivityProva : AppCompatActivity() {
             }
         }
     }
-
-    private fun Activity.hideKeyboard() {
-        hideKeyboard(currentFocus ?: View(this))
-    }
-
-    private fun Context.hideKeyboard(view: View) {
-        val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
-    }
-
-    private fun EditText.showKeyboard() {
-        val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-        requestFocus()
-        inputMethodManager.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
-    }
-
-    private fun String.hexToBytes() =
-        this.chunked(2).map { it.toUpperCase(Locale.US).toInt(16).toByte() }.toByteArray()
 }

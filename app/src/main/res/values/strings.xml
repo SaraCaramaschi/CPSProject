@@ -1,6 +1,21 @@
 <resources>
     <string name="app_name">THink Pen</string>
     <string name="button">Button</string>
+    <string name="real_time">Real Time</string>
+    <string name="start">Start</string>
+    <string name="z">z</string>
+    <string name="y">y</string>
+    <string name="x">x</string>
+    <string name="forza">Forza</string>
+    <string name="giroscopio">Giroscopio</string>
+    <string name="accelerazione">Accelerazione</string>
+    <string name="acceleration_data">Acceleration Data</string>
+    <string name="gyroscope_data">Gyroscope Data</string>
+    <string name="x_data">X data</string>
+    <string name="y_data">Y data</string>
+    <string name="force_data">Force Data</string>
+    <string name="buttonbattery">ButtonBattery</string>
+    <string name="buttondata">ButtonData</string>
 
     <string-array name="gender">
         <item>male</item>

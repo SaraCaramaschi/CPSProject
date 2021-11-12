@@ -214,23 +214,13 @@ class MainConnection : AppCompatActivity() {
         }
     }
 
-
-    // INVECE DI BLEOPERATIONSACTIVITY(prova) METTERE "SCHERMATAPENNA"
-    // BLEOPERATIONSACTIVITY SARA' INVIATO QUANDO CLICCO SU REAL-TIME
     private val connectionEventListener by lazy {
         ConnectionEventListener().apply {
             onConnectionSetupComplete = { gatt ->
-                // Se vogliamo vedere come funziona realtimeactivity sostituiamo qui nella
-                // attività di destinazione
-                Intent(this@MainConnection, BleOperationsActivityProva::class.java).also {
+                // Prima di PenActivity c'era BleOperationsActivityProva
+                Intent(this@MainConnection, PenActivity::class.java).also {
                     it.putExtra(BluetoothDevice.EXTRA_DEVICE, gatt.device)
                     startActivity(it)
-
-                    // PASSARE DATI A TEXTVIEW IN BLEOPERATIONSPROVA - DA SISTEMARE
-                    //val data = ConnectionManager.readBattery(QUALE DAT0?)
-                    //val intent = Intent(this, BleOperationsActivityProva::class.java)
-                    //intent.putExtra("AccX", textView)
-                    //startActivity(intent)
                 }
                 ConnectionManager.unregisterListener(this)
             }

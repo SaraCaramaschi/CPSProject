@@ -31,10 +31,14 @@ class PatientListActivity: AppCompatActivity() {
         rvPatients.adapter = adapter
 
         val btnAddPatient = findViewById<Button>(R.id.btnNewPatient)
-            btnAddPatient.setOnClickListener {
-                val intent = Intent(this, AddPatientActivity::class.java)
-                startActivity(intent)
-            }
-
+        btnAddPatient.setOnClickListener {
+            val intent = Intent(this, AddPatientActivity::class.java)
+            startActivity(intent)
         }
+
     }
+
+
+}
+//TODO c'è qualche errore che permette di scrivere dove non si dovrebbe quando si inseriscono
+// i dati del pz: io sono riuscita a scrivere durante l'esecuzione dell'app nella scritta "Name"

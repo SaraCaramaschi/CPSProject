@@ -31,6 +31,12 @@
             android:name=".AddPatientActivity"
             android:exported="true" />
         <activity
+            android:name=".Phase1Activity"
+            android:exported="true" />
+        <activity
+        android:name=".Phase2Activity"
+        android:exported="true" />
+        <activity
             android:name=".AddClinicianActivity"
             android:exported="true" />
 

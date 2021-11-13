@@ -61,8 +61,8 @@ class PatientPageActivity : AppCompatActivity() {
     }
 
     //stavo creando il collegamento con le activity
-    val btnPhase1 = findViewById<Button>(R.id.btnPhase1)
-    btnPhase1.setOnClickListener {
+       val btnPhase1 = findViewById<Button>(R.id.btnPhase1)
+       btnPhase1.setOnClickListener {
         val intent = Intent(this, Phase1Activity::class.java)
         startActivity(intent)
 
@@ -73,5 +73,6 @@ class PatientPageActivity : AppCompatActivity() {
 
 
         }
+
 
 // TODO Dare possibilità al clinico di modificare note?

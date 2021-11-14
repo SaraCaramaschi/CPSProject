@@ -41,6 +41,22 @@ class PatientPageActivity : AppCompatActivity() {
             startActivity(intent)
             */
         }
+        //stavo creando il collegamento con le activity
+
+        val btnPhase1 = findViewById<Button>(R.id.btnPhase1)
+        btnPhase1.setOnClickListener {
+            val intent = Intent(this, Phase1Activity::class.java)
+            startActivity(intent)
+        }
+
+        val btnPhase2 = findViewById<Button>(R.id.btnPhase2)
+        btnPhase2.setOnClickListener {
+            val intent = Intent(this, Phase2Activity::class.java)
+            startActivity(intent)
+
+
+        }
+
     }
 
     private fun setupPatientPage(patient: Patient) {
@@ -60,16 +76,7 @@ class PatientPageActivity : AppCompatActivity() {
         //tvGenere.setText("Gender:"+ " "+patient.gender.toString())
     }
 
-    //stavo creando il collegamento con le activity
-       val btnPhase1 = findViewById<Button>(R.id.btnPhase1)
-       btnPhase1.setOnClickListener {
-        val intent = Intent(this, Phase1Activity::class.java)
-        startActivity(intent)
 
-        val btnPhase2 = findViewById<Button>(R.id.btnPhase2)
-        btnPhase1.setOnClickListener {
-            val intent = Intent(this, Phase2Activity::class.java)
-            startActivity(intent)
 
 
         }

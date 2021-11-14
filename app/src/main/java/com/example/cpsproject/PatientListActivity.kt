@@ -3,6 +3,7 @@ package com.example.cpsproject
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,12 +24,20 @@ class PatientListActivity: AppCompatActivity() {
 
         // QUI X RECYCLER CHE SI AGGIORNA
         listPatients = PatientsManager.importPatientList(this)
-        adapter = PatientAdapter(listPatients)
+        var adapter = PatientAdapter(listPatients)
 
         layoutManager = LinearLayoutManager(this)
         rvPatients = findViewById(R.id.rvPatients)
         rvPatients.layoutManager = layoutManager
         rvPatients.adapter = adapter
+        adapter.setOnItemClickListener(object : PatientAdapter.onItemClickListener{
+            override fun onItemClick(position: Int) {
+                Toast.makeText(this@PatientListActivity,"you clicked on item no. $position", Toast.LENGTH_SHORT).show()
+                //TODO QUI FUNZIONE PER ENTRARE NEL PAZIENTE
+            }
+        })
+
+
 
         val btnAddPatient = findViewById<Button>(R.id.btnNewPatient)
         btnAddPatient.setOnClickListener {
@@ -36,9 +45,21 @@ class PatientListActivity: AppCompatActivity() {
             startActivity(intent)
         }
 
+        val btnDeletePatient= findViewById<Button>(R.id.btnDeletePatient)
+        btnDeletePatient.setOnClickListener{
+            adapter.setOnItemClickListener(object : PatientAdapter.onItemClickListener{
+                override fun onItemClick(position: Int) {
+                    Toast.makeText(this@PatientListActivity,"you clicked on item no. $position", Toast.LENGTH_SHORT).show()
+                    //TODO QUI FUNZIONE PER ELIMINARE PAZIENTE
+                }
+
+           })
+        }
+        }
+
     }
 
 
-}
+
 //TODO c'è qualche errore che permette di scrivere dove non si dovrebbe quando si inseriscono
 // i dati del pz: io sono riuscita a scrivere durante l'esecuzione dell'app nella scritta "Name"

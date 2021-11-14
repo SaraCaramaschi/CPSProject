@@ -68,7 +68,6 @@ class AddPatientActivity : AppCompatActivity() {
                 etName.text.toString(), etSurname.text.toString(),
                 etNotes.text.toString(), etTax.text.toString(), etBirthDate.text.toString(),
                 //genderEnum
-            1
             ) // Local variable
 
             // Add patient to patientlist

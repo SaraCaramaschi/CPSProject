@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cpsproject.managers.PatientsManager
+import com.example.cpsproject.managers.PatientsManager.deletePatient
 import com.example.cpsproject.model.Patient
 
 class PatientListActivity: AppCompatActivity() {
@@ -24,36 +25,51 @@ class PatientListActivity: AppCompatActivity() {
 
         // QUI X RECYCLER CHE SI AGGIORNA
         listPatients = PatientsManager.importPatientList(this)
-        var adapter = PatientAdapter(listPatients)
+        var adapter = PatientAdapter(this, listPatients)
 
         layoutManager = LinearLayoutManager(this)
         rvPatients = findViewById(R.id.rvPatients)
         rvPatients.layoutManager = layoutManager
         rvPatients.adapter = adapter
+
+        //PASSA AD PAGINA PAZIENTE
         val intentPage = Intent(this, PatientPageActivity::class.java)
         adapter.setOnItemClickListener(object : PatientAdapter.onItemClickListener{
-            override fun onItemClick(position: Int) {
+            override fun onClick(position: Int) {
                 Toast.makeText(this@PatientListActivity,"you clicked on patient $position", Toast.LENGTH_SHORT).show()
                 startActivity(intentPage)
-                //TODO RIPEMPIRE PATIENT PAGE CON DATI DEL PAZIENTE
+                //TODO RIEMPIRE PATIENT PAGE CON DATI DEL PAZIENTE
             }
+
+
         })
 
-
-
+        //AGGIUNGE PAZIENTE
         val btnAddPatient = findViewById<Button>(R.id.btnNewPatient)
         btnAddPatient.setOnClickListener {
             val intent = Intent(this, AddPatientActivity::class.java)
             startActivity(intent)
         }
 
+        // ELIMINA PAZIENTE
         val btnDeletePatient= findViewById<Button>(R.id.btnDeletePatient)
         btnDeletePatient.setOnClickListener{
-            adapter.setOnItemClickListener(object : PatientAdapter.onItemClickListener{
-                override fun onItemClick(position: Int) {
-                    Toast.makeText(this@PatientListActivity,"you clicked on patient $position", Toast.LENGTH_SHORT).show()
-                    //TODO QUI FUNZIONE PER ELIMINARE PAZIENTE
-                }
+            val intent= Intent(this, DeleleMessageActivity::class.java)
+
+            //QUI VOLEVA SELEZIONARE I PAZIENTI CON setonLONGclicklistener ma ovviamente non riesco [NON SENTE CLICK LUNGO E VA A PATIENT PAGE]e ho abbandonato
+            // --> ho fatto con menù a lato del singolo paziente (codice nell'adapter, non mi piace)
+
+            Toast.makeText(this@PatientListActivity,"Select a patient for a long time", Toast.LENGTH_SHORT).show()
+
+           adapter.setOnItemClickListener(object : PatientAdapter.onItemClickListener{
+               override fun onClick(position: Int) {
+                   Toast.makeText(this@PatientListActivity,"Long click detected", Toast.LENGTH_SHORT).show()
+                   var pos=position
+                   intent.putExtra("position",pos)
+                   startActivity(intent) // OPPURE ALERT DIALOG (come ho fatto con menù)--> VOLEVO CHIEDERE CONFERMA DELL'ELIMINAZIONE
+                   deletePatient(this@PatientListActivity, pos) //DOVREBBE ESSERE FUNZIONE CHE ELIMINA FILE JSON (IMPLEMENTATA NEL MANAGER)
+               }
+
 
            })
         }

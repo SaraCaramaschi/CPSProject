@@ -120,6 +120,15 @@ object PatientsManager {
 //        }
         return patientsList
     }
+
+    fun deletePatient(context: Context, i: Int){
+        var lastPatient = patientsList[i]
+        var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)
+        var fileName = folder.path.toString() + "/" + lastPatient.taxcode + ".txt"
+        File(fileName).delete()
+        Timber.d("File deleted")
+
+    }
 }
 
 

@@ -30,10 +30,12 @@ class PatientListActivity: AppCompatActivity() {
         rvPatients = findViewById(R.id.rvPatients)
         rvPatients.layoutManager = layoutManager
         rvPatients.adapter = adapter
+        val intentPage = Intent(this, PatientPageActivity::class.java)
         adapter.setOnItemClickListener(object : PatientAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
-                Toast.makeText(this@PatientListActivity,"you clicked on item no. $position", Toast.LENGTH_SHORT).show()
-                //TODO QUI FUNZIONE PER ENTRARE NEL PAZIENTE
+                Toast.makeText(this@PatientListActivity,"you clicked on patient $position", Toast.LENGTH_SHORT).show()
+                startActivity(intentPage)
+                //TODO RIPEMPIRE PATIENT PAGE CON DATI DEL PAZIENTE
             }
         })
 
@@ -49,7 +51,7 @@ class PatientListActivity: AppCompatActivity() {
         btnDeletePatient.setOnClickListener{
             adapter.setOnItemClickListener(object : PatientAdapter.onItemClickListener{
                 override fun onItemClick(position: Int) {
-                    Toast.makeText(this@PatientListActivity,"you clicked on item no. $position", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@PatientListActivity,"you clicked on patient $position", Toast.LENGTH_SHORT).show()
                     //TODO QUI FUNZIONE PER ELIMINARE PAZIENTE
                 }
 

@@ -6,7 +6,9 @@ import android.widget.Button
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cpsproject.managers.PatientsManager
+import com.example.cpsproject.managers.PatientsManager.patientsList
 import com.example.cpsproject.model.Gender
+import com.example.cpsproject.model.Hand
 import com.example.cpsproject.model.Patient
 import kotlinx.android.synthetic.main.activity_add_patient.*
 
@@ -52,21 +54,31 @@ class AddPatientActivity : AppCompatActivity() {
 //                return@setOnClickListener
 //            }
 
-            val genderEnum: Gender = when (gender.selectedItem) {
-                "Male" -> {
-                    Gender.M
-                }
-                "Female" -> {
-                    Gender.F
+            val handEnum: Hand = when (spinnerDominantHand.selectedItem) {
+                "Left" -> {
+                    Hand.Left
                 }
                 else -> {
-                    Gender.O
+                    Hand.Right
+                }
+
+            }
+
+            val genderEnum: Gender = when (spinnerGender.selectedItem) {
+                "Male" -> {
+                    Gender.Male
+                }
+                "Female" -> {
+                    Gender.Female
+                }
+                else -> {
+                    Gender.Other
                 }
             }
             // Variabile patient
             var patient = Patient(
                 etName.text.toString(), etSurname.text.toString(),
-                etNotes.text.toString(), etTax.text.toString(), etBirthDate.text.toString(),
+                etNotes.text.toString(), etTax.text.toString(), etBirthDate.text.toString(), handEnum, genderEnum
                 //genderEnum
             ) // Local variable
 
@@ -75,7 +87,9 @@ class AddPatientActivity : AppCompatActivity() {
 
             // Go to patient page
             val intent = Intent(this, PatientPageActivity::class.java)
-            intent.putExtra("keyPatient", patient)
+            val pos= patientsList.lastIndex
+            intent.putExtra("position",pos)
+            //intent.putExtra("keyPatient", patient)
             startActivity(intent)
         }
 

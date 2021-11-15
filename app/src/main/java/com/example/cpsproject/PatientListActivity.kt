@@ -56,7 +56,7 @@ class PatientListActivity: AppCompatActivity() {
         // ELIMINA PAZIENTE
         val btnDeletePatient= findViewById<Button>(R.id.btnDeletePatient)
         btnDeletePatient.setOnClickListener{
-            val intent= Intent(this, DeleleMessageActivity::class.java)
+            val intent= Intent(this, DeleteMessageActivity::class.java)
 
             //QUI VOLEVA SELEZIONARE I PAZIENTI CON setonLONGclicklistener ma ovviamente non riesco [NON SENTE CLICK LUNGO E VA A PATIENT PAGE]e ho abbandonato
             // --> ho fatto con menù a lato del singolo paziente (codice nell'adapter, non mi piace)

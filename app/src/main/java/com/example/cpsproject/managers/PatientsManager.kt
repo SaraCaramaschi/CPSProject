@@ -26,7 +26,7 @@ object PatientsManager {
         Timber.d("json %s", jsonPatient)
 
         //CREATE NEW DIRECOTY IN FILESDIR DIRECOTY (https://developer.android.com/training/data-storage/app-specific#kotlin)
-        // anche se volevo metterlo da un'altra parte
+
         var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)
         Timber.d("questo è nuova cartella: %s", folder.path.toString())
 
@@ -44,6 +44,7 @@ object PatientsManager {
     }
 
 
+    //DOMANDA: in teoria non serve più giusto?
     public fun readPatient(i:Int, context: Context): Patient { // FUNZIONA !!!
         var lastPatient = patientsList[i]
         var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)         // ripresi da savePatient
@@ -74,6 +75,7 @@ object PatientsManager {
         return patient
     }
 
+    //Da json a data class
     fun readPatientJson(file : File, context: Context) : Patient {
         //Creating a new Gson object to read data
         var gson = Gson()
@@ -87,6 +89,7 @@ object PatientsManager {
         return patient
     }
 
+    // Aggiorna lista pazienti
     fun  importPatientList(context: Context): ArrayList<Patient> {
         Timber.d("Dentro a IMPORTPATIENTLIST") // Non lo stampa mai :(
 
@@ -127,6 +130,7 @@ object PatientsManager {
         var fileName = folder.path.toString() + "/" + lastPatient.taxcode + ".txt"
         File(fileName).delete()
         Timber.d("File deleted")
+
 
     }
 }

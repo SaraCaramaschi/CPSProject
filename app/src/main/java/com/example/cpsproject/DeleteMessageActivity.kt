@@ -3,15 +3,19 @@ package com.example.cpsproject
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
 import com.example.cpsproject.managers.PatientsManager
+import com.example.cpsproject.managers.PatientsManager.deletePatient
 import com.example.cpsproject.model.Patient
 
-class DeleleMessageActivity: AppCompatActivity()  {
+class DeleteMessageActivity: AppCompatActivity()  {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_delete_message)
+
+        //VOLEVO FARE UNA ACTIVITY PER FAR COMPARIRE UN MESSAGGIO PER CHIDERE CONFERMA DELL'ELIMINAZIONE
+        // poi ho visto che si può fare un "alert dialog"
 
         val intent= getIntent()
         val pos= intent.getIntExtra("position", 0)
@@ -26,7 +30,10 @@ class DeleleMessageActivity: AppCompatActivity()  {
             startActivity(intent)
         }
         btnYes.setOnClickListener{
-                   listPatients.removeAt(pos)
+            deletePatient(this, pos)
+            Toast.makeText(this@DeleteMessageActivity,"Patient deleted", Toast.LENGTH_SHORT).show()
+            var intent= Intent(this, PatientListActivity::class.java)
+            startActivity(intent)
 
         }
 

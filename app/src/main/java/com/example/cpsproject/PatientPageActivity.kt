@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cpsproject.ble.MainConnection
+import com.example.cpsproject.managers.PatientsManager.patientsList
 import com.example.cpsproject.model.Patient
 import kotlinx.android.synthetic.main.activity_add_patient.*
 import kotlinx.android.synthetic.main.activity_add_patient.btnPatListBack
@@ -15,8 +16,11 @@ class PatientPageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patient_page)
+        val intent= getIntent()
+        val pos= intent.getIntExtra("position", 0)
 
-        val patient = intent.getParcelableExtra<Patient>("keyPatient")
+        //val patient = intent.getParcelableExtra<Patient>("keyPatient")
+        val patient = patientsList[pos]
         if (patient != null) {
             setupPatientPage(patient)
         }

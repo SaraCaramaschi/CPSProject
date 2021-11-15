@@ -1,8 +1,10 @@
 package com.example.cpsproject
 
 import android.content.Intent
+import android.graphics.drawable.Icon
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cpsproject.ble.MainConnection
@@ -57,8 +59,12 @@ class PatientPageActivity : AppCompatActivity() {
         btnPhase2.setOnClickListener {
             val intent = Intent(this, Phase2Activity::class.java)
             startActivity(intent)
-
-
+        }
+        val edit= findViewById<ImageView>(R.id.edit)
+        edit.setOnClickListener{
+            intent.putExtra("position",pos)
+            val intent= Intent(this, EditPatientActivity::class.java)
+            startActivity(intent)
         }
 
     }
@@ -69,8 +75,10 @@ class PatientPageActivity : AppCompatActivity() {
         val tvNote = findViewById<TextView>(R.id.tvNotes)
         val tvComple = findViewById<TextView>(R.id.tvBirthDate)
         val tvGenere = findViewById<TextView>(R.id.tvGender)
+        val tvHand=findViewById<TextView>(R.id.tvDominantHand)
         // inserire anche phase (default a 1) ERRORE CON LA FASE !!!
-        //val tvFase = findViewById<TextView>(R.id.tvTax)
+        val tvTax = findViewById<TextView>(R.id.tvTax)
+        val tvPhase=findViewById<TextView>(R.id.tvPhase)
 
         tvNome.setText("Name:"+ " "+(patient.name).toString())
         tvCognome.setText("Surname:"+ " "+(patient.surname).toString())
@@ -78,6 +86,8 @@ class PatientPageActivity : AppCompatActivity() {
         tvComple.setText("Birth Date:"+ " "+(patient.birthdate).toString())
         tvPhase.setText("Phase:"+ " "+patient.phase.toString())
         tvGenere.setText("Gender:"+ " "+patient.gender.toString())
+        tvHand.setText("Dominant Hand:"+" "+patient.dominantHand.toString())
+        tvTax.setText("Tax code:"+" "+patient.taxcode.toString())
     }
 
 

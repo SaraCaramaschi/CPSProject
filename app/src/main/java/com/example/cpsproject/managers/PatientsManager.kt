@@ -19,8 +19,8 @@ object PatientsManager {
     }
 
     public fun savePatient(patient: Patient, context: Context) {
-        val gson= Gson()
-        val jsonPatient= gson.toJson(patient)
+        val gson = Gson()
+        val jsonPatient = gson.toJson(patient)
         //val folder_main = "NewFolder"
 
         Timber.d("json %s", jsonPatient)
@@ -35,20 +35,22 @@ object PatientsManager {
         var file = File(fileName) // cartella uguale ma con una roba in più
 
         val createdFile = file.createNewFile()
-        Timber.d("Il filename e': %s",fileName)
+        Timber.d("Il filename e': %s", fileName)
         Timber.d("the file is created %s", createdFile)
         Timber.d("path %s", file.absolutePath)
 
         file.writeText(jsonPatient)
-       // Timber.d("questo è il file lettooo %s", readPatient(fileName))
+        // Timber.d("questo è il file lettooo %s", readPatient(fileName))
     }
 
 
     //DOMANDA: in teoria non serve più giusto?
-    public fun readPatient(i:Int, context: Context): Patient { // FUNZIONA !!!
+    public fun readPatient(i: Int, context: Context): Patient { // FUNZIONA !!!
         var lastPatient = patientsList[i]
-        var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)         // ripresi da savePatient
-        var fileName = folder.path.toString() + "/" + lastPatient.taxcode + ".txt"  // ripresi da savePatient
+        var folder =
+            context.getDir("PatientsFolder", Context.MODE_PRIVATE)         // ripresi da savePatient
+        var fileName =
+            folder.path.toString() + "/" + lastPatient.taxcode + ".txt"  // ripresi da savePatient
 
         //Creating a new Gson object to read data
         var gson = Gson()
@@ -76,7 +78,7 @@ object PatientsManager {
     }
 
     //Da json a data class
-    fun readPatientJson(file : File, context: Context) : Patient {
+    fun readPatientJson(file: File, context: Context): Patient {
         //Creating a new Gson object to read data
         var gson = Gson()
         //Read the PostJSON.json file
@@ -90,7 +92,7 @@ object PatientsManager {
     }
 
     // Aggiorna lista pazienti
-    fun  importPatientList(context: Context): ArrayList<Patient> {
+    fun importPatientList(context: Context): ArrayList<Patient> {
         Timber.d("Dentro a IMPORTPATIENTLIST")
 
         var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)
@@ -103,7 +105,7 @@ object PatientsManager {
             Timber.d(it.path)
             if (it.isFile) {
                 val pat = readPatientJson(it, context)
-                if(!patientsList.contains(pat)) {
+                if (!patientsList.contains(pat)) {
                     patientsList.add(pat)
                 }
 
@@ -124,16 +126,19 @@ object PatientsManager {
         return patientsList
     }
 
-    fun deletePatient(context: Context, i: Int){
+    fun deletePatient(context: Context, i: Int) {
         var lastPatient = patientsList[i]
         var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)
         var fileName = folder.path.toString() + "/" + lastPatient.taxcode + ".txt"
         File(fileName).delete()
         Timber.d("File deleted")
+        var fodername = folder.path.toString()
 
+        if (!File(fodername).list().contains(fileName)) {
+            Timber.d("File has been really deleted") //LO STAMPA! JSON LO ELIMINA, DOBBIAMO RIAGGIORNARE PAZIENTI IN KOTLIN
+        }
 
     }
-
 }
 
 

@@ -6,8 +6,10 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cpsproject.ble.MainConnection
+import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.managers.PatientsManager.patientsList
 import com.example.cpsproject.model.Patient
 import kotlinx.android.synthetic.main.activity_add_patient.*
@@ -65,6 +67,12 @@ class PatientPageActivity : AppCompatActivity() {
             intent.putExtra("position",pos)
             val intent= Intent(this, EditPatientActivity::class.java)
             startActivity(intent)
+        }
+        val btnDelate=findViewById<Button>(R.id.btnDelate)
+        btnDelate.setOnClickListener{
+            PatientsManager.deletePatient(this, pos)
+            Toast.makeText(this,"Patient deleted", Toast.LENGTH_SHORT).show()
+
         }
 
     }

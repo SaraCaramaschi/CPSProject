@@ -27,6 +27,7 @@ class PatientListActivity: AppCompatActivity() {
 
         // QUI X RECYCLER CHE SI AGGIORNA
 
+
         listPatients = PatientsManager.importPatientList(this)
         var adapter = PatientAdapter(this, listPatients)
 

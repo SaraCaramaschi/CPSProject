@@ -65,15 +65,11 @@ class PatientPageActivity : AppCompatActivity() {
         val edit= findViewById<ImageView>(R.id.edit)
         edit.setOnClickListener{
             intent.putExtra("position",pos)
-            val intent= Intent(this, EditPatientActivity::class.java)
-            startActivity(intent)
+            val intentNew= Intent(this, EditPatientActivity::class.java)
+            intentNew.putExtra("position",pos)
+            startActivity(intentNew)
         }
-        val btnDelate=findViewById<Button>(R.id.btnDelate)
-        btnDelate.setOnClickListener{
-            PatientsManager.deletePatient(this, pos)
-            Toast.makeText(this,"Patient deleted", Toast.LENGTH_SHORT).show()
 
-        }
 
     }
 

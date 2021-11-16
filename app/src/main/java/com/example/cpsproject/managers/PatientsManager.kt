@@ -127,9 +127,10 @@ object PatientsManager {
     }
 
     fun deletePatient(context: Context, i: Int) {
-        var lastPatient = patientsList[i]
+        var patientDeleted = patientsList[i]
+        patientsList.remove(patientDeleted)
         var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)
-        var fileName = folder.path.toString() + "/" + lastPatient.taxcode + ".txt"
+        var fileName = folder.path.toString() + "/" + patientDeleted.taxcode + ".txt"
         File(fileName).delete()
         Timber.d("File deleted")
         var fodername = folder.path.toString()
@@ -138,8 +139,10 @@ object PatientsManager {
             Timber.d("File has been really deleted") //LO STAMPA! JSON LO ELIMINA, DOBBIAMO RIAGGIORNARE PAZIENTI IN KOTLIN
         }
 
+
     }
 }
+
 
 
 

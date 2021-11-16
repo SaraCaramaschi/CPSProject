@@ -51,11 +51,6 @@ class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : Recycl
 
 
 
-
-
-
-
-
 //           // SARA
 //             itemView.setOnClickListener{
 //                val position: Int = adapterPosition
@@ -84,19 +79,19 @@ class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : Recycl
         //PER ELIMINARE NON SO, CARINO IL DIALOG ALERT
 //
         private fun popupMenus(v: View) {
-           val position= patientsList[adapterPosition] //prima c'era namesinvece di patienlist
+           val position= names[adapterPosition] //prima c'era namesinvece di patienlist
             val popupMenus= PopupMenu(c, v)
             popupMenus.inflate(R.menu.show_menu)
             popupMenus.setOnMenuItemClickListener {
                 when(it.itemId){
                     R.id.editText->{
-                        //ILA
 
-                        val v= LayoutInflater.from(c).inflate(R.layout.activity_add_patient,null) //non sono sicura che l'activity sia add patient
+
+                        //val v= LayoutInflater.from(c).inflate(R.layout.activity_add_patient,null) //non sono sicura che l'activity sia add patient
                        //TODO QUESTO NON CAPISCO
                         // val name=v.findViewById<?????>(R.id.PatientName)
-
-                               AlertDialog.Builder(c)
+//ILA
+                               /*AlertDialog.Builder(c)
                                    .setView(v)
                                    .setPositiveButton("ok"){
                                        dialog,->
@@ -116,12 +111,13 @@ class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : Recycl
 
 
                         //FINE ILA
+                        */
 
 
                         //TODO NON SAPREI COME FARE (MEGLIO FARLO DA PATIENT PAGE
 
 //QUESTO SOTTO COMMENTATO DA ILA POSSIBILE TOGLIERE SE NON FUNZIONA
-                        //Toast.makeText(c,"EditText Button is Clicked", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(c,"EditText Button is Clicked", Toast.LENGTH_SHORT).show()
                         true
                     }
                     R.id.delete->{
@@ -130,29 +126,29 @@ class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : Recycl
                             .setIcon(R.drawable.ic_warning)
                             .setMessage("Are you scure delete this Patient")
 
-                               //ILA HA CAMBIATO QUI SOTTO INVECE DI   { dialog, which ->
+
                             .setPositiveButton("Yes") {
-                                    dialog, ->
+                                    dialog, which ->
                                 //INIZIO ILA
-                                patientsList.removeAt(adapterPosition)
+                               /* patientsList.removeAt(adapterPosition)
                                 notifyDataSetChanged()
                                 Toast.makeText(c,"Delete Button is Clicked", Toast.LENGTH_SHORT).show()
                                 dialog.dismiss()
-                            }
+                            }*/
 
                                 //FINE ILA
 
 
                                 //ANCHE QUESTI COMMENTI ILA
-                                //deletePatient(c, adapterPosition) //Elimino File Json--> NON VA
-                                //notifyDataSetChanged()
-                                //Toast.makeText(c,"Deleted this Patient", Toast.LENGTH_SHORT).show()
+                                deletePatient(c, adapterPosition) //Elimino File Json--> NON VA
+                                notifyDataSetChanged()
+                                Toast.makeText(c,"Deleted this Patient", Toast.LENGTH_SHORT).show()
 //
-                                //dialog.dismiss()
-                            //}
+                                dialog.dismiss()
+                           }
 
                            .setNegativeButton("No"){
-                                   dialog,  ->
+                                   dialog, which  ->
                                 dialog.dismiss()
 ////
                             }

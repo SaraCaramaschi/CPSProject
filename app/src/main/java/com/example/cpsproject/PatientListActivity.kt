@@ -1,5 +1,6 @@
 package com.example.cpsproject
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.managers.PatientsManager.deletePatient
+import com.example.cpsproject.managers.PatientsManager.patientsList
 import com.example.cpsproject.model.Patient
 import kotlin.random.Random
 
@@ -17,6 +19,27 @@ class PatientListActivity: AppCompatActivity() {
     private lateinit var layoutManager: RecyclerView.LayoutManager
     private lateinit var adapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>
     lateinit var rvPatients: RecyclerView
+
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+   /* fun removeItem(position:Int){
+        patientsList.remove(position);
+       // PatientAdapter.notifyItemRemoved(position);
+
+    }*/
+   //
+    //
+    //
+    //
+    //
+    ///
+    //
+    //
 
     // QUI X RECYCLER CHE SI AGGIORNA
     var listPatients: ArrayList<Patient> = ArrayList()
@@ -36,7 +59,7 @@ class PatientListActivity: AppCompatActivity() {
         rvPatients.layoutManager = layoutManager
         rvPatients.adapter = adapter
 
-        //PASSA AD PAGINA PAZIENTE --> entra sempre nello stesso
+        //PASSA AD PAGINA PAZIENTE
         val intentPage = Intent(this, PatientPageActivity::class.java)
         adapter.setOnItemClickListener(object : PatientAdapter.onItemClickListener{
             override fun onClick(position: Int) {
@@ -48,22 +71,38 @@ class PatientListActivity: AppCompatActivity() {
                 //TODO RIEMPIRE PATIENT PAGE CON DATI DEL PAZIENTE--> fatto ma manca da acquisire enum ecc
             }
 
+            //
+            //
+            //
+            //
+            //
+            //
+            override fun deletePatient ( position: Int) {
+                Toast.makeText(
+                    this@PatientListActivity,
+                    "you clicked on patient $position",
+                    Toast.LENGTH_SHORT
+                ).show()
+                var pos = position
+                intentPage.putExtra("position", pos)
+                startActivity(intentPage)
+            }
+           /*override fun onDeleteClick(position: Int) {
+               fun removeItem(pos) //questo è un metodo ch ein java è stato definito come foto ila
+                TODO("Not yet implemented")
+            }*/
+            //
+            //
+            //
+            //
+            //
+            //
+            //
+            //
 
         })
 
-        //DA QUI PROVA ILA per eliminare pz: con questo codice elimina
-        // un pz a caso dalla lista --> non va
 
-
-        fun removeItem(view:View){
-            val index= Random.nextInt(until = 8) //non ho capito perchè 8
-            listPatients.removeAt(index)
-            adapter.notifyItemRemoved(index)
-
-
-        }
-
-//FINE ILA
 
         //AGGIUNGE PAZIENTE
         val btnAddPatient = findViewById<Button>(R.id.btnNewPatient)
@@ -72,18 +111,21 @@ class PatientListActivity: AppCompatActivity() {
             startActivity(intent)
         }
 
-        // ELIMINA PAZIENTE
+        // ELIMINA PAZIENTE --> fatto  un po' da ila quindi non fidarti
         val btnDeletePatient= findViewById<Button>(R.id.btnDeletePatient)
         btnDeletePatient.setOnClickListener{
             val intent= Intent(this, DeleteMessageActivity::class.java)
 
-
+            val btnDeletePatient = findViewById<Button>(R.id.btnDeletePatient)
+            btnDeletePatient.setOnClickListener {
+                val intent = Intent(this, DeleteMessageActivity::class.java)
+                startActivity(intent)
 
 
             //QUI VOLEVA SELEZIONARE I PAZIENTI CON setonLONGclicklistener ma ovviamente non riesco [NON SENTE CLICK LUNGO E VA A PATIENT PAGE]e ho abbandonato
             // --> ho fatto con menù a lato del singolo paziente (codice nell'adapter, non mi piace)
 
-            Toast.makeText(this@PatientListActivity,"Select a patient for a long time", Toast.LENGTH_SHORT).show()
+         /*   Toast.makeText(this@PatientListActivity,"Select a patient for a long time", Toast.LENGTH_SHORT).show()
 
            adapter.setOnItemClickListener(object : PatientAdapter.onItemClickListener{
                override fun onClick(position: Int) {
@@ -95,11 +137,12 @@ class PatientListActivity: AppCompatActivity() {
                }
 
 
-           })
-        }
+           }
+        })
+            */
         }
 
-    }
+    }}}
 
 
 

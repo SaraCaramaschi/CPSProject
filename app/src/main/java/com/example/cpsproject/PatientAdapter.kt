@@ -27,24 +27,31 @@ class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : Recycl
     private var phases = listPatients.map{ it.phase }
     private var surname = listPatients.map{ it.surname }
     private val selectedPosition= -1
-
+     //TODO DOVE DEVO METTERLO https://www.youtube.com/watch?v=HMjI7cLsyfw
 
 
     inner class ViewHolder(itemView: View, listener: onItemClickListener ): RecyclerView.ViewHolder(itemView){
         var itemName: TextView
         var itemPhase: TextView
-        var mMenus: ImageView
+        //var mMenus: ImageView
+        var mDeleteImage: ImageView
+
 
         init{
             itemName = itemView.findViewById(R.id.PatientName)
             itemPhase = itemView.findViewById(R.id.tvPatientPhase)
-           mMenus= itemView.findViewById(R.id.mMenus)
+          // mMenus= itemView.findViewById(R.id.mMenus)
            //mMenus.setOnClickListener{ popupMenus(it) }
+            mDeleteImage= itemView.findViewById(R.id.ic_delete)
+
 
             //da qui ila inizia a scrivere cose
+            mDeleteImage.setOnClickListener{
+                val position: Int = adapterPosition
+                listener.onDeleteClick(position)
 
-
-
+            }
+//FINE ILA
 
 //           // SARA
 //             itemView.setOnClickListener{
@@ -135,7 +142,6 @@ class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : Recycl
                                 //FINE ILA
 
 
-                                //ANCHE QUESTI COMMENTI ILA
                                 deletePatient(c, adapterPosition) //Elimino File Json--> NON VA
                                 notifyDataSetChanged()
                                 Toast.makeText(c,"Deleted this Patient", Toast.LENGTH_SHORT).show()
@@ -172,26 +178,29 @@ class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : Recycl
 
 
     }
-////
-////
+
    private lateinit var mListener: onItemClickListener
 
    interface onItemClickListener{
         fun onClick(position:Int)
+
+        //ILA RIGA SENZA SENSO???
+   fun onDeleteClick(position: Int)
+
 //     //fun onLongClick(position: Int)
-//
+
    }
-////
+
     fun setOnItemClickListener(listener: onItemClickListener){
         mListener=listener
    }
-////
-////
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientAdapter.ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.activity_patient,parent,false)
         return ViewHolder(v, mListener)
     }
-////
+
     override fun onBindViewHolder(holder: PatientAdapter.ViewHolder, position: Int) {
         holder.itemName.text = names[position] + " " + surname[position]
         holder.itemPhase.text = "Phase:" + phases[position].toString()

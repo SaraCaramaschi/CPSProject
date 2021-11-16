@@ -57,15 +57,25 @@
 
         </LinearLayout>
 
+//DA SISTEMARE
         <ImageView
-            android:id="@+id/mMenus"
-            android:layout_width="50dp"
+            android:id="@+id/ic_delete"
+            android:layout_width="49dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_margin="15dp"
-            android:src="@drawable/ic_more"
-            />
-
+            android:src="@drawable/ic_delete"
+            app:layout_constraintStart_toEndOf="@+id/PatientName" />
+        <!--
+                <ImageView
+                    android:id="@+id/mMenus"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="15dp"
+                    android:src="@drawable/ic_more"
+                    />
+        -->
     </LinearLayout>
 
 

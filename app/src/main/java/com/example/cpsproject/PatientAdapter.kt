@@ -39,14 +39,9 @@ class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : Recycl
             itemName = itemView.findViewById(R.id.PatientName)
             itemPhase = itemView.findViewById(R.id.tvPatientPhase)
            mMenus= itemView.findViewById(R.id.mMenus)
-           mMenus.setOnClickListener{ popupMenus(it) }
+           //mMenus.setOnClickListener{ popupMenus(it) }
 
             //da qui ila inizia a scrivere cose
-
-
-
-
-
 
 
 
@@ -78,6 +73,7 @@ class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : Recycl
         //MODIFICARE PAZIENTE MEGLIO METTERE UNA ICONA NELLA PATIENT PAGE (COSì TROPPO COMPLICATO)
         //PER ELIMINARE NON SO, CARINO IL DIALOG ALERT
 //
+/*
         private fun popupMenus(v: View) {
            val position= names[adapterPosition] //prima c'era namesinvece di patienlist
             val popupMenus= PopupMenu(c, v)
@@ -170,6 +166,7 @@ class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : Recycl
             menu.javaClass.getDeclaredMethod("setForceShowIcon", Boolean::class.java)
                 .invoke(menu, true)
         }
+*/
 
 
 

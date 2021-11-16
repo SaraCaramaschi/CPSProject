@@ -41,7 +41,7 @@ class PatientListActivity: AppCompatActivity() {
             override fun onClick(position: Int) {
                 Toast.makeText(this@PatientListActivity,"you clicked on patient $position", Toast.LENGTH_SHORT).show()
                 var pos=position
-                intent.putExtra("position",pos)
+                intentPage.putExtra("position",pos)
                 startActivity(intentPage)
 
                 //TODO RIEMPIRE PATIENT PAGE CON DATI DEL PAZIENTE--> fatto ma manca da acquisire enum ecc

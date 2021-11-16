@@ -91,7 +91,7 @@ object PatientsManager {
 
     // Aggiorna lista pazienti
     fun  importPatientList(context: Context): ArrayList<Patient> {
-        Timber.d("Dentro a IMPORTPATIENTLIST") // Non lo stampa mai :(
+        Timber.d("Dentro a IMPORTPATIENTLIST")
 
         var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)
         if (folder.listFiles().isEmpty()) {

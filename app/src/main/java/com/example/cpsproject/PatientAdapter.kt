@@ -46,6 +46,16 @@ class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : Recycl
 //                val position: Int = adapterPosition
 //                Toast.makeText(itemView.context, "you clicked on ${names[position]} ", Toast.LENGTH_LONG).show()
 //                }
+
+            textView.setOnClickListener(new View.OnClickListener()
+
+
+
+            )
+
+
+
+
             itemView.setOnClickListener{
                 listener.onClick(adapterPosition)
                 //listener.onLongClick(adapterPosition)

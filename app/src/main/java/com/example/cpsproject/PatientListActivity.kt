@@ -32,7 +32,7 @@ class PatientListActivity: AppCompatActivity() {
         rvPatients.layoutManager = layoutManager
         rvPatients.adapter = adapter
 
-        //PASSA AD PAGINA PAZIENTE
+        //PASSA AD PAGINA PAZIENTE --> entra sempre nello stesso
         val intentPage = Intent(this, PatientPageActivity::class.java)
         adapter.setOnItemClickListener(object : PatientAdapter.onItemClickListener{
             override fun onClick(position: Int) {
@@ -40,6 +40,7 @@ class PatientListActivity: AppCompatActivity() {
                 var pos=position
                 intent.putExtra("position",pos)
                 startActivity(intentPage)
+
                 //TODO RIEMPIRE PATIENT PAGE CON DATI DEL PAZIENTE--> fatto ma manca da acquisire enum ecc
             }
 

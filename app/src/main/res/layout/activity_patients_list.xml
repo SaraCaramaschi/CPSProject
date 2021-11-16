@@ -47,18 +47,5 @@
         app:layout_constraintBottom_toTopOf="@id/RelativeLayout"
         tools:listitem="@layout/activity_patient" />
 
-    <!-- <ListView
-        android:id="@+id/patientslist"
-        android:layout_width="match_parent"
-        android:layout_height="643dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/RelativeLayout"
-        tools:listitem="@layout/activity_patient" /-->
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

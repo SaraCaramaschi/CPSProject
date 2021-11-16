@@ -2,6 +2,7 @@ package com.example.cpsproject
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.managers.PatientsManager.deletePatient
 import com.example.cpsproject.model.Patient
+import kotlin.random.Random
 
 class PatientListActivity: AppCompatActivity() {
     private lateinit var layoutManager: RecyclerView.LayoutManager
@@ -24,6 +26,7 @@ class PatientListActivity: AppCompatActivity() {
         setContentView(R.layout.activity_patients_list)
 
         // QUI X RECYCLER CHE SI AGGIORNA
+
         listPatients = PatientsManager.importPatientList(this)
         var adapter = PatientAdapter(this, listPatients)
 
@@ -47,6 +50,20 @@ class PatientListActivity: AppCompatActivity() {
 
         })
 
+        //DA QUI PROVA ILA per eliminare pz: con questo codice elimina
+        // un pz a caso dalla lista --> non va
+
+
+        fun removeItem(view:View){
+            val index= Random.nextInt(until = 8) //non ho capito perchè 8
+            listPatients.removeAt(index)
+            adapter.notifyItemRemoved(index)
+
+
+        }
+
+//FINE ILA
+
         //AGGIUNGE PAZIENTE
         val btnAddPatient = findViewById<Button>(R.id.btnNewPatient)
         btnAddPatient.setOnClickListener {
@@ -58,6 +75,9 @@ class PatientListActivity: AppCompatActivity() {
         val btnDeletePatient= findViewById<Button>(R.id.btnDeletePatient)
         btnDeletePatient.setOnClickListener{
             val intent= Intent(this, DeleteMessageActivity::class.java)
+
+
+
 
             //QUI VOLEVA SELEZIONARE I PAZIENTI CON setonLONGclicklistener ma ovviamente non riesco [NON SENTE CLICK LUNGO E VA A PATIENT PAGE]e ho abbandonato
             // --> ho fatto con menù a lato del singolo paziente (codice nell'adapter, non mi piace)

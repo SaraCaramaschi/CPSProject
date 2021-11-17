@@ -1,19 +1,16 @@
 package com.example.cpsproject
 
-import android.content.Context
+
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.graphics.toColorInt
 import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.model.Gender
 import com.example.cpsproject.model.Hand
 import com.example.cpsproject.model.Patient
 import kotlinx.android.synthetic.main.activity_add_patient.*
-import kotlinx.android.synthetic.main.activity_patient_page.*
-import java.io.File
 
 class EditPatientActivity: AppCompatActivity() {
 
@@ -106,6 +103,7 @@ class EditPatientActivity: AppCompatActivity() {
                     Gender.Other
                 }
             }
+
             // Riprendo tutte le variabili del patient
             var patient = Patient(
                 etName.text.toString(), etSurname.text.toString(),
@@ -114,8 +112,8 @@ class EditPatientActivity: AppCompatActivity() {
             )
 
             //cancello vecchio paziente per creare nuovo file (domanda: lista mostre stesso ordine con cui salvato arrey della lista?)
-            PatientsManager.deletePatient(this, pos)
-
+           // PatientsManager.deletePatient(this, pos)
+            PatientsManager.deletePatient(this,pos)
             // Add patient to patientlist
             PatientsManager.addPatient(patient, applicationContext)
 

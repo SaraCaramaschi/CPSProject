@@ -30,11 +30,11 @@ class DeleteMessageActivity: AppCompatActivity()  {
             startActivity(intent)
         }
         btnYes.setOnClickListener{
-            deletePatient(this, pos)
+           deletePatient(this, pos)
             Toast.makeText(this@DeleteMessageActivity,"Patient deleted", Toast.LENGTH_SHORT).show()
             var intent= Intent(this, PatientListActivity::class.java)
             startActivity(intent)
-            PatientsManager.deletePatient(applicationContext, pos)
+           // PatientsManager.deletePatient(this@DeleteMessageActivity, pos)
 
 
         }

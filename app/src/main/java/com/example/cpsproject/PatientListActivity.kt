@@ -1,9 +1,7 @@
 package com.example.cpsproject
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -11,9 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.managers.PatientsManager.deletePatient
-import com.example.cpsproject.managers.PatientsManager.patientsList
 import com.example.cpsproject.model.Patient
-import kotlin.random.Random
 
 class PatientListActivity: AppCompatActivity() {
     private lateinit var layoutManager: RecyclerView.LayoutManager
@@ -70,27 +66,26 @@ class PatientListActivity: AppCompatActivity() {
 
                 //TODO RIEMPIRE PATIENT PAGE CON DATI DEL PAZIENTE--> fatto ma manca da acquisire enum ecc
             }
+/*
+            override fun onDeleteClick(position: Int) {
+               deletePatient( this@PatientListActivity, position)
 
-            //
-            //
-            //
-            //
-            //
-            //
-            override fun deletePatient ( position: Int) {
+            }
+*/
+
+            /*override fun deletePatient (position: Int) {
                 Toast.makeText(
-                    this@PatientListActivity,
-                    "you clicked on patient $position",
-                    Toast.LENGTH_SHORT
-                ).show()
+                    this@PatientListActivity, "you clicked on patient $position", Toast.LENGTH_SHORT).show()
                 var pos = position
                 intentPage.putExtra("position", pos)
                 startActivity(intentPage)
-            }
-           /*override fun onDeleteClick(position: Int) {
-               fun removeItem(pos) //questo è un metodo ch ein java è stato definito come foto ila
-                TODO("Not yet implemented")
             }*/
+
+
+           override fun onDeleteClick(position: Int) {
+               deletePatient( this@PatientListActivity, position) //questo è un metodo ch ein java è stato definito come foto ila
+                TODO("Not yet implemented")
+            }
             //
             //
             //
@@ -111,15 +106,33 @@ class PatientListActivity: AppCompatActivity() {
             startActivity(intent)
         }
 
-        // ELIMINA PAZIENTE --> fatto  un po' da ila quindi non fidarti
-        val btnDeletePatient= findViewById<Button>(R.id.btnDeletePatient)
-        btnDeletePatient.setOnClickListener{
-            val intent= Intent(this, DeleteMessageActivity::class.java)
 
-            val btnDeletePatient = findViewById<Button>(R.id.btnDeletePatient)
+        // ELIMINA PAZIENTE --> fatto  un po' da ila quindi non fidarti
+
+        //
+        //
+        //ILA
+        /*val delete= findViewById<ImageView>(R.id.ic_delete)
+        val intentdelete=Intent(this,DeleteMessageActivity::class.java)
+
+                delete.setOnClickListener{
+            intentdelete.putExtra("position",position)
+            val intentNew= Intent(this, EditPatientActivity::class.java)
+            intentNew.putExtra("position",pos)
+            startActivity(intentNew)
+        */
+
+
+
+
+         /*   val btnDeletePatient = findViewById<Button>(R.id.btnDeletePatient)
             btnDeletePatient.setOnClickListener {
                 val intent = Intent(this, DeleteMessageActivity::class.java)
                 startActivity(intent)
+*/
+
+
+
 
 
             //QUI VOLEVA SELEZIONARE I PAZIENTI CON setonLONGclicklistener ma ovviamente non riesco [NON SENTE CLICK LUNGO E VA A PATIENT PAGE]e ho abbandonato
@@ -142,7 +155,7 @@ class PatientListActivity: AppCompatActivity() {
             */
         }
 
-    }}}
+    }}
 
 
 

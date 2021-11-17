@@ -2,11 +2,11 @@ package com.example.cpsproject.managers
 
 import android.annotation.SuppressLint
 import android.content.Context
+import com.example.cpsproject.PatientListActivity
 import com.example.cpsproject.model.Patient
 import com.google.gson.Gson
 import timber.log.Timber
 import java.io.*
-import com.example.cpsproject.PatientAdapter
 
 
 @SuppressLint("StaticFieldLeak")
@@ -126,7 +126,7 @@ object PatientsManager {
         return patientsList
     }
 
-    fun deletePatient(context: Context, i: Int) {
+    fun deletePatient(context: PatientListActivity, i: Int) {
         var patientDeleted = patientsList[i]
         patientsList.remove(patientDeleted)
         var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)

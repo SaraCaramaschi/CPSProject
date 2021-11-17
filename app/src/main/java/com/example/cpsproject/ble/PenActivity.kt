@@ -1,12 +1,15 @@
 package com.example.cpsproject.ble
 
 import android.bluetooth.BluetoothDevice
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.example.cpsproject.R
 import com.example.cpsproject.Schermata1
+import com.example.cpsproject.managers.PenManager
+import com.example.cpsproject.model.PenData
 import com.punchthrough.blestarterappandroid.ble.ConnectionManager
 import kotlinx.android.synthetic.main.activity_pen.*
 
@@ -25,7 +28,7 @@ class PenActivity : AppCompatActivity() {
         }
 
         btnDownload.setOnClickListener {
-            // To do download function
+            PenManager.downloadJson(PenManager.penData!!, this)
         }
     }
 }

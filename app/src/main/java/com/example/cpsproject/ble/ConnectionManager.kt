@@ -33,6 +33,8 @@ import com.example.cpsproject.ble.RealTimeActivity
 import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.managers.PenManager
 import com.example.cpsproject.model.Patient
+import com.example.cpsproject.model.PenData
+import com.google.gson.Gson
 import timber.log.Timber
 import java.io.File
 import java.lang.ref.WeakReference
@@ -133,6 +135,7 @@ object ConnectionManager {
         enableNotifications(currDevice!!, consoleChar!!) // queste sono le funzioni del tizio
         writeCharacteristic(currDevice!!, consoleChar!!, format.toByteArray())
     }
+
 
     fun servicesOnDevice(device: BluetoothDevice): List<BluetoothGattService>? =
         deviceGattMap[device]?.services

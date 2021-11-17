@@ -28,58 +28,69 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.Handler
 import android.os.Looper
+import android.view.View
+import com.example.cpsproject.ble.RealTimeActivity
+import com.example.cpsproject.managers.PatientsManager
+import com.example.cpsproject.managers.PenManager
+import com.example.cpsproject.model.Patient
 import timber.log.Timber
+import java.io.File
 import java.lang.ref.WeakReference
 import java.util.UUID
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.ConcurrentLinkedQueue
 
 private const val GATT_MIN_MTU_SIZE = 23
+
 /** Maximum BLE MTU size as defined in gatt_api.h. */
 private const val GATT_MAX_MTU_SIZE = 517
 //private const val UUID_BATTERIA = 00020000-0001-11E1-AC36-0002A5D5C51B
 
 object ConnectionManager {
 
-    private var listeners: MutableSet<WeakReference<ConnectionEventListener>> = mutableSetOf() // con listeners c'è sempre "invoke"
+    private var listeners: MutableSet<WeakReference<ConnectionEventListener>> =
+        mutableSetOf() // con listeners c'è sempre "invoke"
     private val deviceGattMap = ConcurrentHashMap<BluetoothDevice, BluetoothGatt>()
     private val operationQueue = ConcurrentLinkedQueue<BleOperationType>()
     private var pendingOperation: BleOperationType? = null
     private val serviceuuid = UUID.fromString("00000000-0001-11E1-9AB4-0002A5D5C51B")
     private val batteryuuid = UUID.fromString("00020000-0001-11E1-AC36-0002A5D5C51B")
     private val datauuid = UUID.fromString("00E00000-0001-11E1-AC36-0002A5D5C51B")
+    private val consoleuuid = UUID.fromString("00000001-000E-11E1-AC36-0002A5D5C51B")
+    //TODO da sistemare come gestire uuid debug / console - CONTROLLA
+    private val debuguuid = UUID.fromString( "00000000-000E-11E1-9AB4-0002A5D5C51B")
 
-    // attenzione perchè quando riceviamo i dati controlliamo il service uuid!!!
+    private val format = "FFormat"
+
+    private var batteryChar: BluetoothGattCharacteristic? = null
+    private var dataChar: BluetoothGattCharacteristic? = null
+    private var consoleChar: BluetoothGattCharacteristic? = null
+    private var currDevice: BluetoothDevice? = null
+    private var connection: BluetoothGatt ?= null
 
     private fun readBattery(data: ByteArray) {
-        var battery = data.copyOfRange(2,4).reversedArray().toHexString()
-            .replace(" ","").substring(2).toInt(radix = 16).toDouble()
+        var battery = data.copyOfRange(2, 4).reversedArray().toHexString()
+            .replace(" ", "").substring(2).toInt(radix = 16).toDouble()
         battery = battery.div(10)
+        PenManager.battery = battery
 
-        //battery = battery.substring(2)
-        //Timber.d("Sottostringa: " + battery)
-        Timber.d("Valore batteria: %s",  battery) // da aggiungere diviso 0
-
-        /*val soc = data.copyOfRange(2, 4).reversedArray().toHexString().toLong(radix = 16) / 10 //4 escluso
-        val volts = data.copyOfRange(4, 6).reversedArray().toHexString().toLong(radix = 16)
-            .toDouble() / 1000
-        val amps =
-            data.copyOfRange(6, 8).reversedArray().toHexString().toLong(radix = 16).toDouble()
-        val status = data[8].toInt()
-        Timber.d("la batteria è " + soc)*/
+        Timber.d("Valore batteria: %s", battery)
     }
 
     private fun readData(data: ByteArray) {
+
         val acc_x =
             data.copyOfRange(2, 4).reversedArray().toHexString()
-                .replace(" ","").substring(2).toInt(radix = 16).toShort()
+                .replace(" ", "").substring(2).toInt(radix = 16).toShort()
                 .toDouble() / 100
 
-        Timber.d("Prova con acc_x per vedere se è tutto ok: %s", acc_x) // da aggiungere diviso 0
-        /*val acc_y =
+        Timber.d("Prova con acc_x per vedere se è tutto ok: %s", acc_x)
+
+        val acc_y =
             data.copyOfRange(4, 6).reversedArray().toHexString()
                 .replace(" ","").substring(4).toInt(radix = 16).toShort()
                 .toDouble() / 100
+
         val acc_z =
             data.copyOfRange(6, 8).reversedArray().toHexString()
                 .replace(" ","").substring(6).toInt(radix = 16).toShort()
@@ -95,8 +106,32 @@ object ConnectionManager {
         val gyr_z =
             data.copyOfRange(12, 14).reversedArray().toHexString()
                 .replace(" ","").substring(12).toInt(radix = 16).toShort()
-                .toDouble() / 100*/
+                .toDouble() / 100
 
+        PenManager.penData!!.acc_x = acc_x
+        PenManager.penData!!.acc_y = acc_y
+        PenManager.penData!!.acc_z = acc_z
+        PenManager.penData!!.gyr_x = gyr_x
+        PenManager.penData!!.gyr_y = gyr_y
+        PenManager.penData!!.gyr_z = gyr_z
+        // PenManager.penData!!.force = ??
+
+
+    }
+
+    fun readConsole (data:ByteArray) {
+        val consoleString = data.toHexString()
+        if (consoleString.contains("start formatting")) {
+            Timber.d ("format iniziato")
+        } else if (consoleString.contains("formatting done")) {
+            disableNotifications(currDevice!!, consoleChar!!)
+            Timber.d("format finito")
+        }
+    }
+
+    fun format() {
+        enableNotifications(currDevice!!, consoleChar!!) // queste sono le funzioni del tizio
+        writeCharacteristic(currDevice!!, consoleChar!!, format.toByteArray())
     }
 
     fun servicesOnDevice(device: BluetoothDevice): List<BluetoothGattService>? =
@@ -110,7 +145,9 @@ object ConnectionManager {
     }
 
     fun registerListener(listener: ConnectionEventListener) { // riempire il listener
-        if (listeners.map { it.get() }.contains(listener)) { return }
+        if (listeners.map { it.get() }.contains(listener)) {
+            return
+        }
         listeners.add(WeakReference(listener))
         listeners = listeners.filter { it.get() != null }.toMutableSet()
         Timber.d("Added listener $listener, ${listeners.size} listeners total")
@@ -421,29 +458,41 @@ object ConnectionManager {
                     printGattTable()
                     requestMtu(device, GATT_MAX_MTU_SIZE)
 
-                    listeners.forEach { it.get()?.onConnectionSetupComplete?.invoke(this)
+                    listeners.forEach {
+                        it.get()?.onConnectionSetupComplete?.invoke(this)
                     }
 
-                    gatt.getService(serviceuuid).characteristics.forEach { //per ogni caratteristiche faccio cose
-                        when(it.uuid){ // it è una BLUETOOTHGATTCHARACTERISTIC
-                            batteryuuid -> {
-                                Timber.e("Questa e' la batteria della penna")
-                                /*
-                                Le funzioni NATIVA una dopo l'altra non si possono fare per natura del BLE.
-                                Invece le funzioni che ha creato il tizio si.
-                                */
+                    connection = gatt
+                    currDevice = gatt.device
+                    PenManager.penName = gatt.device.name
 
-                                enableNotifications( gatt.device,it)  // funzioni create dal tizio
+                    gatt.getService(serviceuuid).characteristics.forEach {
+                        when (it.uuid) {
+                            batteryuuid -> {
+                                Timber.d("Questa e' la batteria della penna")
+
+                                batteryChar = it
+                                enableNotifications(gatt.device, it)  // funzioni create dal tizio
                                 readCharacteristic(gatt.device, it)
                             } //se è batteria fai certe cose: ottieni il dato della batteria
                             datauuid -> {
-                                Timber.e("Questi sono i dati della penna")
-                                //onCharacteristicRead(gatt, it, status)
-                                enableNotifications( gatt.device,it)
-                                readCharacteristic(it)
+                                Timber.d("Questi sono i dati della penna")
+
+                                dataChar = it
+                                enableNotifications(gatt.device, it)
                             }
-                        } //when freccette grafe
+                       }
+                    } //la console è in un servizio diverso: debugservice
+
+                    gatt.getService(debuguuid).characteristics.forEach {
+                        when(it.uuid){
+                            consoleuuid -> {
+                                Timber.d("Abbiamo trovato il servizio della console OK")
+                                consoleChar = it
+                            }
+                        }
                     }
+
 
                     //altro servizio impo: console  (debog service uuid)
                     // io la leggo ma non va nella funz leggi ma nel suo callback
@@ -473,16 +522,15 @@ object ConnectionManager {
         }
 
         override fun onCharacteristicRead( //aggiungiamo cose alla nativa
-            gatt: BluetoothGatt, // la connessione
-            characteristic: BluetoothGattCharacteristic, // input: una caratteristica specifica
-            status: Int // stato di connessione (?)
+            gatt: BluetoothGatt,
+            characteristic: BluetoothGattCharacteristic,
+            status: Int
         ) {
-            with(characteristic) { //ASSOCIA L'INPUT
+            with(characteristic) {
                 when (status) {
                     BluetoothGatt.GATT_SUCCESS -> {
-                        // qui ci da proprio il valore!
                         Timber.w("Read characteristic $uuid | value: ${value.toHexString()}")
-                        when(characteristic.uuid){
+                        when (characteristic.uuid) {
                             batteryuuid -> {
                                 Timber.w("Ora sono in onCharacteristicRead e vado a leggere la batteria tramite private fun readBattery")
                                 readBattery(characteristic.value)
@@ -498,7 +546,12 @@ object ConnectionManager {
                         //la caratteristica console invia i messaggi
                         //descrittore attributo a cui diamo un valore per attivare le notifiche
                         // oncharacteristicchange leggi solo quando cambia
-                        listeners.forEach { it.get()?.onCharacteristicRead?.invoke(gatt.device, this) }  // cosa fa questo ???
+                        listeners.forEach {
+                            it.get()?.onCharacteristicRead?.invoke(
+                                gatt.device,
+                                this
+                            )
+                        }
                     }
                     BluetoothGatt.GATT_READ_NOT_PERMITTED -> {
                         Timber.e("Read not permitted for $uuid!")
@@ -523,7 +576,19 @@ object ConnectionManager {
                 when (status) {
                     BluetoothGatt.GATT_SUCCESS -> {
                         Timber.i("Wrote to characteristic $uuid | value: ${value.toHexString()}")
-                        listeners.forEach { it.get()?.onCharacteristicWrite?.invoke(gatt.device, this) }
+                        listeners.forEach {
+                            it.get()?.onCharacteristicWrite?.invoke(
+                                gatt.device,
+                                this
+                            )
+                        }
+
+                        when (characteristic.uuid) { // it è una BLUETOOTHGATTCHARACTERISTIC
+                            consoleuuid -> {
+                                Timber.d("ho scritto nella console")
+                            }
+                        }
+
                     }
                     BluetoothGatt.GATT_WRITE_NOT_PERMITTED -> {
                         Timber.e("Write not permitted for $uuid!")
@@ -532,10 +597,10 @@ object ConnectionManager {
                         Timber.e("Characteristic write failed for $uuid, error: $status")
                     }
                 }
-            }
 
-            if (pendingOperation is CharacteristicWrite) {
-                signalEndOfOperation()
+                if (pendingOperation is CharacteristicWrite) {
+                    signalEndOfOperation()
+                }
             }
         }
 
@@ -546,14 +611,17 @@ object ConnectionManager {
             with(characteristic) {
                 Timber.i("Characteristic $uuid changed | value: ${value.toHexString()}")
                 listeners.forEach { it.get()?.onCharacteristicChanged?.invoke(gatt.device, this) }
-                when(characteristic.uuid){
-                    datauuid ->{
-
+                when (characteristic.uuid) {
+                    datauuid -> {
+                        readData(characteristic.value)
                     }
-                    batteryuuid->{
+                    batteryuuid -> {
                         readBattery(characteristic.value)
                     }
-            }
+                    consoleuuid -> {
+                        readConsole(format.toByteArray())
+                    }
+                }
             }
         }
 
@@ -595,7 +663,12 @@ object ConnectionManager {
                         if (isCccd()) {
                             onCccdWrite(gatt, value, characteristic)
                         } else {
-                            listeners.forEach { it.get()?.onDescriptorWrite?.invoke(gatt.device, this) }
+                            listeners.forEach {
+                                it.get()?.onDescriptorWrite?.invoke(
+                                    gatt.device,
+                                    this
+                                )
+                            }
                         }
                     }
                     BluetoothGatt.GATT_WRITE_NOT_PERMITTED -> {
@@ -624,7 +697,7 @@ object ConnectionManager {
             val charUuid = characteristic.uuid
             val notificationsEnabled =
                 value.contentEquals(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE) ||
-                    value.contentEquals(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE)
+                        value.contentEquals(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE)
             val notificationsDisabled =
                 value.contentEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
 
@@ -659,10 +732,11 @@ object ConnectionManager {
             with(intent) {
                 if (action == BluetoothDevice.ACTION_BOND_STATE_CHANGED) {
                     val device = getParcelableExtra<BluetoothDevice>(BluetoothDevice.EXTRA_DEVICE)
-                    val previousBondState = getIntExtra(BluetoothDevice.EXTRA_PREVIOUS_BOND_STATE, -1)
+                    val previousBondState =
+                        getIntExtra(BluetoothDevice.EXTRA_PREVIOUS_BOND_STATE, -1)
                     val bondState = getIntExtra(BluetoothDevice.EXTRA_BOND_STATE, -1)
                     val bondTransition = "${previousBondState.toBondStateDescription()} to " +
-                        bondState.toBondStateDescription()
+                            bondState.toBondStateDescription()
                     Timber.w("${device?.address} bond state changed | $bondTransition")
                 }
             }

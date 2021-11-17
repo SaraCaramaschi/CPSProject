@@ -16,7 +16,7 @@
 
 //package com.punchthrough.blestarterappandroid
 package com.example.cpsproject.ble
-
+/*
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.bluetooth.BluetoothDevice
@@ -96,6 +96,7 @@ class BleOperationsActivity : AppCompatActivity() {
             title = "BLE Playground"
         }
         setupRecyclerView()
+
         request_mtu_button.setOnClickListener {
             if (mtu_field.text.isNotEmpty() && mtu_field.text.isNotBlank()) {
                 mtu_field.text.toString().toIntOrNull()?.let { mtu ->
@@ -278,3 +279,4 @@ class BleOperationsActivity : AppCompatActivity() {
     private fun String.hexToBytes() =
         this.chunked(2).map { it.toUpperCase(Locale.US).toInt(16).toByte() }.toByteArray()
 }
+*/

@@ -65,6 +65,7 @@ class MainConnection : AppCompatActivity() {
             with(result.device) {
                 Timber.w("Connecting to $address")
                 ConnectionManager.connect(this, this@MainConnection)
+                // connessione con device
             }
         }
     }
@@ -216,7 +217,8 @@ class MainConnection : AppCompatActivity() {
     private val connectionEventListener by lazy {
         ConnectionEventListener().apply {
             onConnectionSetupComplete = { gatt ->
-                Intent(this@MainConnection, BleOperationsActivity::class.java).also {
+                // Prima di PenActivity c'era BleOperationsActivityProva
+                Intent(this@MainConnection, PenActivity::class.java).also {
                     it.putExtra(BluetoothDevice.EXTRA_DEVICE, gatt.device)
                     startActivity(it)
                 }
@@ -234,7 +236,7 @@ class MainConnection : AppCompatActivity() {
         }
     }
 
-    /*******************************************
+        /*******************************************
      * Extension functions
      *******************************************/
 

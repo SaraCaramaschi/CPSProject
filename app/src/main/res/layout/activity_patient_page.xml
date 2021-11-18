@@ -155,8 +155,6 @@
             android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="parent" />
-
-
     </LinearLayout>
 
     <LinearLayout

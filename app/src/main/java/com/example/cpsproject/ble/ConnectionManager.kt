@@ -33,6 +33,7 @@ import com.example.cpsproject.ble.RealTimeActivity
 import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.managers.PenManager
 import com.example.cpsproject.model.Patient
+import com.example.cpsproject.model.PenData
 import timber.log.Timber
 import java.io.File
 import java.lang.ref.WeakReference
@@ -63,7 +64,7 @@ object ConnectionManager {
     private val format = "FFormat"
 
     private var batteryChar: BluetoothGattCharacteristic? = null
-    private var dataChar: BluetoothGattCharacteristic? = null
+    public  var dataChar: BluetoothGattCharacteristic ?= null
     private var consoleChar: BluetoothGattCharacteristic? = null
     public var currDevice: BluetoothDevice? = null
     private var connection: BluetoothGatt ?= null
@@ -77,8 +78,7 @@ object ConnectionManager {
         Timber.d("Valore batteria: %s", battery)
     }
 
-    private fun readData(data: ByteArray) {
-
+    fun readData(data: ByteArray) {
         val acc_x =
             data.copyOfRange(2, 4).reversedArray().toHexString()
                 .replace(" ", "").substring(2).toInt(radix = 16).toShort()
@@ -86,7 +86,7 @@ object ConnectionManager {
 
         Timber.d("Prova con acc_x per vedere se è tutto ok: %s", acc_x)
 
-        val acc_y =
+        /*val acc_y =
             data.copyOfRange(4, 6).reversedArray().toHexString()
                 .replace(" ","").substring(4).toInt(radix = 16).toShort()
                 .toDouble() / 100
@@ -106,21 +106,28 @@ object ConnectionManager {
         val gyr_z =
             data.copyOfRange(12, 14).reversedArray().toHexString()
                 .replace(" ","").substring(12).toInt(radix = 16).toShort()
-                .toDouble() / 100
+                .toDouble() / 100*/
 
-        PenManager.penData!!.acc_x = acc_x
-        PenManager.penData!!.acc_y = acc_y
+        PenManager.penData.acc_x=acc_x
+        /*PenManager.penData!!.acc_y = acc_y
         PenManager.penData!!.acc_z = acc_z
         PenManager.penData!!.gyr_x = gyr_x
         PenManager.penData!!.gyr_y = gyr_y
-        PenManager.penData!!.gyr_z = gyr_z
+        PenManager.penData!!.gyr_z = gyr_z*/
         // PenManager.penData!!.force = ??
 
 
     }
 
+    fun updateData() {
+        enableNotifications(currDevice!!, dataChar!!)
+    }
+
     fun readConsole (data:ByteArray) {
-        val consoleString = data.toHexString()
+        Timber.d("consoleeeee " + data.toHexString())
+        var consoleString = data.toHexString()
+        consoleString = (hexToAscii(consoleString)).lowercase()
+
         if (consoleString.contains("start formatting")) {
             Timber.d ("format iniziato")
         } else if (consoleString.contains("formatting done")) {
@@ -128,6 +135,18 @@ object ConnectionManager {
             Timber.d("format finito")
         }
     }
+    private fun hexToAscii(hexStr: String): String {
+        val output = StringBuilder("")
+        var i = 0
+        while (i < hexStr.length) {
+            val str = hexStr.substring(i, i + 2)
+            output.append(str.toInt(16).toChar())
+            i += 2
+        }
+        return output.toString()
+    }
+    fun ByteArray.toHexString(): String =
+        joinToString(separator = "", prefix = "") { String.format("%02X", it) }
 
     fun format() {
         enableNotifications(currDevice!!, consoleChar!!) // queste sono le funzioni del tizio
@@ -479,7 +498,7 @@ object ConnectionManager {
                                 Timber.d("Questi sono i dati della penna")
 
                                 dataChar = it
-                                enableNotifications(gatt.device, it)
+
                             }
                        }
                     } //la console è in un servizio diverso: debugservice
@@ -537,7 +556,7 @@ object ConnectionManager {
                             }
                             datauuid -> {
                                 Timber.w("Ora sono in onCharacteristicRead e vado a leggere i dati tramite private fun readData ?? ")
-                                readData(characteristic.value)
+                                //readData(characteristic.value)
                             }
                         }
                         //sessionmanager che raccoglie tutte le variabili, companion object, singleton kotlin
@@ -613,13 +632,14 @@ object ConnectionManager {
                 listeners.forEach { it.get()?.onCharacteristicChanged?.invoke(gatt.device, this) }
                 when (characteristic.uuid) {
                     datauuid -> {
+                        Timber.d("sono in char changed")
                         readData(characteristic.value)
                     }
                     batteryuuid -> {
                         readBattery(characteristic.value)
                     }
                     consoleuuid -> {
-                        readConsole(format.toByteArray())
+                        readConsole(consoleChar!!.value)
                     }
                 }
             }

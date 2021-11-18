@@ -12,7 +12,14 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
+/* allprojects {
+    repositories {
+        google()
+    }
+}*/
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
-}
+        task clean(type: Delete) {
+            delete rootProject.buildDir
+
+        }
+

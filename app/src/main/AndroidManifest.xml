@@ -54,9 +54,7 @@
         <activity
             android:name=".DeleteMessageActivity"
             android:exported="true" />
-        <activity
-            android:name=".PLDeleteActivity"
-            android:exported="true" />
+
         <activity
             android:name=".ble.MainConnection"
             android:exported="true" />

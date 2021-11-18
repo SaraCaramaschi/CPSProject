@@ -3,6 +3,8 @@ package com.example.cpsproject
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cpsproject.managers.PatientsManager
@@ -19,6 +21,10 @@ class DeleteMessageActivity: AppCompatActivity()  {
 
         val intent= getIntent()
         val pos= intent.getIntExtra("position", 0)
+        val patient = PatientsManager.patientsList[pos]
+
+        val tvMessage = findViewById<TextView>(R.id.tvMessage)
+        tvMessage.setText("Do you want to eliminate ${patient.name} ${patient.surname}")
 
 //        var listPatients: ArrayList<Patient> = ArrayList()
 //        listPatients = PatientsManager.importPatientList(this)

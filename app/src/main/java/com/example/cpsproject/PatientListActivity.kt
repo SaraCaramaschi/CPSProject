@@ -23,14 +23,13 @@ class PatientListActivity: AppCompatActivity() {
 
     //
     //
-   /* fun removeItem(position:Int){
+    /* fun removeItem(position:Int){
         patientsList.remove(position);
        // PatientAdapter.notifyItemRemoved(position);
 
     }*/
-   //
     //
-
+    //
 
 
     // QUI X RECYCLER CHE SI AGGIORNA
@@ -79,30 +78,9 @@ class PatientListActivity: AppCompatActivity() {
 
         //TENTATIVI DELETE
 
-        var btnDelete = findViewById<Button>(R.id.btnDeletePatient)
-        val intentPLDelete = Intent(this, PLDeleteActivity::class.java)
-        //val intentDelete = Intent(this, DeleteMessageActivity::class.java)
-        btnDelete.setOnClickListener {
-            startActivity(intentPLDelete)
-        }
-        /*
 
-        adapter.setOnItemLongClickListener(object : PatientAdapter.onItemLongClickListener {
-            override fun onLongClick(position: Int): Boolean{
-                Toast.makeText(this@PatientListActivity,"you clicked on patient $position", Toast.LENGTH_SHORT).show()
-                var pos = position
-                intentDelete.putExtra("position", pos)
-                startActivity(intentDelete)
-                return true
-
-
-                //TODO RIEMPIRE PATIENT PAGE CON DATI DEL PAZIENTE--> fatto ma manca da acquisire enum ecc
-            }*/
-
-
-    }
-            //Toast.makeText(this, "Long click on the patient that you want to delete", Toast.LENGTH_SHORT).show()
-            /*adapter.setOnItemClickListener(object : PatientAdapter.onItemClickListener {
+        //Toast.makeText(this, "Long click on the patient that you want to delete", Toast.LENGTH_SHORT).show()
+        /*adapter.setOnItemClickListener(object : PatientAdapter.onItemClickListener {
                 override fun onClick(position: Int) {
                 }
 
@@ -118,7 +96,8 @@ class PatientListActivity: AppCompatActivity() {
                 }
             }
             )*/
-        }
+    }
+}
 
 
 

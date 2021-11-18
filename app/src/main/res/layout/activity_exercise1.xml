@@ -5,93 +5,96 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/llTitle1"
+    <TextView
+        android:id="@+id/tvExercise1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="Exercise 1"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvExDescription1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvExercise1" />
+
+    <TextView
+        android:id="@+id/tvStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Press start to perform data acquisition"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnStart" />
+
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="100dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#1A731E"
+        android:text="Start"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvStop" />
+
+    <TextView
+        android:id="@+id/tvStop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:text="Press stop to end the acquisition of the data"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDownload" />
+
+    <Button
+        android:id="@+id/btnStop"
+        android:layout_width="100dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#8E2424"
+        android:text="Stop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvStart" />
+
+    <TextView
+        android:id="@+id/tvDownload"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="10dp">
-        <TextView
-            android:id="@+id/tvExercise1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Exercise 1"
-            android:textSize="40sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="100dp"/>
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="80dp"
+        android:text="You will be able to download files once all three exercises will be completed"
+        android:textSize="17sp"
+        app:layout_constraintTop_toBottomOf="@+id/tvExercise1"
+        tools:layout_editor_absoluteX="0dp" />
 
-        <TextView
-            android:id="@+id/tvExDescription1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:textSize="18sp"
-            android:layout_marginStart="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.509"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvExercise1" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/llButtons"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btnDownloadEx1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/llTitle1"
-        android:layout_marginTop="10dp">
-        <TextView
-            android:id="@+id/tvStart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Press start to perform data acquisition"
-            android:textSize="17sp"
-            android:layout_marginStart="20dp" />
-        <Button
-            android:id="@+id/btnStart"
-            android:layout_width="100dp"
-            android:layout_height="55dp"
-            android:backgroundTint="#1A731E"
-            android:text="Start"
-            android:layout_marginTop="15dp"
-            android:layout_marginStart="140dp" />
+        android:layout_marginTop="48dp"
+        android:text="Download files"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnStop" />
 
-        <TextView
-            android:id="@+id/tvStop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="50dp"
-            android:text="Press stop to end the acquisition of the data"
-            android:textSize="17sp" />
-
-        <Button
-            android:id="@+id/btnStop"
-            android:layout_width="100dp"
-            android:layout_height="55dp"
-            android:layout_marginStart="140dp"
-            android:layout_marginTop="15dp"
-            android:backgroundTint="#8E2424"
-            android:text="Stop" />
-
-        <TextView
-            android:id="@+id/tvDownload"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="50dp"
-            android:text="You will be able to download files once all three exercises will be completed"
-            android:textSize="17sp"
-            android:layout_marginStart="20dp" />
-
-        <Button
-            android:id="@+id/btnDownloadEx1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginStart="105dp"
-            android:text="Download files"/>
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

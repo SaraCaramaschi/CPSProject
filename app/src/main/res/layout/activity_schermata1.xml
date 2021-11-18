@@ -38,33 +38,21 @@
         app:layout_constraintTop_toBottomOf="@+id/btnPenConnection" />
 
 
-    <LinearLayout
-        android:id="@+id/LL_clinician"
-        android:layout_width="410dp"
-        android:layout_height="157dp"
-        android:clickable="false"
-        android:orientation="horizontal"
-        android:rotationY="0"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/tvClinician"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:minHeight="48dp"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnPenConnection"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-
+        app:layout_constraintHorizontal_bias="0.576"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.108">
-
-        <TextView
-            android:id="@+id/tvClinician"
-            android:layout_width="226dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginStart="40dp"
-            android:ems="10"
-            android:minHeight="48dp"
-            android:text="Dott. Mario Rossi"
-            android:textSize="40sp" />
-    </LinearLayout>
+        app:layout_constraintVertical_bias="0.164" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

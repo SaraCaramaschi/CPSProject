@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "944858889617",
+    "project_id": "thinkpen-28d8a",
+    "storage_bucket": "thinkpen-28d8a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:944858889617:android:07244a97d3a49bf3942e30",
+        "android_client_info": {
+          "package_name": "com.example.cpsproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "944858889617-vdvt4mg8hj9qh8qu0qunsaclarlheqid.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cpsproject",
+            "certificate_hash": "15757a4d927a8f6db5ac1685198cab75f5956c72"
+          }
+        },
+        {
+          "client_id": "944858889617-gbujqbniuppq3aesuduqe6dp1e4ca9ea.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcLf-Arv5Ue0Flb1Y1SmmrAKeVgKLFsGA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "944858889617-gbujqbniuppq3aesuduqe6dp1e4ca9ea.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

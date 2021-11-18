@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.TextView
 
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_phase_1.*
 
 class Phase1Activity: AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,6 +23,16 @@ class Phase1Activity: AppCompatActivity(){
         btn1.setOnClickListener {
             val intent1 = Intent(this, Exercise1Activity::class.java)
             startActivity(intent1)
+        }
+
+        btnEx2Ph1.setOnClickListener {
+            val intent = Intent(this, Exercise1Activity::class.java)
+            startActivity(intent)
+        }
+
+        btnEx3Ph1.setOnClickListener {
+            val intent = Intent(this, Exercise2Activity::class.java)
+            startActivity(intent)
         }
     }
 

@@ -9,9 +9,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cpsproject.ble.MainConnection
+import com.example.cpsproject.ble.PenActivity
 import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.managers.PatientsManager.patientsList
 import com.example.cpsproject.model.Patient
+import com.punchthrough.blestarterappandroid.ble.ConnectionManager
+import com.punchthrough.blestarterappandroid.ble.ConnectionManager.isConnected
 import kotlinx.android.synthetic.main.activity_add_patient.*
 import kotlinx.android.synthetic.main.activity_add_patient.btnPatListBack
 import kotlinx.android.synthetic.main.activity_patient_page.*
@@ -35,19 +38,16 @@ class PatientPageActivity : AppCompatActivity() {
         }
 
         btnPenConnectionPatient.setOnClickListener {
-            /*
             // MANDIAMO ALLA PAGINA:
                 // SE C'è LA CONNESSIONE CON PENACITIVTY (PAGINA DELLA PENNA)
                 // SE NON C'è LA CONNESSIONE CON MAINCONNECTION (BLE)
 
-            if (PenIsConnected()){
+            if (ConnectionManager.currDevice!!.isConnected()){
                 val intent = Intent(this, PenActivity::class.java)
             }else{
                 val intent = Intent(this, MainConnection::class.java)
                 }
-
             startActivity(intent)
-            */
         }
         //stavo creando il collegamento con le activity
 

@@ -65,7 +65,7 @@ object ConnectionManager {
     private var batteryChar: BluetoothGattCharacteristic? = null
     private var dataChar: BluetoothGattCharacteristic? = null
     private var consoleChar: BluetoothGattCharacteristic? = null
-    private var currDevice: BluetoothDevice? = null
+    public var currDevice: BluetoothDevice? = null
     private var connection: BluetoothGatt ?= null
 
     private fun readBattery(data: ByteArray) {
@@ -750,5 +750,5 @@ object ConnectionManager {
         }
     }
 
-    private fun BluetoothDevice.isConnected() = deviceGattMap.containsKey(this)
+    public fun BluetoothDevice.isConnected() = deviceGattMap.containsKey(this)
 }

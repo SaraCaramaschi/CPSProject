@@ -25,6 +25,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CPSProject">
         <activity
+            android:name=".Exercise3Activity"
+            android:exported="true" />
+        <activity
+            android:name=".Exercise2Activity"
+            android:exported="true" />
+        <activity
             android:name=".ble.PenActivity"
             android:exported="true" />
         <activity
@@ -37,34 +43,26 @@
             android:name=".Phase1Activity"
             android:exported="true" />
         <activity
-        android:name=".Phase2Activity"
-        android:exported="true" />
+            android:name=".Phase2Activity"
+            android:exported="true" />
         <activity
             android:name=".AddClinicianActivity"
             android:exported="true" />
         <activity
             android:name=".DeleteMessageActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".PLDeleteActivity"
-            android:exported="true"/>
-
-        <activity 
-            android:name=".ble.BleOperationsActivity"
-            android:exported="true"
-        />
-        <activity android:name=".ble.BleOperationsActivityProva"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".Exercise1Activity"
-            android:exported="true"
-            />
+            android:exported="true" />
         <activity
             android:name=".ble.MainConnection"
             android:exported="true" />
         <activity
             android:name=".EditPatientActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".PatientListActivity"
             android:exported="true" />

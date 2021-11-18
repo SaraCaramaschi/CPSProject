@@ -53,14 +53,14 @@ class PatientPageActivity : AppCompatActivity() {
 
         val btnPhase1 = findViewById<Button>(R.id.btnPhase1)
         btnPhase1.setOnClickListener {
-            val intent = Intent(this, Phase1Activity::class.java)
-            startActivity(intent)
+            val intent1 = Intent(this, Phase1Activity::class.java)
+            startActivity(intent1)
         }
 
         val btnPhase2 = findViewById<Button>(R.id.btnPhase2)
         btnPhase2.setOnClickListener {
-            val intent = Intent(this, Phase2Activity::class.java)
-            startActivity(intent)
+            val intent2 = Intent(this, Phase2Activity::class.java)
+            startActivity(intent2)
         }
         val edit= findViewById<ImageView>(R.id.edit)
         edit.setOnClickListener{
@@ -68,6 +68,14 @@ class PatientPageActivity : AppCompatActivity() {
             val intentNew= Intent(this, EditPatientActivity::class.java)
             intentNew.putExtra("position",pos)
             startActivity(intentNew)
+        }
+
+        val delete= findViewById<ImageView>(R.id.delete)
+        delete.setOnClickListener{
+            intent.putExtra("position",pos)
+            val intentDelete= Intent(this, DeleteMessageActivity::class.java)
+            intentDelete.putExtra("position",pos)
+            startActivity(intentDelete)
         }
 
 

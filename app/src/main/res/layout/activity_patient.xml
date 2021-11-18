@@ -59,7 +59,7 @@
 
 //DA SISTEMARE
         <ImageView
-            android:id="@+id/ic_delete"
+            android:id="@+id/iconDelete"
             android:layout_width="49dp"
             android:layout_height="50dp"
             android:layout_gravity="center"

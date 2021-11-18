@@ -20,8 +20,8 @@ class DeleteMessageActivity: AppCompatActivity()  {
         val intent= getIntent()
         val pos= intent.getIntExtra("position", 0)
 
-        var listPatients: ArrayList<Patient> = ArrayList()
-        listPatients = PatientsManager.importPatientList(this)
+//        var listPatients: ArrayList<Patient> = ArrayList()
+//        listPatients = PatientsManager.importPatientList(this)
 
         val btnYes = findViewById<Button>(R.id.btnYes)
         val btnNo = findViewById<Button>(R.id.btnNo)
@@ -30,13 +30,11 @@ class DeleteMessageActivity: AppCompatActivity()  {
             startActivity(intent)
         }
         btnYes.setOnClickListener{
-           deletePatient(this, pos)
-            Toast.makeText(this@DeleteMessageActivity,"Patient deleted", Toast.LENGTH_SHORT).show()
+            deletePatient(this, pos)
+            Toast.makeText(this,"Patient deleted", Toast.LENGTH_SHORT).show()
             var intent= Intent(this, PatientListActivity::class.java)
             startActivity(intent)
            // PatientsManager.deletePatient(this@DeleteMessageActivity, pos)
-
-
         }
 
 

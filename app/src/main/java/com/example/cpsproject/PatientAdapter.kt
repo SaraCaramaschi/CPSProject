@@ -27,6 +27,7 @@ class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : Recycl
     private var phases = listPatients.map{ it.phase }
     private var surname = listPatients.map{ it.surname }
     private val selectedPosition= -1
+
      //TODO DOVE DEVO METTERLO https://www.youtube.com/watch?v=HMjI7cLsyfw
 
 
@@ -34,7 +35,7 @@ class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : Recycl
         var itemName: TextView
         var itemPhase: TextView
         //var mMenus: ImageView
-        var mDeleteImage: ImageView
+        //var mDeleteImage: ImageView
 
 
         init{
@@ -42,15 +43,15 @@ class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : Recycl
             itemPhase = itemView.findViewById(R.id.tvPatientPhase)
           // mMenus= itemView.findViewById(R.id.mMenus)
            //mMenus.setOnClickListener{ popupMenus(it) }
-            mDeleteImage= itemView.findViewById(R.id.ic_delete)
+            //mDeleteImage= itemView.findViewById(R.id.ic_delete)
 
 
             //da qui ila inizia a scrivere cose
-            mDeleteImage.setOnClickListener{
+            /*mDeleteImage.setOnClickListener{
                 val position: Int = adapterPosition
-                listener.onDeleteClick(position)
+                //listener.onDeleteClick(position)
 
-            }
+            }*/
 //FINE ILA
 
 //           // SARA
@@ -65,12 +66,8 @@ class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : Recycl
 
          //   )
 
-
-
-
             itemView.setOnClickListener{
                 listener.onClick(adapterPosition)
-                //listener.onLongClick(adapterPosition)
             }
 
         }
@@ -181,19 +178,28 @@ class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : Recycl
 
    private lateinit var mListener: onItemClickListener
 
+   private lateinit var mLongListener: onItemLongClickListener
+
    interface onItemClickListener{
         fun onClick(position:Int)
+       //fun onLongClick(position:Int)
 
-        //ILA RIGA SENZA SENSO???
-   fun onDeleteClick(position: Int)
-
-//     //fun onLongClick(position: Int)
-
+       //ILA RIGA SENZA SENSO???
+   //fun onDeleteClick(position: Int)
    }
+    interface onItemLongClickListener{
+        fun onLongClick(position: Int): Boolean
+
+    }
+
+
 
     fun setOnItemClickListener(listener: onItemClickListener){
         mListener=listener
    }
+    fun setOnItemLongClickListener(listener: onItemLongClickListener){
+        mLongListener=listener
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientAdapter.ViewHolder {

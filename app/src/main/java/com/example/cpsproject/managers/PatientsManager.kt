@@ -126,7 +126,7 @@ object PatientsManager {
         return patientsList
     }
 
-    fun deletePatient(context: PatientListActivity, i: Int) {
+    fun deletePatient(context: Context, i: Int) {
         var patientDeleted = patientsList[i]
         patientsList.remove(patientDeleted)
         var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)

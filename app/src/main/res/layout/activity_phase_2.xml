@@ -18,9 +18,10 @@
 
     <TextView
         android:id="@+id/tvDescription2"
-        android:layout_width="350dp"
-        android:layout_height="120dp"
+        android:layout_height="170dp"
         android:layout_marginTop="28dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_width="match_parent"
         android:text="description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.457"
@@ -32,7 +33,7 @@
         android:id="@+id/tvSelectPh2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="62dp"
         android:text="Select the test:"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

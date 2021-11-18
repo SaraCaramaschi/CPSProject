@@ -42,8 +42,23 @@
         <activity
             android:name=".AddClinicianActivity"
             android:exported="true" />
+        <activity
+            android:name=".DeleteMessageActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".PLDeleteActivity"
+            android:exported="true"/>
+
+        <activity 
+            android:name=".ble.BleOperationsActivity"
+            android:exported="true"
+        />
         <activity android:name=".ble.BleOperationsActivityProva"
             android:exported="true"/>
+        <activity
+            android:name=".Exercise1Activity"
+            android:exported="true"
+            />
         <activity
             android:name=".ble.MainConnection"
             android:exported="true" />

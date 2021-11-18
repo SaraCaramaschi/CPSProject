@@ -1,8 +1,10 @@
 package com.example.cpsproject
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,17 +12,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.managers.PatientsManager.deletePatient
 import com.example.cpsproject.model.Patient
+import timber.log.Timber
 
 class PatientListActivity: AppCompatActivity() {
     private lateinit var layoutManager: RecyclerView.LayoutManager
     private lateinit var adapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>
     lateinit var rvPatients: RecyclerView
+    //lateinit var rvDelete: RecyclerView
 
-    //
-    //
-    //
-    //
-    //
+
     //
     //
    /* fun removeItem(position:Int){
@@ -30,12 +30,8 @@ class PatientListActivity: AppCompatActivity() {
     }*/
    //
     //
-    //
-    //
-    //
-    ///
-    //
-    //
+
+
 
     // QUI X RECYCLER CHE SI AGGIORNA
     var listPatients: ArrayList<Patient> = ArrayList()
@@ -57,47 +53,22 @@ class PatientListActivity: AppCompatActivity() {
 
         //PASSA AD PAGINA PAZIENTE
         val intentPage = Intent(this, PatientPageActivity::class.java)
-        adapter.setOnItemClickListener(object : PatientAdapter.onItemClickListener{
+
+
+        adapter.setOnItemClickListener(object : PatientAdapter.onItemClickListener {
             override fun onClick(position: Int) {
-                Toast.makeText(this@PatientListActivity,"you clicked on patient $position", Toast.LENGTH_SHORT).show()
-                var pos=position
-                intentPage.putExtra("position",pos)
-                startActivity(intentPage)
-
-                //TODO RIEMPIRE PATIENT PAGE CON DATI DEL PAZIENTE--> fatto ma manca da acquisire enum ecc
-            }
-/*
-            override fun onDeleteClick(position: Int) {
-               deletePatient( this@PatientListActivity, position)
-
-            }
-*/
-
-            /*override fun deletePatient (position: Int) {
                 Toast.makeText(
-                    this@PatientListActivity, "you clicked on patient $position", Toast.LENGTH_SHORT).show()
+                    this@PatientListActivity,
+                    "you clicked on patient $position",
+                    Toast.LENGTH_SHORT
+                ).show()
                 var pos = position
                 intentPage.putExtra("position", pos)
                 startActivity(intentPage)
-            }*/
-
-
-           override fun onDeleteClick(position: Int) {
-               deletePatient( this@PatientListActivity, position) //questo è un metodo ch ein java è stato definito come foto ila
-                TODO("Not yet implemented")
+                //TODO RIEMPIRE PATIENT PAGE CON DATI DEL PAZIENTE--> fatto ma manca da acquisire enum ecc
             }
-            //
-            //
-            //
-            //
-            //
-            //
-            //
-            //
 
         })
-
-
 
         //AGGIUNGE PAZIENTE
         val btnAddPatient = findViewById<Button>(R.id.btnNewPatient)
@@ -106,16 +77,87 @@ class PatientListActivity: AppCompatActivity() {
             startActivity(intent)
         }
 
+        //TENTATIVI DELETE
+
+        var btnDelete = findViewById<Button>(R.id.btnDeletePatient)
+        val intentPLDelete = Intent(this, PLDeleteActivity::class.java)
+        //val intentDelete = Intent(this, DeleteMessageActivity::class.java)
+        btnDelete.setOnClickListener {
+            startActivity(intentPLDelete)
+        }
+        /*
+
+        adapter.setOnItemLongClickListener(object : PatientAdapter.onItemLongClickListener {
+            override fun onLongClick(position: Int): Boolean{
+                Toast.makeText(this@PatientListActivity,"you clicked on patient $position", Toast.LENGTH_SHORT).show()
+                var pos = position
+                intentDelete.putExtra("position", pos)
+                startActivity(intentDelete)
+                return true
+
+
+                //TODO RIEMPIRE PATIENT PAGE CON DATI DEL PAZIENTE--> fatto ma manca da acquisire enum ecc
+            }*/
+
+
+    }
+            //Toast.makeText(this, "Long click on the patient that you want to delete", Toast.LENGTH_SHORT).show()
+            /*adapter.setOnItemClickListener(object : PatientAdapter.onItemClickListener {
+                override fun onClick(position: Int) {
+                }
+
+                override fun onLongClick(position: Int) {
+                    Toast.makeText(
+                        this@PatientListActivity,
+                        "you clicked on patient $position",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    var pos = position
+                    intentDelete.putExtra("position", pos)
+                    startActivity(intentDelete)
+                }
+            }
+            )*/
+        }
+
+
+
+
+
+
+
+
+
+
+
+//
+        /*override fun deletePatient (position: Int) {
+            Toast.makeText(
+                this@PatientListActivity, "you clicked on patient $position", Toast.LENGTH_SHORT).show()
+            var pos = position
+            intentPage.putExtra("position", pos)
+            startActivity(intentPage)
+        }*/
+
+// tentativo 1
+
+        /*
+           override fun onDeleteClick(position: Int) {
+               deletePatient( this@PatientListActivity, position) //questo è un metodo ch ein java è stato definito come foto ila
+
+            }
+            */
+
+        //
 
         // ELIMINA PAZIENTE --> fatto  un po' da ila quindi non fidarti
 
-        //
-        //
+
         //ILA
         /*val delete= findViewById<ImageView>(R.id.ic_delete)
         val intentdelete=Intent(this,DeleteMessageActivity::class.java)
 
-                delete.setOnClickListener{
+            delete.setOnClickListener{
             intentdelete.putExtra("position",position)
             val intentNew= Intent(this, EditPatientActivity::class.java)
             intentNew.putExtra("position",pos)
@@ -153,9 +195,6 @@ class PatientListActivity: AppCompatActivity() {
            }
         })
             */
-        }
-
-    }}
 
 
 

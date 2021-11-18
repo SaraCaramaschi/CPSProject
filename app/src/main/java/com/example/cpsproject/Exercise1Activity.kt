@@ -3,6 +3,7 @@ package com.example.cpsproject
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_exercise1.*
 
 class Exercise1Activity: AppCompatActivity() {
 
@@ -10,9 +11,7 @@ class Exercise1Activity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exercise1)
 
-        val tvEx1Description = findViewById<TextView>(R.id.tvExDescription)
-
-        tvEx1Description.setText("Make the patient write a grocery list with at least 6 elements")
+        tvExDescription1.text = "Make the patient write a grocery list with at least 6 elements"
 
     }
 }

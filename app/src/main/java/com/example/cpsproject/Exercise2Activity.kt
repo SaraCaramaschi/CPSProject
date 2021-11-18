@@ -2,7 +2,7 @@ package com.example.cpsproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_exercise2.*
 
 class Exercise2Activity : AppCompatActivity() {
 
@@ -10,10 +10,7 @@ class Exercise2Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exercise2)
 
-        val tvEx1Description = findViewById<TextView>(R.id.tvExDescription)
-
-        tvEx1Description.setText("Make the patient write a free text (maximum 7 rows)")
-
+        tvExDescription2.text = "Make the patient write a free text (maximum 7 rows)"
 
     }
 }

@@ -87,7 +87,7 @@ object ConnectionManager {
 
         Timber.d("Prova con acc_x per vedere se è tutto ok: %s", acc_x)
 
-        /*val acc_y =
+        val acc_y =
             data.copyOfRange(4, 6).reversedArray().toHexString()
                 .replace(" ","").substring(4).toInt(radix = 16).toShort()
                 .toDouble() / 100
@@ -107,25 +107,24 @@ object ConnectionManager {
         val gyr_z =
             data.copyOfRange(12, 14).reversedArray().toHexString()
                 .replace(" ","").substring(12).toInt(radix = 16).toShort()
-                .toDouble() / 100*/
+                .toDouble() / 100
 
-        /*var press: Double = if (data.count() == 16) {   // DATAFRAME FROM ONBOARD STORAGE
+        var press: Double = if (data.count() == 16) {   // DATAFRAME FROM ONBOARD STORAGE
             data.copyOfRange(14, 16).reversedArray().toHexString().toInt(radix = 16).toShort()
                 .toDouble() / 100
         } else {    // DATAFRAME FROM STREAMING
             data.copyOfRange(16, 18).reversedArray().toHexString().toInt(radix = 16).toShort()
                 .toDouble() / 10  // /100
             //            data[14..<16] -> stressball | data[18..<20] -> extra
-        }*/
+        }
 
         PenManager.penData.acc_x=acc_x
-        /*PenManager.penData!!.acc_y = acc_y
+        PenManager.penData!!.acc_y = acc_y
         PenManager.penData!!.acc_z = acc_z
         PenManager.penData!!.gyr_x = gyr_x
         PenManager.penData!!.gyr_y = gyr_y
-        PenManager.penData!!.gyr_z = gyr_z*/
-        // PenManager.penData!!.force = press
-
+        PenManager.penData!!.gyr_z = gyr_z
+        PenManager.penData!!.press = press
 
     }
 

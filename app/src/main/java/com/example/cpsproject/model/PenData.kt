@@ -7,5 +7,5 @@ data class PenData(
     var gyr_x: Double ?= null,
     var gyr_y: Double ?= null,
     var gyr_z: Double ?= null,
-    var force: Double ?= null
+    var press: Double ?= null
 )

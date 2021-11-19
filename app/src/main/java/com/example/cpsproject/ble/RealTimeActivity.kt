@@ -9,13 +9,8 @@ import com.example.cpsproject.managers.PenManager
 import com.punchthrough.blestarterappandroid.ble.ConnectionManager
 import com.punchthrough.blestarterappandroid.ble.ConnectionManager.currDevice
 import com.punchthrough.blestarterappandroid.ble.ConnectionManager.dataChar
-import kotlinx.android.synthetic.main.activity_ble_operationsprova.*
-import kotlinx.android.synthetic.main.activity_ble_operationsprova.tvBatteryProva
-import kotlinx.android.synthetic.main.activity_pen.*
 import kotlinx.android.synthetic.main.activity_real_time.*
-
 import timber.log.Timber
-import kotlinx.android.synthetic.main.activity_real_time.tvAccx as tvAccx1
 
 
 class RealTimeActivity : AppCompatActivity() {
@@ -26,12 +21,12 @@ class RealTimeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_real_time)
 
+        //tvRealBattery.text = PenManager.battery.toString()
         mainHandler = Handler(Looper.getMainLooper())
 
-        //tvBatteryProva.text= PenManager.battery.toString()
         Timber.d("batteriaaaaa:  %s", PenManager.battery.toString())
         btnRealBattery.setOnClickListener {
-            tvRealBatteryProva.text = PenManager.battery.toString()
+            tvRealBattery.text = PenManager.battery.toString()
         }
 
         btnStartRealTime.setOnClickListener {
@@ -44,8 +39,13 @@ class RealTimeActivity : AppCompatActivity() {
 
     private val updateData = object : Runnable{
         override fun run() {
-            //tvAccx.text = PenManager.penData!!.acc_x.toString()
             tvAccx.text = PenManager.penData!!.acc_x.toString()
+            tvAccy.text = PenManager.penData!!.acc_y.toString()
+            tvAccz.text = PenManager.penData!!.acc_z.toString()
+            tvGyrx.text = PenManager.penData!!.gyr_x.toString()
+            tvGyry.text = PenManager.penData!!.gyr_y.toString()
+            tvGyrz.text = PenManager.penData!!.gyr_z.toString()
+            tvPress.text = PenManager.penData!!.press.toString()
             mainHandler.postDelayed(this, 5)
         }
     }

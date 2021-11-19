@@ -11,9 +11,11 @@ import com.punchthrough.blestarterappandroid.ble.ConnectionManager.currDevice
 import com.punchthrough.blestarterappandroid.ble.ConnectionManager.dataChar
 import kotlinx.android.synthetic.main.activity_ble_operationsprova.*
 import kotlinx.android.synthetic.main.activity_ble_operationsprova.tvBatteryProva
+import kotlinx.android.synthetic.main.activity_pen.*
 import kotlinx.android.synthetic.main.activity_real_time.*
 
 import timber.log.Timber
+import kotlinx.android.synthetic.main.activity_real_time.tvAccx as tvAccx1
 
 
 class RealTimeActivity : AppCompatActivity() {
@@ -32,16 +34,18 @@ class RealTimeActivity : AppCompatActivity() {
             tvRealBatteryProva.text = PenManager.battery.toString()
         }
 
-        btnRealData.setOnClickListener {
+        btnStartRealTime.setOnClickListener {
             ConnectionManager.enableNotifications(currDevice!!, dataChar!!)
             updateData.run()
         }
+
 
     }
 
     private val updateData = object : Runnable{
         override fun run() {
-            tvRealDataProva.text = PenManager.penData!!.acc_x.toString()
+            //tvAccx.text = PenManager.penData!!.acc_x.toString()
+            tvAccx.text = PenManager.penData!!.acc_x.toString()
             mainHandler.postDelayed(this, 5)
         }
     }

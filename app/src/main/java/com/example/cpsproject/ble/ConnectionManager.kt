@@ -87,26 +87,27 @@ object ConnectionManager {
 
         Timber.d("Prova con acc_x per vedere se è tutto ok: %s", acc_x)
 
+        Timber.d("data= " +data)
         val acc_y =
             data.copyOfRange(4, 6).reversedArray().toHexString()
-                .replace(" ","").substring(4).toInt(radix = 16).toShort()
+                .toInt(radix = 16).toShort()
                 .toDouble() / 100
 
         val acc_z =
             data.copyOfRange(6, 8).reversedArray().toHexString()
-                .replace(" ","").substring(6).toInt(radix = 16).toShort()
+                .toInt(radix = 16).toShort()
                 .toDouble() / 100
         val gyr_x =
             data.copyOfRange(8, 10).reversedArray().toHexString()
-                .replace(" ","").substring(8).toInt(radix = 16).toShort()
+                .toInt(radix = 16).toShort()
                 .toDouble() / 100
         val gyr_y =
             data.copyOfRange(10, 12).reversedArray().toHexString()
-                .replace(" ","").substring(10).toInt(radix = 16).toShort()
+                .toInt(radix = 16).toShort()
                 .toDouble() / 100
         val gyr_z =
             data.copyOfRange(12, 14).reversedArray().toHexString()
-                .replace(" ","").substring(12).toInt(radix = 16).toShort()
+                .toInt(radix = 16).toShort()
                 .toDouble() / 100
 
         var press: Double = if (data.count() == 16) {   // DATAFRAME FROM ONBOARD STORAGE
@@ -119,12 +120,12 @@ object ConnectionManager {
         }
 
         PenManager.penData.acc_x=acc_x
-        PenManager.penData!!.acc_y = acc_y
-        PenManager.penData!!.acc_z = acc_z
-        PenManager.penData!!.gyr_x = gyr_x
-        PenManager.penData!!.gyr_y = gyr_y
-        PenManager.penData!!.gyr_z = gyr_z
-        PenManager.penData!!.press = press
+        PenManager.penData.acc_y = acc_y
+        PenManager.penData.acc_z = acc_z
+        PenManager.penData.gyr_x = gyr_x
+        PenManager.penData.gyr_y = gyr_y
+        PenManager.penData.gyr_z = gyr_z
+        PenManager.penData.press = press
 
     }
 
@@ -642,7 +643,7 @@ object ConnectionManager {
                 listeners.forEach { it.get()?.onCharacteristicChanged?.invoke(gatt.device, this) }
                 when (characteristic.uuid) {
                     datauuid -> {
-                        Timber.d("sono in char changed")
+                        Timber.d("sono in char changed" +characteristic.value)
                         readData(characteristic.value)
                     }
                     batteryuuid -> {

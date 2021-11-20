@@ -21,6 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="60dp"
         android:text="Log Out"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -28,15 +29,16 @@
         app:layout_constraintTop_toBottomOf="@+id/btnPatients"
         app:layout_constraintVertical_bias="0.0" />
 
+
     <Button
         android:id="@+id/btnPatients"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
         android:text="Patients' list"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnPenConnection" />
-
 
     <TextView
         android:id="@+id/tvClinician"
@@ -47,12 +49,13 @@
         android:ems="10"
         android:minHeight="48dp"
         android:textSize="40sp"
+        android:text="   Giovanni Rossi"
         app:layout_constraintBottom_toTopOf="@+id/btnPenConnection"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.576"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.164" />
+        app:layout_constraintVertical_bias="0.176" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

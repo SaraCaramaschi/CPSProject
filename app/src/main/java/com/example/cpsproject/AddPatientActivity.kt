@@ -1,16 +1,21 @@
 package com.example.cpsproject
 
+import android.app.DatePickerDialog
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.Spinner
+import android.view.View
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.DialogFragment
 import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.managers.PatientsManager.patientsList
 import com.example.cpsproject.model.Gender
 import com.example.cpsproject.model.Hand
 import com.example.cpsproject.model.Patient
 import kotlinx.android.synthetic.main.activity_add_patient.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class AddPatientActivity : AppCompatActivity() {
@@ -77,8 +82,13 @@ class AddPatientActivity : AppCompatActivity() {
             }
             // Variabile patient
             var patient = Patient(
-                etName.text.toString(), etSurname.text.toString(),
-                etNotes.text.toString(), etTax.text.toString(), etBirthDate.text.toString(), handEnum, genderEnum
+                etName.text.toString(),
+                etSurname.text.toString(),
+                etNotes.text.toString(),
+                etTax.text.toString(),
+                etBirthDate.text.toString(),
+                handEnum,
+                genderEnum
                 //genderEnum
             ) // Local variable
 
@@ -87,8 +97,8 @@ class AddPatientActivity : AppCompatActivity() {
 
             // Go to patient page
             val intent = Intent(this, PatientPageActivity::class.java)
-            val pos= patientsList.lastIndex
-            intent.putExtra("position",pos)
+            val pos = patientsList.lastIndex
+            intent.putExtra("position", pos)
             //intent.putExtra("keyPatient", patient)
             startActivity(intent)
         }
@@ -103,8 +113,32 @@ class AddPatientActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val myCalendar= Calendar.getInstance()
+        val etBirthDate=findViewById<EditText>(R.id.etBirthDate)
+        val iconCalendar=findViewById<ImageView>(R.id.calendar)
+
+    val datePicker= DatePickerDialog.OnDateSetListener{view, year, month, dayOfMonth->
+        myCalendar.set(Calendar.YEAR, year)
+        myCalendar.set(Calendar.MONTH, month)
+        myCalendar.set(Calendar.DAY_OF_MONTH,dayOfMonth)
+        updateLable(myCalendar)
+
     }
+        iconCalendar.setOnClickListener{
+            DatePickerDialog(this, datePicker, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show()
+
+        }
+
 }
+
+    private fun updateLable(myCalendar: Calendar) {
+        val myFormat="dd-MM-yyy"
+        val sdf= SimpleDateFormat(myFormat, Locale.UK)
+        etBirthDate.setText(sdf.format(myCalendar.time))
+
+
+    }
+    }
 
 
 // https://www.youtube.com/watch?v=y4npeX35B34 TOP VIDEOOOOOOOOOOOOOOOOOO, si ma per firebase

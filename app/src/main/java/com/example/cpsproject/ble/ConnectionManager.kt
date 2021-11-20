@@ -28,15 +28,8 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.Handler
 import android.os.Looper
-import android.view.View
-import com.example.cpsproject.ble.RealTimeActivity
-import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.managers.PenManager
-import com.example.cpsproject.model.Patient
-import com.example.cpsproject.model.PenData
-import com.google.gson.Gson
 import timber.log.Timber
-import java.io.File
 import java.lang.ref.WeakReference
 import java.util.UUID
 import java.util.concurrent.ConcurrentHashMap
@@ -75,7 +68,6 @@ object ConnectionManager {
             .replace(" ", "").substring(2).toInt(radix = 16).toDouble()
         battery = battery.div(10)
         PenManager.battery = battery
-
         Timber.d("Valore batteria: %s", battery)
     }
 

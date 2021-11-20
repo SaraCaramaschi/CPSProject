@@ -86,7 +86,7 @@ class AddPatientActivity : AppCompatActivity() {
                 etSurname.text.toString(),
                 etNotes.text.toString(),
                 etTax.text.toString(),
-                etBirthDate.text.toString(),
+                etBirthDateAdd.text.toString(),
                 handEnum,
                 genderEnum
                 //genderEnum
@@ -114,7 +114,6 @@ class AddPatientActivity : AppCompatActivity() {
         }
 
         val myCalendar= Calendar.getInstance()
-        val etBirthDate=findViewById<EditText>(R.id.etBirthDate)
         val iconCalendar=findViewById<ImageView>(R.id.calendar)
 
     val datePicker= DatePickerDialog.OnDateSetListener{view, year, month, dayOfMonth->
@@ -133,8 +132,9 @@ class AddPatientActivity : AppCompatActivity() {
 
     private fun updateLable(myCalendar: Calendar) {
         val myFormat="dd-MM-yyy"
+        val birthDateAdd=findViewById<EditText>(R.id.etBirthDateAdd)
         val sdf= SimpleDateFormat(myFormat, Locale.UK)
-        etBirthDate.setText(sdf.format(myCalendar.time))
+        birthDateAdd.setText(sdf.format(myCalendar.time))
 
 
     }

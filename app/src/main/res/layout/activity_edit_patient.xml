@@ -175,7 +175,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/etBirthDate"
+                android:id="@+id/etBirthDateEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -183,7 +183,12 @@
                 android:inputType="date"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/tvBirthDate" />
-
+            <ImageView
+                android:id="@+id/calendarEdit"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:clickable="true"
+                android:src="@drawable/ic_calendar"/>
         </LinearLayout>
 
         <LinearLayout

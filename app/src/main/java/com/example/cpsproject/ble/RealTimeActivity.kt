@@ -24,14 +24,13 @@ class RealTimeActivity : AppCompatActivity() {
         //tvRealBattery.text = PenManager.battery.toString()
         mainHandler = Handler(Looper.getMainLooper())
 
+
         Timber.d("batteriaaaaa:  %s", PenManager.battery.toString())
-        btnRealBattery.setOnClickListener {
-            tvRealBattery.text = PenManager.battery.toString()
-        }
 
         btnStartRealTime.setOnClickListener {
             ConnectionManager.enableNotifications(currDevice!!, dataChar!!)
             updateData.run()
+            tvRealBattery.text = PenManager.battery.toString()
         }
 
 

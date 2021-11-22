@@ -123,7 +123,7 @@ class AddPatientActivity : AppCompatActivity() {
         myCalendar.set(Calendar.YEAR, year)
         myCalendar.set(Calendar.MONTH, month)
         myCalendar.set(Calendar.DAY_OF_MONTH,dayOfMonth)
-//        updateLable(myCalendar)
+        updateLable(myCalendar)
 
     }
         iconCalendar.setOnClickListener{
@@ -132,12 +132,12 @@ class AddPatientActivity : AppCompatActivity() {
         }
 
 }
-/*
+
     private fun updateLable(myCalendar: Calendar) {
         val myFormat="dd-MM-yyy"
         val birthDateAdd=findViewById<EditText>(R.id.etBirthDateAdd)
         val sdf= SimpleDateFormat(myFormat, Locale.UK)
-        birthDateAdd.setText(sdf.format(myCalendar.time))*/
+        birthDateAdd.setText(sdf.format(myCalendar.time))
 
 
     }

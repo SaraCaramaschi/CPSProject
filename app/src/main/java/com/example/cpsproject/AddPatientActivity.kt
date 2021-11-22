@@ -116,31 +116,38 @@ class AddPatientActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val myCalendar= Calendar.getInstance()
-        val iconCalendar=findViewById<ImageView>(R.id.calendar)
+        val myCalendar = Calendar.getInstance()
+        val iconCalendar = findViewById<ImageView>(R.id.calendar)
 
-    val datePicker= DatePickerDialog.OnDateSetListener{view, year, month, dayOfMonth->
-        myCalendar.set(Calendar.YEAR, year)
-        myCalendar.set(Calendar.MONTH, month)
-        myCalendar.set(Calendar.DAY_OF_MONTH,dayOfMonth)
-        updateLable(myCalendar)
+        val datePicker = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+            myCalendar.set(Calendar.YEAR, year)
+            myCalendar.set(Calendar.MONTH, month)
+            myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+            updateLable(myCalendar)
 
-    }
-        iconCalendar.setOnClickListener{
-            DatePickerDialog(this, datePicker, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show()
+        }
+        iconCalendar.setOnClickListener {
+            DatePickerDialog(
+                this,
+                datePicker,
+                myCalendar.get(Calendar.YEAR),
+                myCalendar.get(Calendar.MONTH),
+                myCalendar.get(Calendar.DAY_OF_MONTH)
+            ).show()
 
         }
 
-}
+    }
 
     private fun updateLable(myCalendar: Calendar) {
-        val myFormat="dd-MM-yyy"
-        val birthDateAdd=findViewById<EditText>(R.id.etBirthDateAdd)
-        val sdf= SimpleDateFormat(myFormat, Locale.UK)
+        val myFormat = "dd-MM-yyy"
+        val birthDateAdd = findViewById<EditText>(R.id.etBirthDateAdd)
+        val sdf = SimpleDateFormat(myFormat, Locale.UK)
         birthDateAdd.setText(sdf.format(myCalendar.time))
 
 
     }
+}
 
 
 

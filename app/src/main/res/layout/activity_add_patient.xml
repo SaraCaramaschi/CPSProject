@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".AddPatientActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddPatientActivity">
 
     <LinearLayout
         android:id="@+id/LinearLayout0"
@@ -183,12 +183,13 @@ tools:context=".AddPatientActivity">
                 android:inputType="date"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/tvBirthDate" />
+
             <ImageView
                 android:id="@+id/calendar"
                 android:layout_width="33dp"
                 android:layout_height="33dp"
                 android:clickable="true"
-                android:src="@drawable/ic_calendar"/>
+                android:src="@drawable/ic_calendar" />
 
         </LinearLayout>
 
@@ -282,8 +283,9 @@ tools:context=".AddPatientActivity">
 
         </LinearLayout>
     </LinearLayout>
+    <![CDATA[
 
-    <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="91dp"
@@ -291,6 +293,7 @@ tools:context=".AddPatientActivity">
         android:paddingTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent">
 
+<<<<<<< Updated upstream
         <Button
             android:id="@+id/btnAddPat"
             android:layout_width="100dp"
@@ -302,6 +305,9 @@ tools:context=".AddPatientActivity">
             app:layout_constraintStart_toStartOf="parent" />
 
         <!--<Button
+=======
+    ]]><!--<Button
+>>>>>>> Stashed changes
             android:id="@+id/btnReadPat"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
@@ -311,17 +317,27 @@ tools:context=".AddPatientActivity">
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/btnAddPat" />
 -->
-        <Button
-            android:id="@+id/btnPatListBack"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:text="Back to patient list"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/btnAddPat" />
 
-    </LinearLayout>
+    <Button
+        android:id="@+id/btnAddPat"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="65dp"
+        android:text="Add Patient"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnPatListBack"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnPatListBack"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="65dp"
+        android:text="Back to patient list"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

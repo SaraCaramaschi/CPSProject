@@ -73,12 +73,10 @@ class EditPatientActivity: AppCompatActivity() {
             etTax.setText(patient.taxcode.toString())
 
 
+
             spinGenere.setSelection(g)
             spinHand.setSelection(h)
 
-
-            //spinGenere
-            //spinHand
 
             //intanto utente può cambiare tutte le varie cose
 
@@ -95,24 +93,23 @@ class EditPatientActivity: AppCompatActivity() {
         }
         val btnEditPat= findViewById<Button>(R.id.btnEdit)
         btnEditPat.setOnClickListener{
-            // TODO togliere commenti vincoli
-//            if (etName.text.toString().trim().isEmpty()) {
-//                //Toast.makeText(this, "Name required", Toast.LENGTH_SHORT).show();
-//                etName.error = "Name Required";
-//                return@setOnClickListener
-//            } else if (etSurname.text.toString().trim().isEmpty()) {
-//                etSurname.error = "Surname Required"
-//                return@setOnClickListener
-//            } else if (etTax.text.toString().trim().isEmpty()) {
-//                etTax.error = "Tax Code Required"
-//                return@setOnClickListener
-//            } else if (etTax.text.toString().trim().length != 16) {
-//                etTax.error = "Tax Code not correct"
-//                return@setOnClickListener
-//            } else if (etBirthDate.text.toString().trim().length != 10) {
-//                etBirthDate.error = "Birth Date not correct"
-//                return@setOnClickListener
-//            }
+            if (etName.text.toString().trim().isEmpty()) {
+                //Toast.makeText(this, "Name required", Toast.LENGTH_SHORT).show();
+                etName.error = "Name Required";
+                return@setOnClickListener
+            } else if (etSurname.text.toString().trim().isEmpty()) {
+                etSurname.error = "Surname Required"
+                return@setOnClickListener
+            } else if (etTax.text.toString().trim().isEmpty()) {
+                etTax.error = "Tax Code Required"
+                return@setOnClickListener
+            } else if (etTax.text.toString().trim().length != 16) {
+                etTax.error = "Tax Code not correct"
+                return@setOnClickListener
+            } else if (etBirthDateEdit.text.toString().trim().length != 10) {
+                etBirthDateEdit.error = "Birth Date not correct"
+                return@setOnClickListener
+           }
 
             val handEnum: Hand = when (spinnerDominantHand.selectedItem) {
                 "Left" -> {

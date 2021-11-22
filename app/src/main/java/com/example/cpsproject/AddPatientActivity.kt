@@ -40,9 +40,15 @@ class AddPatientActivity : AppCompatActivity() {
         val btnAddPat = findViewById<Button>(R.id.btnAddPat)
         val gender = findViewById<Spinner>(R.id.spinnerGender)
         btnAddPat.setOnClickListener {
+<<<<<<< Updated upstream
             // TODO togliere commenti vincoli
             if (etName.text.toString().trim().isEmpty()) {
                // Toast.makeText(this, "Name required", Toast.LENGTH_SHORT).show();
+=======
+
+            if (etName.text.toString().trim().isEmpty()) {
+                //Toast.makeText(this, "Name required", Toast.LENGTH_SHORT).show();
+>>>>>>> Stashed changes
                 etName.error = "Name Required";
                 return@setOnClickListener
             } else if (etSurname.text.toString().trim().isEmpty()) {
@@ -54,10 +60,17 @@ class AddPatientActivity : AppCompatActivity() {
             } else if (etTax.text.toString().trim().length != 16) {
                 etTax.error = "Tax Code not correct"
                 return@setOnClickListener
+<<<<<<< Updated upstream
 //            } else if (etBirthDate.text.toString().trim().length != 10) {
 //                etBirthDate.error = "Birth Date not correct"
 //                return@setOnClickListener
 //            }
+=======
+            } else if (etBirthDateAdd.text.toString().trim().length != 10) {
+                etBirthDateAdd.error = "Birth Date not correct"
+                return@setOnClickListener
+            }
+>>>>>>> Stashed changes
 
             val handEnum: Hand = when (spinnerDominantHand.selectedItem) {
                 "left" -> {
@@ -103,10 +116,17 @@ class AddPatientActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+<<<<<<< Updated upstream
         /*btnReadPat.setOnClickListener {
             PatientsManager.readPatient(0, applicationContext)
             //PatientsManager.readPatient()
         }*/
+=======
+//        btnReadPat.setOnClickListener {
+//            PatientsManager.readPatient(0, applicationContext)
+//            //PatientsManager.readPatient()
+//        }
+>>>>>>> Stashed changes
 
         btnPatListBack.setOnClickListener {
             val intent = Intent(this, PatientListActivity::class.java)

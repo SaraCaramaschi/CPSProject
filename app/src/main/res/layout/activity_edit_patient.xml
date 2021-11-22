@@ -297,7 +297,7 @@
             android:layout_marginLeft="10dp"
             android:text="Edit Patient"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btnReadPat"
+            app:layout_constraintEnd_toStartOf="@id/btnPatListBack"
             app:layout_constraintStart_toStartOf="parent" />
 
 

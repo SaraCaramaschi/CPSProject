@@ -29,9 +29,8 @@
         android:layout_height="625dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/RelativeLayout"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/RelativeLayout"
         tools:listitem="@layout/activity_patient" />
 
 

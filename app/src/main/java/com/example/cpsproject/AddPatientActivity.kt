@@ -41,19 +41,19 @@ class AddPatientActivity : AppCompatActivity() {
         val gender = findViewById<Spinner>(R.id.spinnerGender)
         btnAddPat.setOnClickListener {
             // TODO togliere commenti vincoli
-//            if (etName.text.toString().trim().isEmpty()) {
-//                //Toast.makeText(this, "Name required", Toast.LENGTH_SHORT).show();
-//                etName.error = "Name Required";
-//                return@setOnClickListener
-//            } else if (etSurname.text.toString().trim().isEmpty()) {
-//                etSurname.error = "Surname Required"
-//                return@setOnClickListener
-//            } else if (etTax.text.toString().trim().isEmpty()) {
-//                etTax.error = "Tax Code Required"
-//                return@setOnClickListener
-//            } else if (etTax.text.toString().trim().length != 16) {
-//                etTax.error = "Tax Code not correct"
-//                return@setOnClickListener
+            if (etName.text.toString().trim().isEmpty()) {
+               // Toast.makeText(this, "Name required", Toast.LENGTH_SHORT).show();
+                etName.error = "Name Required";
+                return@setOnClickListener
+            } else if (etSurname.text.toString().trim().isEmpty()) {
+                etSurname.error = "Surname Required"
+                return@setOnClickListener
+            } else if (etTax.text.toString().trim().isEmpty()) {
+                etTax.error = "Tax Code Required"
+                return@setOnClickListener
+            } else if (etTax.text.toString().trim().length != 16) {
+                etTax.error = "Tax Code not correct"
+                return@setOnClickListener
 //            } else if (etBirthDate.text.toString().trim().length != 10) {
 //                etBirthDate.error = "Birth Date not correct"
 //                return@setOnClickListener
@@ -103,10 +103,10 @@ class AddPatientActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        btnReadPat.setOnClickListener {
+        /*btnReadPat.setOnClickListener {
             PatientsManager.readPatient(0, applicationContext)
             //PatientsManager.readPatient()
-        }
+        }*/
 
         btnPatListBack.setOnClickListener {
             val intent = Intent(this, PatientListActivity::class.java)
@@ -120,7 +120,7 @@ class AddPatientActivity : AppCompatActivity() {
         myCalendar.set(Calendar.YEAR, year)
         myCalendar.set(Calendar.MONTH, month)
         myCalendar.set(Calendar.DAY_OF_MONTH,dayOfMonth)
-        updateLable(myCalendar)
+//        updateLable(myCalendar)
 
     }
         iconCalendar.setOnClickListener{
@@ -129,12 +129,12 @@ class AddPatientActivity : AppCompatActivity() {
         }
 
 }
-
+/*
     private fun updateLable(myCalendar: Calendar) {
         val myFormat="dd-MM-yyy"
         val birthDateAdd=findViewById<EditText>(R.id.etBirthDateAdd)
         val sdf= SimpleDateFormat(myFormat, Locale.UK)
-        birthDateAdd.setText(sdf.format(myCalendar.time))
+        birthDateAdd.setText(sdf.format(myCalendar.time))*/
 
 
     }

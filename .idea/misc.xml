@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Niccolò/Desktop/Poli/5° anno accademico/Capstone project/Progetto/Brief 2/CPSProject/app/src/main/res/layout/activity_add_patient.xml" value="0.25" />
+        <entry key="..\:/Users/Niccolò/Desktop/Poli/5° anno accademico/Capstone project/Progetto/Brief 2/CPSProject/app/src/main/res/layout/activity_edit_patient.xml" value="0.25" />
+        <entry key="..\:/Users/Niccolò/Desktop/Poli/5° anno accademico/Capstone project/Progetto/Brief 2/CPSProject/app/src/main/res/layout/activity_patient_page.xml" value="0.22" />
+        <entry key="..\:/Users/Niccolò/Desktop/Poli/5° anno accademico/Capstone project/Progetto/Brief 2/CPSProject/app/src/main/res/layout/activity_patients_list.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Niccolò/Desktop/Poli/5° anno accademico/Capstone project/Progetto/Brief 2/CPSProject/app/src/main/res/layout/activity_phase_1.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/bonac/AndroidStudioProjects/CPSProject/app/src/main/res/layout/activity_add_clinician.xml" value="0.20425724637681159" />
         <entry key="..\:/Users/bonac/AndroidStudioProjects/CPSProject/app/src/main/res/layout/activity_add_patient.xml" value="0.12360688956433637" />
         <entry key="..\:/Users/bonac/AndroidStudioProjects/CPSProject/app/src/main/res/layout/activity_ble_operations.xml" value="0.12360688956433637" />

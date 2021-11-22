@@ -301,7 +301,7 @@ tools:context=".AddPatientActivity">
             app:layout_constraintEnd_toStartOf="@id/btnReadPat"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
+        <!--<Button
             android:id="@+id/btnReadPat"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
@@ -310,7 +310,7 @@ tools:context=".AddPatientActivity">
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/btnAddPat" />
-
+-->
         <Button
             android:id="@+id/btnPatListBack"
             android:layout_width="150dp"

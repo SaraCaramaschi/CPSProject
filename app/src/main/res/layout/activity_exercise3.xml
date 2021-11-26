@@ -40,10 +40,10 @@
         android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnStart" />
+        app:layout_constraintTop_toBottomOf="@+id/btnStart3" />
 
     <Button
-        android:id="@+id/btnStart"
+        android:id="@+id/btnStart3"
         android:layout_width="100dp"
         android:layout_height="55dp"
         android:layout_marginTop="12dp"
@@ -67,7 +67,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvDownload" />
 
     <Button
-        android:id="@+id/btnStop"
+        android:id="@+id/btnStop3"
         android:layout_width="100dp"
         android:layout_height="55dp"
         android:layout_marginTop="12dp"

@@ -52,10 +52,12 @@ object ConnectionManager {
     private val batteryuuid = UUID.fromString("00020000-0001-11E1-AC36-0002A5D5C51B")
     private val datauuid = UUID.fromString("00E00000-0001-11E1-AC36-0002A5D5C51B")
     private val consoleuuid = UUID.fromString("00000001-000E-11E1-AC36-0002A5D5C51B")
-    //TODO da sistemare come gestire uuid debug / console - CONTROLLA
     private val debuguuid = UUID.fromString( "00000000-000E-11E1-9AB4-0002A5D5C51B")
 
     private val format = "FFormat"
+    private val download = "downloadu"
+    private val onBoard = "OnBoard"
+
 
     private var batteryChar: BluetoothGattCharacteristic? = null
     public  var dataChar: BluetoothGattCharacteristic ?= null
@@ -121,22 +123,32 @@ object ConnectionManager {
 
     }
 
-    fun updateData() {
-        enableNotifications(currDevice!!, dataChar!!)
-    }
-
     fun readConsole (data:ByteArray) {
-        Timber.d("consoleeeee " + data.toHexString())
+        Timber.d("consoleeeee %s", data.toHexString())
         var consoleString = data.toHexString()
         consoleString = (hexToAscii(consoleString)).lowercase()
 
-        if (consoleString.contains("start formatting")) {
-            Timber.d ("format iniziato")
-        } else if (consoleString.contains("formatting done")) {
-            disableNotifications(currDevice!!, consoleChar!!)
-            Timber.d("format finito")
+        //TODO ci serve capire cosa c'è scritto in consolestring per decidere cosa inserire nel WHEN
+
+        Timber.d("Console string e' : %s", consoleString)
+
+        when {
+            consoleString.contains("start formatting") -> {
+                Timber.d ("format iniziato")
+            }
+            consoleString.contains("formatting done") -> {
+                disableNotifications(currDevice!!, consoleChar!!)
+                Timber.d("format finito")
+            }
+            consoleString.contains("") -> {
+                Timber.d("download iniziato")
+            }
+            consoleString.contains("") -> {
+                Timber.d("download finito")
+            }
         }
     }
+
     private fun hexToAscii(hexStr: String): String {
         val output = StringBuilder("")
         var i = 0
@@ -147,14 +159,25 @@ object ConnectionManager {
         }
         return output.toString()
     }
+
     fun ByteArray.toHexString(): String =
         joinToString(separator = "", prefix = "") { String.format("%02X", it) }
 
+    // Functions related to the console:
     fun format() {
         enableNotifications(currDevice!!, consoleChar!!) // queste sono le funzioni del tizio
         writeCharacteristic(currDevice!!, consoleChar!!, format.toByteArray())
     }
 
+    fun download() {
+        enableNotifications(currDevice!!, consoleChar!!)
+        writeCharacteristic(currDevice!!, consoleChar!!, download.toByteArray())
+    }
+
+    fun onBoard(){
+        enableNotifications(currDevice!!, consoleChar!!)
+        writeCharacteristic(currDevice!!, consoleChar!!, onBoard.toByteArray())
+    }
 
     fun servicesOnDevice(device: BluetoothDevice): List<BluetoothGattService>? =
         deviceGattMap[device]?.services
@@ -559,7 +582,6 @@ object ConnectionManager {
                             }
                             datauuid -> {
                                 Timber.w("Ora sono in onCharacteristicRead e vado a leggere i dati tramite private fun readData ?? ")
-                                //readData(characteristic.value)
                             }
                         }
                         //sessionmanager che raccoglie tutte le variabili, companion object, singleton kotlin

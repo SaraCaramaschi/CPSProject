@@ -19,18 +19,22 @@ class PenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pen)
 
+        // Accessing to real time activity
         btnRealTime.setOnClickListener {
             val intent = Intent(this, RealTimeActivity::class.java)
             startActivity(intent)
         }
 
+        // Formatting the pen
         btnFormat.setOnClickListener {
             ConnectionManager.format()
             Toast.makeText(this@PenActivity,"The pen has been formatted", Toast.LENGTH_SHORT).show()
         }
 
+        // Downloading files from the pen to computer
         btnDownload.setOnClickListener {
-            PenManager.downloadJson(PenManager.penData!!, this)
+            //PenManager.downloadJson(PenManager.penData!!, this)
+            ConnectionManager.download()
         }
     }
 }

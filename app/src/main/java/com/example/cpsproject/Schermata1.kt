@@ -4,10 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
 import com.example.cpsproject.ble.MainConnection
-import kotlinx.android.synthetic.main.activity_add_clinician.*
-import kotlinx.android.synthetic.main.activity_schermata0.*
 
 class Schermata1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +18,7 @@ class Schermata1 : AppCompatActivity() {
         // bottone LOG OUT
         val btnLogOut= findViewById<Button>(R.id.btnLogOut)
         btnLogOut.setOnClickListener {
-            val intent = Intent(this, Schermata0::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
         // bottone LISTA PAZIENTI

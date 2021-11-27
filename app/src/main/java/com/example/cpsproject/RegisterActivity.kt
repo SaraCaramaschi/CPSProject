@@ -1,16 +1,25 @@
 package com.example.cpsproject
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.ktx.actionCodeSettings
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_add_clinician.*
 
 //commento
-class AddClinicianActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_clinician)
+
+
+
 
 
         btnSubmitdata.setOnClickListener {
@@ -26,7 +35,17 @@ class AddClinicianActivity : AppCompatActivity() {
                 Toast.makeText(this,"Input required",Toast.LENGTH_LONG).show()
             }
 
+            var etEmail= findViewById<EditText>(R.id.etEmail)
+            var email=etEmail.text.toString()
+
+
+                }
+
         }
 
+
+
     }
+
+
 }

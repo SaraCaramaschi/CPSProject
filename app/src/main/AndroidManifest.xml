@@ -68,7 +68,7 @@
             android:name=".PatientPageActivity"
             android:exported="true" />
         <activity
-            android:name=".Schermata1"
+            android:name=".Schermata1Activity"
             android:exported="true"
             android:theme="@style/Theme.CPSProject" />
         <activity

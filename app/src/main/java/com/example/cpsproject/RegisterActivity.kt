@@ -10,6 +10,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_register.*
 
+
 //commento
 class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +27,7 @@ class RegisterActivity : AppCompatActivity() {
                 TextUtils.isEmpty(etUsername.text.toString().trim() { it <= ' ' }) -> {
                     Toast.makeText(
                         this@RegisterActivity,
-                        "Please inserrt a username",
+                        "Please insert a username",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -80,7 +81,7 @@ class RegisterActivity : AppCompatActivity() {
                                     Toast.LENGTH_SHORT
                                 ).show()
 
-                                val intent = Intent(this, PatientListActivity::class.java)
+                                val intent = Intent(this, LoginActivity::class.java)
                                 intent.flags =
                                     Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                                 intent.putExtra("user_id", firebaseUser.uid)

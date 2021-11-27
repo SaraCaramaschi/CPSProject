@@ -8,7 +8,7 @@ import com.example.cpsproject.ble.MainConnection
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_schermata1.*
 
-class Schermata1 : AppCompatActivity() {
+class Schermata1Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_schermata1)

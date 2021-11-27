@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.example.cpsproject.ble.MainConnection
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_schermata1.*
 
 class Schermata1 : AppCompatActivity() {
@@ -26,8 +27,10 @@ class Schermata1 : AppCompatActivity() {
         // bottone LOG OUT
         val btnLogOut= findViewById<Button>(R.id.btnLogOut)
         btnLogOut.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
+            finish()
         }
         // bottone LISTA PAZIENTI
         val btnPatients = findViewById<Button>(R.id.btnPatients)

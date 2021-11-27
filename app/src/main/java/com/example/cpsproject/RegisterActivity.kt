@@ -8,8 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-
-import kotlinx.android.synthetic.main.activity_add_clinician.*
+import kotlinx.android.synthetic.main.activity_register.*
 
 //commento
 class RegisterActivity : AppCompatActivity() {

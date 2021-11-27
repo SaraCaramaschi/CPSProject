@@ -15,7 +15,16 @@ class Exercise1Activity: AppCompatActivity() {
         tvExDescription1.text = "Make the patient write a grocery list with at least 6 elements"
 
         btnStart1.setOnClickListener {
-            ConnectionManager.onBoard()
+            ConnectionManager.StartOnBoard()
+        }
+
+        btnStop1.setOnClickListener {
+            ConnectionManager.StopOnBoard()
+        }
+
+        // PER PROVARE: Poi vediamo in che modo inserirlo
+        btnDownloadEx1.setOnClickListener {
+            ConnectionManager.download()
         }
     }
 }

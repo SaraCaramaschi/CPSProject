@@ -81,7 +81,7 @@ object ConnectionManager {
 
         Timber.d("Prova con acc_x per vedere se è tutto ok: %s", acc_x)
 
-        Timber.d("data= " +data)
+        Timber.d("data= " + data)
         val acc_y =
             data.copyOfRange(4, 6).reversedArray().toHexString()
                 .toInt(radix = 16).toShort()
@@ -113,7 +113,7 @@ object ConnectionManager {
             //            data[14..<16] -> stressball | data[18..<20] -> extra
         }
 
-        PenManager.penData.acc_x=acc_x
+        PenManager.penData.acc_x = acc_x
         PenManager.penData.acc_y = acc_y
         PenManager.penData.acc_z = acc_z
         PenManager.penData.gyr_x = gyr_x
@@ -128,8 +128,6 @@ object ConnectionManager {
         var consoleString = data.toHexString()
         consoleString = (hexToAscii(consoleString)).lowercase()
 
-        //TODO ci serve capire cosa c'è scritto in consolestring per decidere cosa inserire nel WHEN
-
         Timber.d("Console string e' : %s", consoleString)
 
         when {
@@ -140,14 +138,51 @@ object ConnectionManager {
                 disableNotifications(currDevice!!, consoleChar!!)
                 Timber.d("format finito")
             }
-            consoleString.contains("") -> {
+
+            // TODO da metterci cosa viene stampato da onboard (start-stop)
+            consoleString.contains(" ") -> {
+                Timber.d("Onboard iniziato")
+            }
+
+            /*consoleString.contains(" ") -> {
+                disableNotifications(currDevice!!, consoleChar!!)
+                Timber.d("Onboard finito")
+            }*/
+
+            // TODO da metterci cosa viene stampato da downoload (start-stop)
+            consoleString.contains(" ") -> {
                 Timber.d("download iniziato")
             }
-            consoleString.contains("") -> {
+            consoleString.contains(" ") -> {
+                disableNotifications(currDevice!!, consoleChar!!)
                 Timber.d("download finito")
             }
         }
     }
+
+    // Functions related to the console:
+    fun format() {
+        enableNotifications(currDevice!!, consoleChar!!) // queste sono le funzioni del tizio
+        writeCharacteristic(currDevice!!, consoleChar!!, format.toByteArray())
+    }
+
+    // TODO Domanda: permettiamo al clinico di scaricare un solo esercizio oppure proprio NO?
+    // Da protocollo in teoria deve aspettare tutti i tre esercizi
+    fun download() {
+        enableNotifications(currDevice!!, consoleChar!!)
+        writeCharacteristic(currDevice!!, consoleChar!!, download.toByteArray())
+    }
+
+    fun StartOnBoard(){
+        enableNotifications(currDevice!!, consoleChar!!)
+        writeCharacteristic(currDevice!!, consoleChar!!, onBoard.toByteArray())
+    }
+
+    fun StopOnBoard(){
+        disableNotifications(currDevice!!, consoleChar!!)
+        Timber.d("Onboard STOPPATO")
+    }
+
 
     private fun hexToAscii(hexStr: String): String {
         val output = StringBuilder("")
@@ -162,22 +197,6 @@ object ConnectionManager {
 
     fun ByteArray.toHexString(): String =
         joinToString(separator = "", prefix = "") { String.format("%02X", it) }
-
-    // Functions related to the console:
-    fun format() {
-        enableNotifications(currDevice!!, consoleChar!!) // queste sono le funzioni del tizio
-        writeCharacteristic(currDevice!!, consoleChar!!, format.toByteArray())
-    }
-
-    fun download() {
-        enableNotifications(currDevice!!, consoleChar!!)
-        writeCharacteristic(currDevice!!, consoleChar!!, download.toByteArray())
-    }
-
-    fun onBoard(){
-        enableNotifications(currDevice!!, consoleChar!!)
-        writeCharacteristic(currDevice!!, consoleChar!!, onBoard.toByteArray())
-    }
 
     fun servicesOnDevice(device: BluetoothDevice): List<BluetoothGattService>? =
         deviceGattMap[device]?.services

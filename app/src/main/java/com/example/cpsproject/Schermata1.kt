@@ -5,11 +5,19 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.example.cpsproject.ble.MainConnection
+import kotlinx.android.synthetic.main.activity_schermata1.*
 
 class Schermata1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_schermata1)
+
+        val userId=intent.getStringExtra("user_id")
+        val emailId=intent.getStringExtra("email_id")
+        val username=intent.getStringExtra("username")
+        tvClinician.text="$username"
+
+
 
 //PROVA PER CLINICO ILA MA I PROSSIMI DUE COMMENTI POSSONO ESSERE CANCELLATI
       //  val tvClinician=findViewById<TextView>(R.id.tvClinician)

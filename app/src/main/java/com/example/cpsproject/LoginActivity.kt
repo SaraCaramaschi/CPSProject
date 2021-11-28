@@ -7,6 +7,7 @@ import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.cpsproject.model.Patient
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
@@ -18,6 +19,8 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        var emailLog: String = String()
+        var passwordLog: String = String()
 
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
@@ -44,49 +47,47 @@ class LoginActivity : AppCompatActivity() {
                         .show()
                 }
 
-
                 else -> {
-                    var etEmailLog = findViewById<EditText>(R.id.etEmail)
-                    var emailLog = etEmailLog.text.toString().trim { it <= ' ' }
-                    var etPasswordLog = findViewById<EditText>(R.id.etPassword1)
-                    var passwordLog = etPasswordLog.text.toString().trim { it <= ' ' }
+                    var etEmailLog = findViewById<EditText>(R.id.etEmailLog)
+                    emailLog = etEmailLog.text.toString().trim { it <= ' ' }
+                    var etPasswordLog = findViewById<EditText>(R.id.etPasswordLog)
+                    passwordLog = etPasswordLog.text.toString().trim { it <= ' ' }
 
 
                     FirebaseAuth.getInstance().signInWithEmailAndPassword(emailLog, passwordLog)
-                        .addOnCompleteListener(
-                            { task ->
-                                if (task.isSuccessful) {
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
 
-                                    Toast.makeText(
-                                        this@LoginActivity, "You are logged in succesfully!",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
+                                Toast.makeText(
+                                    this@LoginActivity, "You are logged in succesfully!",
+                                    Toast.LENGTH_SHORT
+                                ).show()
 
-                                    val intent =
-                                        Intent(this@LoginActivity, Schermata1Activity::class.java)
+                                val intent =
+                                    Intent(this@LoginActivity, Schermata1Activity::class.java)
 
 //TODO USERNAME DA PASSARE COME I DATI DEL PAZIENTE, per ora mostriamo l'id di firebase automatico
-                                    intent.flags =
-                                        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                    intent.putExtra(
-                                        "user_id",
-                                        FirebaseAuth.getInstance().currentUser!!.uid
-                                    )
+                                intent.flags =
+                                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                intent.putExtra(
+                                    "user_id",
+                                    FirebaseAuth.getInstance().currentUser!!.uid
+                                )
 
-                                    intent.putExtra("email_id", emailLog)
+                                intent.putExtra("email_id", emailLog)
 
-                                    startActivity(intent)
-                                    finish()
-                                } else {
-                                    Toast.makeText(
-                                        this@LoginActivity,
-                                        task.exception!!.message.toString(),
-                                        Toast.LENGTH_SHORT
-                                    )
-                                        .show()
+                                startActivity(intent)
+                                finish()
+                            } else {
+                                Toast.makeText(
+                                    this@LoginActivity,
+                                    task.exception!!.message.toString(),
+                                    Toast.LENGTH_SHORT
+                                )
+                                    .show()
 
-                                }
-                            })
+                            }
+                        }
 
 
                 }

@@ -1,0 +1,11 @@
+/*
+Cose da farsi:
+- logo !!
+- versione italiano
+- protocol implementation (notifiche / tempistiche etc)
+- bluetooth implementation (da verificare con penna)
+- design doc
+- spec doc
+- firebase
+- parte di anonimizzazione
+*/

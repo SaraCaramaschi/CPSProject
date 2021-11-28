@@ -1,9 +1,13 @@
 package com.example.cpsproject.managers
 
 import android.annotation.SuppressLint
+import android.content.ContentValues.TAG
 import android.content.Context
+import android.util.Log
 import com.example.cpsproject.PatientListActivity
 import com.example.cpsproject.model.Patient
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
 import timber.log.Timber
 import java.io.*
@@ -21,6 +25,7 @@ object PatientsManager {
     public fun savePatient(patient: Patient, context: Context) {
         val gson = Gson()
         val jsonPatient = gson.toJson(patient)
+        val db = Firebase.firestore
         //val folder_main = "NewFolder"
 
         Timber.d("json %s", jsonPatient)
@@ -41,6 +46,19 @@ object PatientsManager {
 
         file.writeText(jsonPatient)
         // Timber.d("questo è il file lettooo %s", readPatient(fileName))
+
+        db.collection("Patientlist")
+            .add(jsonPatient)
+            .addOnSuccessListener { documentReference ->
+                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+            }
+            .addOnFailureListener { e ->
+                Log.w(TAG, "Error adding document", e)
+            }
+        
+
+
+
     }
 
 

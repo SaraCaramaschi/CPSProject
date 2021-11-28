@@ -7,6 +7,8 @@ import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.cpsproject.managers.ClinicianManager
+import com.example.cpsproject.model.Clinician
 import com.example.cpsproject.model.Patient
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
@@ -19,11 +21,21 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+
         var emailLog: String = String()
         var passwordLog: String = String()
+        var clinician: Clinician
+
+
 
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
+        }
+
+        val btnSignIn = findViewById<Button>(R.id.btnSignIn)
+        btnSignIn.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
 
         // bottone da schermata login a schermata register
@@ -50,9 +62,11 @@ class LoginActivity : AppCompatActivity() {
                 else -> {
                     var etEmailLog = findViewById<EditText>(R.id.etEmailLog)
                     emailLog = etEmailLog.text.toString().trim { it <= ' ' }
+                    ClinicianManager.email = emailLog
+
                     var etPasswordLog = findViewById<EditText>(R.id.etPasswordLog)
                     passwordLog = etPasswordLog.text.toString().trim { it <= ' ' }
-
+                    ClinicianManager.password = passwordLog
 
                     FirebaseAuth.getInstance().signInWithEmailAndPassword(emailLog, passwordLog)
                         .addOnCompleteListener { task ->
@@ -101,11 +115,7 @@ class LoginActivity : AppCompatActivity() {
                 //}
             }
 
-            val btnSignIn = findViewById<Button>(R.id.btnSignIn)
-            btnSignIn.setOnClickListener {
-                val intent = Intent(this, RegisterActivity::class.java)
-                startActivity(intent)
-            }
+
 
 
         }

@@ -5,18 +5,25 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.example.cpsproject.ble.MainConnection
+import com.example.cpsproject.managers.ClinicianManager
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_schermata1.*
+import timber.log.Timber
 
 class Schermata1Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_schermata1)
 
-        val userId=intent.getStringExtra("user_id")
+        /*val userId=intent.getStringExtra("user_id")
         val emailId=intent.getStringExtra("email_id")
-        val username=intent.getStringExtra("username")
-        tvClinician.text="$username"
+        val username=intent.getStringExtra("username")*/
+
+        // TOP QUESTO MI DA LA MAIL
+        Timber.d("LA MAIL e': %s", ClinicianManager.email)
+
+        tvClinician.text = ClinicianManager.email
 
 
 

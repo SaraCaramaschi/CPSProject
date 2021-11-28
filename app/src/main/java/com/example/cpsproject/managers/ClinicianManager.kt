@@ -1,14 +1,19 @@
 package com.example.cpsproject.managers
-/*
+
 import android.content.Context
 import com.example.cpsproject.model.Clinician
 
-object ClinicianManager
+object ClinicianManager {
 
-    public var clinicianlist: ArrayList<Clinician> = ArrayList()
+    var email: String = String()
+    var password: String = String()
+    var username: String = String()
 
-    public fun addPatient(patient: Clinician, context: Context) {
-        clinician.add(patient)
+   /* var clinicianList: ArrayList<Clinician> = ArrayList()
+
+    fun addPatient(patient: Clinician, context: Context) {
+        clinicianList.add(patient)
         ClinicianManager.saveClinican(patient, context)
-    }
-}*/
+    }*/
+
+}

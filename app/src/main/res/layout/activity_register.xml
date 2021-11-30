@@ -6,10 +6,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".RegisterActivity">
 
+    <Button
+        android:id="@+id/btnSubmitdata"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:text="Submit" />
+
     <LinearLayout
         android:id="@+id/LinearLayout0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
         android:padding="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -49,25 +58,28 @@
                 app:layout_constraintStart_toEndOf="@+id/tvNewClinician" />
         </LinearLayout>
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/LinearLayoutItems"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@id/LinearLayout0"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/LinearLayout0">
 
         <LinearLayout
             android:id="@+id/LinearLayout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="30dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_margin="30dp"
+            android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/LinearLayout0"
             tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="45dp"
-            android:orientation="vertical">
+            tools:layout_editor_absoluteX="45dp">
 
             <TextView
                 android:id="@+id/tvUsername"
@@ -88,16 +100,17 @@
                 app:layout_constraintStart_toEndOf="@+id/tvUsername"
                 tools:ignore="SpeakableTextPresentCheck" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/LinearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_margin="30dp"
+            android:layout_marginStart="16dp"
+            android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/LinearLayout0"
             tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="45dp"
-            android:orientation="vertical">
+            tools:layout_editor_absoluteX="45dp">
 
             <TextView
                 android:id="@+id/tvEmail"
@@ -116,20 +129,20 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/tvUsername"
-                tools:ignore="SpeakableTextPresentCheck"
-                />
+                tools:ignore="SpeakableTextPresentCheck" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/LinearLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_margin="30dp"
+            android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
+            android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/LinearLayout0"
             tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="45dp"
-            android:orientation="vertical">
+            tools:layout_editor_absoluteX="45dp">
 
             <TextView
                 android:id="@+id/tvPassword1"
@@ -146,10 +159,10 @@
                 android:id="@+id/etPassword1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPassword"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/tvUsername"
-                tools:ignore="SpeakableTextPresentCheck"
-                android:inputType="textPassword"/>
+                tools:ignore="SpeakableTextPresentCheck" />
 
         </LinearLayout>
 
@@ -157,13 +170,13 @@
             android:id="@+id/LinearLayout4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
             android:layout_margin="30dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/LinearLayout0"
             tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="45dp"
-            android:orientation="vertical">
+            tools:layout_editor_absoluteX="45dp">
 
             <TextView
                 android:id="@+id/tvPassword2"
@@ -180,24 +193,13 @@
                 android:id="@+id/etPassword2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPassword"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/tvUsername"
-                tools:ignore="SpeakableTextPresentCheck"
-                android:inputType="textPassword"/>
+                tools:ignore="SpeakableTextPresentCheck" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btnSubmitdata"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Submit"
-            android:layout_marginStart="150dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/LinearLayoutItems" />
+
     </LinearLayout>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,7 +19,7 @@
             android:id="@+id/tvRealTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="150dp"
+            android:layout_marginStart="140dp"
             android:text="@string/real_time"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -28,7 +28,7 @@
             android:id="@+id/btnStartRealTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="160dp"
+            android:layout_marginStart="150dp"
             android:text="@string/start" />
 
 

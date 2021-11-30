@@ -28,6 +28,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.Handler
 import android.os.Looper
+import android.widget.Toast
 import com.example.cpsproject.managers.PenManager
 import timber.log.Timber
 import java.lang.ref.WeakReference

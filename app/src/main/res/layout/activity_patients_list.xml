@@ -18,7 +18,7 @@
             android:id="@+id/btnNewPatient"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add a new patient"
+            android:text="@string/add_a_new_patient"
             android:layout_marginStart="100dp" />
 
     </LinearLayout>

@@ -37,7 +37,7 @@
                 android:layout_height="39dp"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="0dp"
-                android:text="Edit patient"
+                android:text="@string/edit_patient"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -45,7 +45,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Fill up all the requested information"
+                android:text="@string/fill_up_all_the_requested_information"
                 android:textSize="15sp"
                 app:layout_constraintStart_toEndOf="@+id/tvNewpatient" />
         </LinearLayout>
@@ -73,7 +73,7 @@
                 android:layout_width="100dp"
                 android:layout_height="39dp"
                 android:inputType="text"
-                android:text="Name"
+                android:text="@string/name"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -104,7 +104,7 @@
                 android:layout_width="100dp"
                 android:layout_height="39dp"
                 android:inputType="text"
-                android:text="Surname"
+                android:text="@string/surname"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -136,7 +136,7 @@
                 android:id="@+id/tvGender"
                 android:layout_width="100dp"
                 android:layout_height="39dp"
-                android:text="Gender"
+                android:text="@string/gender"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -169,7 +169,7 @@
                 android:id="@+id/tvBirthDate"
                 android:layout_width="100dp"
                 android:layout_height="39dp"
-                android:text="Birth Date"
+                android:text="@string/birth_date"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -205,7 +205,7 @@
                 android:id="@+id/tvTax"
                 android:layout_width="100dp"
                 android:layout_height="39dp"
-                android:text="Tax code"
+                android:text="@string/tax_code"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -235,7 +235,7 @@
                 android:id="@+id/tvHand"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="Dom Hand"
+                android:text="@string/dom_hand"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -265,7 +265,7 @@
                 android:id="@+id/tvNotes"
                 android:layout_width="120dp"
                 android:layout_height="39dp"
-                android:text="Add notes"
+                android:text="@string/add_notes"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -295,7 +295,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="Edit Patient"
+            android:text="@string/edit_patient1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/btnPatListBack"
             app:layout_constraintStart_toStartOf="parent" />
@@ -306,7 +306,7 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
-            android:text="Back to patient list"
+            android:text="@string/back_to_patient_list"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/btnAddPat" />

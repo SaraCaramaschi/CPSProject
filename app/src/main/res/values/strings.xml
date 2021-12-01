@@ -1,21 +1,70 @@
 <resources>
-    <string name="app_name">THink Pen</string>
-    <string name="button">Button</string>
+    <string name="app_name" translatable="false">THink Pen</string>
+    <string name="button" translatable="false">Button</string>
     <string name="real_time">Real Time</string>
-    <string name="start">Start</string>
-    <string name="z">z</string>
-    <string name="y">y</string>
-    <string name="x">x</string>
-    <string name="forza">Forza</string>
-    <string name="giroscopio">Giroscopio</string>
-    <string name="accelerazione">Accelerazione</string>
+    <string name="start" translatable="false">Start</string>
+    <string name="z" translatable="false">z</string>
+    <string name="y" translatable="false">y</string>
+    <string name="x" translatable="false">x</string>
+    <string name="forza" translatable="false">Forza</string>
+    <string name="giroscopio" translatable="false">Giroscopio</string>
+    <string name="accelerazione" translatable="false">Accelerazione</string>
     <string name="acceleration_data">Acceleration Data</string>
     <string name="gyroscope_data">Gyroscope Data</string>
-    <string name="x_data">X data</string>
-    <string name="y_data">Y data</string>
+    <string name="x_data" translatable="false">X data</string>
+    <string name="y_data" translatable="false">Y data</string>
     <string name="force_data">Force Data</string>
-    <string name="buttonbattery">ButtonBattery</string>
-    <string name="buttondata">ButtonData</string>
+    <string name="buttonbattery" translatable="false">ButtonBattery</string>
+    <string name="buttondata" translatable="false">ButtonData</string>
+    <string name="log_in">Log In</string>
+    <string name="username" translatable="false">Username</string>
+    <string name="password" translatable="false">Password</string>
+    <string name="submit">Submit</string>
+    <string name="sign_in">Sign In</string>
+    <string name="pen_connection">Pen Connection</string>
+    <string name="log_out">Log Out</string>
+    <string name="patients_list">Patients\' list</string>
+    <string name="new_patient">New patient</string>
+    <string name="fill_up_all_the_requested_information">Fill up all the requested information</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="gender">Gender</string>
+    <string name="birth_date">Birth Date</string>
+    <string name="tax_code">Tax code</string>
+    <string name="dom_hand">Dom Hand</string>
+    <string name="add_notes">Add notes</string>
+    <string name="add_patient">Add Patient</string>
+    <string name="back_to_patient_list">Back to patient list</string>
+    <string name="yes">Yes</string>
+    <string name="no" translatable="false">No</string>
+    <string name="exercise_1">Exercise 1</string>
+    <string name="press_start_to_perform_data_acquisition">Press start to perform data acquisition</string>
+    <string name="press_stop_to_end_the_acquisition_of_the_data">Press stop to end the acquisition of the data</string>
+    <string name="stop" translatable="false">Stop</string>
+    <string name="you_will_be_able_to_download_files_once_all_three_exercises_will_be_completed">You will be able to download files once all three exercises will be completed</string>
+    <string name="download_files">Download files</string>
+    <string name="start_scan">Start Scan</string>
+    <string name="name_surname">Name + Surname</string>
+    <string name="phase">Phase</string>
+    <string name="patient_personal_page">Patient personal page</string>
+    <string name="add_a_new_patient">Add a new patient</string>
+    <string name="download" translatable="false">Download</string>
+    <string name="reset">Reset</string>
+    <string name="pen_310" translatable="false">Pen 310</string>
+    <string name="protocol_phase_1">Protocol: Phase 1</string>
+    <string name="select_the_test">Select the test:</string>
+    <string name="exercise_2">Exercise 2</string>
+    <string name="exercise_3">Exercise 3</string>
+    <string name="protocol_phase_2">Protocol: Phase 2</string>
+    <string name="description">description</string>
+    <string name="battery">Battery:</string>
+    <string name="new_clinician">New clinician</string>
+    <string name="e_mail">E-mail</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="edit_patient">Edit patient</string>
+    <string name="edit_patient1">Edit Patient</string>
+    <string name="z_data1" translatable="false">z_data</string>
+
 
     <string-array name="gender">
         <item>male</item>

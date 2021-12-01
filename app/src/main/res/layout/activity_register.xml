@@ -11,7 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
-        android:text="Submit" />
+        android:text="@string/submit"
+        tools:ignore="MissingConstraints" />
 
     <LinearLayout
         android:id="@+id/LinearLayout0"
@@ -45,7 +46,7 @@
                 android:layout_height="39dp"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="0dp"
-                android:text="New clinician"
+                android:text="@string/new_clinician"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -53,7 +54,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Fill up all the requested information"
+                android:text="@string/fill_up_all_the_requested_information"
                 android:textSize="15sp"
                 app:layout_constraintStart_toEndOf="@+id/tvNewClinician" />
         </LinearLayout>
@@ -86,7 +87,7 @@
                 android:layout_width="100dp"
                 android:layout_height="39dp"
                 android:inputType="text"
-                android:text="Username"
+                android:text="@string/username"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -117,7 +118,7 @@
                 android:layout_width="100dp"
                 android:layout_height="39dp"
                 android:inputType="text"
-                android:text="E-mail"
+                android:text="@string/e_mail"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -149,7 +150,7 @@
                 android:layout_width="100dp"
                 android:layout_height="39dp"
                 android:inputType="text"
-                android:text="Password"
+                android:text="@string/password"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -183,7 +184,7 @@
                 android:layout_width="199dp"
                 android:layout_height="39dp"
                 android:inputType="text"
-                android:text="Confirm Password"
+                android:text="@string/confirm_password"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

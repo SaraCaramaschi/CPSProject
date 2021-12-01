@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="200dp"
-        android:text="Pen Connection "
+        android:text="@string/pen_connection"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,7 +23,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="60dp"
-        android:text="Log Out"
+        android:text="@string/log_out"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnPatients"
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="50dp"
-        android:text="Patients' list"
+        android:text="@string/patients_list"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnPenConnection" />
 

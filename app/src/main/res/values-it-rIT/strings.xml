@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="submit">Invia</string>
+    <string name="sign_in">Registrati</string>
+    <string name="log_in" translatable="false">Accedi</string>
+    <string name="real_time">Tempo Reale</string>
+    <string name="pen_connection">Connessione della penna</string>
+    <string name="log_out">Esci</string>
+    <string name="patients_list">Lista dei pazienti</string>
+    <string name="new_patient">Nuovo paziente</string>
+    <string name="fill_up_all_the_requested_information">Riempi i campi necessari</string>
+    <string name="name">Nome</string>
+    <string name="surname">Cognome</string>
+    <string name="gender">Sesso</string>
+    <string name="birth_date">Nata/o il</string>
+    <string name="tax_code">Codice fiscale</string>
+    <string name="dom_hand">Mano Dom</string>
+    <string name="add_notes">Note</string>
+    <string name="add_patient">Aggiungi paziente</string>
+    <string name="back_to_patient_list">"Torna indietro "</string>
+    <string name="yes">Si</string>
+    <string name="exercise_1">Esercizio 1</string>
+    <string name="press_start_to_perform_data_acquisition">Premi start per iniziare l\'acquisizione</string>
+    <string name="press_stop_to_end_the_acquisition_of_the_data">Premi stop per fermare l\'acquisizione</string>
+    <string name="you_will_be_able_to_download_files_once_all_three_exercises_will_be_completed">Potrai scaricare i file dopo aver completato tutti i 3 esercizi</string>
+    <string name="download_files">Download file</string>
+    <string name="start_scan">Start scansione</string>
+    <string name="name_surname">Nome + Cognome</string>
+    <string name="phase">Fase</string>
+    <string name="patient_personal_page">Profilo del paziente</string>
+    <string name="add_a_new_patient">Aggiungi paziente</string>
+    <string name="reset">Format</string>
+    <string name="protocol_phase_1">Protocollo: Fase 1</string>
+    <string name="select_the_test">Selezione esercizio:</string>
+    <string name="exercise_2">Esercizio 2</string>
+    <string name="exercise_3">"Esercizio 3 "</string>
+    <string name="protocol_phase_2">Protocollo: Fase 2</string>
+    <string name="description">Descrizione:</string>
+    <string name="battery">"Batteria: "</string>
+    <string name="new_clinician">Nuovo clinico</string>
+    <string name="e_mail">e-mail</string>
+    <string name="confirm_password">Conferma password</string>
+    <string name="edit_patient">Modifica paziente</string>
+    <string name="edit_patient1">Modifica paziente</string>
+    <string name="acceleration_data">Dati di accelerazione</string>
+    <string name="gyroscope_data">Dati del giroscopio</string>
+    <string name="force_data">Forza</string>
+</resources>

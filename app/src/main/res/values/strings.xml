@@ -64,6 +64,8 @@
     <string name="edit_patient">Edit patient</string>
     <string name="edit_patient1">Edit Patient</string>
     <string name="z_data1" translatable="false">z_data</string>
+    <string name="eng" translatable="false">ENG</string>
+    <string name="it" translatable="false">IT</string>
 
 
     <string-array name="gender">

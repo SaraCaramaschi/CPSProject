@@ -4,11 +4,15 @@ import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
+import android.widget.Toast.*
 import com.example.cpsproject.PatientListActivity
 import com.example.cpsproject.model.Patient
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
+import org.w3c.dom.Text
 import timber.log.Timber
 import java.io.*
 
@@ -47,17 +51,36 @@ object PatientsManager {
         file.writeText(jsonPatient)
         // Timber.d("questo è il file lettooo %s", readPatient(fileName))
 
-        db.collection("Patientlist")
-            .add(jsonPatient)
-            .addOnSuccessListener { documentReference ->
-                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+    //SALVATAGGIO FIREBASE MA NON FUNZIONA (SEGUITO ISTRUZIONI KOTLIN)
+//    db.collection("patients")
+//            .add(jsonPatient)
+//            .addOnSuccessListener { documentReference ->
+//                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+//            }
+//            .addOnFailureListener { e ->
+//                Log.w(TAG, "Error adding document", e)
+//            }
+
+       //saveFireStore(jsonPatient)
+
+
+        }
+    public fun saveFireStore(jsonpatient: String){
+        val dbn = FirebaseFirestore.getInstance()
+        val patientFirebase: MutableMap<String,Any> = HashMap()
+        //patientFirebase["PersonalData"]= jsonpatient.
+        //patientFirebase["name"]= jsonpatient[0]
+
+
+        dbn.collection("patients")
+            .add(jsonpatient)
+            .addOnSuccessListener {
+                Log.d(TAG, "Record added succesfully")
             }
+
             .addOnFailureListener { e ->
-                Log.w(TAG, "Error adding document", e)
+                Log.w(TAG, "Error filed to add", e)
             }
-        
-
-
 
     }
 

@@ -143,8 +143,11 @@ class EditPatientActivity: AppCompatActivity() {
            // PatientsManager.deletePatient(this, pos)
             PatientsManager.deletePatient(this,pos)
             // Add patient to patientlist
+            //PatientsManager.patientsList[pos]==patient
             PatientsManager.addPatient(patient, applicationContext)
 
+            //Aggiorna lista dei pazienti
+            PatientsManager.patientsList = PatientsManager.importPatientList(this)
 
 
             // Go to patient page
@@ -179,5 +182,6 @@ class EditPatientActivity: AppCompatActivity() {
         etBirthDateEdit.setText(sdf.format(myCalendar.time))
     }
 }
+//TODO PROBLEMA NON SI PUO' MODIFICARE DUE VOLTE LO STESSO PAZIENTE
 
 

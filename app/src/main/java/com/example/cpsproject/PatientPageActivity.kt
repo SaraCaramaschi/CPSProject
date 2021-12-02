@@ -65,7 +65,7 @@ class PatientPageActivity : AppCompatActivity() {
         }
         val edit= findViewById<ImageView>(R.id.edit)
         edit.setOnClickListener{
-            intent.putExtra("position",pos)
+            //intent.putExtra("position",pos)
             val intentNew= Intent(this, EditPatientActivity::class.java)
             intentNew.putExtra("position",pos)
             startActivity(intentNew)
@@ -73,7 +73,7 @@ class PatientPageActivity : AppCompatActivity() {
 
         val delete= findViewById<ImageView>(R.id.delete)
         delete.setOnClickListener{
-            intent.putExtra("position",pos)
+            //intent.putExtra("position",pos)
             val intentDelete= Intent(this, DeleteMessageActivity::class.java)
             intentDelete.putExtra("position",pos)
             startActivity(intentDelete)
@@ -108,5 +108,3 @@ class PatientPageActivity : AppCompatActivity() {
 
         }
 
-
-// TODO Dare possibilità al clinico di modificare note?

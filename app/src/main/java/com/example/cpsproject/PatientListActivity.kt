@@ -64,7 +64,6 @@ class PatientListActivity: AppCompatActivity() {
                 var pos = position
                 intentPage.putExtra("position", pos)
                 startActivity(intentPage)
-                //TODO RIEMPIRE PATIENT PAGE CON DATI DEL PAZIENTE--> fatto ma manca da acquisire enum ecc
             }
 
         })

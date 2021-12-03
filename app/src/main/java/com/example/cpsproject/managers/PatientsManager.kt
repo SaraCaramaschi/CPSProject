@@ -15,7 +15,9 @@ import com.google.gson.Gson
 import org.w3c.dom.Text
 import timber.log.Timber
 import java.io.*
+import com.google.common.reflect.TypeToken;
 
+import java.lang.reflect.Type
 
 @SuppressLint("StaticFieldLeak")
 object PatientsManager {
@@ -61,19 +63,19 @@ object PatientsManager {
 //                Log.w(TAG, "Error adding document", e)
 //            }
 
-       //saveFireStore(jsonPatient)
+       saveFireStore(jsonPatient)
 
 
         }
     public fun saveFireStore(jsonpatient: String){
         val dbn = FirebaseFirestore.getInstance()
-        val patientFirebase: MutableMap<String,Any> = HashMap()
-        //patientFirebase["PersonalData"]= jsonpatient.
-        //patientFirebase["name"]= jsonpatient[0]
+        var mappatient: Map<String,Any> = HashMap()
+        mappatient = Gson().fromJson(jsonpatient, mappatient.javaClass)
 
+        //TODO QUIIIIII
 
         dbn.collection("patients")
-            .add(jsonpatient)
+            .add(mappatient)
             .addOnSuccessListener {
                 Log.d(TAG, "Record added succesfully")
             }

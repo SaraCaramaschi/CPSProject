@@ -56,21 +56,27 @@ object PatientsManager {
 //                Log.w(TAG, "Error adding document", e)
 //            }
 
-       saveFireStore(jsonPatient)
+       saveFireStore(jsonPatient, patient, context )
 
 
         }
-    public fun saveFireStore(jsonpatient: String){
+    public fun saveFireStore(jsonpatient: String, patient: Patient, context: Context){
         val dbn = FirebaseFirestore.getInstance()
         var mappatient: Map<String,Any> = HashMap()
         mappatient = Gson().fromJson(jsonpatient, mappatient.javaClass)
+        var taxcode= patient.taxcode
+        var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)
+        var fileName = folder.path.toString() + "/" + taxcode + ".txt"
 
         //TODO QUIIIIII
 
         dbn.collection("patients")
             .add(mappatient)
             .addOnSuccessListener {
+                //Elimino locale
                 Log.d(TAG, "Record added succesfully")
+                File(fileName).delete()
+                Timber.d("File deleted")
             }
 
             .addOnFailureListener { e ->

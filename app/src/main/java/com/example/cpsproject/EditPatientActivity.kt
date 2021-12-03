@@ -112,7 +112,7 @@ class EditPatientActivity: AppCompatActivity() {
            }
 
             val handEnum: Hand = when (spinnerDominantHand.selectedItem) {
-                "Left" -> {
+                "left" -> {
                     Hand.Left
                 }
                 else -> {
@@ -122,10 +122,10 @@ class EditPatientActivity: AppCompatActivity() {
             }
 
             val genderEnum: Gender = when (spinnerGender.selectedItem) {
-                "Male" -> {
+                "male" -> {
                     Gender.Male
                 }
-                "Female" -> {
+                "female" -> {
                     Gender.Female
                 }
                 else -> {

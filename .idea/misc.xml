@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.16927083333333334" />
         <entry key="..\:/Users/bonac/AndroidStudioProjects/CPSProject/app/src/main/res/layout/activity_add_clinician.xml" value="0.20425724637681159" />
         <entry key="..\:/Users/bonac/AndroidStudioProjects/CPSProject/app/src/main/res/layout/activity_add_patient.xml" value="0.12360688956433637" />
         <entry key="..\:/Users/bonac/AndroidStudioProjects/CPSProject/app/src/main/res/layout/activity_ble_operations.xml" value="0.12360688956433637" />

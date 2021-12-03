@@ -1,9 +1,11 @@
 package com.example.cpsproject
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
+import android.preference.PreferenceManager.*
 import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
@@ -14,7 +16,9 @@ import com.example.cpsproject.model.Patient
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
+import org.jetbrains.anko.configuration
 import timber.log.Timber
+import java.util.*
 
 // ok ultima versione
 class LoginActivity : AppCompatActivity() {
@@ -22,13 +26,18 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        btnIT.setOnClickListener {
-        // TODO cosa fa il bottone per cambaire lingua in italiano
+        btnENG.setOnClickListener {
+
         }
 
-        btnENG.setOnClickListener {
-        // TODO cosa fa il bottone per cambaire lingua in inglese
+        btnIT.setOnClickListener {
+            // TODO cosa fa il bottone per cambaire lingua in italiano
+            val lang = "Italian"
+            changeLanguage(lang)
         }
+
+
+
         var emailLog: String = String()
         var passwordLog: String = String()
         var clinician: Clinician
@@ -125,6 +134,29 @@ class LoginActivity : AppCompatActivity() {
 
 
         }
+    }
+
+    private fun changeLanguage(lang: String) {
+        val sharedPreferences = getDefaultSharedPreferences(applicationContext)
+        val language = sharedPreferences.getString("language",lang)
+        Toast.makeText(applicationContext,language,Toast.LENGTH_SHORT).show()
+
+        if(language=="English"){
+            Toast.makeText(applicationContext,"English",Toast.LENGTH_SHORT).show()
+            language("en-us")
+        }else if(language=="Italian"){
+            Toast.makeText(applicationContext,"Italian",Toast.LENGTH_SHORT).show()
+            language("it-rIT")
+        }
+    }
+
+    fun language(language: String){
+        val locale = Locale(language)
+        Locale.setDefault(locale)
+        val resources = resources
+        val configuration = resources.getConfiguration()
+        configuration.locale = locale
+        resources.updateConfiguration(configuration, resources.getDisplayMetrics())
     }
 }
 

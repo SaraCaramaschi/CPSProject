@@ -9,11 +9,6 @@ object ClinicianManager {
     var password: String = String()
     var username: String = String()
 
-   /* var clinicianList: ArrayList<Clinician> = ArrayList()
 
-    fun addPatient(patient: Clinician, context: Context) {
-        clinicianList.add(patient)
-        ClinicianManager.saveClinican(patient, context)
-    }*/
 
 }

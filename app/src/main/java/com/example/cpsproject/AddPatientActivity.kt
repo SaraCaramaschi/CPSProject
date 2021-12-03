@@ -29,12 +29,6 @@ class AddPatientActivity : AppCompatActivity() {
         val name = intent.getStringExtra("name")
         val phase = intent.getStringExtra("phase")
 
-        //aggiungere lo stesso per la foto se la vogliamo
-
-        // TODO spinner
-        // val gender: Gender
-        //spinnerGender.adapter=ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,gender)
-        //ArrayAdapter<CharSequence>() adapter=Arrayadapter.createfrom
 
         // Activity related to the button add patient, notifica OK !!!
         val btnAddPat = findViewById<Button>(R.id.btnAddPat)
@@ -90,8 +84,7 @@ class AddPatientActivity : AppCompatActivity() {
                 etBirthDateAdd.text.toString(),
                 handEnum,
                 genderEnum
-                //genderEnum
-            ) // Local variable
+            )
 
             // Add patient to patientlist
             PatientsManager.addPatient(patient, applicationContext)
@@ -100,15 +93,10 @@ class AddPatientActivity : AppCompatActivity() {
             val intent = Intent(this, PatientPageActivity::class.java)
             val pos = patientsList.lastIndex
             intent.putExtra("position", pos)
-            //intent.putExtra("keyPatient", patient)
+
             startActivity(intent)
         }
 
-
-        /*btnReadPat.setOnClickListener {
-            PatientsManager.readPatient(0, applicationContext)
-            //PatientsManager.readPatient()
-        }*/
 
 
         btnPatListBack.setOnClickListener {
@@ -151,4 +139,4 @@ class AddPatientActivity : AppCompatActivity() {
 
 
 
-// https://www.youtube.com/watch?v=y4npeX35B34 TOP VIDEOOOOOOOOOOOOOOOOOO, si ma per firebase
+

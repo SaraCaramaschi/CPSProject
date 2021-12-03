@@ -4,20 +4,14 @@ import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.util.Log
-import android.widget.Toast
-import android.widget.Toast.*
-import com.example.cpsproject.PatientListActivity
 import com.example.cpsproject.model.Patient
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
-import org.w3c.dom.Text
 import timber.log.Timber
 import java.io.*
-import com.google.common.reflect.TypeToken;
 
-import java.lang.reflect.Type
 
 @SuppressLint("StaticFieldLeak")
 object PatientsManager {
@@ -32,7 +26,6 @@ object PatientsManager {
         val gson = Gson()
         val jsonPatient = gson.toJson(patient)
         val db = Firebase.firestore
-        //val folder_main = "NewFolder"
 
         Timber.d("json %s", jsonPatient)
 

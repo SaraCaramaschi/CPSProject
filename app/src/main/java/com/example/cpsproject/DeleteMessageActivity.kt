@@ -26,9 +26,6 @@ class DeleteMessageActivity: AppCompatActivity()  {
         val tvMessage = findViewById<TextView>(R.id.tvMessage)
         tvMessage.setText("Do you want to eliminate ${patient.name} ${patient.surname}")
 
-//        var listPatients: ArrayList<Patient> = ArrayList()
-//        listPatients = PatientsManager.importPatientList(this)
-
         val btnYes = findViewById<Button>(R.id.btnYes)
         val btnNo = findViewById<Button>(R.id.btnNo)
         btnNo.setOnClickListener{
@@ -40,7 +37,7 @@ class DeleteMessageActivity: AppCompatActivity()  {
             Toast.makeText(this,"Patient deleted", Toast.LENGTH_SHORT).show()
             var intent= Intent(this, PatientListActivity::class.java)
             startActivity(intent)
-           // PatientsManager.deletePatient(this@DeleteMessageActivity, pos)
+          
         }
 
 

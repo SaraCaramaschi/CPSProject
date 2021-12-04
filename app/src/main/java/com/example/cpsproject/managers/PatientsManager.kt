@@ -60,8 +60,8 @@ object PatientsManager {
 
         saveFireStore(jsonPatient, patient, context)
 
-
     }
+
 
     public fun saveFireStore(jsonpatient: String, patient: Patient, context: Context) {
         val dbn = FirebaseFirestore.getInstance()
@@ -75,19 +75,55 @@ object PatientsManager {
         dbn.collection("patients")
             .add(mappatient)
             .addOnSuccessListener {
-                //Elimino locale
+                //ELIMINA LOCALE (ANCHE SE QUANDO AGGIUNGO PAZIETE SE AL PRIMO COLPO ME LO CARICA SU CLOUD
+                //NON è NECESSARIO ELIMINARE LOCALE)--> FORSE DA TOGLIERE
                 Log.d(TAG, "Record added succesfully")
                 File(fileName).delete()
                 Timber.d("File deleted")
-                //TODO CODICE PER VEDERE SE IN LOCALE CI SONO ALTRI FILE DA CARICARE
-                var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)
-
             }
 
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error filed to add", e)
-                //TODO CODICE PER SALVARE IN LOCALE
+                //TODO CODICE PER SALVARE IN LOCALE SE QUALOCSA VA STORTO
+                savePatient(patient,context)
             }
+        //TODO CODICE PER CARICARE FILE IN LOCALE
+        //FORSE SAREBBE MEGLIO METTERE QUESTO PEZZO DI FUNZIONE OGNI VOLTA CHE CLINICO APRE L'APP(?)
+        //COSì CHE NON SERVA CHE CARICHI UN NUOVO FILE PER CARICARE I PRECEDENTI
+
+        if (!folder.listFiles().isEmpty()) {
+            File(context.getDir("PatientsFolder", Context.MODE_PRIVATE).path).walk().forEach {
+                Timber.d(it.path)
+                if (it.isFile) {
+                    val pat = readPatientJson(it, context)
+                    if (pat!=patient) {
+                        val gson = Gson()
+                        var jsonPat= gson.toJson(pat)
+                        var fileNameNew = folder.path.toString() + "/" + pat.taxcode + ".txt"
+                        var mappatientNew: Map<String, Any> = HashMap()
+                        mappatientNew = Gson().fromJson(jsonPat, mappatient.javaClass)
+                        dbn.collection("patients")
+                            .add(mappatientNew)
+                            .addOnSuccessListener {
+                                //Elimino locale
+                                Log.d(TAG, "Record added succesfully")
+                                File(fileNameNew).delete()
+                                Timber.d("File deleted")
+
+                            }
+
+                            .addOnFailureListener { e ->
+                                Log.w(TAG, "Error filed to add", e)
+                                //TODO CODICE PER RISALVARE IN LOCALE
+                                savePatient(patient,context)
+                            }
+
+                    }
+
+                }
+            }
+
+        }
 
     }
 
@@ -163,7 +199,7 @@ object PatientsManager {
         return patientsList
     }
 
-//TODO FUNZIONE PER LEGGERE DOCUMENTI DA FIRESTORE
+//TODO FUNZIONE PER LEGGERE DOCUMENTI DA FIRESTORE (messa come commento perchè se no app non va)
     /*
     fun getDocuments(context: Context): ArrayList<Patient> {
         // [START get_document]

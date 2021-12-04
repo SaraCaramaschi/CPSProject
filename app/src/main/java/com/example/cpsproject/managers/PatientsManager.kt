@@ -6,7 +6,9 @@ import android.content.Context
 import android.util.Log
 import com.example.cpsproject.model.Patient
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreSettings
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObjects
 import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
 import timber.log.Timber
@@ -46,7 +48,7 @@ object PatientsManager {
         file.writeText(jsonPatient)
         // Timber.d("questo è il file lettooo %s", readPatient(fileName))
 
-    //SALVATAGGIO FIREBASE MA NON FUNZIONA (SEGUITO ISTRUZIONI KOTLIN)
+        //SALVATAGGIO FIREBASE MA NON FUNZIONA (SEGUITO ISTRUZIONI KOTLIN)
 //    db.collection("patients")
 //            .add(jsonPatient)
 //            .addOnSuccessListener { documentReference ->
@@ -56,19 +58,19 @@ object PatientsManager {
 //                Log.w(TAG, "Error adding document", e)
 //            }
 
-       saveFireStore(jsonPatient, patient, context )
+        saveFireStore(jsonPatient, patient, context)
 
 
-        }
-    public fun saveFireStore(jsonpatient: String, patient: Patient, context: Context){
+    }
+
+    public fun saveFireStore(jsonpatient: String, patient: Patient, context: Context) {
         val dbn = FirebaseFirestore.getInstance()
-        var mappatient: Map<String,Any> = HashMap()
+        var mappatient: Map<String, Any> = HashMap()
         mappatient = Gson().fromJson(jsonpatient, mappatient.javaClass)
-        var taxcode= patient.taxcode
+        var taxcode = patient.taxcode
         var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)
         var fileName = folder.path.toString() + "/" + taxcode + ".txt"
 
-        //TODO QUIIIIII
 
         dbn.collection("patients")
             .add(mappatient)
@@ -77,10 +79,14 @@ object PatientsManager {
                 Log.d(TAG, "Record added succesfully")
                 File(fileName).delete()
                 Timber.d("File deleted")
+                //TODO CODICE PER VEDERE SE IN LOCALE CI SONO ALTRI FILE DA CARICARE
+                var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)
+
             }
 
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error filed to add", e)
+                //TODO CODICE PER SALVARE IN LOCALE
             }
 
     }
@@ -133,7 +139,7 @@ object PatientsManager {
         return patient
     }
 
-    // Aggiorna lista pazienti
+    // Aggiorna lista pazienti in locale
     fun importPatientList(context: Context): ArrayList<Patient> {
         Timber.d("Dentro a IMPORTPATIENTLIST")
 
@@ -154,19 +160,37 @@ object PatientsManager {
             }
         }
 
-//        context.getDir("PatientsFolder", Context.MODE_PRIVATE).walk().forEach {
-//            Timber.d(it.path)
-//            //patientsList.add(readPatientJson(it.absoluteFile, context))
-//        }
-//        var patList: ArrayList<Patient> = ArrayList()
-//        Timber.d(patientsList.indices.toString())
-//
-//        for (i in patientsList.indices) { //TODO entrare nel folder e passare file
-//            var patientNew = readPatient(i, context)
-//            patList.add(patientNew)
-//        }
         return patientsList
     }
+
+//TODO FUNZIONE PER LEGGERE DOCUMENTI DA FIRESTORE
+    /*
+    fun getDocuments(context: Context): ArrayList<Patient> {
+        // [START get_document]
+
+        val db = Firebase.firestore
+
+        val docRef = db.collection("patients")
+        docRef.get().addOnSuccessListener { result ->
+            for (document in result) {
+                Log.d(TAG, "${document.id}=>${document.data}")
+                var dbPatient = document.toObject(Patient::class.java)
+                if (!patientsList.contains(dbPatient)) {
+                    patientsList.add(dbPatient)
+                }
+
+
+            }
+        }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "Error getting document", exception)
+
+            }
+        return patientsList
+    }*/
+
+
+
 
     fun deletePatient(context: Context, i: Int) {
         var patientDeleted = patientsList[i]
@@ -181,9 +205,9 @@ object PatientsManager {
             Timber.d("File has been really deleted") //LO STAMPA! JSON LO ELIMINA, DOBBIAMO RIAGGIORNARE PAZIENTI IN KOTLIN
         }
 
-
     }
 }
+
 
 
 

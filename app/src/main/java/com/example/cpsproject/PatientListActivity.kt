@@ -1,8 +1,10 @@
 package com.example.cpsproject
 
+import android.content.ContentValues.TAG
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
@@ -12,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.managers.PatientsManager.deletePatient
 import com.example.cpsproject.model.Patient
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import timber.log.Timber
 
 class PatientListActivity: AppCompatActivity() {
@@ -41,8 +45,9 @@ class PatientListActivity: AppCompatActivity() {
 
         // QUI X RECYCLER CHE SI AGGIORNA
 
+        //Importare pazienti da firebase
 
-        listPatients = PatientsManager.importPatientList(this)
+        listPatients = PatientsManager.getDocuments(this)
         var adapter = PatientAdapter(this, listPatients)
 
         layoutManager = LinearLayoutManager(this)
@@ -97,84 +102,6 @@ class PatientListActivity: AppCompatActivity() {
             )*/
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-//
-        /*override fun deletePatient (position: Int) {
-            Toast.makeText(
-                this@PatientListActivity, "you clicked on patient $position", Toast.LENGTH_SHORT).show()
-            var pos = position
-            intentPage.putExtra("position", pos)
-            startActivity(intentPage)
-        }*/
-
-// tentativo 1
-
-        /*
-           override fun onDeleteClick(position: Int) {
-               deletePatient( this@PatientListActivity, position) //questo è un metodo ch ein java è stato definito come foto ila
-
-            }
-            */
-
-        //
-
-        // ELIMINA PAZIENTE --> fatto  un po' da ila quindi non fidarti
-
-
-        //ILA
-        /*val delete= findViewById<ImageView>(R.id.ic_delete)
-        val intentdelete=Intent(this,DeleteMessageActivity::class.java)
-
-            delete.setOnClickListener{
-            intentdelete.putExtra("position",position)
-            val intentNew= Intent(this, EditPatientActivity::class.java)
-            intentNew.putExtra("position",pos)
-            startActivity(intentNew)
-        */
-
-
-
-
-         /*   val btnDeletePatient = findViewById<Button>(R.id.btnDeletePatient)
-            btnDeletePatient.setOnClickListener {
-                val intent = Intent(this, DeleteMessageActivity::class.java)
-                startActivity(intent)
-*/
-
-
-
-
-
-            //QUI VOLEVA SELEZIONARE I PAZIENTI CON setonLONGclicklistener ma ovviamente non riesco [NON SENTE CLICK LUNGO E VA A PATIENT PAGE]e ho abbandonato
-            // --> ho fatto con menù a lato del singolo paziente (codice nell'adapter, non mi piace)
-
-         /*   Toast.makeText(this@PatientListActivity,"Select a patient for a long time", Toast.LENGTH_SHORT).show()
-
-           adapter.setOnItemClickListener(object : PatientAdapter.onItemClickListener{
-               override fun onClick(position: Int) {
-                   Toast.makeText(this@PatientListActivity,"Long click detected", Toast.LENGTH_SHORT).show()
-                   var pos=position
-                   intent.putExtra("position",pos)
-                   startActivity(intent) // OPPURE ALERT DIALOG (come ho fatto con menù)--> VOLEVO CHIEDERE CONFERMA DELL'ELIMINAZIONE
-                   deletePatient(this@PatientListActivity, pos) //DOVREBBE ESSERE FUNZIONE CHE ELIMINA FILE JSON (IMPLEMENTATA NEL MANAGER)
-               }
-
-
-           }
-        })
-            */
-
-
 
 //TODO c'è qualche errore che permette di scrivere dove non si dovrebbe quando si inseriscono
 // i dati del pz: io sono riuscita a scrivere durante l'esecuzione dell'app nella scritta "Name"

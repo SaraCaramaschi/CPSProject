@@ -39,16 +39,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit" />
 
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:src="@drawable/user"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <LinearLayout
         android:id="@+id/LinearLayout0"
@@ -61,7 +61,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.254">
+        app:layout_constraintVertical_bias="0.175">
 
         <TextView
             android:id="@+id/tvName"
@@ -159,7 +159,6 @@
             app:layout_constraintTop_toTopOf="parent" />
     </LinearLayout>
 
-
     <TextView
         android:id="@+id/tvSelectPhase"
         android:layout_width="wrap_content"
@@ -176,9 +175,9 @@
         android:id="@+id/btnPhase1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="Phase 1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSelectPhase" />
 
@@ -186,8 +185,6 @@
         android:id="@+id/btnPhase2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:layout_marginTop="8dp"
         android:text="Phase 2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -197,9 +194,9 @@
         android:id="@+id/btnPatientRecords"
         android:layout_width="111dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
         android:text="Patient's records"
         app:layout_constraintEnd_toStartOf="@+id/btnPenConnectionPatient"
+        app:layout_constraintHorizontal_bias="0.64"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnPhase2" />
 
@@ -207,7 +204,6 @@
         android:id="@+id/btnPenConnectionPatient"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
         android:text="Pen Connection"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -217,7 +213,6 @@
         android:id="@+id/btnPatListBack"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
         android:layout_marginBottom="32dp"
         android:text="Back to list"
         app:layout_constraintEnd_toEndOf="parent"

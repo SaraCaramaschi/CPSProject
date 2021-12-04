@@ -60,7 +60,6 @@ class PatientListActivity: AppCompatActivity() {
         //PASSA AD PAGINA PAZIENTE
         val intentPage = Intent(this, PatientPageActivity::class.java)
 
-
         adapter.setOnItemClickListener(object : PatientAdapter.onItemClickListener {
             override fun onClick(position: Int) {
 //                Toast.makeText(

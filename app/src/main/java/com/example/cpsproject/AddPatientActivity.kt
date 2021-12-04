@@ -90,11 +90,11 @@ class AddPatientActivity : AppCompatActivity() {
             PatientsManager.addPatient(patient, applicationContext)
 
             // Go to patient page
-            val intent = Intent(this, PatientPageActivity::class.java)
+            /*val intent = Intent(this, PatientPageActivity::class.java)
             val pos = patientsList.lastIndex
             intent.putExtra("position", pos)
 
-            startActivity(intent)
+            startActivity(intent)*/
         }
 
 

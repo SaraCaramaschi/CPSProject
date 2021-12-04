@@ -63,10 +63,12 @@ object PatientsManager {
     }
 
 
+    // Funzione che salva nuovo paziente su firestore OK
     public fun saveFireStore(jsonpatient: String, patient: Patient, context: Context) {
         val dbn = FirebaseFirestore.getInstance()
         var mappatient: Map<String, Any> = HashMap()
         mappatient = Gson().fromJson(jsonpatient, mappatient.javaClass)
+
         var taxcode = patient.taxcode
         var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)
         var fileName = folder.path.toString() + "/" + taxcode + ".txt"
@@ -77,16 +79,17 @@ object PatientsManager {
             .addOnSuccessListener {
                 //ELIMINA LOCALE (ANCHE SE QUANDO AGGIUNGO PAZIETE SE AL PRIMO COLPO ME LO CARICA SU CLOUD
                 //NON è NECESSARIO ELIMINARE LOCALE)--> FORSE DA TOGLIERE
-                Log.d(TAG, "Record added succesfully")
+                Timber.d("Record added succesfully")
                 File(fileName).delete()
                 Timber.d("File deleted")
             }
 
             .addOnFailureListener { e ->
-                Log.w(TAG, "Error filed to add", e)
+                Timber.tag(TAG).w(e, "Error filed to add")
                 //TODO CODICE PER SALVARE IN LOCALE SE QUALOCSA VA STORTO
-                savePatient(patient,context)
+                savePatient(patient, context)
             }
+
         //TODO CODICE PER CARICARE FILE IN LOCALE
         //FORSE SAREBBE MEGLIO METTERE QUESTO PEZZO DI FUNZIONE OGNI VOLTA CHE CLINICO APRE L'APP(?)
         //COSì CHE NON SERVA CHE CARICHI UN NUOVO FILE PER CARICARE I PRECEDENTI
@@ -106,25 +109,22 @@ object PatientsManager {
                             .add(mappatientNew)
                             .addOnSuccessListener {
                                 //Elimino locale
-                                Log.d(TAG, "Record added succesfully")
+                                Timber.d("Record added succesfully")
                                 File(fileNameNew).delete()
                                 Timber.d("File deleted")
 
                             }
-
                             .addOnFailureListener { e ->
                                 Log.w(TAG, "Error filed to add", e)
                                 //TODO CODICE PER RISALVARE IN LOCALE
                                 savePatient(patient,context)
                             }
-
                     }
-
                 }
             }
-
         }
-
+        // PER FUNZIONE SARA:
+        //patientsList = obtainIdentifier()
     }
 
 
@@ -200,8 +200,7 @@ object PatientsManager {
     }
 
 //TODO FUNZIONE PER LEGGERE DOCUMENTI DA FIRESTORE (messa come commento perchè se no app non va)
-    /*
-    fun getDocuments(context: Context): ArrayList<Patient> {
+   /* fun getDocuments(context: Context): ArrayList<Patient> {
         // [START get_document]
 
         val db = Firebase.firestore
@@ -209,21 +208,54 @@ object PatientsManager {
         val docRef = db.collection("patients")
         docRef.get().addOnSuccessListener { result ->
             for (document in result) {
+                if (document != null){
                 Log.d(TAG, "${document.id}=>${document.data}")
+                }else {
+                    Timber.d("No such document")
+                }
+
                 var dbPatient = document.toObject(Patient::class.java)
+
                 if (!patientsList.contains(dbPatient)) {
                     patientsList.add(dbPatient)
                 }
 
-
             }
         }
             .addOnFailureListener { exception ->
-                Log.d(TAG, "Error getting document", exception)
+                Timber.e(exception, "Error getting document")
 
             }
         return patientsList
     }*/
+
+    // FUNZIONE SARA:
+    /*
+    private fun obtainIdentifier(): ArrayList<Patient>{
+        var allPatients = ArrayList<Patient>()
+        var db = Firebase.firestore.collection("patients")
+        db.addSnapshotListener {
+            snapshot, e ->
+            if (e != null) {
+                Log.w(TAG, "Failure")
+                return@addSnapshotListener
+            }
+            if (snapshot!=null){
+                var documents = snapshot.documents
+
+                // converting documentsnapshot object to our patient object
+                documents.forEach {
+                    val patient = it.toObject(Patient::class.java)
+                    if (patient!=null){
+                        patient.firestoreId = it.id
+                        allPatients.add(patient)
+                    }
+                }
+            }
+        }
+        return allPatients
+    }*/
+
 
 
 

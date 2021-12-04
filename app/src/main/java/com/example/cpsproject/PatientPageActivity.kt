@@ -1,7 +1,7 @@
 package com.example.cpsproject
 
 import android.content.Intent
-import android.graphics.drawable.Icon
+//import android.graphics.drawable.Icon
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
@@ -23,6 +23,7 @@ class PatientPageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patient_page)
+
         val intent= getIntent()
         val pos= intent.getIntExtra("position", 0)
 

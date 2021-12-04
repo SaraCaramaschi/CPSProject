@@ -55,7 +55,6 @@ class EditPatientActivity: AppCompatActivity() {
                 g=1}
             else{
                 g=2
-
             }
             var h: Int
             if(patient.dominantHand.toString()=="Right"){
@@ -79,8 +78,6 @@ class EditPatientActivity: AppCompatActivity() {
 
 
             //intanto utente può cambiare tutte le varie cose
-
-
 
         }
 

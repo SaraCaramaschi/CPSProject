@@ -37,8 +37,8 @@ class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : Recycl
 
 
         init{
-            itemName = itemView.findViewById(R.id.PatientName)
-            itemPhase = itemView.findViewById(R.id.tvPatientPhase)
+            itemName = itemView.findViewById(R.id.PatientName) as TextView
+            itemPhase = itemView.findViewById(R.id.tvPatientPhase) as TextView
 
 
             itemView.setOnClickListener{

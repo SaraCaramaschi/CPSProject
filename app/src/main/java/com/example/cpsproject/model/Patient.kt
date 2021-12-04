@@ -11,9 +11,7 @@ data class Patient(
     var dominantHand: Hand,
     var gender: Gender,
 
-    var phase: Int = 1
-
-
-
+    var phase: Int = 1,
+    var firestoreId: String=""
 
 )

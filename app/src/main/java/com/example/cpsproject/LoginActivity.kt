@@ -1,10 +1,8 @@
 package com.example.cpsproject
 
 import android.content.Intent
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.preference.PreferenceManager.*
 import android.text.TextUtils
 import android.widget.Button
@@ -12,11 +10,9 @@ import android.widget.EditText
 import android.widget.Toast
 import com.example.cpsproject.managers.ClinicianManager
 import com.example.cpsproject.model.Clinician
-import com.example.cpsproject.model.Patient
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
-import org.jetbrains.anko.configuration
 import timber.log.Timber
 import java.util.*
 
@@ -26,18 +22,6 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        btnENG.setOnClickListener {
-
-        }
-
-        btnIT.setOnClickListener {
-            // TODO cosa fa il bottone per cambaire lingua in italiano
-            val lang = "Italian"
-            changeLanguage(lang)
-        }
-
-
-
         var emailLog: String = String()
         var passwordLog: String = String()
         var clinician: Clinician
@@ -45,6 +29,11 @@ class LoginActivity : AppCompatActivity() {
 
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
+        }
+
+        btnLanguage.setOnClickListener {
+            val intent = Intent(this, LanguageActivity::class.java)
+            startActivity(intent)
         }
 
         val btnSignIn = findViewById<Button>(R.id.btnSignIn)

@@ -14,7 +14,7 @@ android {
         targetSdk 29
         versionCode 1
         versionName "1.0"
-        resConfigs("en", "it")
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -26,8 +26,10 @@ android {
     }
 
 
+
     buildFeatures{
         viewBinding true
+        dataBinding true
     }
 
     compileOptions {

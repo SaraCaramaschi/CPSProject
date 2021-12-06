@@ -199,7 +199,7 @@ object PatientsManager {
         return patientsList
     }
 
-//TODO FUNZIONE PER LEGGERE DOCUMENTI DA FIRESTORE (messa come commento perchè se no app non va) DA CHIAMARE PRIMA!
+//TODO FUNZIONE PER LEGGERE DOCUMENTI DA FIRESTORE (messa come commento perchè se no app non va)
     fun getDocuments(context: Context): ArrayList<Patient> {
         // [START get_document]
 

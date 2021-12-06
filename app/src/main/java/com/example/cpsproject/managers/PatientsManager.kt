@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import com.example.cpsproject.model.Patient
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.OnFailureListener
@@ -16,6 +17,10 @@ import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
 import com.squareup.okhttp.internal.Internal.instance
 import io.grpc.InternalChannelz.instance
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import timber.log.Timber
 import java.io.*
 import java.lang.reflect.Array.get
@@ -235,6 +240,7 @@ object PatientsManager {
         return patientsList
     }
 
+
     // FUNZIONE SARA:
     /*
     private fun obtainIdentifier(): ArrayList<Patient>{
@@ -280,20 +286,21 @@ object PatientsManager {
         Timber.d("File has been really deleted") //LO STAMPA! JSON LO ELIMINA, DOBBIAMO RIAGGIORNARE PAZIENTI IN KOTLIN
     }
 
+
     //Firestore delete
     // Create a reference to the cities collection
-    val db = Firebase.firestore
-    val patientsRef = db.collection("patients")
+    //-   val db = Firebase.firestore
+    //-   val patientsRef = db.collection("patients")
 
-    val queryTaxCode = patientsRef.whereEqualTo("taxcode", "${patientDeleted.taxcode}")
+    //-   val queryTaxCode = patientsRef.whereEqualTo("taxcode", "${patientDeleted.taxcode}")
     //patientsRef.document("3bzqijsxNG88ti2kwOcb").delete()
 
     //DocumentReference document=patientsRef.document(patients.getid)())
 
-    
-    queryTaxCode.get().addOnSuccessListener { result ->
 
-        if (result != null) {
+    // queryTaxCode.get().addOnSuccessListener { result ->
+
+    /*  if (result != null) {
 
             val document = result.documents
             document.forEach {
@@ -310,10 +317,10 @@ object PatientsManager {
         } else {
             Timber.d("No such document")
         }
-    }
+    }*/
 
 
-       /* var dbPatient = document.toObject(Patient::class.java)
+    /* var dbPatient = document.toObject(Patient::class.java)
 
         if (!patientsList.contains(dbPatient)) {
             patientsList.add(dbPatient)
@@ -355,5 +362,31 @@ fun deleteCollection(collection: CollectionReference, batchSize: Int) {
 
 */
 
+    private val patientCollectionRef = Firebase.firestore.collection("patients")
+    private fun deletePatient(patient: Patient) = CoroutineScope(Dispatchers.IO).launch {
+        val personQuery = patientCollectionRef
+            .whereEqualTo("taxcode", patient.taxcode)
+            .get()
+            .await()
 
+        if (personQuery.documents.isNotEmpty()) {
+            for (document in personQuery) {
+                try {
+                    patientCollectionRef.document(document.id).delete()
+                    /*personCollectionRef.document(document.id).update(mapOf(
+                        "firstName" to FieldValue.delete()
+                    )).await()*/
+                } catch (e: Exception) {
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(this, e.message, Toast.LENGTH_LONG).show()
+                    }
+                }
+            }
+        } else {
+            withContext(Dispatchers.Main) {
+                Toast.makeText(this, "No persons matched the query.", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+   
 

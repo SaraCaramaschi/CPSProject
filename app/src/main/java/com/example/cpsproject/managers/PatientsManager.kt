@@ -161,7 +161,7 @@ object PatientsManager {
         return patient
     }
 
-    //Da json a data class
+    //Da json a data class OK
     fun readPatientJson(file: File, context: Context): Patient {
         //Creating a new Gson object to read data
         var gson = Gson()
@@ -175,7 +175,7 @@ object PatientsManager {
         return patient
     }
 
-    // Aggiorna lista pazienti in locale
+    // Aggiorna lista pazienti in locale OK
     fun importPatientList(context: Context): ArrayList<Patient> {
         Timber.d("Dentro a IMPORTPATIENTLIST")
 
@@ -199,8 +199,8 @@ object PatientsManager {
         return patientsList
     }
 
-//TODO FUNZIONE PER LEGGERE DOCUMENTI DA FIRESTORE (messa come commento perchè se no app non va)
-   /* fun getDocuments(context: Context): ArrayList<Patient> {
+//TODO FUNZIONE PER LEGGERE DOCUMENTI DA FIRESTORE (messa come commento perchè se no app non va) DA CHIAMARE PRIMA!
+    fun getDocuments(context: Context): ArrayList<Patient> {
         // [START get_document]
 
         val db = Firebase.firestore
@@ -227,7 +227,7 @@ object PatientsManager {
 
             }
         return patientsList
-    }*/
+    }
 
     // FUNZIONE SARA:
     /*
@@ -256,10 +256,11 @@ object PatientsManager {
         return allPatients
     }*/
 
+    //TODO manca funzione delete in firebase--> potremmo metterla dentro funzione delete Patient
 
 
 
-
+//Funzione elimina paziente ma solo in locale
     fun deletePatient(context: Context, i: Int) {
         var patientDeleted = patientsList[i]
         patientsList.remove(patientDeleted)

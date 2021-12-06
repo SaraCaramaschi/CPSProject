@@ -48,8 +48,8 @@ class PatientListActivity: AppCompatActivity() {
         //Importare pazienti da firebase
 
         //TODO QUA DOVREBBE RICHIAMARE FUNZIONE GET DOCUMENT DA FIREBASE (commento se no non funziona)
-        //listPatients = PatientsManager.getDocuments(this)
-        listPatients=PatientsManager.importPatientList(this)
+        listPatients = PatientsManager.getDocuments(this)
+        //listPatients=PatientsManager.importPatientList(this)
         var adapter = PatientAdapter(this, listPatients)
 
         layoutManager = LinearLayoutManager(this)

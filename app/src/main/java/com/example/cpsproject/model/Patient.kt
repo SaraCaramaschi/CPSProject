@@ -1,17 +1,17 @@
 package com.example.cpsproject.model
 
 data class Patient(
-    var name: String?,
-    var surname: String?,
+    var name: String?=null,
+    var surname: String?=null,
     var notes: String ?= null,
-    var taxcode: String?,
-    var birthdate: String?,
+    var taxcode: String?=null,
+    var birthdate: String?=null,
 
     // TODO variabili da sistemare:
-    var dominantHand: Hand,
-    var gender: Gender,
+    var dominantHand: Hand=Hand.Right,
+    var gender: Gender=Gender.Female,
 
     var phase: Int = 1,
     var firestoreId: String=""
-
 )
+

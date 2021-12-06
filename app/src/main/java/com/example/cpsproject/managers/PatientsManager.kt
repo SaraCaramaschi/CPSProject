@@ -5,14 +5,20 @@ import android.content.ContentValues.TAG
 import android.content.Context
 import android.util.Log
 import com.example.cpsproject.model.Patient
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreSettings
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.*
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObjects
 import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
+import com.squareup.okhttp.internal.Internal.instance
+import io.grpc.InternalChannelz.instance
 import timber.log.Timber
 import java.io.*
+import java.lang.reflect.Array.get
 
 
 @SuppressLint("StaticFieldLeak")
@@ -262,22 +268,92 @@ object PatientsManager {
 
 //Funzione elimina paziente ma solo in locale
     fun deletePatient(context: Context, i: Int) {
-        var patientDeleted = patientsList[i]
-        patientsList.remove(patientDeleted)
-        var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)
-        var fileName = folder.path.toString() + "/" + patientDeleted.taxcode + ".txt"
-        File(fileName).delete()
-        Timber.d("File deleted")
-        var fodername = folder.path.toString()
+    var patientDeleted = patientsList[i]
+    patientsList.remove(patientDeleted)
+    var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)
+    var fileName = folder.path.toString() + "/" + patientDeleted.taxcode + ".txt"
+    File(fileName).delete()
+    Timber.d("File deleted")
+    var fodername = folder.path.toString()
 
-        if (!File(fodername).list().contains(fileName)) {
-            Timber.d("File has been really deleted") //LO STAMPA! JSON LO ELIMINA, DOBBIAMO RIAGGIORNARE PAZIENTI IN KOTLIN
+    if (!File(fodername).list().contains(fileName)) {
+        Timber.d("File has been really deleted") //LO STAMPA! JSON LO ELIMINA, DOBBIAMO RIAGGIORNARE PAZIENTI IN KOTLIN
+    }
+
+    //Firestore delete
+    // Create a reference to the cities collection
+    val db = Firebase.firestore
+    val patientsRef = db.collection("patients")
+
+    val queryTaxCode = patientsRef.whereEqualTo("taxcode", "${patientDeleted.taxcode}")
+    //patientsRef.document("3bzqijsxNG88ti2kwOcb").delete()
+
+    //DocumentReference document=patientsRef.document(patients.getid)())
+
+    
+    queryTaxCode.get().addOnSuccessListener { result ->
+
+        if (result != null) {
+
+            val document = result.documents
+            document.forEach {
+                //val patient=it.toObject(Patient::class.java)
+                //if (patient != null){
+                var id = it.id
+                patientsRef.document(id).delete().onSuccessTask {
+                    //Log.d("Firebase", "Document")
+                    Timber.d("Dentro a IMPORTPATIENTLIST")
+
+                }
+            }
+
+        } else {
+            Timber.d("No such document")
+        }
+    }
+
+
+       /* var dbPatient = document.toObject(Patient::class.java)
+
+        if (!patientsList.contains(dbPatient)) {
+            patientsList.add(dbPatient)
         }
 
+    }
+
+        .addOnFailureListener { exception ->
+            Timber.e(exception, "Error getting document")
+
+        }
+}
+
+
+
+}
+
+fun deleteCollection(collection: CollectionReference, batchSize: Int) {
+    try {
+        // retrieve a small batch of documents to avoid out-of-memory errors
+        val future: ApiFuture<QuerySnapshot> = collection.limit(batchSize.toLong()).get()
+        var deleted = 0
+        // future.get() blocks on document retrieval
+        val documents: List<QueryDocumentSnapshot> = future.get().getDocuments()
+        for (document in documents) {
+            document.reference.delete()
+            ++deleted
+        }
+        if (deleted >= batchSize) {
+            // retrieve and delete another batch
+            deleteCollection(collection, batchSize)
+        }
+    } catch (e: Exception) {
+        System.err.println("Error deleting collection : " + e.message)
     }
 }
 
 
+
+*/
 
 
 

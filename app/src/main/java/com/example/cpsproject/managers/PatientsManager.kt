@@ -57,25 +57,13 @@ object PatientsManager {
         Timber.d("path %s", file.absolutePath)
 
         file.writeText(jsonPatient)
-        // Timber.d("questo è il file lettooo %s", readPatient(fileName))
-
-        //SALVATAGGIO FIREBASE MA NON FUNZIONA (SEGUITO ISTRUZIONI KOTLIN)
-//    db.collection("patients")
-//            .add(jsonPatient)
-//            .addOnSuccessListener { documentReference ->
-//                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
-//            }
-//            .addOnFailureListener { e ->
-//                Log.w(TAG, "Error adding document", e)
-//            }
-
         saveFireStore(jsonPatient, patient, context)
 
     }
 
 
-    // Funzione che salva nuovo paziente su firestore OK
-    public fun saveFireStore(jsonpatient: String, patient: Patient, context: Context) {
+    // Funzione che salva nuovo paziente su firestore
+    fun saveFireStore(jsonpatient: String, patient: Patient, context: Context) {
         val dbn = FirebaseFirestore.getInstance()
         var mappatient: Map<String, Any> = HashMap()
         mappatient = Gson().fromJson(jsonpatient, mappatient.javaClass)
@@ -97,7 +85,7 @@ object PatientsManager {
 
             .addOnFailureListener { e ->
                 Timber.tag(TAG).w(e, "Error filed to add")
-                //TODO CODICE PER SALVARE IN LOCALE SE QUALOCSA VA STORTO
+                //TODO CODICE PER SALVARE IN LOCALE SE QUALOCSA VA STORTO--> verificare se funziona
                 savePatient(patient, context)
             }
 
@@ -110,9 +98,9 @@ object PatientsManager {
                 Timber.d(it.path)
                 if (it.isFile) {
                     val pat = readPatientJson(it, context)
-                    if (pat!=patient) {
+                    if (pat != patient) {
                         val gson = Gson()
-                        var jsonPat= gson.toJson(pat)
+                        var jsonPat = gson.toJson(pat)
                         var fileNameNew = folder.path.toString() + "/" + pat.taxcode + ".txt"
                         var mappatientNew: Map<String, Any> = HashMap()
                         mappatientNew = Gson().fromJson(jsonPat, mappatient.javaClass)
@@ -127,8 +115,8 @@ object PatientsManager {
                             }
                             .addOnFailureListener { e ->
                                 Log.w(TAG, "Error filed to add", e)
-                                //TODO CODICE PER RISALVARE IN LOCALE
-                                savePatient(patient,context)
+                                //TODO CODICE PER RISALVARE IN LOCALE--> verificare se funziona
+                                savePatient(patient, context)
                             }
                     }
                 }
@@ -186,7 +174,7 @@ object PatientsManager {
         return patient
     }
 
-    // Aggiorna lista pazienti in locale OK
+    // Aggiorna lista pazienti da locale OK--> ma non verrà più usata
     fun importPatientList(context: Context): ArrayList<Patient> {
         Timber.d("Dentro a IMPORTPATIENTLIST")
 
@@ -210,18 +198,18 @@ object PatientsManager {
         return patientsList
     }
 
-//TODO FUNZIONE PER LEGGERE DOCUMENTI DA FIRESTORE (messa come commento perchè se no app non va)
+
+    // Funzione per leggere documenti da firebstore
     fun getDocuments(context: Context): ArrayList<Patient> {
         // [START get_document]
-
         val db = Firebase.firestore
 
         val docRef = db.collection("patients")
         docRef.get().addOnSuccessListener { result ->
             for (document in result) {
-                if (document != null){
-                Log.d(TAG, "${document.id}=>${document.data}")
-                }else {
+                if (document != null) {
+                    Log.d(TAG, "${document.id}=>${document.data}")
+                } else {
                     Timber.d("No such document")
                 }
 
@@ -271,73 +259,49 @@ object PatientsManager {
     //TODO manca funzione delete in firebase--> potremmo metterla dentro funzione delete Patient
 
 
-
-//Funzione elimina paziente ma solo in locale
+    //Funzione elimina paziente ma solo in locale
     fun deletePatient(context: Context, i: Int) {
-    var patientDeleted = patientsList[i]
-    patientsList.remove(patientDeleted)
-    var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)
-    var fileName = folder.path.toString() + "/" + patientDeleted.taxcode + ".txt"
-    File(fileName).delete()
-    Timber.d("File deleted")
-    var fodername = folder.path.toString()
+        var patientDeleted = patientsList[i]
+        patientsList.remove(patientDeleted)
+        var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)
+        var fileName = folder.path.toString() + "/" + patientDeleted.taxcode + ".txt"
+        File(fileName).delete()
+        Timber.d("File deleted")
+        var fodername = folder.path.toString()
 
-    if (!File(fodername).list().contains(fileName)) {
-        Timber.d("File has been really deleted") //LO STAMPA! JSON LO ELIMINA, DOBBIAMO RIAGGIORNARE PAZIENTI IN KOTLIN
-    }
+        if (!File(fodername).list().contains(fileName)) {
+            Timber.d("File has been really deleted") //LO STAMPA! JSON LO ELIMINA, DOBBIAMO RIAGGIORNARE PAZIENTI IN KOTLIN
+        }
 
+        //Firestore delete
+        val db = Firebase.firestore
+        val patientsRef = db.collection("patients")
+        //cerco paziente con quel taxcode
+        val queryTaxCode = patientsRef.whereEqualTo("taxcode", "${patientDeleted.taxcode}")
+        queryTaxCode.get().addOnSuccessListener { result ->
 
-    //Firestore delete
-    // Create a reference to the cities collection
-    //-   val db = Firebase.firestore
-    //-   val patientsRef = db.collection("patients")
-
-    //-   val queryTaxCode = patientsRef.whereEqualTo("taxcode", "${patientDeleted.taxcode}")
-    //patientsRef.document("3bzqijsxNG88ti2kwOcb").delete()
-
-    //DocumentReference document=patientsRef.document(patients.getid)())
-
-
-    // queryTaxCode.get().addOnSuccessListener { result ->
-
-    /*  if (result != null) {
-
-            val document = result.documents
-            document.forEach {
-                //val patient=it.toObject(Patient::class.java)
-                //if (patient != null){
-                var id = it.id
-                patientsRef.document(id).delete().onSuccessTask {
-                    //Log.d("Firebase", "Document")
-                    Timber.d("Dentro a IMPORTPATIENTLIST")
-
+            if (result != null) {
+                val document = result.documents
+                document.forEach {
+                    //val patient=it.toObject(Patient::class.java)
+                    //if (patient != null){
+                    var id = it.id
+                    patientsRef.document(id).delete().addOnSuccessListener {
+                        Timber.d("Deleted")
+                    }
+                        .addOnFailureListener {
+                            Timber.d("Not deleted")
+                        }
                 }
+            } else {
+                Timber.d("No such document")
             }
-
-        } else {
-            Timber.d("No such document")
         }
-    }*/
-
-
-    /* var dbPatient = document.toObject(Patient::class.java)
-
-        if (!patientsList.contains(dbPatient)) {
-            patientsList.add(dbPatient)
-        }
-
     }
-
-        .addOnFailureListener { exception ->
-            Timber.e(exception, "Error getting document")
-
-        }
 }
 
 
-
-}
-
+    /*
 fun deleteCollection(collection: CollectionReference, batchSize: Int) {
     try {
         // retrieve a small batch of documents to avoid out-of-memory errors
@@ -360,8 +324,7 @@ fun deleteCollection(collection: CollectionReference, batchSize: Int) {
 
 
 
-*/
-
+/*
     private val patientCollectionRef = Firebase.firestore.collection("patients")
     private fun deletePatient(patient: Patient) = CoroutineScope(Dispatchers.IO).launch {
         val personQuery = patientCollectionRef
@@ -387,6 +350,4 @@ fun deleteCollection(collection: CollectionReference, batchSize: Int) {
                 Toast.makeText(this, "No persons matched the query.", Toast.LENGTH_LONG).show()
             }
         }
-    }
-   
-
+   */

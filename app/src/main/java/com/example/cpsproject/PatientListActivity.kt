@@ -24,17 +24,13 @@ class PatientListActivity: AppCompatActivity() {
     lateinit var rvPatients: RecyclerView
     //lateinit var rvDelete: RecyclerView
 
-
-    //
-    //
     /* fun removeItem(position:Int){
         patientsList.remove(position);
        // PatientAdapter.notifyItemRemoved(position);
 
     }*/
-    //
-    //
-
+    //TODO NON SO SE BISOGNA RICHIAMARE ARRAY PAZIENTI PER VISUALIZZARE SUBITO LA LISTA--> in realtà basta importare in schermata 1
+    //val pos= intent.getIntExtra("position", 0)
 
     // QUI X RECYCLER CHE SI AGGIORNA
     var listPatients: ArrayList<Patient> = ArrayList()
@@ -46,8 +42,6 @@ class PatientListActivity: AppCompatActivity() {
         // QUI X RECYCLER CHE SI AGGIORNA
 
         //Importare pazienti da firebase
-
-        //TODO QUA DOVREBBE RICHIAMARE FUNZIONE GET DOCUMENT DA FIREBASE (commento se no non funziona)
         listPatients = PatientsManager.getDocuments(this)
         //listPatients=PatientsManager.importPatientList(this)
         var adapter = PatientAdapter(this, listPatients)

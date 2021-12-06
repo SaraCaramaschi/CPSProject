@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.widget.Button
 import com.example.cpsproject.ble.MainConnection
 import com.example.cpsproject.managers.ClinicianManager
+import com.example.cpsproject.managers.PatientsManager
+import com.example.cpsproject.model.Patient
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_schermata1.*
@@ -25,6 +27,10 @@ class Schermata1Activity : AppCompatActivity() {
 
         tvClinician.text = ClinicianManager.email
 
+        //importo subito lista pazioni da firebase
+        var listPatients: ArrayList<Patient> = ArrayList()
+        listPatients = PatientsManager.getDocuments(this)
+
 
 
 //PROVA PER CLINICO ILA MA I PROSSIMI DUE COMMENTI POSSONO ESSERE CANCELLATI
@@ -40,6 +46,7 @@ class Schermata1Activity : AppCompatActivity() {
             finish()
         }
         // bottone LISTA PAZIENTI
+        intent.putExtra("listPatients",listPatients)
         val btnPatients = findViewById<Button>(R.id.btnPatients)
         btnPatients.setOnClickListener {
             val intent = Intent(this, PatientListActivity::class.java)

@@ -350,4 +350,4 @@ fun deleteCollection(collection: CollectionReference, batchSize: Int) {
                 Toast.makeText(this, "No persons matched the query.", Toast.LENGTH_LONG).show()
             }
         }
-   */
+    }

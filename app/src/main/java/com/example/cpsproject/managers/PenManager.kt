@@ -10,10 +10,11 @@ object PenManager {
     public var penName: String?=null
     public var battery : Double?=null
     public var penData: PenData = PenData()
-    //potremmo salvare il nome della penna: penmanager.pen name troviamo questa cosa
-    //potremmo salvare batteria e tutti i dati.
-    // PROVA DOWNLOAD JSON FILE ON LOCAL
-    public fun downloadJson(penData: PenData, context: Context){
+
+
+
+
+    /*public fun downloadJson(penData: PenData, context: Context){
         val gson = Gson()
         val jsonData = gson.toJson(penData)
         var folder = context.getDir("PenDataFolder", Context.MODE_PRIVATE)
@@ -28,8 +29,6 @@ object PenManager {
         Timber.d("path %s", file.absolutePath)
 
         file.writeText(jsonData)
-    }
-
-    // Non ci serve "readJson" dei dati della penna perchè questi dati saranno solo poi scritti online firebase
+    }*/
 
 }

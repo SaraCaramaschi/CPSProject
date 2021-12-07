@@ -29,6 +29,7 @@ import java.lang.reflect.Array.get
 @SuppressLint("StaticFieldLeak")
 object PatientsManager {
     public var patientsList: ArrayList<Patient> = ArrayList()
+    public var selectedPatient: Int?=null
 
     public fun addPatient(patient: Patient, context: Context) {
         patientsList.add(patient)

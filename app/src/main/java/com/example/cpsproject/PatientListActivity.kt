@@ -61,9 +61,13 @@ class PatientListActivity: AppCompatActivity() {
 //                    "you clicked on patient $position",
 //                    Toast.LENGTH_SHORT
 //                ).show()
+
                 var pos = position
+                PatientsManager.selectedPatient = pos
+
                 intentPage.putExtra("position", pos)
                 startActivity(intentPage)
+
             }
 
         })

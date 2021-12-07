@@ -10,16 +10,13 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.cpsproject.R
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.ktx.initialize
-import com.google.firebase.referencecode.storage.R
+
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageException
 import com.google.firebase.storage.StorageReference
-import com.google.firebase.storage.ktx.component1
-import com.google.firebase.storage.ktx.component2
-import com.google.firebase.storage.ktx.component3
+
 import com.google.firebase.storage.ktx.storage
-import com.google.firebase.storage.ktx.storageMetadata
+
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileInputStream

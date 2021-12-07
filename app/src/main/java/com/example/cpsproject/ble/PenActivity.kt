@@ -22,7 +22,6 @@ class PenActivity : AppCompatActivity() {
 
 
         // Accessing to real time activity
-
         Toast.makeText(this@PenActivity,"Pen connected", Toast.LENGTH_SHORT).show()
 
         btnRealTime.setOnClickListener {
@@ -40,7 +39,7 @@ class PenActivity : AppCompatActivity() {
         btnDownload.setOnClickListener {
             //PenManager.downloadJson(PenManager.penData!!, this)
             ConnectionManager.download()
+            Toast.makeText(this@PenActivity,"Successful download ", Toast.LENGTH_SHORT).show()
         }
     }
-
 }

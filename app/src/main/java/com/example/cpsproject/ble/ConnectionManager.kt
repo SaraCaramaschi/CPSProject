@@ -71,7 +71,7 @@ object ConnectionManager {
             .replace(" ", "").substring(2).toInt(radix = 16).toDouble()
         battery = battery.div(10)
         PenManager.battery = battery
-        Timber.d("Valore batteria: %s", battery)
+        //Timber.d("Valore batteria: %s", battery)
     }
 
     fun readData(data: ByteArray) {
@@ -80,7 +80,7 @@ object ConnectionManager {
                 .replace(" ", "").substring(2).toInt(radix = 16).toShort()
                 .toDouble() / 100
 
-        Timber.d("Prova con acc_x per vedere se è tutto ok: %s", acc_x)
+        //Timber.d("Prova con acc_x per vedere se è tutto ok: %s", acc_x)
 
         Timber.d("data= " + data)
         val acc_y =
@@ -105,13 +105,12 @@ object ConnectionManager {
                 .toInt(radix = 16).toShort()
                 .toDouble() / 100
 
-        var press: Double = if (data.count() == 16) {   // DATAFRAME FROM ONBOARD STORAGE
+        var press: Double = if (data.count() == 16) {
             data.copyOfRange(14, 16).reversedArray().toHexString().toInt(radix = 16).toShort()
                 .toDouble() / 100
-        } else {    // DATAFRAME FROM STREAMING
+        } else {
             data.copyOfRange(16, 18).reversedArray().toHexString().toInt(radix = 16).toShort()
-                .toDouble() / 10  // /100
-            //            data[14..<16] -> stressball | data[18..<20] -> extra
+                .toDouble() / 10
         }
 
         PenManager.penData.acc_x = acc_x
@@ -125,7 +124,6 @@ object ConnectionManager {
     }
 
     fun readConsole (data:ByteArray) {
-        Timber.d("consoleeeee %s", data.toHexString())
         var consoleString = data.toHexString()
         consoleString = (hexToAscii(consoleString)).lowercase()
 
@@ -145,10 +143,10 @@ object ConnectionManager {
                 Timber.d("Onboard iniziato")
             }
 
-            /*consoleString.contains(" ") -> {
+            consoleString.contains(" ") -> {
                 disableNotifications(currDevice!!, consoleChar!!)
                 Timber.d("Onboard finito")
-            }*/
+            }
 
             // TODO da metterci cosa viene stampato da downoload (start-stop)
             consoleString.contains(" ") -> {
@@ -534,20 +532,15 @@ object ConnectionManager {
                     gatt.getService(serviceuuid).characteristics.forEach {
                         when (it.uuid) {
                             batteryuuid -> {
-                                Timber.d("Questa e' la batteria della penna")
-
                                 batteryChar = it
                                 enableNotifications(gatt.device, it)  // funzioni create dal tizio
                                 readCharacteristic(gatt.device, it)
-                            } //se è batteria fai certe cose: ottieni il dato della batteria
+                            }
                             datauuid -> {
-                                Timber.d("Questi sono i dati della penna")
-
                                 dataChar = it
-
                             }
                        }
-                    } //la console è in un servizio diverso: debugservice
+                    }
 
                     gatt.getService(debuguuid).characteristics.forEach {
                         when(it.uuid){
@@ -557,14 +550,6 @@ object ConnectionManager {
                             }
                         }
                     }
-
-
-                    //altro servizio impo: console  (debog service uuid)
-                    // io la leggo ma non va nella funz leggi ma nel suo callback
-                    // ONCHARACTERISTICREAD
-
-                    // servizi: service e debug
-                    // caratteristiche: data, calendar, battery, console, error
 
                 } else {
                     Timber.e("Service discovery failed due to status $status")
@@ -586,7 +571,7 @@ object ConnectionManager {
             }
         }
 
-        override fun onCharacteristicRead( //aggiungiamo cose alla nativa
+        override fun onCharacteristicRead(
             gatt: BluetoothGatt,
             characteristic: BluetoothGattCharacteristic,
             status: Int
@@ -604,12 +589,7 @@ object ConnectionManager {
                                 Timber.w("Ora sono in onCharacteristicRead e vado a leggere i dati tramite private fun readData ?? ")
                             }
                         }
-                        //sessionmanager che raccoglie tutte le variabili, companion object, singleton kotlin
-                        // accessibili ovunque
-                        //tutto ciò per caratteristiche READABLE
-                        //la caratteristica console invia i messaggi
-                        //descrittore attributo a cui diamo un valore per attivare le notifiche
-                        // oncharacteristicchange leggi solo quando cambia
+
                         listeners.forEach {
                             it.get()?.onCharacteristicRead?.invoke(
                                 gatt.device,
@@ -647,7 +627,7 @@ object ConnectionManager {
                             )
                         }
 
-                        when (characteristic.uuid) { // it è una BLUETOOTHGATTCHARACTERISTIC
+                        when (characteristic.uuid) {
                             consoleuuid -> {
                                 Timber.d("ho scritto nella console")
                             }
@@ -677,7 +657,6 @@ object ConnectionManager {
                 listeners.forEach { it.get()?.onCharacteristicChanged?.invoke(gatt.device, this) }
                 when (characteristic.uuid) {
                     datauuid -> {
-                        Timber.d("sono in char changed" +characteristic.value)
                         readData(characteristic.value)
                     }
                     batteryuuid -> {

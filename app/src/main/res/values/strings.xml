@@ -66,6 +66,9 @@
     <string name="z_data1" translatable="false">z_data</string>
     <string name="eng" translatable="false">ENG</string>
     <string name="it" translatable="false">IT</string>
+    <string name="change_language">Change language</string>
+    <string name="language">English</string>
+    <string name="back_to_log_in" translatable="false">Back to log in</string>
 
 
     <string-array name="gender">

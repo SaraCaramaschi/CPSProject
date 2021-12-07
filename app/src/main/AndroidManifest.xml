@@ -25,6 +25,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CPSProject">
         <activity
+            android:name=".LanguageActivity"
+            android:exported="true" />
+        <activity
             android:name=".Exercise1Activity"
             android:exported="true" />
         <activity
@@ -54,7 +57,6 @@
         <activity
             android:name=".DeleteMessageActivity"
             android:exported="true" />
-
         <activity
             android:name=".ble.MainConnection"
             android:exported="true" />

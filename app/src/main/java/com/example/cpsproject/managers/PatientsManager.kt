@@ -301,7 +301,7 @@ object PatientsManager {
 }
 
 
-    /*
+/*
 fun deleteCollection(collection: CollectionReference, batchSize: Int) {
     try {
         // retrieve a small batch of documents to avoid out-of-memory errors
@@ -320,34 +320,7 @@ fun deleteCollection(collection: CollectionReference, batchSize: Int) {
     } catch (e: Exception) {
         System.err.println("Error deleting collection : " + e.message)
     }
-}
+}*/
 
 
 
-/*
-    private val patientCollectionRef = Firebase.firestore.collection("patients")
-    private fun deletePatient(patient: Patient) = CoroutineScope(Dispatchers.IO).launch {
-        val personQuery = patientCollectionRef
-            .whereEqualTo("taxcode", patient.taxcode)
-            .get()
-            .await()
-
-        if (personQuery.documents.isNotEmpty()) {
-            for (document in personQuery) {
-                try {
-                    patientCollectionRef.document(document.id).delete()
-                    /*personCollectionRef.document(document.id).update(mapOf(
-                        "firstName" to FieldValue.delete()
-                    )).await()*/
-                } catch (e: Exception) {
-                    withContext(Dispatchers.Main) {
-                        Toast.makeText(this, e.message, Toast.LENGTH_LONG).show()
-                    }
-                }
-            }
-        } else {
-            withContext(Dispatchers.Main) {
-                Toast.makeText(this, "No persons matched the query.", Toast.LENGTH_LONG).show()
-            }
-        }
-    }

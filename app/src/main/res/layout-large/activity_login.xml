@@ -9,48 +9,47 @@
 
     <TextView
         android:id="@+id/tvLogIn"
-        android:layout_width="308dp"
-        android:layout_height="125dp"
-        android:layout_marginTop="132dp"
+        android:layout_width="169dp"
+        android:layout_height="83dp"
+        android:layout_marginTop="92dp"
         android:text="@string/log_in"
-        android:textSize="100dp"
+        android:textSize="60dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etEmailLog"
-        android:layout_width="500dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="84dp"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="52dp"
         android:ems="10"
         android:hint="@string/username"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvLogIn" />
 
     <EditText
         android:id="@+id/etPasswordLog"
-        android:layout_width="500dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etEmailLog" />
 
     <Button
         android:id="@+id/btnSubmit"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
 
-        android:layout_marginTop="376dp"
+        android:layout_marginTop="112dp"
         android:text="@string/submit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,9 +57,9 @@
 
     <Button
         android:id="@+id/btnSignIn"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="76dp"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="48dp"
         android:text="@string/sign_in"
         app:layout_constraintEnd_toEndOf="parent"
 
@@ -71,8 +70,8 @@
         android:id="@+id/btnIT"
         android:layout_width="100dp"
         android:layout_height="60dp"
-        android:layout_marginStart="132dp"
-        android:layout_marginBottom="120dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/it"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -81,11 +80,11 @@
         android:id="@+id/btnENG"
         android:layout_width="100dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="120dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/eng"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.133"
+        app:layout_constraintHorizontal_bias="0.151"
         app:layout_constraintStart_toEndOf="@+id/btnIT" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -64,25 +64,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSubmit" />
 
+
     <Button
-        android:id="@+id/btnIT"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
+        android:id="@+id/btnLanguage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="112dp"
         android:layout_marginBottom="96dp"
-        android:text="@string/it"
+        android:text = "@string/change_language"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnENG"
-        android:layout_width="180dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="96dp"
-        android:text="@string/eng"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.186"
-        app:layout_constraintStart_toEndOf="@+id/btnIT" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

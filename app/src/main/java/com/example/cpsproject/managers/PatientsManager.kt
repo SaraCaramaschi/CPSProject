@@ -10,6 +10,8 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.Task
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.*
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObjects
@@ -39,7 +41,7 @@ object PatientsManager {
     public fun savePatient(patient: Patient, context: Context) {
         val gson = Gson()
         val jsonPatient = gson.toJson(patient)
-        val db = Firebase.firestore
+        val db = Firebase.database
 
         Timber.d("json %s", jsonPatient)
 
@@ -58,14 +60,14 @@ object PatientsManager {
         Timber.d("path %s", file.absolutePath)
 
         file.writeText(jsonPatient)
-        saveFireStore(jsonPatient, patient, context)
+        saveRealtimedb(jsonPatient, patient, context)
 
     }
 
 
     // Funzione che salva nuovo paziente su firestore
-    fun saveFireStore(jsonpatient: String, patient: Patient, context: Context) {
-        val dbn = FirebaseFirestore.getInstance()
+    fun saveRealtimedb(jsonpatient: String, patient: Patient, context: Context) {
+        val dbn = FirebaseDatabase.getInstance()
         var mappatient: Map<String, Any> = HashMap()
         mappatient = Gson().fromJson(jsonpatient, mappatient.javaClass)
 

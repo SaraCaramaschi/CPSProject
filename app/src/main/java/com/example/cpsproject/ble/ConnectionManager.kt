@@ -53,7 +53,8 @@ object ConnectionManager {
     private val batteryuuid = UUID.fromString("00020000-0001-11E1-AC36-0002A5D5C51B")
     private val datauuid = UUID.fromString("00E00000-0001-11E1-AC36-0002A5D5C51B")
     private val consoleuuid = UUID.fromString("00000001-000E-11E1-AC36-0002A5D5C51B")
-    private val debuguuid = UUID.fromString( "00000000-000E-11E1-9AB4-0002A5D5C51B")
+    private val debuguuid = UUID.fromString("00000000-000E-11E1-9AB4-0002A5D5C51B")
+    private var down: Boolean = false
 
     private val format = "FFormat"
     private val download = "downloadu"
@@ -61,10 +62,10 @@ object ConnectionManager {
 
 
     private var batteryChar: BluetoothGattCharacteristic? = null
-    public  var dataChar: BluetoothGattCharacteristic ?= null
+    public var dataChar: BluetoothGattCharacteristic? = null
     private var consoleChar: BluetoothGattCharacteristic? = null
     public var currDevice: BluetoothDevice? = null
-    private var connection: BluetoothGatt ?= null
+    private var connection: BluetoothGatt? = null
 
     private fun readBattery(data: ByteArray) {
         var battery = data.copyOfRange(2, 4).reversedArray().toHexString()
@@ -113,48 +114,51 @@ object ConnectionManager {
                 .toDouble() / 10
         }
 
-        PenManager.penData.acc_x = acc_x
-        PenManager.penData.acc_y = acc_y
-        PenManager.penData.acc_z = acc_z
-        PenManager.penData.gyr_x = gyr_x
-        PenManager.penData.gyr_y = gyr_y
-        PenManager.penData.gyr_z = gyr_z
-        PenManager.penData.press = press
-
+        if (!down) {
+            PenManager.penData.acc_x = acc_x
+            PenManager.penData.acc_y = acc_y
+            PenManager.penData.acc_z = acc_z
+            PenManager.penData.gyr_x = gyr_x
+            PenManager.penData.gyr_y = gyr_y
+            PenManager.penData.gyr_z = gyr_z
+            PenManager.penData.press = press
+        } else {
+            //var data = arrayOf(acc_x, acc_y)
+            //Session.currentData.add(data)
+        }
     }
 
-    fun readConsole (data:ByteArray) {
+    fun readConsole(data: ByteArray) {
         var consoleString = data.toHexString()
         consoleString = (hexToAscii(consoleString)).lowercase()
 
         Timber.d("Console string e' : %s", consoleString)
 
-        when {
-            consoleString.contains("start formatting") -> {
-                Timber.d ("format iniziato")
-            }
-            consoleString.contains("formatting done") -> {
-                disableNotifications(currDevice!!, consoleChar!!)
-                Timber.d("format finito")
-            }
+        if (down && data.size == 16) {
+            readData(data)
+        } else {
+            when {
+                consoleString.contains("start formatting") -> {
+                    Timber.d("format iniziato")
+                }
+                consoleString.contains("formatting done") -> {
+                    disableNotifications(currDevice!!, consoleChar!!)
+                    Timber.d("format finito")
+                }
 
-            // TODO da metterci cosa viene stampato da onboard (start-stop)
-            consoleString.contains(" ") -> {
-                Timber.d("Onboard iniziato")
-            }
+                // TODO da metterci cosa viene stampato da onboard (start-stop)
+                consoleString.contains("onboard: start") -> {
+                    Timber.d("Onboard iniziato")
+                }
 
-            consoleString.contains(" ") -> {
-                disableNotifications(currDevice!!, consoleChar!!)
-                Timber.d("Onboard finito")
-            }
-
-            // TODO da metterci cosa viene stampato da downoload (start-stop)
-            consoleString.contains(" ") -> {
-                Timber.d("download iniziato")
-            }
-            consoleString.contains(" ") -> {
-                disableNotifications(currDevice!!, consoleChar!!)
-                Timber.d("download finito")
+                // TODO da metterci cosa viene stampato da downoload (start-stop)
+                consoleString.contains("stored files") -> {
+                    Timber.d("download iniziato")
+                }
+                consoleString.contains("download finished") -> {
+                    disableNotifications(currDevice!!, consoleChar!!)
+                    Timber.d("download finito")
+                }
             }
         }
     }
@@ -170,14 +174,15 @@ object ConnectionManager {
     fun download() {
         enableNotifications(currDevice!!, consoleChar!!)
         writeCharacteristic(currDevice!!, consoleChar!!, download.toByteArray())
+        down = true
     }
 
-    fun StartOnBoard(){
+    fun StartOnBoard() {
         enableNotifications(currDevice!!, consoleChar!!)
         writeCharacteristic(currDevice!!, consoleChar!!, onBoard.toByteArray())
     }
 
-    fun StopOnBoard(){
+    fun StopOnBoard() {
         disableNotifications(currDevice!!, consoleChar!!)
         Timber.d("Onboard STOPPATO")
     }
@@ -539,11 +544,11 @@ object ConnectionManager {
                             datauuid -> {
                                 dataChar = it
                             }
-                       }
+                        }
                     }
 
                     gatt.getService(debuguuid).characteristics.forEach {
-                        when(it.uuid){
+                        when (it.uuid) {
                             consoleuuid -> {
                                 Timber.d("Abbiamo trovato il servizio della console OK")
                                 consoleChar = it
@@ -653,17 +658,19 @@ object ConnectionManager {
             characteristic: BluetoothGattCharacteristic
         ) {
             with(characteristic) {
-                Timber.i("Characteristic $uuid changed | value: ${value.toHexString()}")
+
                 listeners.forEach { it.get()?.onCharacteristicChanged?.invoke(gatt.device, this) }
                 when (characteristic.uuid) {
                     datauuid -> {
+                        Timber.i("Characteristic DATA changed | value: ${value.toHexString()}")
                         readData(characteristic.value)
                     }
                     batteryuuid -> {
                         readBattery(characteristic.value)
                     }
                     consoleuuid -> {
-                        readConsole(consoleChar!!.value)
+                        Timber.i("Characteristic CONSOLE changed | value: ${value.toHexString()}")
+                        readConsole(characteristic.value)
                     }
                 }
             }

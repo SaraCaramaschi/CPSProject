@@ -14,7 +14,7 @@ import java.time.LocalDateTime
 import java.util.*
 
 class Exercise1Activity: AppCompatActivity() {
-    lateinit var session: Session
+    //lateinit var session: Session
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +25,7 @@ class Exercise1Activity: AppCompatActivity() {
         btnStart1.setOnClickListener {
             ConnectionManager.StartOnBoard()
             // Inizializzazione di una sessione:
-            startSession()
+            //startSession()
         }
 
         btnStop1.setOnClickListener {
@@ -38,11 +38,11 @@ class Exercise1Activity: AppCompatActivity() {
         }
     }
 
-    @SuppressLint("NewApi")
-    private fun startSession() {
+    //@SuppressLint("NewApi")
+    /*private fun startSession() {
         session.device = PenManager.penName
         session.datetime = LocalDateTime.now().toString()
         session.patientPos = PatientsManager.selectedPatient
 
-    }
+    }*/
 }

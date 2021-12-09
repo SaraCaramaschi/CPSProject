@@ -304,26 +304,5 @@ object PatientsManager {
 }
 
 
-/*
-fun deleteCollection(collection: CollectionReference, batchSize: Int) {
-    try {
-        // retrieve a small batch of documents to avoid out-of-memory errors
-        val future: ApiFuture<QuerySnapshot> = collection.limit(batchSize.toLong()).get()
-        var deleted = 0
-        // future.get() blocks on document retrieval
-        val documents: List<QueryDocumentSnapshot> = future.get().getDocuments()
-        for (document in documents) {
-            document.reference.delete()
-            ++deleted
-        }
-        if (deleted >= batchSize) {
-            // retrieve and delete another batch
-            deleteCollection(collection, batchSize)
-        }
-    } catch (e: Exception) {
-        System.err.println("Error deleting collection : " + e.message)
-    }
-}*/
-
 
 

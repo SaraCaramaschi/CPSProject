@@ -10,8 +10,8 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.Task
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.*
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObjects
@@ -41,7 +41,8 @@ object PatientsManager {
     public fun savePatient(patient: Patient, context: Context) {
         val gson = Gson()
         val jsonPatient = gson.toJson(patient)
-        val db = Firebase.database
+        val db: DatabaseReference
+        db= FirebaseDatabase.getInstance().getReference("Patients")
 
         Timber.d("json %s", jsonPatient)
 
@@ -67,16 +68,26 @@ object PatientsManager {
 
     // Funzione che salva nuovo paziente su firestore
     fun saveRealtimedb(jsonpatient: String, patient: Patient, context: Context) {
-        val dbn = FirebaseDatabase.getInstance()
-        var mappatient: Map<String, Any> = HashMap()
-        mappatient = Gson().fromJson(jsonpatient, mappatient.javaClass)
+        val db: DatabaseReference
+        db= FirebaseDatabase.getInstance().getReference("Patients")
+        //var mappatient: Map<String, Any> = HashMap()
+        //mappatient = Gson().fromJson(jsonpatient, mappatient.javaClass)
 
         var taxcode = patient.taxcode
         var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)
         var fileName = folder.path.toString() + "/" + taxcode + ".txt"
 
-
-        dbn.collection("patients")
+        db.child(patient.taxcode.toString()).setValue(patient).addOnSuccessListener {
+            Timber.d("Record added succesfully!!!!!!!!!!!!!!")
+            File(fileName).delete()
+            Timber.d("File deleted")
+        }
+            .addOnFailureListener{
+                Timber.d( "Error filed to add!!!!!!!!!!!!!!!!!!!!!")
+                //TODO CODICE PER SALVARE IN LOCALE SE QUALOCSA VA STORTO--> verificare se funziona
+                savePatient(patient, context)
+            }
+  /*      dbn.collection("patients")
             .add(mappatient)
             .addOnSuccessListener {
                 //ELIMINA LOCALE (ANCHE SE QUANDO AGGIUNGO PAZIETE SE AL PRIMO COLPO ME LO CARICA SU CLOUD
@@ -90,13 +101,13 @@ object PatientsManager {
                 Timber.tag(TAG).w(e, "Error filed to add")
                 //TODO CODICE PER SALVARE IN LOCALE SE QUALOCSA VA STORTO--> verificare se funziona
                 savePatient(patient, context)
-            }
+            }*/
 
         //TODO CODICE PER CARICARE FILE IN LOCALE
         //FORSE SAREBBE MEGLIO METTERE QUESTO PEZZO DI FUNZIONE OGNI VOLTA CHE CLINICO APRE L'APP(?)
         //COSì CHE NON SERVA CHE CARICHI UN NUOVO FILE PER CARICARE I PRECEDENTI
 
-        if (!folder.listFiles().isEmpty()) {
+       /* if (!folder.listFiles().isEmpty()) {
             File(context.getDir("PatientsFolder", Context.MODE_PRIVATE).path).walk().forEach {
                 Timber.d(it.path)
                 if (it.isFile) {
@@ -124,7 +135,7 @@ object PatientsManager {
                     }
                 }
             }
-        }
+        }*/
         // PER FUNZIONE SARA:
         //patientsList = obtainIdentifier()
     }

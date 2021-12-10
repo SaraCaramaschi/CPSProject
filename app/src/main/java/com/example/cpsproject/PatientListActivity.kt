@@ -1,22 +1,13 @@
 package com.example.cpsproject
 
-import android.content.ContentValues.TAG
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
-import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cpsproject.managers.PatientsManager
-import com.example.cpsproject.managers.PatientsManager.deletePatient
 import com.example.cpsproject.model.Patient
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
-import timber.log.Timber
 
 class PatientListActivity: AppCompatActivity() {
     private lateinit var layoutManager: RecyclerView.LayoutManager
@@ -42,7 +33,7 @@ class PatientListActivity: AppCompatActivity() {
         // QUI X RECYCLER CHE SI AGGIORNA
 
         //Importare pazienti da firebase
-        listPatients = PatientsManager.getDocuments(this)
+        listPatients = PatientsManager.getDocumentsPatient(this)
         //listPatients=PatientsManager.importPatientList(this)
         var adapter = PatientAdapter(this, listPatients)
 

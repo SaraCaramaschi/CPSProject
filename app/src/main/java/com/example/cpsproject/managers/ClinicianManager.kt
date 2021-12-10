@@ -5,6 +5,7 @@ import android.content.Context
 import android.util.Log
 import com.example.cpsproject.model.Clinician
 import com.example.cpsproject.model.Patient
+import com.google.firebase.database.*
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -24,7 +25,7 @@ object ClinicianManager {
 
     fun addClinician(clinician: Clinician, context: Context) {
         clinicianList.add(clinician)
-        saveFirestoreClinician(clinician, context)
+        saveRealtimeClinician(clinician, context)
 
     }
 
@@ -32,7 +33,6 @@ object ClinicianManager {
     fun saveClinician(clinician: Clinician, context: Context) {
         val gson = Gson()
         val jsonClinician = gson.toJson(clinician)
-        val db = Firebase.firestore
 
         Timber.d("json %s", jsonClinician)
 
@@ -57,70 +57,30 @@ object ClinicianManager {
 
 
     // Funzione che salva nuovo paziente su firestore
-    fun saveFirestoreClinician(clinician: Clinician, context: Context) {
+    fun saveRealtimeClinician(clinician: Clinician, context: Context) {
         val gson = Gson()
         val jsonclinician = gson.toJson(clinician)
-        val dbn = FirebaseFirestore.getInstance()
-        var mapclinician: Map<String, Any> = HashMap()
-        mapclinician = Gson().fromJson(jsonclinician, mapclinician.javaClass)
-
+        val db: DatabaseReference
+        db= FirebaseDatabase.getInstance( "https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app").getReference("Clinicians")
 
         var email = clinician.email
         var folder = context.getDir("CliniciansFolder", Context.MODE_PRIVATE)
         var fileName = folder.path.toString() + "/" + email + ".txt"
 
-
-        dbn.collection("clinicians")
-            .add(mapclinician)
-            .addOnSuccessListener {
-                //ELIMINA LOCALE (ANCHE SE QUANDO AGGIUNGO PAZIETE SE AL PRIMO COLPO ME LO CARICA SU CLOUD
-                //NON è NECESSARIO ELIMINARE LOCALE)--> FORSE DA TOGLIERE
-                Timber.d("Record added succesfully")
-                File(fileName).delete()
-                Timber.d("File deleted")
-            }
-
-            .addOnFailureListener { e ->
-                Timber.tag(ContentValues.TAG).w(e, "Error filed to add")
-                //TODO CODICE PER SALVARE IN LOCALE SE QUALOCSA VA STORTO--> verficare se funziona
+        db.child(clinician.email).setValue(clinician).addOnSuccessListener {
+            Timber.d("Record added succesfully!")
+            File(fileName).delete()
+            Timber.d("File deleted")
+        }
+            .addOnFailureListener{
+                Timber.d( "Error filed to add!")
+                //TODO CODICE PER SALVARE IN LOCALE SE QUALOCSA VA STORTO--> verificare se funziona
                 saveClinician(clinician, context)
             }
 
-        //TODO CODICE PER CARICARE FILE IN LOCALE
-        //FORSE SAREBBE MEGLIO METTERE QUESTO PEZZO DI FUNZIONE OGNI VOLTA CHE CLINICO APRE L'APP(?)
-        //COSì CHE NON SERVA CHE CARICHI UN NUOVO FILE PER CARICARE I PRECEDENTI
-
-        if (!folder.listFiles().isEmpty()) {
-            File(context.getDir("CliniciansFolder", Context.MODE_PRIVATE).path).walk().forEach {
-                Timber.d(it.path)
-                if (it.isFile) {
-                    val clin = readClinicianJson(it, context)
-                    if (clin != clinician) {
-                        val gson = Gson()
-                        var jsonClin = gson.toJson(clin)
-                        var fileNameNew = folder.path.toString() + "/" + clin.email + ".txt"
-                        var mapclinicianNew: Map<String, Any> = HashMap()
-                        mapclinicianNew = Gson().fromJson(jsonClin, mapclinician.javaClass)
-                        dbn.collection("patients")
-                            .add(mapclinicianNew)
-                            .addOnSuccessListener {
-                                //Elimino locale
-                                Timber.d("Record added succesfully")
-                                File(fileNameNew).delete()
-                                Timber.d("File deleted")
-
-                            }
-                            .addOnFailureListener { e ->
-                                Log.w(ContentValues.TAG, "Error filed to add", e)
-                                //TODO CODICE PER RISALVARE IN LOCALE--> verificare se funziona
-                                saveClinician(clinician, context)
-                            }
-                    }
-                }
-            }
-        }
+        //TODO SALVARE IN DATABSE FILE RIMASTI IN LOCALE
     }
-
+/*
         //Da json a data class OK
         fun readClinicianJson(file: File, context: Context): Clinician {
             //Creating a new Gson object to read data
@@ -134,34 +94,31 @@ object ClinicianManager {
             var clinician = gson.fromJson(inputString, Clinician::class.java)
             return clinician
         }
+*/
 
-
-        // Funzione per leggere documenti da firebstore
+        // Funzione per leggere documenti da realtime database
         fun getDocumentsClinician(context: Context): ArrayList<Clinician> {
             // [START get_document]
-            val db = Firebase.firestore
-
-            val docRef = db.collection("clinicians")
-            docRef.get().addOnSuccessListener { result ->
-                for (document in result) {
-                    if (document != null) {
-                        Log.d(ContentValues.TAG, "${document.id}=>${document.data}")
-                    } else {
-                        Timber.d("No such document")
+            val db: DatabaseReference=FirebaseDatabase.getInstance("https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app").getReference("Clinicians")
+            //val dbPatients=db.child("Patients")
+            val patientArrayList:ArrayList<Clinician>
+            db.addValueEventListener(object: ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot){
+                    if(snapshot.exists()){
+                        for (clinicianSnapshot in snapshot.children){
+                            var clinicianNew=clinicianSnapshot.getValue(Patient::class.java)
+                            if (clinicianNew != null && clinicianList.contains(clinicianNew)) {
+                                clinicianList.add(clinicianNew)
+                            }
+                        }
                     }
+                }
 
-                    var dbClinician = document.toObject(Clinician::class.java)
-
-                    if (!clinicianList.contains(dbClinician)) {
-                        clinicianList.add(dbClinician)
-                    }
-
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
                 }
             }
-                .addOnFailureListener { exception ->
-                    Timber.e(exception, "Error getting document")
-
-                }
+            )
             return clinicianList
         }
 

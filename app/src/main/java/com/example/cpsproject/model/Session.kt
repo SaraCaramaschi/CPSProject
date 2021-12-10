@@ -11,5 +11,7 @@ class Session {
     var sessionId: Int?=null
     var data: PenData?=null // modello che avevamo creato per il real time
     var patientPos: Int?=null
+    var patientID: String?=null
+    var clinicianID: String?=null
 
 }

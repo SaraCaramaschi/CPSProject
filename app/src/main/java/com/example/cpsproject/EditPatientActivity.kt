@@ -145,7 +145,7 @@ class EditPatientActivity: AppCompatActivity() {
 
             //Aggiorna lista dei pazienti
             //PatientsManager.patientsList = PatientsManager.importPatientList(this)
-            PatientsManager.patientsList = PatientsManager.getDocuments(this)
+            PatientsManager.patientsList = PatientsManager.getDocumentsPatient(this)
 
 
             // Go to patient page

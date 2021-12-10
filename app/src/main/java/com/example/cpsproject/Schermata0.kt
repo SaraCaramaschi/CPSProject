@@ -22,7 +22,7 @@ class Schermata0 : AppCompatActivity() {
         val btnSubmit = findViewById<Button>(R.id.btnSubmit)
         btnSubmit.setOnClickListener {
             //if (etEmailLog.text.trim().isNotEmpty() || etPasswordLog.text.trim().isNotEmpty()) {
-                val intent = Intent(this, Schermata1::class.java)
+                val intent = Intent(this, Schermata1Activity::class.java)
                 startActivity(intent)
                 //TODO VERIFICA IDENTITA' OK ora l'ho tolto cosi posso entrare, poi lo rimettiamo
             //} else {

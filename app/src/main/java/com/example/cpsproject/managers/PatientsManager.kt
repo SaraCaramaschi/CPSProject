@@ -1,27 +1,10 @@
 package com.example.cpsproject.managers
 
 import android.annotation.SuppressLint
-import android.content.ContentValues.TAG
 import android.content.Context
-import android.util.Log
-import android.widget.Toast
 import com.example.cpsproject.model.Patient
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.OnFailureListener
-import com.google.android.gms.tasks.OnSuccessListener
-import com.google.android.gms.tasks.Task
 import com.google.firebase.database.*
-import com.google.firebase.firestore.*
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.toObjects
-import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
-import com.squareup.okhttp.internal.Internal.instance
-import io.grpc.InternalChannelz.instance
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import timber.log.Timber
 import java.io.*
 import java.lang.reflect.Array.get
@@ -36,12 +19,10 @@ object PatientsManager {
         patientsList.add(patient)
         savePatient(patient, context)
     }
-
+//In locale --> OK
     public fun savePatient(patient: Patient, context: Context) {
         val gson = Gson()
         val jsonPatient = gson.toJson(patient)
-        val db: DatabaseReference
-        db= FirebaseDatabase.getInstance().getReference("Patients")
 
         Timber.d("json %s", jsonPatient)
 
@@ -60,13 +41,13 @@ object PatientsManager {
         Timber.d("path %s", file.absolutePath)
 
         file.writeText(jsonPatient)
-        saveRealtimedb(jsonPatient, patient, context)
+        saveRealtimePatient(jsonPatient, patient, context)
 
     }
 
 
-    // Funzione che salva nuovo paziente su firestore
-    fun saveRealtimedb(jsonpatient: String, patient: Patient, context: Context) {
+    // Funzione che salva nuovo paziente su realtime database-->OK
+    fun saveRealtimePatient(jsonpatient: String, patient: Patient, context: Context) {
         val db: DatabaseReference
         db= FirebaseDatabase.getInstance( "https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app").getReference("Patients")
         //var mappatient: Map<String, Any> = HashMap()
@@ -135,10 +116,8 @@ object PatientsManager {
                 }
             }
         }*/
-        // PER FUNZIONE SARA:
-        //patientsList = obtainIdentifier()
     }
-
+/*
 
     //DOMANDA: in teoria non serve più giusto?
     public fun readPatient(i: Int, context: Context): Patient { // FUNZIONA !!!
@@ -171,8 +150,8 @@ object PatientsManager {
         Timber.d("Stringbuilder: %s", stringBuilder.toString())
 
         return patient
-    }
-
+    }*/
+/*
     //Da json a data class OK
     fun readPatientDatabase(file: File, context: Context): Patient {
         //Creating a new Gson object to read data
@@ -210,13 +189,13 @@ object PatientsManager {
 
         return patientsList
     }
+ */
 
 
-    // Funzione per leggere documenti da realtime database 
-    fun getDocuments(context: Context): ArrayList<Patient> {
-        // [START get_document]
+    // Funzione per leggere documenti da realtime database-->OK TODO non mostra subito lista!
+    fun getDocumentsPatient(context: Context): ArrayList<Patient> {
+
        /* val db = Firebase.firestore
-
         val docRef = db.collection("patients")
         docRef.get().addOnSuccessListener { result ->
             for (document in result) {
@@ -225,19 +204,17 @@ object PatientsManager {
                 } else {
                     Timber.d("No such document")
                 }
-
                 var dbPatient = document.toObject(Patient::class.java)
 
                 if (!patientsList.contains(dbPatient)) {
                     patientsList.add(dbPatient)
                 }
-
             }
         }
             .addOnFailureListener { exception ->
                 Timber.e(exception, "Error getting document")
-
             }*/
+
         val db: DatabaseReference=FirebaseDatabase.getInstance("https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app").getReference("Patients")
         //val dbPatients=db.child("Patients")
         val patientArrayList:ArrayList<Patient>
@@ -260,8 +237,6 @@ object PatientsManager {
 
         }
         )
-
-
         return patientsList
     }
 
@@ -293,10 +268,8 @@ object PatientsManager {
         return allPatients
     }*/
 
-    //TODO manca funzione delete in firebase--> potremmo metterla dentro funzione delete Patient
 
-
-    //Funzione elimina paziente ma solo in locale
+    //Funzione elimina paziente ma in locale e realtime database-->OK
     fun deletePatient(context: Context, i: Int) {
         var patientDeleted = patientsList[i]
         patientsList.remove(patientDeleted)

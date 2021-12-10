@@ -29,7 +29,11 @@ import android.content.IntentFilter
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
+import com.example.cpsproject.ble.PenActivity
 import com.example.cpsproject.managers.PenManager
+import com.example.cpsproject.managers.SessionManager
+import com.example.cpsproject.model.PenData
+import com.example.cpsproject.model.Session
 import timber.log.Timber
 import java.lang.ref.WeakReference
 import java.util.UUID
@@ -83,7 +87,7 @@ object ConnectionManager {
 
         //Timber.d("Prova con acc_x per vedere se è tutto ok: %s", acc_x)
 
-        Timber.d("data= " + data)
+        Timber.d("Data= " + data)
         val acc_y =
             data.copyOfRange(4, 6).reversedArray().toHexString()
                 .toInt(radix = 16).toShort()
@@ -114,6 +118,7 @@ object ConnectionManager {
                 .toDouble() / 10
         }
 
+        //down = true
         if (!down) {
             PenManager.penData.acc_x = acc_x
             PenManager.penData.acc_y = acc_y
@@ -123,8 +128,18 @@ object ConnectionManager {
             PenManager.penData.gyr_z = gyr_z
             PenManager.penData.press = press
         } else {
-            //var data = arrayOf(acc_x, acc_y)
-            //Session.currentData.add(data)
+            var sessData = PenData()
+
+            sessData.acc_x = acc_x
+            sessData.acc_y = acc_y
+            sessData.acc_z = acc_z
+            sessData.gyr_x = gyr_x
+            sessData.gyr_y = gyr_y
+            sessData.gyr_z = gyr_z
+            sessData.press = press
+
+            SessionManager.sessione.sessionData.add(sessData)
+            Timber.d("Riga di dati aggiunta")
         }
     }
 
@@ -158,6 +173,10 @@ object ConnectionManager {
                 consoleString.contains("download finished") -> {
                     disableNotifications(currDevice!!, consoleChar!!)
                     Timber.d("download finito")
+
+                    SessionManager.saveSessionOnline(SessionManager.sessione)
+                    SessionManager.ereaseSessione(SessionManager.sessione)
+
                 }
             }
         }

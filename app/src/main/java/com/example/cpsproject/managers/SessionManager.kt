@@ -1,5 +1,23 @@
 package com.example.cpsproject.managers
 
+import com.example.cpsproject.model.Session
+
 object SessionManager {
+    var sessione: Session = Session()
+    var patientConnection: Int?=null
+    var downloadFinito: Boolean = false
+
+
+    // Funzioni per caricare la sessione:
+    public fun saveSessionOnline(sess: Session){
+
+    }
+
+    // Funzione per pulire la sessione una volta caricata (banalmente cancellare le cose che ci sono)
+
+    public fun ereaseSessione(sess: Session){
+
+    }
+
 
 }

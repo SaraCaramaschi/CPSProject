@@ -10,12 +10,13 @@ object SessionManager {
 
     // Funzioni per caricare la sessione:
     public fun saveSessionOnline(sess: Session){
-
+        //TODO da implementare
     }
 
     // Funzione per pulire la sessione una volta caricata (banalmente cancellare le cose che ci sono)
 
     public fun ereaseSessione(sess: Session){
+        //TODO da implementare
 
     }
 

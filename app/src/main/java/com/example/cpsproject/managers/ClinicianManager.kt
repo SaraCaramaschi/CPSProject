@@ -13,6 +13,7 @@ import com.google.gson.Gson
 import timber.log.Timber
 import java.io.BufferedReader
 import java.io.File
+import kotlin.collections.contains as contains1
 
 object ClinicianManager {
 
@@ -101,13 +102,12 @@ object ClinicianManager {
             // [START get_document]
             val db: DatabaseReference=FirebaseDatabase.getInstance("https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app").getReference("Clinicians")
             //val dbPatients=db.child("Patients")
-            val patientArrayList:ArrayList<Clinician>
             db.addValueEventListener(object: ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot){
                     if(snapshot.exists()){
                         for (clinicianSnapshot in snapshot.children){
-                            var clinicianNew=clinicianSnapshot.getValue(Patient::class.java)
-                            if (clinicianNew != null && clinicianList.contains(clinicianNew)) {
+                            var clinicianNew=clinicianSnapshot.getValue(Clinician::class.java)
+                            if (clinicianNew != null && !clinicianList.contains(clinicianNew)) {
                                 clinicianList.add(clinicianNew)
                             }
                         }
@@ -133,7 +133,7 @@ object ClinicianManager {
             Timber.d("File deleted")
             var fodername = folder.path.toString()
 
-            if (!File(fodername).list().contains(fileName)) {
+            if (!File(fodername).list().contains1(fileName)) {
                 Timber.d("File has been really deleted") //LO STAMPA! JSON LO ELIMINA, DOBBIAMO RIAGGIORNARE PAZIENTI IN KOTLIN
             }
 

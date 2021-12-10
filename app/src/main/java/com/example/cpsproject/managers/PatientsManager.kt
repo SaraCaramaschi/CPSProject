@@ -10,8 +10,7 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.Task
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import com.google.firebase.firestore.*
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObjects
@@ -69,7 +68,7 @@ object PatientsManager {
     // Funzione che salva nuovo paziente su firestore
     fun saveRealtimedb(jsonpatient: String, patient: Patient, context: Context) {
         val db: DatabaseReference
-        db= FirebaseDatabase.getInstance().getReference("Patients")
+        db= FirebaseDatabase.getInstance( "https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app").getReference("Patients")
         //var mappatient: Map<String, Any> = HashMap()
         //mappatient = Gson().fromJson(jsonpatient, mappatient.javaClass)
 
@@ -78,12 +77,12 @@ object PatientsManager {
         var fileName = folder.path.toString() + "/" + taxcode + ".txt"
 
         db.child(patient.taxcode.toString()).setValue(patient).addOnSuccessListener {
-            Timber.d("Record added succesfully!!!!!!!!!!!!!!")
+            Timber.d("Record added succesfully!")
             File(fileName).delete()
             Timber.d("File deleted")
         }
             .addOnFailureListener{
-                Timber.d( "Error filed to add!!!!!!!!!!!!!!!!!!!!!")
+                Timber.d( "Error filed to add!")
                 //TODO CODICE PER SALVARE IN LOCALE SE QUALOCSA VA STORTO--> verificare se funziona
                 savePatient(patient, context)
             }
@@ -106,8 +105,8 @@ object PatientsManager {
         //TODO CODICE PER CARICARE FILE IN LOCALE
         //FORSE SAREBBE MEGLIO METTERE QUESTO PEZZO DI FUNZIONE OGNI VOLTA CHE CLINICO APRE L'APP(?)
         //COSì CHE NON SERVA CHE CARICHI UN NUOVO FILE PER CARICARE I PRECEDENTI
-
-       /* if (!folder.listFiles().isEmpty()) {
+/*
+        if (!folder.listFiles().isEmpty()) {
             File(context.getDir("PatientsFolder", Context.MODE_PRIVATE).path).walk().forEach {
                 Timber.d(it.path)
                 if (it.isFile) {
@@ -175,7 +174,7 @@ object PatientsManager {
     }
 
     //Da json a data class OK
-    fun readPatientJson(file: File, context: Context): Patient {
+    fun readPatientDatabase(file: File, context: Context): Patient {
         //Creating a new Gson object to read data
         var gson = Gson()
         //Read the PostJSON.json file
@@ -201,7 +200,7 @@ object PatientsManager {
         File(context.getDir("PatientsFolder", Context.MODE_PRIVATE).path).walk().forEach {
             Timber.d(it.path)
             if (it.isFile) {
-                val pat = readPatientJson(it, context)
+                val pat = readPatientDatabase(it, context)
                 if (!patientsList.contains(pat)) {
                     patientsList.add(pat)
                 }
@@ -213,10 +212,10 @@ object PatientsManager {
     }
 
 
-    // Funzione per leggere documenti da firebstore
+    // Funzione per leggere documenti da realtime database 
     fun getDocuments(context: Context): ArrayList<Patient> {
         // [START get_document]
-        val db = Firebase.firestore
+       /* val db = Firebase.firestore
 
         val docRef = db.collection("patients")
         docRef.get().addOnSuccessListener { result ->
@@ -238,7 +237,31 @@ object PatientsManager {
             .addOnFailureListener { exception ->
                 Timber.e(exception, "Error getting document")
 
+            }*/
+        val db: DatabaseReference=FirebaseDatabase.getInstance("https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app").getReference("Patients")
+        //val dbPatients=db.child("Patients")
+        val patientArrayList:ArrayList<Patient>
+        db.addValueEventListener(object: ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot){
+                if(snapshot.exists()){
+                    for (patientsSnapshot in snapshot.children){
+                        var patientNew=patientsSnapshot.getValue(Patient::class.java)
+                        if (patientNew != null&& !patientsList.contains(patientNew)) {
+                            patientsList.add(patientNew)
+                        }
+                    }
+                }
             }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+
+        }
+        )
+
+
         return patientsList
     }
 
@@ -287,11 +310,17 @@ object PatientsManager {
             Timber.d("File has been really deleted") //LO STAMPA! JSON LO ELIMINA, DOBBIAMO RIAGGIORNARE PAZIENTI IN KOTLIN
         }
 
-        //Firestore delete
-        val db = Firebase.firestore
-        val patientsRef = db.collection("patients")
+        //Realtime database delete
+        val db: DatabaseReference
+        db=FirebaseDatabase.getInstance("https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app").getReference("Patients")
+        //val patientsRef = db.collection("patients")
         //cerco paziente con quel taxcode
-        val queryTaxCode = patientsRef.whereEqualTo("taxcode", "${patientDeleted.taxcode}")
+        db.child(patientDeleted.taxcode.toString()).removeValue().addOnSuccessListener {
+            Timber.d("Deleted")
+        }.addOnFailureListener{
+            Timber.d("Not deleted")
+        }
+       /* val queryTaxCode = patientsRef.whereEqualTo("taxcode", "${patientDeleted.taxcode}")
         queryTaxCode.get().addOnSuccessListener { result ->
 
             if (result != null) {
@@ -310,7 +339,7 @@ object PatientsManager {
             } else {
                 Timber.d("No such document")
             }
-        }
+        }*/
     }
 }
 

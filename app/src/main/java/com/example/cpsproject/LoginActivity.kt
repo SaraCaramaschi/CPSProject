@@ -85,15 +85,15 @@ class LoginActivity : AppCompatActivity() {
                                     Intent(this@LoginActivity, Schermata1Activity::class.java)
 
 //TODO USERNAME DA PASSARE COME I DATI DEL PAZIENTE, per ora mostriamo l'id di firebase automatico
-                                intent.flags =
+                                /*intent.flags =
                                     Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                                 intent.putExtra(
                                     "user_id",
                                     FirebaseAuth.getInstance().currentUser!!.uid
                                 )
 
+                                intent.putExtra("email_id", emailLog)*/
                                 intent.putExtra("email_id", emailLog)
-
                                 startActivity(intent)
                                 finish()
                             } else {

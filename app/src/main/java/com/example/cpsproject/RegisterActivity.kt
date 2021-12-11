@@ -76,8 +76,10 @@ class RegisterActivity : AppCompatActivity() {
                     var email = etEmail.text.toString().trim { it <= ' ' }
                     var etPassword = findViewById<EditText>(R.id.etPassword1)
                     var password = etPassword.text.toString().trim { it <= ' ' }
-                    var etUsername = findViewById<EditText>(R.id.etUsername)
-                    var username = etUsername.text.toString().trim { it <= ' ' }
+                    var etName= findViewById<EditText>(R.id.etName)
+                    var name = etName.text.toString().trim { it <= ' ' }
+                    var etSurname= findViewById<EditText>(R.id.etSurname)
+                    var surname = etSurname.text.toString().trim { it <= ' ' }
 
                     FirebaseAuth.getInstance().createUserWithEmailAndPassword(email , password).addOnCompleteListener { task ->
                         if (task.isSuccessful) {
@@ -89,11 +91,11 @@ class RegisterActivity : AppCompatActivity() {
                             ).show()
 
                             val intent = Intent(this, LoginActivity::class.java)
-                            intent.flags =
-                                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                            intent.putExtra("user_id", firebaseUser.uid)
-                            intent.putExtra("email_id", email)
-                            intent.putExtra("username", username)
+                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            //intent.putExtra("user_id", firebaseUser.uid)
+                          /*  intent.putExtra("email_id", email)
+                            intent.putExtra("name", name)
+                            intent.putExtra("surname", surname)*/
                             startActivity(intent)
                             finish()
                         } else {
@@ -116,7 +118,6 @@ class RegisterActivity : AppCompatActivity() {
                 etSurname.text.toString(),
                 etEmail.text.toString(),
                 etPassword1.text.toString() //TODO DOBBIAMO PASSARE LA PASSWORD DA SALVARE SUL DATABASE?
-
             )
            ClinicianManager.addClinician(clinician, applicationContext )
 

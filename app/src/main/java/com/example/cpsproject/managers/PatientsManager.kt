@@ -293,7 +293,7 @@ object PatientsManager {
         }.addOnFailureListener{
             Timber.d("Not deleted")
         }
-       /* val queryTaxCode = patientsRef.whereEqualTo("taxcode", "${patientDeleted.taxcode}")
+       /*val queryTaxCode = patientsRef.whereEqualTo("taxcode", "${patientDeleted.taxcode}")
         queryTaxCode.get().addOnSuccessListener { result ->
 
             if (result != null) {

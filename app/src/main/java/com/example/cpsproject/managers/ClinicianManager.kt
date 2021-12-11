@@ -1,17 +1,13 @@
 package com.example.cpsproject.managers
 
-import android.content.ContentValues
 import android.content.Context
-import android.util.Log
 import com.example.cpsproject.model.Clinician
 import com.example.cpsproject.model.Patient
 import com.google.firebase.database.*
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
 import timber.log.Timber
-import java.io.BufferedReader
 import java.io.File
 import kotlin.collections.contains as contains1
 
@@ -24,6 +20,7 @@ object ClinicianManager {
     var password: String = String()
     var name: String = String()
     var surname: String = String()
+    var clinicianToPass: Clinician= Clinician()
 
     fun addClinician(clinician: Clinician, context: Context) {
         clinicianList.add(clinician)
@@ -69,7 +66,7 @@ object ClinicianManager {
         var folder = context.getDir("CliniciansFolder", Context.MODE_PRIVATE)
         var fileName = folder.path.toString() + "/" + email + ".txt"
 
-        db.child(clinician.email.toString()).setValue(clinician).addOnSuccessListener {
+        db.child(clinician.surname.toString()).setValue(clinician).addOnSuccessListener {
             Timber.d("Record added succesfully!")
             File(fileName).delete()
             Timber.d("File deleted")
@@ -141,7 +138,7 @@ object ClinicianManager {
             //Firestore delete
             val db = Firebase.firestore
             val cliniciansRef = db.collection("patients")
-            //cerco paziente con quel taxcode
+            //cerco clinico con quella email
             val queryTaxCode = cliniciansRef.whereEqualTo("email", "${clinicianDeleted.email}")
             queryTaxCode.get().addOnSuccessListener { result ->
 
@@ -163,7 +160,31 @@ object ClinicianManager {
                 }
             }
         }
-    }
+    fun findClinician (email: String, context: Context): Clinician {
+        val db: DatabaseReference = FirebaseDatabase.getInstance("https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app").getReference("Clinicians")
+
+        db.child("Clinicians").orderByChild("email").equalTo(email)
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+
+                        var clinicianLog = snapshot.getValue(Clinician::class.java)
+                        if (clinicianLog != null) {
+                            clinicianToPass = clinicianLog
+                        }
+
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+
+
+            })
+        return clinicianToPass
+}
+}
 
 
 

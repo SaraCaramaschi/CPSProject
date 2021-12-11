@@ -7,7 +7,6 @@ import com.google.firebase.database.*
 import com.google.gson.Gson
 import timber.log.Timber
 import java.io.*
-import java.lang.reflect.Array.get
 
 
 @SuppressLint("StaticFieldLeak")
@@ -31,7 +30,7 @@ object PatientsManager {
         var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)
         Timber.d("questo è nuova cartella: %s", folder.path.toString())
 
-        //var fileName = context.filesDir.path.toString() + "/" + patient.taxcode + ".txt" (Chiara)
+
         var fileName = folder.path.toString() + "/" + patient.taxcode + ".txt"
         var file = File(fileName) // cartella uguale ma con una roba in più
 
@@ -50,8 +49,6 @@ object PatientsManager {
     fun saveRealtimePatient(jsonpatient: String, patient: Patient, context: Context) {
         val db: DatabaseReference
         db= FirebaseDatabase.getInstance( "https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app").getReference("Patients")
-        //var mappatient: Map<String, Any> = HashMap()
-        //mappatient = Gson().fromJson(jsonpatient, mappatient.javaClass)
 
         var taxcode = patient.taxcode
         var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)
@@ -67,21 +64,7 @@ object PatientsManager {
                 //TODO CODICE PER SALVARE IN LOCALE SE QUALOCSA VA STORTO--> verificare se funziona
                 savePatient(patient, context)
             }
-  /*      dbn.collection("patients")
-            .add(mappatient)
-            .addOnSuccessListener {
-                //ELIMINA LOCALE (ANCHE SE QUANDO AGGIUNGO PAZIETE SE AL PRIMO COLPO ME LO CARICA SU CLOUD
-                //NON è NECESSARIO ELIMINARE LOCALE)--> FORSE DA TOGLIERE
-                Timber.d("Record added succesfully")
-                File(fileName).delete()
-                Timber.d("File deleted")
-            }
 
-            .addOnFailureListener { e ->
-                Timber.tag(TAG).w(e, "Error filed to add")
-                //TODO CODICE PER SALVARE IN LOCALE SE QUALOCSA VA STORTO--> verificare se funziona
-                savePatient(patient, context)
-            }*/
 
         //TODO CODICE PER CARICARE FILE IN LOCALE
         //FORSE SAREBBE MEGLIO METTERE QUESTO PEZZO DI FUNZIONE OGNI VOLTA CHE CLINICO APRE L'APP(?)
@@ -195,25 +178,7 @@ object PatientsManager {
     // Funzione per leggere documenti da realtime database-->OK TODO non mostra subito lista!
     fun getDocumentsPatient(context: Context): ArrayList<Patient> {
 
-       /* val db = Firebase.firestore
-        val docRef = db.collection("patients")
-        docRef.get().addOnSuccessListener { result ->
-            for (document in result) {
-                if (document != null) {
-                    Log.d(TAG, "${document.id}=>${document.data}")
-                } else {
-                    Timber.d("No such document")
-                }
-                var dbPatient = document.toObject(Patient::class.java)
 
-                if (!patientsList.contains(dbPatient)) {
-                    patientsList.add(dbPatient)
-                }
-            }
-        }
-            .addOnFailureListener { exception ->
-                Timber.e(exception, "Error getting document")
-            }*/
 
         val db: DatabaseReference=FirebaseDatabase.getInstance("https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app").getReference("Patients")
         //val dbPatients=db.child("Patients")
@@ -241,33 +206,7 @@ object PatientsManager {
     }
 
 
-    // FUNZIONE SARA:
-    /*
-    private fun obtainIdentifier(): ArrayList<Patient>{
-        var allPatients = ArrayList<Patient>()
-        var db = Firebase.firestore.collection("patients")
-        db.addSnapshotListener {
-            snapshot, e ->
-            if (e != null) {
-                Log.w(TAG, "Failure")
-                return@addSnapshotListener
-            }
-            if (snapshot!=null){
-                var documents = snapshot.documents
-
-                // converting documentsnapshot object to our patient object
-                documents.forEach {
-                    val patient = it.toObject(Patient::class.java)
-                    if (patient!=null){
-                        patient.firestoreId = it.id
-                        allPatients.add(patient)
-                    }
-                }
-            }
-        }
-        return allPatients
-    }*/
-
+    ù
 
     //Funzione elimina paziente ma in locale e realtime database-->OK
     fun deletePatient(context: Context, i: Int) {

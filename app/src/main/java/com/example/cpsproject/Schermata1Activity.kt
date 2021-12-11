@@ -37,7 +37,9 @@ class Schermata1Activity : AppCompatActivity() {
        clinicianLog=findClinician(email, this)
         }
 
-        tvClinician.text= clinicianLog.name +clinicianLog.surname
+
+        tvClinician.setText((clinicianLog.name).toString()+(clinicianLog.surname).toString())
+        Timber.d("FUNZIONAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA:%s",clinicianLog.name)
 
         //TODO NON FUNZIONA
         //importo subito lista pazioni da firebase

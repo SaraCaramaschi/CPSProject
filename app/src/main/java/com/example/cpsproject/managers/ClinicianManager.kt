@@ -182,6 +182,8 @@ object ClinicianManager {
 
 
             })
+        Timber.d("é QUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA:%s", clinicianToPass.name)
+//TODO capire come passare il nome del clinico
         return clinicianToPass
 }
 }

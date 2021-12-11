@@ -60,8 +60,6 @@ class Exercise1Activity: AppCompatActivity() {
         ConnectionManager.readData(datiPennaBA)
     }
 
-
-
     @SuppressLint("NewApi")
     private fun startSession() {
         session.device = PenManager.penName.toString()
@@ -70,4 +68,7 @@ class Exercise1Activity: AppCompatActivity() {
 
         SessionManager.sessione = session
     }
+
+
+
 }

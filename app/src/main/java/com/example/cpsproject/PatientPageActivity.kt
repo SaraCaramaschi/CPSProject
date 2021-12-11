@@ -1,5 +1,6 @@
 package com.example.cpsproject
 
+import android.annotation.SuppressLint
 import android.content.Intent
 //import android.graphics.drawable.Icon
 import android.os.Bundle
@@ -12,12 +13,15 @@ import com.example.cpsproject.ble.MainConnection
 import com.example.cpsproject.ble.PenActivity
 import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.managers.PatientsManager.patientsList
+import com.example.cpsproject.managers.PenManager
+import com.example.cpsproject.managers.SessionManager
 import com.example.cpsproject.model.Patient
 import com.punchthrough.blestarterappandroid.ble.ConnectionManager
 import com.punchthrough.blestarterappandroid.ble.ConnectionManager.isConnected
 import kotlinx.android.synthetic.main.activity_add_patient.*
 import kotlinx.android.synthetic.main.activity_add_patient.btnPatListBack
 import kotlinx.android.synthetic.main.activity_patient_page.*
+import java.time.LocalDateTime
 
 class PatientPageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,10 +43,6 @@ class PatientPageActivity : AppCompatActivity() {
         }
 
         btnPenConnectionPatient.setOnClickListener {
-            // MANDIAMO ALLA PAGINA:
-                // SE C'è LA CONNESSIONE CON PENACITIVTY (PAGINA DELLA PENNA)
-                // SE NON C'è LA CONNESSIONE CON MAINCONNECTION (BLE)
-
             if (ConnectionManager.currDevice!!.isConnected()){
                 val intent = Intent(this, PenActivity::class.java)
                 startActivity(intent)
@@ -51,7 +51,6 @@ class PatientPageActivity : AppCompatActivity() {
                 startActivity(intent)
                 }
         }
-        //stavo creando il collegamento con le activity
 
         val btnPhase1 = findViewById<Button>(R.id.btnPhase1)
         btnPhase1.setOnClickListener {
@@ -59,16 +58,15 @@ class PatientPageActivity : AppCompatActivity() {
             startActivity(intent1)
         }
 
-        // TODO: cambiare fase
         val btnPhase2 = findViewById<Button>(R.id.btnPhase2)
         btnPhase2.setOnClickListener {
+            patient.phase = 2
             val intent2 = Intent(this, Phase2Activity::class.java)
             startActivity(intent2)
-
         }
+
         val edit= findViewById<ImageView>(R.id.edit)
         edit.setOnClickListener{
-            //intent.putExtra("position",pos)
             val intentNew= Intent(this, EditPatientActivity::class.java)
             intentNew.putExtra("position",pos)
             startActivity(intentNew)
@@ -76,7 +74,6 @@ class PatientPageActivity : AppCompatActivity() {
 
         val delete= findViewById<ImageView>(R.id.delete)
         delete.setOnClickListener{
-            //intent.putExtra("position",pos)
             val intentDelete= Intent(this, DeleteMessageActivity::class.java)
             intentDelete.putExtra("position",pos)
             startActivity(intentDelete)
@@ -106,8 +103,5 @@ class PatientPageActivity : AppCompatActivity() {
         tvTax.setText("Tax code:"+" "+patient.taxcode.toString())
     }
 
-
-
-
-        }
+}
 

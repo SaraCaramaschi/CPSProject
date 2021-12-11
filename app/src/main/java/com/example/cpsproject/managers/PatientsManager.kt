@@ -206,8 +206,6 @@ object PatientsManager {
     }
 
 
-    ù
-
     //Funzione elimina paziente ma in locale e realtime database-->OK
     fun deletePatient(context: Context, i: Int) {
         var patientDeleted = patientsList[i]

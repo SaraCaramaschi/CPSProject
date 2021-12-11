@@ -9,56 +9,56 @@ import com.google.gson.Gson
 import timber.log.Timber
 import java.io.File
 
-import com.example.cpsproject.model.Session
+
 
 object SessionManager {
-var document: Session= Session()
+    //var document: Session= Session()
     var sessione: Session = Session()
     var patientConnection: Int?=null
     var downloadFinito: Boolean = false
 
 
-
+/*
     // Funzioni per caricare la sessione:
     // input da passargli poi dove verrà chiamata: SessionManager.sessione
-    public fun saveSessionOnline(sess: Session){
+  public fun saveSessionOnline(sess: Session){
         //TODO da implementare
-    }
+
 
     // Funzione per pulire la sessione una volta caricata (banalmente cancellare le cose che ci sono)
 
     public fun ereaseSessione(sess: Session){
         //TODO da implementare
 
-    }
+    }*/
 
 }
- public fun saveDocument(document:Session, context: Context) {
+ public fun saveDocument(session:Session, context: Context) {
      val gson = Gson()
-     val jsonDocument = gson.toJson(document)
+     val jsonDocument = gson.toJson(session)
 
      Timber.d("json %s", jsonDocument)
 
      var folder = context.getDir("RecordingSessionFolder", Context.MODE_PRIVATE)
 
 
-     var fileName = folder.path.toString() + "/" + document.sessionId + ".txt"
+     var fileName = folder.path.toString() + "/" + session.sessionId + ".txt"
      var file = File(fileName) // cartella uguale ma con una roba in più
 
 
 
      file.writeText(jsonDocument)
-     saveFirestoreRecordingSession(jsonDocument, document, context)
+     saveFirestoreRecordingSession(jsonDocument, session, context)
 
  }
 
-  fun saveFirestoreRecordingSession(jsonDocument:String, document: Session, context: Context){
+  fun saveFirestoreRecordingSession(jsonDocument:String, session: Session, context: Context){
 val db= Firebase.firestore
       val docref=db.collection("RecordingSessions")
 var mapsession: Map<String, Any> = HashMap()
 mapsession = Gson().fromJson(jsonDocument, mapsession.javaClass)
 
-var id = document.sessionId
+var id = session.sessionId
 var folder = context.getDir("RecordingSessionFolder", Context.MODE_PRIVATE)
 var fileName = folder.path.toString() + "/" + id + ".txt"
 
@@ -75,7 +75,7 @@ var fileName = folder.path.toString() + "/" + id + ".txt"
           .addOnFailureListener { e ->
               Timber.d("Error filed to add")
               //TODO CODICE PER SALVARE IN LOCALE SE QUALOCSA VA STORTO--> verificare se funziona
-              saveDocument(document, context)
+              saveDocument(session, context)
           }
 
 //TODO CODICE PER CARICARE FILE IN LOCALE

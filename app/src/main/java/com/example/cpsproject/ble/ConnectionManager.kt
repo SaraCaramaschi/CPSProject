@@ -174,7 +174,8 @@ object ConnectionManager {
                     disableNotifications(currDevice!!, consoleChar!!)
                     Timber.d("download finito")
 
-                    SessionManager.saveSessionOnline(SessionManager.sessione)
+                    //Come mai dà errore?
+                    SessionManager.saveDocument(SessionManager.sessione, this)
                     SessionManager.ereaseSessione(SessionManager.sessione)
 
                 }

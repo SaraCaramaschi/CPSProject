@@ -9,16 +9,15 @@ import kotlin.collections.ArrayList
 class Session {
     var device: String?=null
     var datetime: String?=null
-    var sessionId: Int?=null
-    var data: PenData?=null // modello che avevamo creato per il real time
+    var sessionId: Int?=null //penso serva?
     var phase: Int?=null
-    var patientPos: Int?=null
+    var sessionData: ArrayList<PenData> ?=null
     var patientID: String?=null
     var clinicianID: String?=null
 
-    var device: String = ""
-    var datetime: String = ""
-    var patientID: String = ""
-    var phase: Int=1
-    var sessionData: ArrayList<PenData> = ArrayList()
+   // var device: String = ""
+    //var datetime: String = ""
+    //var patientID: String = ""
+   // var phase: Int=1
+    //var sessionData: ArrayList<PenData> = ArrayList()
 }

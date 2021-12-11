@@ -72,6 +72,6 @@ class Exercise1Activity: AppCompatActivity() {
 
 
     private fun fillSession(data:PenData, session: Session) {
-        session.data = data
+        //session.data = data --> sono gine, l'ho commentato perchè se no non andava nada
     }
 }

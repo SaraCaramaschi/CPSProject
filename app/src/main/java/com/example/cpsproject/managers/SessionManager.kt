@@ -9,6 +9,7 @@ object SessionManager {
 
 
     // Funzioni per caricare la sessione:
+    // input da passargli poi dove verrà chiamata: SessionManager.sessione
     public fun saveSessionOnline(sess: Session){
         //TODO da implementare
     }
@@ -19,6 +20,5 @@ object SessionManager {
         //TODO da implementare
 
     }
-
 
 }

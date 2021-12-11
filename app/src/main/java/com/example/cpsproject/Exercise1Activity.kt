@@ -51,14 +51,14 @@ class Exercise1Activity: AppCompatActivity() {
         }
     }
 
-    /*fun provaAmano() {
+    fun provaAmano() {
         var datiPenna: String = String()
         var datiPennaBA: ByteArray
         datiPenna = "4329BA032D003701F6FFF5FFFFFF00005F000000"
         datiPennaBA = datiPenna.toByteArray()
         Timber.d("Bytearray: datipennaba: " + datiPennaBA)
         ConnectionManager.readData(datiPennaBA)
-    }*/
+    }
 
 
 

@@ -59,10 +59,12 @@ class PatientPageActivity : AppCompatActivity() {
             startActivity(intent1)
         }
 
+        // TODO: cambiare fase
         val btnPhase2 = findViewById<Button>(R.id.btnPhase2)
         btnPhase2.setOnClickListener {
             val intent2 = Intent(this, Phase2Activity::class.java)
             startActivity(intent2)
+
         }
         val edit= findViewById<ImageView>(R.id.edit)
         edit.setOnClickListener{

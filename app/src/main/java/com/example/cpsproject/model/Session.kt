@@ -10,5 +10,6 @@ class Session {
     var device: String = ""
     var datetime: String = ""
     var patientID: String = ""
+    var phase: Int=1
     var sessionData: ArrayList<PenData> = ArrayList()
 }

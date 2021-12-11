@@ -4,10 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.15520833333333334" />
+        <entry key="..\:/Users/bonac/AndroidStudioProjects/CPSProject/app/src/main/res/layout-large/activity_login.xml" value="0.2857142857142857" />
         <entry key="..\:/Users/bonac/AndroidStudioProjects/CPSProject/app/src/main/res/layout/activity_add_clinician.xml" value="0.20425724637681159" />
         <entry key="..\:/Users/bonac/AndroidStudioProjects/CPSProject/app/src/main/res/layout/activity_add_patient.xml" value="0.12360688956433637" />
         <entry key="..\:/Users/bonac/AndroidStudioProjects/CPSProject/app/src/main/res/layout/activity_ble_operations.xml" value="0.12360688956433637" />
         <entry key="..\:/Users/bonac/AndroidStudioProjects/CPSProject/app/src/main/res/layout/activity_connection.xml" value="0.2" />
+        <entry key="..\:/Users/bonac/AndroidStudioProjects/CPSProject/app/src/main/res/layout/activity_exercise1.xml" value="0.2" />
+        <entry key="..\:/Users/bonac/AndroidStudioProjects/CPSProject/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/bonac/AndroidStudioProjects/CPSProject/app/src/main/res/layout/activity_main_connection.xml" value="0.12360688956433637" />
         <entry key="..\:/Users/bonac/AndroidStudioProjects/CPSProject/app/src/main/res/layout/activity_patient.xml" value="0.12360688956433637" />
         <entry key="..\:/Users/bonac/AndroidStudioProjects/CPSProject/app/src/main/res/layout/activity_patients_list.xml" value="0.1308876811594203" />

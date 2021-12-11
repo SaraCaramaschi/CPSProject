@@ -7,6 +7,7 @@ import kotlinx.android.synthetic.main.activity_exercise3.*
 
 class Exercise3Activity : AppCompatActivity() {
 
+    //TODO
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exercise3)

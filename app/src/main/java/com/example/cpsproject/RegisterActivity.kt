@@ -6,33 +6,41 @@ import android.text.TextUtils
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.cpsproject.managers.ClinicianManager
+import com.example.cpsproject.managers.PatientsManager
+import com.example.cpsproject.model.Clinician
+import com.example.cpsproject.model.Patient
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import kotlinx.android.synthetic.main.activity_add_patient.*
 import kotlinx.android.synthetic.main.activity_register.*
+import kotlinx.android.synthetic.main.activity_register.etName
+import kotlinx.android.synthetic.main.activity_register.etSurname
 
-
-//commento
 class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-
-
-
-
         btnSubmitdata.setOnClickListener {
 
             when {
-                TextUtils.isEmpty(etUsername.text.toString().trim() { it <= ' ' }) -> {
+                TextUtils.isEmpty(etName.text.toString().trim() { it <= ' ' }) -> {
                     Toast.makeText(
                         this@RegisterActivity,
-                        "Please insert a username",
+                        "Please insert your name",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
 
-                TextUtils.isEmpty(etUsername.text.toString().trim() { it <= ' ' }) -> {
+                TextUtils.isEmpty(etSurname.text.toString().trim() { it <= ' ' }) -> {
+                    Toast.makeText(
+                        this@RegisterActivity,
+                        "Please insert your surname",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                TextUtils.isEmpty(etEmail.text.toString().trim() { it <= ' ' }) -> {
                     Toast.makeText(
                         this@RegisterActivity,
                         "Please enter Email", Toast.LENGTH_SHORT
@@ -71,41 +79,46 @@ class RegisterActivity : AppCompatActivity() {
                     var etUsername = findViewById<EditText>(R.id.etUsername)
                     var username = etUsername.text.toString().trim { it <= ' ' }
 
-                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(email , password).addOnCompleteListener(
-                        { task ->
-                            if (task.isSuccessful) {
-                                val firebaseUser: FirebaseUser = task.result!!.user!!
+                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(email , password).addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            val firebaseUser: FirebaseUser = task.result!!.user!!
 
-                                Toast.makeText(
-                                    this@RegisterActivity, "You are regisetred succesfully!",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                            Toast.makeText(
+                                this@RegisterActivity, "You are regisetred succesfully!",
+                                Toast.LENGTH_SHORT
+                            ).show()
 
-                                val intent = Intent(this, LoginActivity::class.java)
-                                intent.flags =
-                                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                intent.putExtra("user_id", firebaseUser.uid)
-                                intent.putExtra("email_id", email)
-                                intent.putExtra("username", username)
-                                startActivity(intent)
-                                finish()
-                            } else {
-                                Toast.makeText(
-                                    this@RegisterActivity,
-                                    task.exception!!.message.toString(),
-                                    Toast.LENGTH_SHORT
-                                )
-                                    .show()
-
-                            }
-                        })
-
-
-
-
-                            }
+                            val intent = Intent(this, LoginActivity::class.java)
+                            intent.flags =
+                                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            intent.putExtra("user_id", firebaseUser.uid)
+                            intent.putExtra("email_id", email)
+                            intent.putExtra("username", username)
+                            startActivity(intent)
+                            finish()
+                        } else {
+                            Toast.makeText(
+                                this@RegisterActivity,
+                                task.exception!!.message.toString(),
+                                Toast.LENGTH_SHORT
+                            )
+                                .show()
 
                         }
+                    }
+
+
+                }
+
+                        }
+            var clinician= Clinician(
+               etName.text.toString(),
+                etSurname.text.toString(),
+                etEmail.text.toString(),
+                etPassword1.text.toString() //TODO DOBBIAMO PASSARE LA PASSWORD DA SALVARE SUL DATABASE?
+
+            )
+           ClinicianManager.addClinician(clinician, applicationContext )
 
 
 

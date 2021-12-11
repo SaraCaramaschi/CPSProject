@@ -43,11 +43,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etEmailLog" />
 
+
     <Button
         android:id="@+id/btnSubmit"
         android:layout_width="300dp"
         android:layout_height="80dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="164dp"
         android:text="@string/submit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,13 +58,12 @@
         android:id="@+id/btnSignIn"
         android:layout_width="300dp"
         android:layout_height="80dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="28dp"
         android:text="@string/sign_in"
         app:layout_constraintEnd_toEndOf="parent"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSubmit" />
-
 
     <Button
         android:id="@+id/btnLanguage"

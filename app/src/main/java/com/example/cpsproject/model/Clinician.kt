@@ -1,7 +1,8 @@
 package com.example.cpsproject.model
 
 data class Clinician(
-    val username: String,
-    var email: String,
-    val password: String
+    val name: String?=null,
+    val surname: String?=null,
+    var email: String?=null,
+    val password: String?=null
 )

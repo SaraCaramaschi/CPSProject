@@ -22,11 +22,12 @@ object ClinicianManager {
     //public var selectedPatient: Int?=null
     var email: String = String()
     var password: String = String()
-    var username: String = String()
+    var name: String = String()
+    var surname: String = String()
 
     fun addClinician(clinician: Clinician, context: Context) {
         clinicianList.add(clinician)
-        saveRealtimeClinician(clinician, context)
+        saveClinician(clinician, context)
 
     }
 
@@ -52,7 +53,7 @@ object ClinicianManager {
         Timber.d("path %s", file.absolutePath)
 
         file.writeText(jsonClinician)
-        //saveFireStore(patient, context)
+        saveRealtimeClinician(clinician, context)
 
     }
 
@@ -68,7 +69,7 @@ object ClinicianManager {
         var folder = context.getDir("CliniciansFolder", Context.MODE_PRIVATE)
         var fileName = folder.path.toString() + "/" + email + ".txt"
 
-        db.child(clinician.email).setValue(clinician).addOnSuccessListener {
+        db.child(clinician.email.toString()).setValue(clinician).addOnSuccessListener {
             Timber.d("Record added succesfully!")
             File(fileName).delete()
             Timber.d("File deleted")

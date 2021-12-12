@@ -113,6 +113,7 @@ class AddPatientActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        
 
 
         btnPatListBack.setOnClickListener {

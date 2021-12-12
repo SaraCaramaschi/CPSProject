@@ -13,9 +13,14 @@ import com.example.cpsproject.managers.PatientsManager.patientsList
 import com.example.cpsproject.model.Gender
 import com.example.cpsproject.model.Hand
 import com.example.cpsproject.model.Patient
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_add_patient.*
 import java.text.SimpleDateFormat
 import java.util.*
+import com.google.firebase.auth.FirebaseUser
+
+
+
 
 
 class AddPatientActivity : AppCompatActivity() {
@@ -75,6 +80,15 @@ class AddPatientActivity : AppCompatActivity() {
                     Gender.Other
                 }
             }
+
+            var mAuth = FirebaseAuth.getInstance()
+            val currentUser = mAuth.currentUser
+            var clinicianID:String= String()
+
+            if (currentUser != null) {
+                clinicianID= currentUser.uid
+            }
+
             // Variabile patient
             var patient = Patient(
                 etName.text.toString(),
@@ -83,7 +97,8 @@ class AddPatientActivity : AppCompatActivity() {
                 etTax.text.toString(),
                 etBirthDateAdd.text.toString(),
                 handEnum,
-                genderEnum
+                genderEnum,
+                clinicianID
             )
 
             // Add patient to patientlist

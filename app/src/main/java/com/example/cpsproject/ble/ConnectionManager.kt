@@ -138,7 +138,7 @@ object ConnectionManager {
             sessData.gyr_z = gyr_z
             sessData.press = press
 
-            SessionManager.sessione.sessionData.add(sessData)
+            //SessionManager.sessione.sessionData.add(sessData)
             Timber.d("Riga di dati aggiunta")
         }
     }
@@ -175,8 +175,8 @@ object ConnectionManager {
                     Timber.d("download finito")
 
                     //Come mai dà errore?
-                    SessionManager.saveDocument(SessionManager.sessione, this)
-                    SessionManager.ereaseSessione(SessionManager.sessione)
+                  //  SessionManager.saveDocument(SessionManager.sessione, this)
+                  //  SessionManager.ereaseSessione(SessionManager.sessione)
 
                 }
             }

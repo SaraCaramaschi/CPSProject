@@ -63,7 +63,6 @@ class Exercise1Activity: AppCompatActivity() {
     @SuppressLint("NewApi")
     private fun startSession() {
         session.device = PenManager.penName.toString()
-        session.datetime = LocalDateTime.now().toString()
         session.patientID = PatientsManager.selectedPatient.toString()
 
         SessionManager.sessione = session

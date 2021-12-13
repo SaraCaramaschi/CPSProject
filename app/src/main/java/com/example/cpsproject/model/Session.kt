@@ -1,6 +1,7 @@
 package com.example.cpsproject.model
 
 import com.google.type.DateTime
+import java.time.LocalDate
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -8,12 +9,13 @@ import kotlin.collections.ArrayList
 
 class Session {
     var device: String?=null
-    var datetime: String?=null
+    var datetime: LocalDate?=null
     var sessionId: Int?=null //penso serva?
     var phase: Int?=null
     var sessionData: ArrayList<PenData> ?=null
     var patientID: String?=null
     var clinicianID: String?=null
+    var nFile: Int?=null
 
    // var device: String = ""
     //var datetime: String = ""

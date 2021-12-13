@@ -26,9 +26,11 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import com.example.cpsproject.ble.PenActivity
 import com.example.cpsproject.managers.PenManager
 import com.example.cpsproject.managers.SessionManager
@@ -36,7 +38,10 @@ import com.example.cpsproject.model.PenData
 import com.example.cpsproject.model.Session
 import timber.log.Timber
 import java.lang.ref.WeakReference
-import java.util.UUID
+import java.time.LocalDate
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
+import java.util.*
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.ConcurrentLinkedQueue
 
@@ -143,6 +148,7 @@ object ConnectionManager {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun readConsole(data: ByteArray) {
         var consoleString = data.toHexString()
         consoleString = (hexToAscii(consoleString)).lowercase()
@@ -166,15 +172,41 @@ object ConnectionManager {
                     Timber.d("Onboard iniziato")
                 }
 
-                // TODO da metterci cosa viene stampato da downoload (start-stop)
                 consoleString.contains("stored files") -> {
-                    Timber.d("download iniziato")
+                    val colonIndex = consoleString.indexOf(":")
+                    var tmp = consoleString.substring(colonIndex + 1)
+                    tmp = tmp.substring(0, tmp.length - 2)
+                    val nFiles = tmp?.toInt() //?: 0
+                    SessionManager.sessione.nFile = nFiles
+
                 }
+                consoleString.contains("\\") && consoleString.contains("-") && consoleString.contains(
+                            ":") && consoleString.count() == 20 -> {
+                    var formatter = DateTimeFormatter.ofPattern("dd\\mm\\yy-HH:mm:ss")
+                    var dateString = consoleString.replace(" |\t|\n|\r", "")
+                    dateString = dateString.replace(
+                        "00\\",
+                        "01\\"
+                    )  // fix date when day=0 and/or month=0
+                    var date = LocalDate.parse(dateString, formatter)
+                    var dateLong = date.atStartOfDay(ZoneId.systemDefault()).toInstant().epochSecond
+                    var interval = System.currentTimeMillis() - dateLong
+                    if (interval >= 60 * 60 * 24 * 365) {     // if older than 1 years use current date
+                        date = LocalDate.now()
+                    }
+                    if (data.size == 16) {
+                        down = true
+                        val dataInstance = readData(data)
+                        Timber.d(dataInstance.toString())
+                        down=false
+                    }
+                    SessionManager.sessione.datetime = date
+                }
+
                 consoleString.contains("download finished") -> {
                     disableNotifications(currDevice!!, consoleChar!!)
                     Timber.d("download finito")
 
-                    //Come mai dà errore?
                   //  SessionManager.saveDocument(SessionManager.sessione, this)
                   //  SessionManager.ereaseSessione(SessionManager.sessione)
 
@@ -192,21 +224,23 @@ object ConnectionManager {
     // TODO Domanda: permettiamo al clinico di scaricare un solo esercizio oppure proprio NO?
     // Da protocollo in teoria deve aspettare tutti i tre esercizi
     fun download() {
+        down = true
         enableNotifications(currDevice!!, consoleChar!!)
         writeCharacteristic(currDevice!!, consoleChar!!, download.toByteArray())
-        down = true
     }
 
     fun StartOnBoard() {
         enableNotifications(currDevice!!, consoleChar!!)
-        writeCharacteristic(currDevice!!, consoleChar!!, onBoard.toByteArray())
+        var tag = (System.currentTimeMillis() * 1000).toInt().toString()
+        var message = (tag + onBoard).toByteArray()
+        writeCharacteristic(currDevice!!, consoleChar!!, message)
+        Timber.d("Onboard con tag OK iniziato")
     }
 
     fun StopOnBoard() {
         disableNotifications(currDevice!!, consoleChar!!)
         Timber.d("Onboard STOPPATO")
     }
-
 
     private fun hexToAscii(hexStr: String): String {
         val output = StringBuilder("")
@@ -673,6 +707,7 @@ object ConnectionManager {
             }
         }
 
+        @RequiresApi(Build.VERSION_CODES.O)
         override fun onCharacteristicChanged(
             gatt: BluetoothGatt,
             characteristic: BluetoothGattCharacteristic

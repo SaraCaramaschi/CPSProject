@@ -64,44 +64,57 @@ object PatientsManager {
                 //TODO CODICE PER SALVARE IN LOCALE SE QUALOCSA VA STORTO--> verificare se funziona
                 savePatient(patient, context)
             }
+        
+    }
+    fun readPatientJson(file : File, context: Context) : Patient {
+        //Creating a new Gson object to read data
+        var gson = Gson()
+        //Read the PostJSON.json file
+        val bufferedReader: BufferedReader = file.bufferedReader()
+        // Read the text from buffferReader and store in String variable
+        val inputString = bufferedReader.use { it.readText() }
 
+        //Convert the Json File to Gson Object
+        var patient = gson.fromJson(inputString, Patient::class.java)
+        return patient
+    }
 
-        //TODO CODICE PER CARICARE FILE IN LOCALE
-        //FORSE SAREBBE MEGLIO METTERE QUESTO PEZZO DI FUNZIONE OGNI VOLTA CHE CLINICO APRE L'APP(?)
-        //COSì CHE NON SERVA CHE CARICHI UN NUOVO FILE PER CARICARE I PRECEDENTI
-/*
+    public fun checkPatientLocal (context: Context) {
+        var folder =
+            context.getDir("PatientsFolder", Context.MODE_PRIVATE)
+
         if (!folder.listFiles().isEmpty()) {
             File(context.getDir("PatientsFolder", Context.MODE_PRIVATE).path).walk().forEach {
                 Timber.d(it.path)
                 if (it.isFile) {
                     val pat = readPatientJson(it, context)
-                    if (pat != patient) {
-                        val gson = Gson()
-                        var jsonPat = gson.toJson(pat)
-                        var fileNameNew = folder.path.toString() + "/" + pat.taxcode + ".txt"
-                        var mappatientNew: Map<String, Any> = HashMap()
-                        mappatientNew = Gson().fromJson(jsonPat, mappatient.javaClass)
-                        dbn.collection("patients")
-                            .add(mappatientNew)
-                            .addOnSuccessListener {
-                                //Elimino locale
-                                Timber.d("Record added succesfully")
-                                File(fileNameNew).delete()
-                                Timber.d("File deleted")
+                    //val gson = Gson()
+                    //var jsonPat = gson.toJson(pat)
+                    var fileNameCheck = folder.path.toString() + "/" + pat.taxcode + ".txt"
 
-                            }
-                            .addOnFailureListener { e ->
-                                Log.w(TAG, "Error filed to add", e)
-                                //TODO CODICE PER RISALVARE IN LOCALE--> verificare se funziona
-                                savePatient(patient, context)
-                            }
+                    //elimino da database
+                    val db: DatabaseReference
+                    db =
+                        FirebaseDatabase.getInstance("https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app")
+                            .getReference("Patients")
+
+                    db.child(pat.taxcode.toString()).setValue(pat).addOnSuccessListener {
+                        Timber.d("Record added succesfully!")
+                        File(fileNameCheck).delete()
+                        Timber.d("File deleted")
+                    }
+                        .addOnFailureListener{
+                            Timber.d( "Error filed to add!")
+                        }
+
+                        }
+
                     }
                 }
             }
-        }*/
-    }
-/*
 
+
+/*
     //DOMANDA: in teoria non serve più giusto?
     public fun readPatient(i: Int, context: Context): Patient { // FUNZIONA !!!
         var lastPatient = patientsList[i]
@@ -175,64 +188,96 @@ object PatientsManager {
  */
 
 
-    // Funzione per leggere documenti da realtime database-->OK TODO non mostra subito lista!
-    fun getDocumentsPatient(context: Context, ID: String): ArrayList<Patient> {
+                // Funzione per leggere documenti da realtime database-->OK TODO non mostra subito lista!
+                fun getDocumentsPatient(context: Context, ID: String): ArrayList<Patient> {
 
-
-
-        val db: DatabaseReference=FirebaseDatabase.getInstance("https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app").getReference("Patients")
-        //val dbPatients=db.child("Patients")
-        val patientArrayList:ArrayList<Patient>
-        db.addValueEventListener(object: ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot){
-                if(snapshot.exists()){
-                    for (patientsSnapshot in snapshot.children) {
-                        var patientNew = patientsSnapshot.getValue(Patient::class.java)
-                        if (patientNew != null && !patientsList.contains(patientNew)) {
-                            if (patientNew.clinicianID == ID) {
-                                patientsList.add(patientNew)
+                    val db: DatabaseReference =
+                        FirebaseDatabase.getInstance("https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app")
+                            .getReference("Patients")
+                    //val dbPatients=db.child("Patients")
+                    val patientArrayList: ArrayList<Patient>
+                    db.addValueEventListener(object : ValueEventListener {
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            if (snapshot.exists()) {
+                                for (patientsSnapshot in snapshot.children) {
+                                    var patientNew = patientsSnapshot.getValue(Patient::class.java)
+                                    if (patientNew != null && !patientsList.contains(patientNew)) {
+                                        if (patientNew.clinicianID == ID) {
+                                            patientsList.add(patientNew)
+                                        }
+                                    }
+                                }
                             }
                         }
+
+                        override fun onCancelled(error: DatabaseError) {
+                            TODO("Not yet implemented")
+                        }
+
+
                     }
+                    )
+                    return patientsList
                 }
-            }
 
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
+                // Funzione per leggere tutti i pazienti da realtime database-->OK
+                fun getDocumentsAllPatient(context: Context): ArrayList<Patient> {
+
+                    val db: DatabaseReference =
+                        FirebaseDatabase.getInstance("https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app")
+                            .getReference("Patients")
+                    //val dbPatients=db.child("Patients")
+                    val patientArrayList: ArrayList<Patient>
+                    db.addValueEventListener(object : ValueEventListener {
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            if (snapshot.exists()) {
+                                for (patientsSnapshot in snapshot.children) {
+                                    var patientNew = patientsSnapshot.getValue(Patient::class.java)
+                                    if (patientNew != null && !patientsList.contains(patientNew)) {
+                                        patientsList.add(patientNew)
+                                    }
+                                }
+                            }
+                        }
+
+                        override fun onCancelled(error: DatabaseError) {
+                            TODO("Not yet implemented")
+                        }
 
 
-        }
-        )
-        return patientsList
-    }
+                    }
+                    )
+                    return patientsList
+                }
 
 
-    //Funzione elimina paziente ma in locale e realtime database-->OK
-    fun deletePatient(context: Context, i: Int) {
-        var patientDeleted = patientsList[i]
-        patientsList.remove(patientDeleted)
-        var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)
-        var fileName = folder.path.toString() + "/" + patientDeleted.taxcode + ".txt"
-        File(fileName).delete()
-        Timber.d("File deleted")
-        var fodername = folder.path.toString()
+                //Funzione elimina paziente ma in locale e realtime database-->OK
+                fun deletePatient(context: Context, i: Int) {
+                    var patientDeleted = patientsList[i]
+                    patientsList.remove(patientDeleted)
+                    var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)
+                    var fileName = folder.path.toString() + "/" + patientDeleted.taxcode + ".txt"
+                    File(fileName).delete()
+                    Timber.d("File deleted")
+                    var fodername = folder.path.toString()
 
-        if (!File(fodername).list().contains(fileName)) {
-            Timber.d("File has been really deleted") //LO STAMPA! JSON LO ELIMINA, DOBBIAMO RIAGGIORNARE PAZIENTI IN KOTLIN
-        }
+                    if (!File(fodername).list().contains(fileName)) {
+                        Timber.d("File has been really deleted") //LO STAMPA! JSON LO ELIMINA, DOBBIAMO RIAGGIORNARE PAZIENTI IN KOTLIN
+                    }
 
-        //Realtime database delete
-        val db: DatabaseReference
-        db=FirebaseDatabase.getInstance("https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app").getReference("Patients")
-        //val patientsRef = db.collection("patients")
-        //cerco paziente con quel taxcode
-        db.child(patientDeleted.taxcode.toString()).removeValue().addOnSuccessListener {
-            Timber.d("Deleted")
-        }.addOnFailureListener{
-            Timber.d("Not deleted")
-        }
-       /*val queryTaxCode = patientsRef.whereEqualTo("taxcode", "${patientDeleted.taxcode}")
+                    //Realtime database delete
+                    val db: DatabaseReference
+                    db =
+                        FirebaseDatabase.getInstance("https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app")
+                            .getReference("Patients")
+                    //val patientsRef = db.collection("patients")
+                    //cerco paziente con quel taxcode
+                    db.child(patientDeleted.taxcode.toString()).removeValue().addOnSuccessListener {
+                        Timber.d("Deleted")
+                    }.addOnFailureListener {
+                        Timber.d("Not deleted")
+                    }
+                    /*val queryTaxCode = patientsRef.whereEqualTo("taxcode", "${patientDeleted.taxcode}")
         queryTaxCode.get().addOnSuccessListener { result ->
 
             if (result != null) {
@@ -252,8 +297,10 @@ object PatientsManager {
                 Timber.d("No such document")
             }
         }*/
-    }
-}
+
+                }
+            }
+
 
 
 

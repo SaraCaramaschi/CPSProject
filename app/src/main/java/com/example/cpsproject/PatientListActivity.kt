@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cpsproject.managers.PatientsManager
+import com.example.cpsproject.managers.PatientsManager.getDocumentsAllPatient
 import com.example.cpsproject.model.Patient
 import com.google.firebase.auth.FirebaseAuth
 
@@ -14,18 +15,14 @@ class PatientListActivity: AppCompatActivity() {
     private lateinit var layoutManager: RecyclerView.LayoutManager
     private lateinit var adapter: RecyclerView.Adapter<PatientAdapter.ViewHolder>
     lateinit var rvPatients: RecyclerView
-    //lateinit var rvDelete: RecyclerView
 
-    /* fun removeItem(position:Int){
-        patientsList.remove(position);
-       // PatientAdapter.notifyItemRemoved(position);
 
-    }*/
     //TODO NON SO SE BISOGNA RICHIAMARE ARRAY PAZIENTI PER VISUALIZZARE SUBITO LA LISTA--> in realtà basta importare in schermata 1
-    //val pos= intent.getIntExtra("position", 0)
+
 
     // QUI X RECYCLER CHE SI AGGIORNA
     var listPatients: ArrayList<Patient> = ArrayList()
+    var listAllPatients:ArrayList<Patient> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,26 +77,25 @@ class PatientListActivity: AppCompatActivity() {
             startActivity(intent)
         }
 
-        //TENTATIVI DELETE
+        //Bottone per vedere tutti i pazienti
+        val btnAllPatient = findViewById<Button>(R.id.btnAllPatients)
+        btnAllPatient.setOnClickListener {
+//            listPatients=getDocumentsAllPatient(this)
+//
+//            //update(listAllPatients)
+//         var adapterAll = PatientAdapter(this, listPatients)
+//            layoutManager = LinearLayoutManager(this)
+//            rvPatients = findViewById(R.id.rvPatients)
+//            rvPatients.layoutManager = layoutManager
+//            rvPatients.adapter = adapterAll
+
+        }
 
 
-        //Toast.makeText(this, "Long click on the patient that you want to delete", Toast.LENGTH_SHORT).show()
-        /*adapter.setOnItemClickListener(object : PatientAdapter.onItemClickListener {
-                override fun onClick(position: Int) {
-                }
-
-                override fun onLongClick(position: Int) {
-                    Toast.makeText(
-                        this@PatientListActivity,
-                        "you clicked on patient $position",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    var pos = position
-                    intentDelete.putExtra("position", pos)
-                    startActivity(intentDelete)
-                }
-            }
-            )*/
+    }
+    fun update(modelList:ArrayList<Patient>){
+        listPatients = modelList
+        adapter!!.notifyDataSetChanged()
     }
 }
 

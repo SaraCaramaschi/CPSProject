@@ -2,8 +2,12 @@ package com.example.cpsproject
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import android.widget.Button
+import android.widget.SearchView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cpsproject.managers.PatientsManager
@@ -31,6 +35,9 @@ class PatientListActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patients_list)
 
+
+
+
         // GET USER
 
         var currentuser = FirebaseAuth.getInstance().getCurrentUser()?.getUid()
@@ -51,6 +58,30 @@ class PatientListActivity: AppCompatActivity() {
         rvPatients = findViewById(R.id.rvPatients)
         rvPatients.layoutManager = layoutManager
         rvPatients.adapter = adapter
+
+        val search= findViewById<SearchView>(R.id.searchView)
+        search.addTextChangedListener
+
+
+        // QUI STAVO CREANDO LA BARRA DI RICERCA
+        search.setOnQueryTextListener(object:SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                search.clearFocus()
+                if (listPatients.contains((p0))) {
+                   // adapter.filter.filter(p0)
+                } else {
+                    Toast.makeText(applicationContext, "Patient not found", Toast.LENGTH_LONG)
+                        .show()
+                }
+                return false
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                TODO("Not yet implemented")
+            }
+        }
+        )
+*/
 
         //PASSA AD PAGINA PAZIENTE
         val intentPage = Intent(this, PatientPageActivity::class.java)

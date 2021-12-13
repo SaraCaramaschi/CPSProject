@@ -1,6 +1,7 @@
 package com.example.cpsproject
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,11 +10,13 @@ import com.example.cpsproject.ble.MainConnection
 import com.example.cpsproject.managers.ClinicianManager
 import com.example.cpsproject.managers.ClinicianManager.findClinician
 import com.example.cpsproject.managers.PatientsManager
+import com.example.cpsproject.managers.PatientsManager.checkPatientLocal
 import com.example.cpsproject.model.Clinician
 import com.example.cpsproject.model.Patient
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_schermata1.*
 import timber.log.Timber
+import java.io.File
 
 class Schermata1Activity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
@@ -52,6 +55,8 @@ class Schermata1Activity : AppCompatActivity() {
 
         listPatients = PatientsManager.getDocumentsPatient(this, ID)
 
+        //TODO CONTROLLO LOCALE + CARICO SU DATABSE
+        checkPatientLocal(this)
 
 
 //PROVA PER CLINICO ILA MA I PROSSIMI DUE COMMENTI POSSONO ESSERE CANCELLATI

@@ -8,7 +8,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cpsproject.managers.PatientsManager
-import com.example.cpsproject.managers.PatientsManager.deletePatient
 import com.example.cpsproject.model.Patient
 
 class DeleteMessageActivity: AppCompatActivity()  {
@@ -33,7 +32,7 @@ class DeleteMessageActivity: AppCompatActivity()  {
             startActivity(intent)
         }
         btnYes.setOnClickListener{
-            deletePatient(this, pos)
+            PatientsManager.deletePatient(this, pos)
             Toast.makeText(this,"Patient deleted", Toast.LENGTH_SHORT).show()
             var intent= Intent(this, PatientListActivity::class.java)
             startActivity(intent)

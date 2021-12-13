@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.model.Patient
+import com.google.firebase.auth.FirebaseAuth
 
 class PatientListActivity: AppCompatActivity() {
     private lateinit var layoutManager: RecyclerView.LayoutManager
@@ -30,10 +31,19 @@ class PatientListActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patients_list)
 
+        // GET USER
+
+        var currentuser = FirebaseAuth.getInstance().getCurrentUser()?.getUid()
+        var ID:String=String()
+        if (currentuser != null) {
+            ID = currentuser
+        }
+
+
         // QUI X RECYCLER CHE SI AGGIORNA
 
         //Importare pazienti da firebase
-        listPatients = PatientsManager.getDocumentsPatient(this)
+        listPatients = PatientsManager.getDocumentsPatient(this, ID)
         //listPatients=PatientsManager.importPatientList(this)
         var adapter = PatientAdapter(this, listPatients)
 

@@ -176,7 +176,7 @@ object PatientsManager {
 
 
     // Funzione per leggere documenti da realtime database-->OK TODO non mostra subito lista!
-    fun getDocumentsPatient(context: Context): ArrayList<Patient> {
+    fun getDocumentsPatient(context: Context, ID: String): ArrayList<Patient> {
 
 
 
@@ -186,10 +186,12 @@ object PatientsManager {
         db.addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot){
                 if(snapshot.exists()){
-                    for (patientsSnapshot in snapshot.children){
-                        var patientNew=patientsSnapshot.getValue(Patient::class.java)
-                        if (patientNew != null&& !patientsList.contains(patientNew)) {
-                            patientsList.add(patientNew)
+                    for (patientsSnapshot in snapshot.children) {
+                        var patientNew = patientsSnapshot.getValue(Patient::class.java)
+                        if (patientNew != null && !patientsList.contains(patientNew)) {
+                            if (patientNew.clinicianID == ID) {
+                                patientsList.add(patientNew)
+                            }
                         }
                     }
                 }

@@ -44,7 +44,13 @@ class Schermata1Activity : AppCompatActivity() {
         //TODO NON FUNZIONA
         //importo subito lista pazioni da firebase
         var listPatients: ArrayList<Patient> = ArrayList()
-        listPatients = PatientsManager.getDocumentsPatient(this)
+        var currentuser = FirebaseAuth.getInstance().getCurrentUser()?.getUid()
+        var ID:String=String()
+        if (currentuser != null) {
+            ID = currentuser
+        }
+
+        listPatients = PatientsManager.getDocumentsPatient(this, ID)
 
 
 

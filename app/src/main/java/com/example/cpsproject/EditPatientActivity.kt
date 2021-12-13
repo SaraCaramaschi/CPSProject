@@ -11,6 +11,7 @@ import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.model.Gender
 import com.example.cpsproject.model.Hand
 import com.example.cpsproject.model.Patient
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_add_patient.*
 import kotlinx.android.synthetic.main.activity_add_patient.etName
 import kotlinx.android.synthetic.main.activity_add_patient.etNotes
@@ -145,7 +146,13 @@ class EditPatientActivity: AppCompatActivity() {
 
             //Aggiorna lista dei pazienti
             //PatientsManager.patientsList = PatientsManager.importPatientList(this)
-            PatientsManager.patientsList = PatientsManager.getDocumentsPatient(this)
+            var currentuser = FirebaseAuth.getInstance().getCurrentUser()?.getUid()
+            var ID:String=String()
+            if (currentuser != null) {
+                ID = currentuser
+            }
+
+            PatientsManager.patientsList = PatientsManager.getDocumentsPatient(this, ID)
 
 
             // Go to patient page

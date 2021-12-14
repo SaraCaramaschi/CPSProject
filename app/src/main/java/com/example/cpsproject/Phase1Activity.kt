@@ -12,6 +12,7 @@ import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.managers.PenManager
 import com.example.cpsproject.managers.SessionManager
 import com.example.cpsproject.model.Session
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_phase_1.*
 
 class Phase1Activity: AppCompatActivity(){
@@ -48,6 +49,15 @@ class Phase1Activity: AppCompatActivity(){
         session.device = PenManager.penName.toString()
         session.patientID = PatientsManager.selectedPatient.toString()
         session.phase = phase
+
+        var mAuth = FirebaseAuth.getInstance()
+        val currentUser = mAuth.currentUser
+        var clinicianID:String= String()
+
+        if (currentUser != null) {
+            clinicianID= currentUser.uid
+        }
+        session.clinicianID = clinicianID
 
         SessionManager.sessione = session
     }

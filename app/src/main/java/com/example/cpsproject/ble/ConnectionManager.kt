@@ -53,6 +53,7 @@ private const val GATT_MAX_MTU_SIZE = 517
 
 object ConnectionManager {
 
+    private var tagFlag: Boolean = false
     private var listeners: MutableSet<WeakReference<ConnectionEventListener>> =
         mutableSetOf() // con listeners c'è sempre "invoke"
     private val deviceGattMap = ConcurrentHashMap<BluetoothDevice, BluetoothGatt>()
@@ -144,6 +145,7 @@ object ConnectionManager {
             sessData.press = press
 
             SessionManager.sessione.sessionData!!.add(sessData)
+            Timber.d("datiiii $acc_x $acc_y $acc_z $gyr_x $gyr_y $gyr_z $press")
             Timber.d("Riga di dati aggiunta")
         }
     }
@@ -155,63 +157,73 @@ object ConnectionManager {
 
         Timber.d("Console string e' : %s", consoleString)
 
-        if (down && data.size == 16) {
-            readData(data)
-        } else {
-            when {
-                consoleString.contains("start formatting") -> {
-                    Timber.d("format iniziato")
-                }
-                consoleString.contains("formatting done") -> {
-                    disableNotifications(currDevice!!, consoleChar!!)
-                    Timber.d("format finito")
-                }
+        if (consoleString.contains("start formatting")) {
+            Timber.d("format iniziato")
+        } else if (consoleString.contains("formatting done")) {
+            disableNotifications(currDevice!!, consoleChar!!)
+            Timber.d("format finito")
+        }
 
-                // TODO da metterci cosa viene stampato da onboard (start-stop)
-                consoleString.contains("onboard: start") -> {
-                    Timber.d("Onboard iniziato")
-                }
+        // TODO da metterci cosa viene stampato da onboard (start-stop)
+        else if (consoleString.contains("onboard: start")) {
+            Timber.d("Onboard iniziato")
+        } else if (consoleString.contains("stored files")) {
+            val colonIndex = consoleString.indexOf(":")
+            var tmp = consoleString.substring(colonIndex + 1)
+            tmp = tmp.substring(0, tmp.length - 2)
+            val nFiles = tmp?.toInt() //?: 0
+            SessionManager.sessione.nFile = nFiles
 
-                consoleString.contains("stored files") -> {
-                    val colonIndex = consoleString.indexOf(":")
-                    var tmp = consoleString.substring(colonIndex + 1)
-                    tmp = tmp.substring(0, tmp.length - 2)
-                    val nFiles = tmp?.toInt() //?: 0
-                    SessionManager.sessione.nFile = nFiles
+        } else if (consoleString.contains("::")) {
+            if (tagFlag) {
+                tagFlag = false
+                var tag = consoleString.replace(" ", "")
+                tag = tag.replace("\t", "")
+                tag = tag.replace("\n", "")
+                tag = tag.replace("\r", "")
+                tag = tag.replace("::", "")
 
-                }
-                consoleString.contains("\\") && consoleString.contains("-") && consoleString.contains(
-                            ":") && consoleString.count() == 20 -> {
-                    var formatter = DateTimeFormatter.ofPattern("dd\\mm\\yy-HH:mm:ss")
-                    var dateString = consoleString.replace(" |\t|\n|\r", "")
-                    dateString = dateString.replace(
-                        "00\\",
-                        "01\\"
-                    )  // fix date when day=0 and/or month=0
-                    var date = LocalDate.parse(dateString, formatter)
-                    var dateLong = date.atStartOfDay(ZoneId.systemDefault()).toInstant().epochSecond
-                    var interval = System.currentTimeMillis() - dateLong
-                    if (interval >= 60 * 60 * 24 * 365) {     // if older than 1 years use current date
-                        date = LocalDate.now()
-                    }
-                    if (data.size == 16) {
-                        down = true
-                        val dataInstance = readData(data)
-                        Timber.d(dataInstance.toString())
-                        down=false
-                    }
-                    SessionManager.sessione.datetime = date
-                }
-
-                consoleString.contains("download finished") -> {
-                    disableNotifications(currDevice!!, consoleChar!!)
-                    Timber.d("download finito")
-
-                  //  SessionManager.saveDocument(SessionManager.sessione, this)
-                  //  SessionManager.ereaseSessione(SessionManager.sessione)
-
-                }
+                Timber.d("tag: $tag")
             }
+        } else if (consoleString.contains("\\") && consoleString.contains("-") && consoleString.contains(
+                ":"
+            ) && consoleString.count() == 20
+        ) {
+            tagFlag = true
+            var formatter = DateTimeFormatter.ofPattern("dd\\mm\\yy-HH:mm:ss")
+            var dateString = consoleString.replace(" ", "")
+            dateString = dateString.replace("\t", "")
+            dateString = dateString.replace("\n", "")
+            dateString = dateString.replace("\r", "")
+            dateString = dateString.replace(
+                "00\\",
+                "01\\"
+            )  // fix date when day=0 and/or month=0
+            dateString.substring(1)
+            Timber.d("datestring: %s", dateString)
+            var date = LocalDate.parse(dateString, formatter)
+            var dateLong = date.atStartOfDay(ZoneId.systemDefault()).toInstant().epochSecond
+            var interval = System.currentTimeMillis() - dateLong
+            if (interval >= 60 * 60 * 24 * 365) {     // if older than 1 years use current date
+                date = LocalDate.now()
+            }
+            if (data.size == 16) {
+                down = true
+                val dataInstance = readData(data)
+                Timber.d(dataInstance.toString())
+                down = false
+            }
+            SessionManager.sessione.datetime = date
+        } else if (consoleString.contains("download finished")) {
+            disableNotifications(currDevice!!, consoleChar!!)
+            Timber.d("download finito")
+
+            //  SessionManager.saveDocument(SessionManager.sessione, this)
+            //  SessionManager.ereaseSessione(SessionManager.sessione)
+
+
+        } else if (down && data.size == 16) {
+            readData(data)
         }
     }
 

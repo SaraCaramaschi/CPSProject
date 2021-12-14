@@ -28,16 +28,16 @@ object PatientsManager {
         //CREATE NEW DIRECOTY IN FILESDIR DIRECOTY (https://developer.android.com/training/data-storage/app-specific#kotlin)
 
         var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)
-        Timber.d("questo è nuova cartella: %s", folder.path.toString())
+        //Timber.d("questo è nuova cartella: %s", folder.path.toString())
 
 
         var fileName = folder.path.toString() + "/" + patient.taxcode + ".txt"
         var file = File(fileName) // cartella uguale ma con una roba in più
 
         val createdFile = file.createNewFile()
-        Timber.d("Il filename e': %s", fileName)
-        Timber.d("the file is created %s", createdFile)
-        Timber.d("path %s", file.absolutePath)
+//        Timber.d("Il filename e': %s", fileName)
+//        Timber.d("the file is created %s", createdFile)
+//        Timber.d("path %s", file.absolutePath)
 
         file.writeText(jsonPatient)
         saveRealtimePatient(jsonPatient, patient, context)
@@ -55,12 +55,12 @@ object PatientsManager {
         var fileName = folder.path.toString() + "/" + taxcode + ".txt"
 
         db.child(patient.taxcode.toString()).setValue(patient).addOnSuccessListener {
-            Timber.d("Record added succesfully!")
+            //Timber.d("Record added succesfully!")
             File(fileName).delete()
-            Timber.d("File deleted")
+            //Timber.d("File deleted")
         }
             .addOnFailureListener{
-                Timber.d( "Error filed to add!")
+                //Timber.d( "Error filed to add!")
                 //TODO CODICE PER SALVARE IN LOCALE SE QUALOCSA VA STORTO--> verificare se funziona
                 savePatient(patient, context)
             }
@@ -85,7 +85,7 @@ object PatientsManager {
 
         if (!folder.listFiles().isEmpty()) {
             File(context.getDir("PatientsFolder", Context.MODE_PRIVATE).path).walk().forEach {
-                Timber.d(it.path)
+                //Timber.d(it.path)
                 if (it.isFile) {
                     val pat = readPatientJson(it, context)
                     //val gson = Gson()
@@ -99,12 +99,12 @@ object PatientsManager {
                             .getReference("Patients")
 
                     db.child(pat.taxcode.toString()).setValue(pat).addOnSuccessListener {
-                        Timber.d("Record added succesfully!")
+                   //     Timber.d("Record added succesfully!")
                         File(fileNameCheck).delete()
-                        Timber.d("File deleted")
+                     //   Timber.d("File deleted")
                     }
                         .addOnFailureListener{
-                            Timber.d( "Error filed to add!")
+                       //     Timber.d( "Error filed to add!")
                         }
 
                         }

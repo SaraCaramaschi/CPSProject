@@ -12,7 +12,7 @@ class Session {
     var datetime: LocalDate?=null
     var sessionId: Int?=null //penso serva?
     var phase: Int?=null
-    var sessionData: ArrayList<PenData> ?=null
+    var sessionData: ArrayList<PenData> = arrayListOf()
     var patientID: String?=null
     var clinicianID: String?=null
     var nFile: Int?=null

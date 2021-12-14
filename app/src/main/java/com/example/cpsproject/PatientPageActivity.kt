@@ -61,7 +61,11 @@ class PatientPageActivity : AppCompatActivity() {
         val btnPhase2 = findViewById<Button>(R.id.btnPhase2)
         btnPhase2.setOnClickListener {
             patient.phase = 2
+            //TODO: editphase (in modo che si salvi anche online)
+            editPhase()
+
             val intent2 = Intent(this, Phase2Activity::class.java)
+            intent2.putExtra("phase",2)
             startActivity(intent2)
         }
 
@@ -80,6 +84,10 @@ class PatientPageActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    private fun editPhase() {
+        TODO("Not yet implemented")
     }
 
     private fun setupPatientPage(patient: Patient) {

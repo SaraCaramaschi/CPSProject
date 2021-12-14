@@ -13,8 +13,8 @@ import java.io.File
 
 object SessionManager {
     var sessione: Session = Session()
-
 }
+
  public fun saveDocument(session:Session, context: Context) {
      val gson = Gson()
      val jsonDocument = gson.toJson(session)

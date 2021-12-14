@@ -57,11 +57,11 @@ class PatientListActivity: AppCompatActivity() {
         rvPatients.adapter = adapter
 
         val search= findViewById<SearchView>(R.id.searchView)
-        search.addTextChangedListener
+        //search.addTextChangedListener
 
 
         // QUI STAVO CREANDO LA BARRA DI RICERCA
-        search.setOnQueryTextListener(object:SearchView.OnQueryTextListener {
+        /*search.setOnQueryTextListener(object:SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 search.clearFocus()
                 if (listPatients.contains((p0))) {
@@ -77,8 +77,8 @@ class PatientListActivity: AppCompatActivity() {
                 TODO("Not yet implemented")
             }
         }
-        )
-*/
+        )*/
+
 
         //PASSA AD PAGINA PAZIENTE
         val intentPage = Intent(this, PatientPageActivity::class.java)

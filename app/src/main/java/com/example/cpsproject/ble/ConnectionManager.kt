@@ -143,7 +143,7 @@ object ConnectionManager {
             sessData.gyr_z = gyr_z
             sessData.press = press
 
-            //SessionManager.sessione.sessionData.add(sessData)
+            SessionManager.sessione.sessionData!!.add(sessData)
             Timber.d("Riga di dati aggiunta")
         }
     }

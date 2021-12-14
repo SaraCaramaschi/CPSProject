@@ -24,25 +24,23 @@ import java.util.*
 import java.util.stream.Collectors
 
 class Exercise1Activity: AppCompatActivity() {
-    var session: Session = Session()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exercise1)
         tvExDescription1.text = "Make the patient write a grocery list with at least 6 elements"
 
+        val intent = getIntent()
+        val phase = intent.getIntExtra("phase",1)
+
         btnStart1.setOnClickListener {
             ConnectionManager.StartOnBoard()
-
-            // Inizializzazione di una sessione:
-            startSession()
-
-            // PARTE DI PROVA CON .TXT
-            //provaAmano()
         }
+
         btnStop1.setOnClickListener {
             ConnectionManager.StopOnBoard()
         }
+
         // PER PROVARE: Poi vediamo in che modo inserirlo
         btnDownloadEx1.setOnClickListener {
             ConnectionManager.download()
@@ -59,15 +57,6 @@ class Exercise1Activity: AppCompatActivity() {
         Timber.d("Bytearray: datipennaba: " + datiPennaBA)
         ConnectionManager.readData(datiPennaBA)
     }
-
-    @SuppressLint("NewApi")
-    private fun startSession() {
-        session.device = PenManager.penName.toString()
-        session.patientID = PatientsManager.selectedPatient.toString()
-
-        SessionManager.sessione = session
-    }
-
 
 
     private fun fillSession(data:PenData, session: Session) {

@@ -1,5 +1,6 @@
 package com.example.cpsproject
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -7,9 +8,14 @@ import android.widget.EditText
 import android.widget.TextView
 
 import androidx.appcompat.app.AppCompatActivity
+import com.example.cpsproject.managers.PatientsManager
+import com.example.cpsproject.managers.PenManager
+import com.example.cpsproject.managers.SessionManager
+import com.example.cpsproject.model.Session
 import kotlinx.android.synthetic.main.activity_phase_1.*
 
 class Phase1Activity: AppCompatActivity(){
+    var session: Session = Session()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_phase_1)
@@ -19,7 +25,8 @@ class Phase1Activity: AppCompatActivity(){
         tvDescription.setText("In the same day the patient has to repeat the 3 exercises twice. The 3 exercises will be performed in random order with a break of at least 1 minute from one to another.\n" +
                         "Between the two session the patient has to wait at least 30 minutes. \n" + "When an exercise is completed a MARK will appear. If there are two marks near each exercise the phase 1 is completed."
             )
-
+        var phase = 1
+        startSession(phase)
         btnEx1Ph1.setOnClickListener {
             val intent1 = Intent(this, Exercise1Activity::class.java)
             startActivity(intent1)
@@ -35,6 +42,17 @@ class Phase1Activity: AppCompatActivity(){
             startActivity(intent)
         }
     }
+
+    @SuppressLint("NewApi")
+    private fun startSession(phase:Int) {
+        session.device = PenManager.penName.toString()
+        session.patientID = PatientsManager.selectedPatient.toString()
+        session.phase = phase
+
+        SessionManager.sessione = session
+    }
+
+
 
 }
 

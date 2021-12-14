@@ -17,9 +17,9 @@ class Session {
     var clinicianID: String?=null
     var nFile: Int?=null
 
-   // var device: String = ""
+    // var device: String = ""
     //var datetime: String = ""
     //var patientID: String = ""
-   // var phase: Int=1
+    // var phase: Int=1
     //var sessionData: ArrayList<PenData> = ArrayList()
 }

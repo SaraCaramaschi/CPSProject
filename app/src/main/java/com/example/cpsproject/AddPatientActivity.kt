@@ -18,9 +18,8 @@ import kotlinx.android.synthetic.main.activity_add_patient.*
 import java.text.SimpleDateFormat
 import java.util.*
 import com.google.firebase.auth.FirebaseUser
-
-
-
+import com.punchthrough.blestarterappandroid.ble.ConnectionManager
+import com.punchthrough.blestarterappandroid.ble.ConnectionManager.isConnected
 
 
 class AddPatientActivity : AppCompatActivity() {
@@ -100,7 +99,10 @@ class AddPatientActivity : AppCompatActivity() {
                 genderEnum,
                 clinicianID
             )
-
+            if (!ConnectionManager.currDevice!!.isConnected()) {
+                Toast.makeText(this@AddPatientActivity, "The pen disconnected!", Toast.LENGTH_SHORT)
+                    .show()
+            }
             // Add patient to patientlist
             PatientsManager.addPatient(patient, applicationContext)
 

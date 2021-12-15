@@ -14,6 +14,8 @@ import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.managers.PatientsManager.getDocumentsAllPatient
 import com.example.cpsproject.model.Patient
 import com.google.firebase.auth.FirebaseAuth
+import com.punchthrough.blestarterappandroid.ble.ConnectionManager
+import com.punchthrough.blestarterappandroid.ble.ConnectionManager.isConnected
 
 class PatientListActivity: AppCompatActivity() {
     private lateinit var layoutManager: RecyclerView.LayoutManager
@@ -100,6 +102,11 @@ class PatientListActivity: AppCompatActivity() {
             }
 
         })
+
+        if (!ConnectionManager.currDevice!!.isConnected()) {
+            Toast.makeText(this@PatientListActivity, "The pen disconnected!", Toast.LENGTH_SHORT)
+                .show()
+        }
 
         //AGGIUNGE PAZIENTE
         val btnAddPatient = findViewById<Button>(R.id.btnNewPatient)

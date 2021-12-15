@@ -52,24 +52,11 @@ class PatientListActivity : AppCompatActivity() {
         //search.addTextChangedListener
 
 
-        // QUI STAVO CREANDO LA BARRA DI RICERCA
-        /*search.setOnQueryTextListener(object:SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(p0: String?): Boolean {
-                search.clearFocus()
-                if (listPatients.contains((p0))) {
-                   // adapter.filter.filter(p0)
-                } else {
-                    Toast.makeText(applicationContext, "Patient not found", Toast.LENGTH_LONG)
-                        .show()
-                }
-                return false
-            }
+        override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+            menuInflater.inflate(R.menu.menu, menu)
 
-            override fun onQueryTextChange(p0: String?): Boolean {
-                TODO("Not yet implemented")
-            }
+            return super.onCreateOptionsMenu(menu)
         }
-        )*/
 
 
         //PASSA AD PAGINA PAZIENTE

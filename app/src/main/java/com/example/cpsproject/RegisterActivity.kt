@@ -7,9 +7,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cpsproject.managers.ClinicianManager
-import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.model.Clinician
-import com.example.cpsproject.model.Patient
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_add_patient.*
@@ -76,59 +74,60 @@ class RegisterActivity : AppCompatActivity() {
                     var email = etEmail.text.toString().trim { it <= ' ' }
                     var etPassword = findViewById<EditText>(R.id.etPassword1)
                     var password = etPassword.text.toString().trim { it <= ' ' }
-                    var etName= findViewById<EditText>(R.id.etName)
+                    var etName = findViewById<EditText>(R.id.etName)
                     var name = etName.text.toString().trim { it <= ' ' }
-                    var etSurname= findViewById<EditText>(R.id.etSurname)
+                    var etSurname = findViewById<EditText>(R.id.etSurname)
                     var surname = etSurname.text.toString().trim { it <= ' ' }
 
-                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(email , password).addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            val firebaseUser: FirebaseUser = task.result!!.user!!
+                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                val firebaseUser: FirebaseUser = task.result!!.user!!
 
-                            Toast.makeText(
-                                this@RegisterActivity, "You are regisetred succesfully!",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                                val clinician = Clinician(
+                                    etName.text.toString(),
+                                    etSurname.text.toString(),
+                                    etEmail.text.toString(),
+                                    etPassword1.text.toString(),
+                                    firebaseUser.uid//TODO leva la password
+                                )
+                                ClinicianManager.addClinician(clinician, applicationContext)
 
-                            val intent = Intent(this, LoginActivity::class.java)
-                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                            //intent.putExtra("user_id", firebaseUser.uid)
-                          /*  intent.putExtra("email_id", email)
-                            intent.putExtra("name", name)
-                            intent.putExtra("surname", surname)*/
-                            startActivity(intent)
-                            finish()
-                        } else {
-                            Toast.makeText(
-                                this@RegisterActivity,
-                                task.exception!!.message.toString(),
-                                Toast.LENGTH_SHORT
-                            )
-                                .show()
+                                Toast.makeText(
+                                    this@RegisterActivity, "You are regisetred succesfully!",
+                                    Toast.LENGTH_SHORT
+                                ).show()
 
+                                val intent = Intent(this, LoginActivity::class.java)
+                                intent.flags =
+                                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                //intent.putExtra("user_id", firebaseUser.uid)
+                                /*  intent.putExtra("email_id", email)
+                                  intent.putExtra("name", name)
+                                  intent.putExtra("surname", surname)*/
+                                startActivity(intent)
+                                finish()
+                            } else {
+                                Toast.makeText(
+                                    this@RegisterActivity,
+                                    task.exception!!.message.toString(),
+                                    Toast.LENGTH_SHORT
+                                )
+                                    .show()
+
+                            }
                         }
-                    }
 
 
                 }
 
-                        }
-            var clinician= Clinician(
-               etName.text.toString(),
-                etSurname.text.toString(),
-                etEmail.text.toString(),
-                etPassword1.text.toString() //TODO DOBBIAMO PASSARE LA PASSWORD DA SALVARE SUL DATABASE?
-            )
-           ClinicianManager.addClinician(clinician, applicationContext )
-
-
-
-
-
-                }
             }
 
 
-       }
+        }
+    }
+
+
+}
 
 

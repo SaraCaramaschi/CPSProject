@@ -3,6 +3,7 @@ package com.example.cpsproject.managers
 import android.content.Context
 import com.example.cpsproject.model.Clinician
 import com.example.cpsproject.model.Patient
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -20,7 +21,7 @@ object ClinicianManager {
     var password: String = String()
     var name: String = String()
     var surname: String = String()
-    var clinicianToPass: Clinician= Clinician()
+    var clinicianToPass: Clinician? = null
 
     fun addClinician(clinician: Clinician, context: Context) {
         clinicianList.add(clinician)
@@ -66,7 +67,7 @@ object ClinicianManager {
         var folder = context.getDir("CliniciansFolder", Context.MODE_PRIVATE)
         var fileName = folder.path.toString() + "/" + email + ".txt"
 
-        db.child(clinician.surname.toString()).setValue(clinician).addOnSuccessListener {
+        db.child(clinician.id.toString()).setValue(clinician).addOnSuccessListener {
             Timber.d("Record added succesfully!")
             File(fileName).delete()
             Timber.d("File deleted")
@@ -160,31 +161,31 @@ object ClinicianManager {
                 }
             }
         }
-    fun findClinician (email: String, context: Context): Clinician {
+    fun findClinician (id: String, context: Context) {
+        var returnedClinician: Clinician? = null
         val db: DatabaseReference = FirebaseDatabase.getInstance("https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app").getReference("Clinicians")
 
-        db.child("Clinicians").orderByChild("email").equalTo(email)
+
+        db.child(id)
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {
-
                         var clinicianLog = snapshot.getValue(Clinician::class.java)
                         if (clinicianLog != null) {
                             clinicianToPass = clinicianLog
+                            Timber.d("ciaoaooaoaoaooaoa" + clinicianLog.name)
                         }
 
                     }
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
+                    Timber.d("clinician cancelled")
                 }
 
 
             })
-        Timber.d("é QUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA:%s", clinicianToPass.name)
 //TODO capire come passare il nome del clinico
-        return clinicianToPass
 }
 }
 

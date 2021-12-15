@@ -81,6 +81,8 @@ class LoginActivity : AppCompatActivity() {
                                     Toast.LENGTH_SHORT
                                 ).show()
 
+                                ClinicianManager.findClinician(FirebaseAuth.getInstance().uid!!, applicationContext)!!
+
                                 val intent =
                                     Intent(this@LoginActivity, Schermata1Activity::class.java)
 

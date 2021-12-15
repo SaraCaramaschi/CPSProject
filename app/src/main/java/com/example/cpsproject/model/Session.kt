@@ -12,14 +12,14 @@ class Session {
     var datetime: LocalDate?=null
     var sessionId: Int?=null //penso serva?
     var phase: Int?=null
-    var sessionData: ArrayList<PenData> = arrayListOf()
+    var acquisitions: ArrayList<Acquisition> = arrayListOf()
     var patientID: String?=null
     var clinicianID: String?=null
     var nFile: Int?=null
 
     // var device: String = ""
-    //var datetime: String = ""
-    //var patientID: String = ""
+    // var datetime: String = ""
+    // var patientID: String = ""
     // var phase: Int=1
-    //var sessionData: ArrayList<PenData> = ArrayList()
+    // var sessionData: ArrayList<PenData> = ArrayList()
 }

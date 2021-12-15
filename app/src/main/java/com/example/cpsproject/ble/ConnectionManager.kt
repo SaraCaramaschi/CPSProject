@@ -34,6 +34,7 @@ import androidx.annotation.RequiresApi
 import com.example.cpsproject.ble.PenActivity
 import com.example.cpsproject.managers.PenManager
 import com.example.cpsproject.managers.SessionManager
+import com.example.cpsproject.model.Acquisition
 import com.example.cpsproject.model.PenData
 import com.example.cpsproject.model.Session
 import timber.log.Timber
@@ -70,6 +71,7 @@ object ConnectionManager {
     private val download = "downloadu"
     private val onBoard = "OnBoard"
 
+    private var acquisition: Acquisition = Acquisition()
 
     private var batteryChar: BluetoothGattCharacteristic? = null
     public var dataChar: BluetoothGattCharacteristic? = null
@@ -144,7 +146,9 @@ object ConnectionManager {
             sessData.gyr_z = gyr_z
             sessData.press = press
 
-            SessionManager.sessione.sessionData!!.add(sessData)
+            //SessionManager.sessione.sessionData!!.add(sessData)
+            acquisition.Data.add(sessData)
+            //SessionManager.sessione.acquisitions[acquisition.tag==tag]
             Timber.d("datiiii $acc_x $acc_y $acc_z $gyr_x $gyr_y $gyr_z $press")
             Timber.d("Riga di dati aggiunta")
         }
@@ -163,8 +167,6 @@ object ConnectionManager {
             disableNotifications(currDevice!!, consoleChar!!)
             Timber.d("format finito")
         }
-
-        // TODO da metterci cosa viene stampato da onboard (start-stop)
         else if (consoleString.contains("onboard: start")) {
             Timber.d("Onboard iniziato")
         } else if (consoleString.contains("stored files")) {
@@ -233,8 +235,6 @@ object ConnectionManager {
         writeCharacteristic(currDevice!!, consoleChar!!, format.toByteArray())
     }
 
-    // TODO Domanda: permettiamo al clinico di scaricare un solo esercizio oppure proprio NO?
-    // Da protocollo in teoria deve aspettare tutti i tre esercizi
     fun download() {
         down = true
         enableNotifications(currDevice!!, consoleChar!!)
@@ -243,14 +243,21 @@ object ConnectionManager {
 
     fun StartOnBoard() {
         enableNotifications(currDevice!!, consoleChar!!)
-        var tag = (System.currentTimeMillis() * 1000).toInt().toString()
+        var tag = (System.currentTimeMillis() * 1000).toInt().toString() //timestamp momento in cui crei recording
+        //recording sulla penna ha ID timestamp. poi lista di recording nell'app
         var message = (tag + onBoard).toByteArray()
         writeCharacteristic(currDevice!!, consoleChar!!, message)
         Timber.d("Onboard con tag OK iniziato")
+        startAcquisition(tag)
+    }
+
+    private fun startAcquisition(tag: String) {
+        acquisition.tag = tag
     }
 
     fun StopOnBoard() {
         disableNotifications(currDevice!!, consoleChar!!)
+        SessionManager.sessione.acquisitions.add(acquisition)
         Timber.d("Onboard STOPPATO")
     }
 

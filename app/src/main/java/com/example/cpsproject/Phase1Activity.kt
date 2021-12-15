@@ -28,6 +28,7 @@ class Phase1Activity: AppCompatActivity(){
             )
         var phase = 1
         startSession(phase)
+
         btnEx1Ph1.setOnClickListener {
             val intent1 = Intent(this, Exercise1Activity::class.java)
             startActivity(intent1)

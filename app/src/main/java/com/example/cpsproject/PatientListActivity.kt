@@ -85,11 +85,11 @@ class PatientListActivity: AppCompatActivity() {
 
         adapter.setOnItemClickListener(object : PatientAdapter.onItemClickListener {
             override fun onClick(position: Int) {
-//                Toast.makeText(
-//                    this@PatientListActivity,
-//                    "you clicked on patient $position",
-//                    Toast.LENGTH_SHORT
-//                ).show()
+                Toast.makeText(
+                    this@PatientListActivity,
+                    "you clicked on patient $position",
+                    Toast.LENGTH_SHORT
+                ).show()
 
                 var pos = position
                 PatientsManager.selectedPatient = pos

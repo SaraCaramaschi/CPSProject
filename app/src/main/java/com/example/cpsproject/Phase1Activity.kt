@@ -46,7 +46,7 @@ class Phase1Activity: AppCompatActivity(){
     }
 
     @SuppressLint("NewApi")
-    private fun startSession(phase:Int) {
+    fun startSession(phase:Int) {
         session.device = PenManager.penName.toString()
         session.patientID = PatientsManager.selectedPatient.toString()
         session.phase = phase

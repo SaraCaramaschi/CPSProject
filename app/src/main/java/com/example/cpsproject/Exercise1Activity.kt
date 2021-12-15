@@ -41,11 +41,13 @@ class Exercise1Activity: AppCompatActivity() {
             ConnectionManager.StopOnBoard()
         }
 
-        // PER PROVARE: Poi vediamo in che modo inserirlo
         btnDownloadEx1.setOnClickListener {
-            ConnectionManager.download()
-            // TODO Otteniamo eventuale oggetto DATA come??
-            // fillSession(data, session)
+            Toast.makeText(
+                this@Exercise1Activity,
+                "You need to perform all three exercises before downloading files",
+                Toast.LENGTH_LONG
+            ).show()
+            //ConnectionManager.download()
         }
     }
 

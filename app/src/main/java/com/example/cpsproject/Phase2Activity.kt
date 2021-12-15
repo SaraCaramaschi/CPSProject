@@ -11,6 +11,7 @@ import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.managers.PenManager
 import com.example.cpsproject.managers.SessionManager
 import com.example.cpsproject.model.Session
+import com.google.firebase.auth.FirebaseAuth
 
 class Phase2Activity: AppCompatActivity() {
     var session: Session = Session()
@@ -39,13 +40,21 @@ class Phase2Activity: AppCompatActivity() {
     }
 
     @SuppressLint("NewApi")
-    private fun startSession(phase:Int) {
+    fun startSession(phase:Int) {
         session.device = PenManager.penName.toString()
         session.patientID = PatientsManager.selectedPatient.toString()
         session.phase = phase
 
+        var mAuth = FirebaseAuth.getInstance()
+        val currentUser = mAuth.currentUser
+        var clinicianID:String= String()
+
+        if (currentUser != null) {
+            clinicianID= currentUser.uid
+        }
+        session.clinicianID = clinicianID
+
         SessionManager.sessione = session
     }
-
 
 }

@@ -2,10 +2,11 @@ package com.example.cpsproject
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
-import android.widget.SearchView
+import androidx.appcompat.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.adapters.SearchViewBindingAdapter
@@ -18,6 +19,9 @@ import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.punchthrough.blestarterappandroid.ble.ConnectionManager
 import com.punchthrough.blestarterappandroid.ble.ConnectionManager.isConnected
+import kotlinx.android.synthetic.main.activity_patients_list.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 class PatientListActivity : AppCompatActivity() {
     private lateinit var layoutManager: RecyclerView.LayoutManager
@@ -29,6 +33,7 @@ class PatientListActivity : AppCompatActivity() {
     // QUI X RECYCLER CHE SI AGGIORNA
     var listPatients: ArrayList<Patient> = ArrayList()
     var listAllPatients: ArrayList<Patient> = ArrayList()
+    var displayList: ArrayList<Patient> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,28 +61,51 @@ class PatientListActivity : AppCompatActivity() {
 
 
         override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-            menuInflater.inflate(R.menu.menu, menu);
-            var menuItem= menu.findItem(R.id.searchView);
-            var searchView=menuItem.actionView as SearchView
+            menuInflater.inflate(R.menu.menu, menu)
+            var item: MenuItem = menu!!.findItem(R.id.searchView)
+            if (item!= null) {
+                var searchView = item.actionView as SearchView
+
 
             searchView.maxWidth=Int.MAX_VALUE
             searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-                override fun SearchViewBindingAdapter.OnQueryTextSubmit(p0:String?):Boolean{
+                override fun OnQueryTextSubmit(query:String?):Boolean{
                     return true
 
                 }
 
-                override fun onQueryTextChange(p0: String?): Boolean {
-adapter.filter.filter(p0);
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    if(newText!!.isNotEmpty()){
+                        displayList.clear()
+                        var search=newText.toLowerCase(Locale.getDefault())
+ for (patient in listAllPatients){
+     if (patient.name.toLowerCase(Locale.getDefault()).contais(search)){
+         displayList.add(patient)
+     }
+     rvPatients.adapter!!.notifyDataSetChanged()
+                    }
+                }
+                    else{
+                        displayList.clear()
+                        displayList.addAll(listAllPatients)
+                    }
+
 
                     return true
-                }
-
-            } )
-
-
-            return true;
+                }})}
         }
+
+
+        //FILTRO
+       /* search.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+            override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
+
+            }
+
+            override fun afterTextChanged(editable: Editable) {}
+        })
+*/
 
 
         //PASSA AD PAGINA PAZIENTE
@@ -101,11 +129,11 @@ adapter.filter.filter(p0);
 
         })
 
-        if (!ConnectionManager.currDevice!!.isConnected()) {
+      /*  if (!ConnectionManager.currDevice!!.isConnected()) {
             Toast.makeText(this@PatientListActivity, "The pen disconnected!", Toast.LENGTH_SHORT)
                 .show()
         }
-
+*/
         //AGGIUNGE PAZIENTE
         val btnAddPatient = findViewById<Button>(R.id.btnNewPatient)
         btnAddPatient.setOnClickListener {

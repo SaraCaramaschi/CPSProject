@@ -20,7 +20,7 @@ import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.managers.PatientsManager.deletePatient
 
 
-class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : RecyclerView.Adapter<PatientAdapter.ViewHolder>(), Filterable{
+class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : RecyclerView.Adapter<PatientAdapter.ViewHolder>() {
 
     // DOMANDONA: noi nella recycler view mostriamo i nomi o mostriamo i codici (per non farci hackerare yass) ???
     // Qui prendo tutti i nomi e le fasi della listaPaziente (che arriva dall'activity principale)
@@ -28,7 +28,7 @@ class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : Recycl
     private var phases = listPatients.map{ it.phase }
     private var surname = listPatients.map{ it.surname }
     private val selectedPosition= -1
-var itemFilter =ArrayList<Patient>();
+//var itemFilter =ArrayList<Patient>();
      //TODO DOVE DEVO METTERLO https://www.youtube.com/watch?v=HMjI7cLsyfw
 
 
@@ -99,7 +99,46 @@ var itemFilter =ArrayList<Patient>();
         return names.size
     }
 
-    override fun getFilter(): Filter {
+
+    //FILTRO 2
+   /* override fun getFilter(): Filter {
+        return filter
+    }
+
+    private val filter: Filter = object : Filter() {
+        var filteredList: MutableList<Patient> = arrayListOf()
+        override fun performFiltering(constraint: CharSequence): FilterResults {
+
+            if (constraint.isEmpty()) {
+                filteredList.addAll(patientsList)
+            }
+            else {
+                val filterPattern = constraint.toString().toLowerCase().trim { it <= ' ' }
+                for (item in 0..patientsList.size) {
+                    if (patientsList[item].name!!.contains(filterPattern) || patientsList[item].surname!!.contains(filterPattern))
+
+                        {
+                            filteredList.add(patientsList[item])
+                        }
+                }
+            }
+            val results = FilterResults()
+            results.values = filteredList
+            return results
+        }
+
+        override fun publishResults(charSequence: CharSequence?, filterResults: FilterResults) {
+            filteredList = filterResults.values as MutableList<Patient>
+            notifyDataSetChanged()
+        }
+    }
+*/
+
+
+//FILTRO 1
+
+
+/*    override fun getFilter(): Filter {
 
         return object :Filter(){
             override fun performFiltering(charsequence: CharSequence?): FilterResults {
@@ -131,6 +170,6 @@ var itemFilter =ArrayList<Patient>();
 
         }
 
-    }
+    }*/
 }
 

@@ -69,6 +69,11 @@
         <activity
             android:name=".PatientPageActivity"
             android:exported="true" />
+
+        <activity
+            android:name=".SelectPatientListActivity"
+            android:exported="true" />
+
         <activity
             android:name=".Schermata1Activity"
             android:exported="true"

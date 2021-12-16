@@ -207,13 +207,34 @@ object PatientsManager {
                     for (patientsSnapshot in snapshot.children) {
                         var patientNew = patientsSnapshot.getValue(Patient::class.java)
                         if (patientNew != null && !patientsList.contains(patientNew)) {
-                            if (patientNew.clinicianID == ID) {
-                                patientsList.add(patientNew)
+
+                          /*  for(element in patientNew.cliniciansID!!){
+                                if (element==ID){
+                                    Timber.d("$element!!!!!!!!!!!!!!!!!" )
+                                    patientsList.add(patientNew)
+                                    return
+                                }
+                            }*/
+
+                            patientNew.cliniciansID.forEach { i->
+                                if (i==ID){
+                                    patientsList.add(patientNew)
+                                    return@forEach
+                                }
                             }
+
+//                            (1..patientNew.cliniciansID!!.size).forEach { i ->
+//                                if (patientNew.cliniciansID!![i-1].toString() == ID) {
+//                                        patientsList.add(patientNew)
+//                                    }
+//                                }
+                            }
+//                            if (patientNew.clinicianID == ID) {
+//                                patientsList.add(patientNew)
+//                            }
                         }
                     }
                 }
-            }
 
             override fun onCancelled(error: DatabaseError) {
                 Timber.d("cancelled")

@@ -10,7 +10,7 @@ data class Patient(
     // TODO variabili da sistemare:
     var dominantHand: Hand=Hand.Right,
     var gender: Gender=Gender.Female,
-    var clinicianID: String?=null,
+    var cliniciansID: ArrayList<String?> = arrayListOf(),
     var phase: Int = 1
    //var firestoreId: String="",
 

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -42,7 +43,6 @@ class PatientListActivity : AppCompatActivity() {
         listPatients = PatientsManager.getDocumentsPatient(this, ID)
         //listPatients=PatientsManager.importPatientList(this)
         val adapter = PatientAdapter(this, listPatients)
-
         layoutManager = LinearLayoutManager(this)
         rvPatients = findViewById(R.id.rvPatients)
         rvPatients.layoutManager = layoutManager
@@ -51,12 +51,11 @@ class PatientListActivity : AppCompatActivity() {
         val search = findViewById<SearchView>(R.id.searchView)
         //search.addTextChangedListener
 
-
-        override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        /*override fun onCreateOptionsMenu(menu: Menu?): Boolean {
             menuInflater.inflate(R.menu.menu, menu)
 
             return super.onCreateOptionsMenu(menu)
-        }
+        }*/
 
 
         //PASSA AD PAGINA PAZIENTE
@@ -80,10 +79,10 @@ class PatientListActivity : AppCompatActivity() {
 
         })
 
-        if (!ConnectionManager.currDevice!!.isConnected()) {
+       /* if (!ConnectionManager.currDevice!!.isConnected()) {
             Toast.makeText(this@PatientListActivity, "The pen disconnected!", Toast.LENGTH_SHORT)
                 .show()
-        }
+        }*/
 
         //AGGIUNGE PAZIENTE
         val btnAddPatient = findViewById<Button>(R.id.btnNewPatient)
@@ -127,14 +126,22 @@ class PatientListActivity : AppCompatActivity() {
 
 
 
+        //Bottone per vedere tutti i pazienti e selezionare i nuovi del clinico
+        val btnAllPatientToSelect = findViewById<Button>(R.id.btnAllPatientsToSelect)
+        val intentSelectPatent=Intent(this, SelectPatientListActivity::class.java)
+        btnAllPatientToSelect.setOnClickListener {
+            startActivity(intentSelectPatent)
+        }
+
+
+        }
+
+
+
+
 
     }
 
-    fun update(modelList: ArrayList<Patient>) {
-        listPatients = modelList
-        //adapterGlobal!!.notifyDataSetChanged()
-    }
-}
 
 //TODO c'è qualche errore che permette di scrivere dove non si dovrebbe quando si inseriscono
 // i dati del pz: io sono riuscita a scrivere durante l'esecuzione dell'app nella scritta "Name"

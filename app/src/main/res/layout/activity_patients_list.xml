@@ -47,6 +47,18 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:showAsAction="always"
+        app:showAsAction="always"/>
+
+    <Button
+        android:id="@+id/btnAllPatientsToSelect"
+        android:layout_width="111dp"
+        android:layout_height="57dp"
+        android:text="All patients"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.603"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvPatients"
+        app:layout_constraintVertical_bias="0.571" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,13 +1,10 @@
 package com.example.cpsproject
 
 import android.app.DatePickerDialog
-import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.DialogFragment
 import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.managers.PatientsManager.patientsList
 import com.example.cpsproject.model.Gender
@@ -17,7 +14,6 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_add_patient.*
 import java.text.SimpleDateFormat
 import java.util.*
-import com.google.firebase.auth.FirebaseUser
 import com.punchthrough.blestarterappandroid.ble.ConnectionManager
 import com.punchthrough.blestarterappandroid.ble.ConnectionManager.isConnected
 
@@ -88,6 +84,7 @@ class AddPatientActivity : AppCompatActivity() {
                 clinicianID= currentUser.uid
             }
 
+
             // Variabile patient
             var patient = Patient(
                 etName.text.toString(),
@@ -97,12 +94,13 @@ class AddPatientActivity : AppCompatActivity() {
                 etBirthDateAdd.text.toString(),
                 handEnum,
                 genderEnum,
-                clinicianID
             )
-            if (!ConnectionManager.currDevice!!.isConnected()) {
+            patient.cliniciansID?.add(clinicianID)
+
+          /*  if (!ConnectionManager.currDevice!!.isConnected()) {
                 Toast.makeText(this@AddPatientActivity, "The pen disconnected!", Toast.LENGTH_SHORT)
                     .show()
-            }
+            }*/
             // Add patient to patientlist
             PatientsManager.addPatient(patient, applicationContext)
 

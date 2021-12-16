@@ -2,14 +2,19 @@ package com.example.cpsproject
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
 import android.widget.Button
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.adapters.SearchViewBindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.managers.PatientsManager.getDocumentsAllPatient
 import com.example.cpsproject.model.Patient
+import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.punchthrough.blestarterappandroid.ble.ConnectionManager
 import com.punchthrough.blestarterappandroid.ble.ConnectionManager.isConnected
@@ -48,14 +53,30 @@ class PatientListActivity : AppCompatActivity() {
         rvPatients.layoutManager = layoutManager
         rvPatients.adapter = adapter
 
-        val search = findViewById<SearchView>(R.id.searchView)
-        //search.addTextChangedListener
 
 
         override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-            menuInflater.inflate(R.menu.menu, menu)
+            menuInflater.inflate(R.menu.menu, menu);
+            var menuItem= menu.findItem(R.id.searchView);
+            var searchView=menuItem.actionView as SearchView
 
-            return super.onCreateOptionsMenu(menu)
+            searchView.maxWidth=Int.MAX_VALUE
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+                override fun SearchViewBindingAdapter.OnQueryTextSubmit(p0:String?):Boolean{
+                    return true
+
+                }
+
+                override fun onQueryTextChange(p0: String?): Boolean {
+adapter.filter.filter(p0);
+
+                    return true
+                }
+
+            } )
+
+
+            return true;
         }
 
 

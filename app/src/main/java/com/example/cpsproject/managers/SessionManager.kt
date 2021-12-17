@@ -19,6 +19,7 @@ object SessionManager {
      val gson = Gson()
      val jsonDocument = gson.toJson(session)
 
+     Timber.d("ok prova a mano")
      Timber.d("json %s", jsonDocument)
 
      var folder = context.getDir("RecordingSessionFolder", Context.MODE_PRIVATE)

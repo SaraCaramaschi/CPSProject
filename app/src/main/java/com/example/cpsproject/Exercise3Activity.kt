@@ -3,8 +3,12 @@ package com.example.cpsproject
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.example.cpsproject.managers.SessionManager
+import com.example.cpsproject.managers.saveDocument
+import com.example.cpsproject.model.Session
 import com.punchthrough.blestarterappandroid.ble.ConnectionManager
 import kotlinx.android.synthetic.main.activity_exercise3.*
+import timber.log.Timber
 
 class Exercise3Activity : AppCompatActivity() {
 
@@ -28,7 +32,18 @@ class Exercise3Activity : AppCompatActivity() {
                 "Download started",
                 Toast.LENGTH_SHORT
             ).show()
-            ConnectionManager.download()
+
+            var provaSess: Session = provaamanoSessione()
+            saveDocument(provaSess, applicationContext)
+            //saveDocument(SessionManager.sessione, applicationContext)
+            //ConnectionManager.download()
         }
+    }
+
+    private fun provaamanoSessione(): Session {
+        var session =Session()
+        session.device = "CIAOPROVA"
+        Timber.d("ok prova a mano")
+        return session
     }
 }

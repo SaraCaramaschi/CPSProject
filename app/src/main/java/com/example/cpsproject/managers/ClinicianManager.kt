@@ -80,21 +80,6 @@ object ClinicianManager {
 
         //TODO SALVARE IN DATABSE FILE RIMASTI IN LOCALE
     }
-/*
-        //Da json a data class OK
-        fun readClinicianJson(file: File, context: Context): Clinician {
-            //Creating a new Gson object to read data
-            var gson = Gson()
-            //Read the PostJSON.json file
-            val bufferedReader: BufferedReader = file.bufferedReader()
-            // Read the text from buffferReader and store in String variable
-            val inputString = bufferedReader.use { it.readText() }
-
-            //Convert the Json File to Gson Object
-            var clinician = gson.fromJson(inputString, Clinician::class.java)
-            return clinician
-        }
-*/
 
         // Funzione per leggere documenti da realtime database
         fun getDocumentsClinician(context: Context): ArrayList<Clinician> {
@@ -185,7 +170,7 @@ object ClinicianManager {
 
 
             })
-//TODO capire come passare il nome del clinico
+
 }
 }
 

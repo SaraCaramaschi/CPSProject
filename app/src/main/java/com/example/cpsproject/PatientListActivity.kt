@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -29,6 +30,7 @@ class PatientListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patients_list)
 
+
         // GET USER
 
         var currentuser = FirebaseAuth.getInstance().getCurrentUser()?.getUid()
@@ -48,15 +50,7 @@ class PatientListActivity : AppCompatActivity() {
         rvPatients.layoutManager = layoutManager
         rvPatients.adapter = adapter
 
-        val search = findViewById<SearchView>(R.id.searchView)
-        //search.addTextChangedListener
 
-
-        override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-            menuInflater.inflate(R.menu.menu, menu)
-
-            return super.onCreateOptionsMenu(menu)
-        }
 
 
         //PASSA AD PAGINA PAZIENTE
@@ -79,11 +73,11 @@ class PatientListActivity : AppCompatActivity() {
             }
 
         })
-
+/*
         if (!ConnectionManager.currDevice!!.isConnected()) {
             Toast.makeText(this@PatientListActivity, "The pen disconnected!", Toast.LENGTH_SHORT)
                 .show()
-        }
+        }*/
 
         //AGGIUNGE PAZIENTE
         val btnAddPatient = findViewById<Button>(R.id.btnNewPatient)

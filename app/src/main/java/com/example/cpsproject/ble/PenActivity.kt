@@ -9,7 +9,10 @@ import android.os.Handler
 import android.os.Looper
 import android.widget.Button
 import android.widget.Toast
+import com.example.cpsproject.Phase1Activity
+import com.example.cpsproject.Phase2Activity
 import com.example.cpsproject.R
+import com.example.cpsproject.managers.SessionManager
 import com.punchthrough.blestarterappandroid.ble.ConnectionManager
 import kotlinx.android.synthetic.main.activity_pen.*
 import kotlinx.android.synthetic.main.activity_real_time.*
@@ -40,6 +43,16 @@ class PenActivity : AppCompatActivity() {
             //PenManager.downloadJson(PenManager.penData!!, this)
             ConnectionManager.download()
             Toast.makeText(this@PenActivity,"Successful download ", Toast.LENGTH_SHORT).show()
+        }
+
+        btnProtocol.setOnClickListener {
+            if (SessionManager.sessione.phase == 1){
+                val intent1 = Intent(this, Phase1Activity::class.java)
+                startActivity(intent1)
+            }else if (SessionManager.sessione.phase == 2){
+                val intent1 = Intent(this, Phase2Activity::class.java)
+                startActivity(intent1)
+            }
         }
     }
 }

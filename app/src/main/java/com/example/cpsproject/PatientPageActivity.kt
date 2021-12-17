@@ -16,6 +16,8 @@ import com.example.cpsproject.managers.PatientsManager.patientsList
 import com.example.cpsproject.managers.PenManager
 import com.example.cpsproject.managers.SessionManager
 import com.example.cpsproject.model.Patient
+import com.example.cpsproject.model.Session
+import com.google.firebase.auth.FirebaseAuth
 import com.punchthrough.blestarterappandroid.ble.ConnectionManager
 import com.punchthrough.blestarterappandroid.ble.ConnectionManager.isConnected
 import kotlinx.android.synthetic.main.activity_add_patient.*
@@ -24,6 +26,8 @@ import kotlinx.android.synthetic.main.activity_patient_page.*
 import java.time.LocalDateTime
 
 class PatientPageActivity : AppCompatActivity() {
+    var session: Session = Session()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patient_page)
@@ -57,8 +61,14 @@ class PatientPageActivity : AppCompatActivity() {
 
         val btnPhase1 = findViewById<Button>(R.id.btnPhase1)
         btnPhase1.setOnClickListener {
-            val intent1 = Intent(this, Phase1Activity::class.java)
-            startActivity(intent1)
+            //val intent1 = Intent(this, Phase1Activity::class.java)
+            //startActivity(intent1)
+            // bottone CONNESSIONE PENNA
+            var phase = 1
+            startSession(phase)
+
+            val intent = Intent(this, MainConnection::class.java)
+            startActivity(intent)
         }
 
         val btnPhase2 = findViewById<Button>(R.id.btnPhase2)
@@ -67,6 +77,8 @@ class PatientPageActivity : AppCompatActivity() {
             //TODO: editphase (in modo che si salvi anche online)
             editPhase()
 
+            var phase = 2
+            startSession(phase)
             val intent2 = Intent(this, Phase2Activity::class.java)
             intent2.putExtra("phase",2)
             startActivity(intent2)
@@ -113,6 +125,26 @@ class PatientPageActivity : AppCompatActivity() {
         tvHand.setText("Dominant Hand:"+" "+patient.dominantHand.toString())
         tvTax.setText("Tax code:"+" "+patient.taxcode.toString())
     }
+
+    @SuppressLint("NewApi")
+    fun startSession(phase:Int) {
+        session.device = PenManager.penName.toString()
+        session.patientID = PatientsManager.selectedPatient.toString()
+        session.phase = phase
+
+        var mAuth = FirebaseAuth.getInstance()
+        val currentUser = mAuth.currentUser
+        var clinicianID:String= String()
+
+        if (currentUser != null) {
+            clinicianID= currentUser.uid
+        }
+        session.clinicianID = clinicianID
+
+        SessionManager.sessione = session
+    }
+
+
 
 }
 

@@ -3,6 +3,8 @@ package com.example.cpsproject
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.example.cpsproject.managers.SessionManager
+import com.example.cpsproject.managers.saveDocument
 import com.punchthrough.blestarterappandroid.ble.ConnectionManager
 import kotlinx.android.synthetic.main.activity_exercise3.*
 
@@ -28,6 +30,7 @@ class Exercise3Activity : AppCompatActivity() {
                 "Download started",
                 Toast.LENGTH_SHORT
             ).show()
+            saveDocument(SessionManager.sessione, applicationContext)
             ConnectionManager.download()
         }
     }

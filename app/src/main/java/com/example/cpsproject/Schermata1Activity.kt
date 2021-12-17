@@ -88,5 +88,11 @@ class Schermata1Activity : AppCompatActivity() {
             val intent = Intent(this, PatientListActivity::class.java)
             startActivity(intent)
         }
+
+        val btnPen = findViewById<Button>(R.id.btnPenConnection)
+        btnPen.setOnClickListener {
+            val intent = Intent(this, MainConnection::class.java)
+            startActivity(intent)
+        }
     }
 }

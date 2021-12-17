@@ -49,6 +49,7 @@ object PatientsManager {
 
     // Funzione che salva nuovo paziente su realtime database-->OK
     fun saveRealtimePatient(jsonpatient: String, patient: Patient, context: Context) {
+
         val db: DatabaseReference
         db =
             FirebaseDatabase.getInstance("https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app")
@@ -247,7 +248,7 @@ object PatientsManager {
     }
 
     // Funzione per leggere tutti i pazienti da realtime database-->OK
-    fun getDocumentsAllPatient(context: Context): ArrayList<Patient> {
+    fun getDocumentsAllPatient(context: Context, ): ArrayList<Patient> {
 
         val db: DatabaseReference =
             FirebaseDatabase.getInstance("https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app")
@@ -261,6 +262,7 @@ object PatientsManager {
                         var patientNew = patientsSnapshot.getValue(Patient::class.java)
                         if (patientNew != null && !patientsList.contains(patientNew)) {
                             patientsList.add(patientNew)
+                           
                         }
                     }
                 }

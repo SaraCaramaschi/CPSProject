@@ -36,7 +36,7 @@
             tools:ignore="MissingConstraints">
 
             <TextView
-                android:id="@+id/PatientName"
+                android:id="@+id/PatientNameAll"
                 android:layout_width="match_parent"
                 android:layout_height="39dp"
                 android:layout_marginStart="4dp"
@@ -47,7 +47,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tvPatientPhase"
+                android:id="@+id/tvPatientPhaseAll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

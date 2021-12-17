@@ -8,8 +8,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.cpsproject.ble.MainConnection
 import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.model.Patient
+import com.google.firebase.auth.FirebaseAuth
 import com.punchthrough.blestarterappandroid.ble.ConnectionManager
 import com.punchthrough.blestarterappandroid.ble.ConnectionManager.isConnected
 import kotlinx.android.synthetic.main.activity_patient_all.*
@@ -23,7 +25,6 @@ class SelectPatientListActivity : AppCompatActivity() {
 
     // QUI X RECYCLER CHE SI AGGIORNA
     var listPatients: ArrayList<Patient> = ArrayList()
-    var listAllPatients: ArrayList<Patient> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,11 +32,11 @@ class SelectPatientListActivity : AppCompatActivity() {
 
         // GET USER
 
-     /*   var currentuser = FirebaseAuth.getInstance().getCurrentUser()?.getUid()
+        var currentuser = FirebaseAuth.getInstance().getCurrentUser()?.getUid()
         var ID: String = String()
         if (currentuser != null) {
             ID = currentuser
-        }*/
+        }
 
         // QUI X RECYCLER CHE SI AGGIORNA
         //Importare pazienti da firebase
@@ -58,7 +59,7 @@ class SelectPatientListActivity : AppCompatActivity() {
 
         //TODO SELECT PATIENT
         //PASSA AD PAGINA PAZIENTE
-        val intentPage = Intent(this, PatientPageActivity::class.java)
+        //val intentPage = Intent(this, PatientPageActivity::class.java)
 
         /*adapter.setOnItemClickListener(object : SelectPatientAdapter.onItemClickListener {
             override fun onClick(position: Int) {
@@ -83,12 +84,6 @@ class SelectPatientListActivity : AppCompatActivity() {
                 .show()
         }*/
 
-        //AGGIUNGE PAZIENTE Al clinico
-        val btnAddSelectedPatient = findViewById<Button>(R.id.addSelectedPatient)
-        btnAddSelectedPatient.setOnClickListener {
-
-        }
-
         adapter.setOnItemClickListener(object : SelectPatientAdapter.onItemClickListener {
             override fun onClick(position: Int) {
                 Toast.makeText(
@@ -100,12 +95,29 @@ class SelectPatientListActivity : AppCompatActivity() {
                 var pos = position
                 PatientsManager.selectedPatient = pos
 
-                intentPage.putExtra("position", pos)
-                startActivity(intentPage)
 
             }
 
         })
+        var intent= Intent(this, PatientListActivity::class.java)
+        //AGGIUNGE ID
+        val btnAddSelectedPatient = findViewById<Button>(R.id.addSelectedPatient)
+        btnAddSelectedPatient.setOnClickListener {
+            var pos:Int
+            pos =0
+            listPatients.forEach{it->
+                if(checkBox.isChecked){
+                    it.cliniciansID.add(ID)
+                    PatientsManager.deletePatient(this,pos)
+                    PatientsManager.addPatient(it, applicationContext)
+                }
+                pos=pos+1
+            }
+            startActivity(intent)
+            //TODO codice per aggiungere id ad array
+        }
+
+
 
 
  }

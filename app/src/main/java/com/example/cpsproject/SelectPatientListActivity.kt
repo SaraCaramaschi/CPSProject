@@ -24,7 +24,7 @@ class SelectPatientListActivity : AppCompatActivity() {
     //TODO NON SO SE BISOGNA RICHIAMARE ARRAY PAZIENTI PER VISUALIZZARE SUBITO LA LISTA--> in realtà basta importare in schermata 1
 
     // QUI X RECYCLER CHE SI AGGIORNA
-    var listPatients: ArrayList<Patient> = ArrayList()
+    var listPatientsAll: ArrayList<Patient> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,51 +40,15 @@ class SelectPatientListActivity : AppCompatActivity() {
 
         // QUI X RECYCLER CHE SI AGGIORNA
         //Importare pazienti da firebase
-        listPatients = PatientsManager.getDocumentsAllPatient(this)
+        listPatientsAll = PatientsManager.getDocumentsAllPatient(this,ID)
         //listPatients=PatientsManager.importPatientList(this)
-        val adapter = SelectPatientAdapter(this, listPatients)
+        val adapter = SelectPatientAdapter(this, listPatientsAll)
         layoutManager = LinearLayoutManager(this)
         rvPatients = findViewById(R.id.rvPatients)
         rvPatients.layoutManager = layoutManager
         rvPatients.adapter = adapter
 
-        val search = findViewById<SearchView>(R.id.searchView)
-        //search.addTextChangedListener
-
-        /*override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-            menuInflater.inflate(R.menu.menu, menu)
-
-            return super.onCreateOptionsMenu(menu)
-        }*/
-
-        //TODO SELECT PATIENT
-        //PASSA AD PAGINA PAZIENTE
-        //val intentPage = Intent(this, PatientPageActivity::class.java)
-
-        /*adapter.setOnItemClickListener(object : SelectPatientAdapter.onItemClickListener {
-            override fun onClick(position: Int) {
-                Toast.makeText(
-                    this@SelectPatientListActivity,
-                    "you clicked on patient $position",
-                    Toast.LENGTH_SHORT
-                ).show()
-
-                var pos = position
-                PatientsManager.selectedPatient = pos
-
-                intentPage.putExtra("position", pos)
-                startActivity(intentPage)
-
-            }
-
-        })
-
-        if (!ConnectionManager.currDevice!!.isConnected()) {
-            Toast.makeText(this@SelectPatientListActivity, "The pen disconnected!", Toast.LENGTH_SHORT)
-                .show()
-        }*/
-
-        adapter.setOnItemClickListener(object : SelectPatientAdapter.onItemClickListener {
+/*        adapter.setOnItemClickListener(object : SelectPatientAdapter.onItemClickListener {
             override fun onClick(position: Int) {
                 Toast.makeText(
                     this@SelectPatientListActivity,
@@ -95,23 +59,26 @@ class SelectPatientListActivity : AppCompatActivity() {
                 var pos = position
                 PatientsManager.selectedPatient = pos
 
-
             }
 
-        })
+        })*/
         var intent= Intent(this, PatientListActivity::class.java)
         //AGGIUNGE ID
         val btnAddSelectedPatient = findViewById<Button>(R.id.addSelectedPatient)
         btnAddSelectedPatient.setOnClickListener {
             var pos:Int
             pos =0
-            listPatients.forEach{it->
+            listPatientsAll.forEach{it->
                 if(checkBox.isChecked){
                     it.cliniciansID.add(ID)
                     PatientsManager.deletePatient(this,pos)
                     PatientsManager.addPatient(it, applicationContext)
+                    pos=pos+1
+                    return@forEach
                 }
-                pos=pos+1
+                else {
+                    pos = pos + 1
+                }
             }
             startActivity(intent)
             //TODO codice per aggiungere id ad array

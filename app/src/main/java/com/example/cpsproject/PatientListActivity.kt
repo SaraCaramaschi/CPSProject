@@ -99,12 +99,12 @@ class PatientListActivity : AppCompatActivity() {
         val btnAllPatient = findViewById<Button>(R.id.btnAllPatients)
         btnAllPatient.setOnClickListener {
 
-            val mainHandler = Handler(Looper.getMainLooper())
+           /* val mainHandler = Handler(Looper.getMainLooper())
             mainHandler.post(object: Runnable {
                 override fun run() {
-                    if (listPatients != null) {
+                    if (listPatients != null) {*/
 
-                        listAllPatients = getDocumentsAllPatient(this@PatientListActivity)
+                        listAllPatients = getDocumentsAllPatient(this@PatientListActivity,ID)
 
                         //TODO fare in modo che ci sia rotellina finché non arriva la lista dei pazienti
                         //update(listAllPatients)
@@ -132,12 +132,12 @@ class PatientListActivity : AppCompatActivity() {
                             }
 
                         })*/
-                        return
-                    } else {
-                        mainHandler.postDelayed(this, 1000)
-                    }
-                }
-            })
+//                       return
+//                    } else {
+//                        mainHandler.postDelayed(this, 1000)
+//                    }
+//                }
+  //          })
 
         }
 

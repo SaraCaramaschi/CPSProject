@@ -64,7 +64,7 @@ class Schermata1Activity : AppCompatActivity() {
 
         //listPatients = PatientsManager.getDocumentsPatient(this, ID)
         PatientsManager.patientsList = PatientsManager.getDocumentsPatient(this, ID)
-        var patientAll= PatientsManager.getDocumentsAllPatient(this)
+        var patientAll= PatientsManager.getDocumentsAllPatient(this,ID)
 
         //TODO CONTROLLO LOCALE + CARICO SU DATABSE
         checkPatientLocal(this)

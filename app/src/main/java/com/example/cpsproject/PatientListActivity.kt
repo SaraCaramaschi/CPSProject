@@ -73,11 +73,6 @@ class PatientListActivity : AppCompatActivity() {
             }
 
         })
-/*
-        if (!ConnectionManager.currDevice!!.isConnected()) {
-            Toast.makeText(this@PatientListActivity, "The pen disconnected!", Toast.LENGTH_SHORT)
-                .show()
-        }*/
 
         //AGGIUNGE PAZIENTE
         val btnAddPatient = findViewById<Button>(R.id.btnNewPatient)

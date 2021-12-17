@@ -21,6 +21,11 @@ class Phase2Activity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_phase_2)
 
+        if (!ConnectionManager.currDevice!!.isConnected()) {
+            Toast.makeText(this@Phase2Activity, "The pen disconnected!", Toast.LENGTH_SHORT)
+                .show()
+        }
+
         val tvDescription2 = findViewById<TextView>(R.id.tvDescription2)
 
         tvDescription2.setText("In this phase the patient has to do the 3 exercises once a month. \n"+
@@ -35,10 +40,6 @@ class Phase2Activity: AppCompatActivity() {
             intent1.putExtra("phase",2)
             startActivity(intent1)
 
-        }
-        if (!ConnectionManager.currDevice!!.isConnected()) {
-            Toast.makeText(this@Phase2Activity, "The pen disconnected!", Toast.LENGTH_SHORT)
-                .show()
         }
     }
 }

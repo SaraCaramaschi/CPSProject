@@ -28,9 +28,7 @@ class Phase2Activity: AppCompatActivity() {
 
         val tvDescription2 = findViewById<TextView>(R.id.tvDescription2)
 
-        tvDescription2.setText("In this phase the patient has to do the 3 exercises once a month. \n"+
-        "In the personal page of the patient there is the progression of the phase 2. \n"+"When an exercise is completed a MARK will appear.")
-
+        tvDescription2.setText("In this phase the patient has to do the 3 exercises once a month. \n")
         val btn1= findViewById<Button>(R.id.btnEx1Ph2)
         btn1.setOnClickListener {
             val intent = getIntent()

@@ -1,6 +1,8 @@
 package com.example.cpsproject
 
-import android.app.AlertDialog
+
+import android.widget.Filter.FilterResults as filterResults
+
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -20,7 +22,7 @@ import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.managers.PatientsManager.deletePatient
 
 
-class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : RecyclerView.Adapter<PatientAdapter.ViewHolder>() {
+class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : RecyclerView.Adapter<PatientAdapter.ViewHolder>(), Filterable{
 
     // DOMANDONA: noi nella recycler view mostriamo i nomi o mostriamo i codici (per non farci hackerare yass) ???
     // Qui prendo tutti i nomi e le fasi della listaPaziente (che arriva dall'activity principale)
@@ -28,11 +30,16 @@ class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : Recycl
     private var phases = listPatients.map{ it.phase }
     private var surname = listPatients.map{ it.surname }
     private val selectedPosition= -1
-//var itemFilter =ArrayList<Patient>();
+    var itemModalList= ArrayList<Patient>()
+ var itemFilter =ArrayList<Patient>();
      //TODO DOVE DEVO METTERLO https://www.youtube.com/watch?v=HMjI7cLsyfw
 
+  fun setData(itemModalList: ArrayList<Patient>){
+     this.itemModalList=itemModalList
+         notifyDataSetChanged()
+ }
 
-    inner class ViewHolder(itemView: View, listener: onItemClickListener ): RecyclerView.ViewHolder(itemView){
+    inner class ViewHolder(itemView: View, listener: onItemClickListener ): RecyclerView.ViewHolder(itemView) {
         var itemName: TextView
         var itemPhase: TextView
 
@@ -46,35 +53,18 @@ class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : Recycl
 
         }
 
-
-
-
-
     }
 
    private lateinit var mListener: onItemClickListener
-
-   private lateinit var mLongListener: onItemLongClickListener
 
    interface onItemClickListener{
         fun onClick(position:Int)
 
    }
 
-    interface onItemLongClickListener{
-        fun onLongClick(position: Int): Boolean
-
-    }
-
-
-
     fun setOnItemClickListener(listener: onItemClickListener){
         mListener=listener
    }
-    fun setOnItemLongClickListener(listener: onItemLongClickListener){
-        mLongListener=listener
-    }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientAdapter.ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.activity_patient,parent,false)
@@ -84,15 +74,6 @@ class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : Recycl
     override fun onBindViewHolder(holder: PatientAdapter.ViewHolder, position: Int) {
         holder.itemName.text = names[position] + " " + surname[position]
         holder.itemPhase.text = "Phase:" + phases[position].toString()
-
-       // per cambiare il colore a un elemento selezionato (non funziona)
-       /* if (selectedPosition == position) {
-            holder.itemView.setBackgroundColor(Color.parseColor("#9999A1"))
-        } else {
-            holder.itemView.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
-        }*/
-
-
     }
 
     override fun getItemCount(): Int {
@@ -100,8 +81,85 @@ class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : Recycl
     }
 
 
-    //FILTRO 2
-   /* override fun getFilter(): Filter {
+
+
+
+
+
+
+//FILTRO 1
+override fun getFilter(): Filter {
+
+    return object :Filter(){
+        override fun performFiltering(charsequence: CharSequence?): filterResults {
+            var filterResults = filterResults()
+            if (charsequence == null || charsequence.isEmpty()) {
+
+            } else {
+                var searchChr: String = charsequence.toString().toLowerCase();
+                var searchPtList: ArrayList<Patient> = ArrayList();
+                for (item in itemFilter) {
+                    if (item.name?.toLowerCase()
+                            ?.contains(searchChr) == true || item.surname?.toLowerCase()
+                                ?.contains(searchChr) == true
+                                            ) {
+                        searchPtList.add(item)
+                    }
+                }
+                filterResults.count = itemFilter.size
+                filterResults.values = itemFilter;
+
+            }
+            return filterResults;
+        }
+
+
+        override fun publishResults(p0: CharSequence?, p1: filterResults?) {
+            patientsList = p1?.values as ArrayList<Patient>
+            notifyDataSetChanged()
+        }
+
+    }
+
+}
+
+//1
+    /* override fun getFilter(): Filter {
+
+         return object :Filter(){
+             override fun performFiltering(charsequence: CharSequence?): FilterResults {
+                 var filterResults = FilterResults()
+                 if (charsequence == null || charsequence.isEmpty()) {
+
+                 } else {
+                     var searchChr: String = charsequence.toString().toLowerCase();
+                     var patientList: List<Patient>;
+                     for (item in itemFilter) {
+                         if (item.name.toLowerCase()
+                                 .contains(searchChr) || items.surname.toLowerCase()
+                                 .contains(searchChr)
+                         ) {
+                             patientList.add(patientList)
+                         }
+                     }
+                     filterResults.count = itemFilter.size
+                     filterResults.values = itemFilter;
+
+                 }
+                 return FilterResults;
+             }
+
+             override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
+                 patientsList = p1.values as ArrayList<Patient>
+                 notifyDataSetChanged()
+             }
+
+         }
+
+     }*/
+
+    //2
+    /*override fun getFilter(): Filter {
         return filter
     }
 
@@ -117,9 +175,9 @@ class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : Recycl
                 for (item in 0..patientsList.size) {
                     if (patientsList[item].name!!.contains(filterPattern) || patientsList[item].surname!!.contains(filterPattern))
 
-                        {
-                            filteredList.add(patientsList[item])
-                        }
+                    {
+                        filteredList.add(patientsList[item])
+                    }
                 }
             }
             val results = FilterResults()
@@ -131,45 +189,8 @@ class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : Recycl
             filteredList = filterResults.values as MutableList<Patient>
             notifyDataSetChanged()
         }
-    }
-*/
-
-
-//FILTRO 1
-
-
-/*    override fun getFilter(): Filter {
-
-        return object :Filter(){
-            override fun performFiltering(charsequence: CharSequence?): FilterResults {
-                var filterResults = FilterResults()
-                if (charsequence == null || charsequence.isEmpty()) {
-
-                } else {
-                    var searchChr: String = charsequence.toString().toLowerCase();
-                    var patientList: List<Patient>;
-                    for (item in itemFilter) {
-                        if (item.name.toLowerCase()
-                                .contains(searchChr) || items.surname.toLowerCase()
-                                .contains(searchChr)
-                        ) {
-                            patientList.add(patientList)
-                        }
-                    }
-                    filterResults.count = itemFilter.size
-                    filterResults.values = itemFilter;
-
-                }
-                return FilterResults;
-            }
-
-            override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
-                patientsList = p1.values as ArrayList<Patient>
-                notifyDataSetChanged()
-            }
-
-        }
-
     }*/
+
+
 }
 

@@ -95,9 +95,8 @@ class AddPatientActivity : AppCompatActivity() {
                 handEnum,
                 genderEnum,
             )
+/*            if (!ConnectionManager.currDevice!!.isConnected()) {
             patient.cliniciansID?.add(clinicianID)
-
-          /*  if (!ConnectionManager.currDevice!!.isConnected()) {
                 Toast.makeText(this@AddPatientActivity, "The pen disconnected!", Toast.LENGTH_SHORT)
                     .show()
             }*/

@@ -39,6 +39,7 @@ class PatientListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patients_list)
 
+
         // GET USER
 
         var currentuser = FirebaseAuth.getInstance().getCurrentUser()?.getUid()
@@ -80,10 +81,10 @@ class PatientListActivity : AppCompatActivity() {
 
         })
 
-       /* if (!ConnectionManager.currDevice!!.isConnected()) {
+        if (!ConnectionManager.currDevice!!.isConnected()) {
             Toast.makeText(this@PatientListActivity, "The pen disconnected!", Toast.LENGTH_SHORT)
                 .show()
-        }*/
+        }
 
         //AGGIUNGE PAZIENTE
         val btnAddPatient = findViewById<Button>(R.id.btnNewPatient)

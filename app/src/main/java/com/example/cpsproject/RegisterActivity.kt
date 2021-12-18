@@ -88,7 +88,7 @@ class RegisterActivity : AppCompatActivity() {
                                     etName.text.toString(),
                                     etSurname.text.toString(),
                                     etEmail.text.toString(),
-                                    etPassword1.text.toString(),
+                                    //etPassword1.text.toString(),
                                     firebaseUser.uid//TODO leva la password
                                 )
                                 ClinicianManager.addClinician(clinician, applicationContext)

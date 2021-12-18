@@ -17,19 +17,18 @@ import com.punchthrough.blestarterappandroid.ble.ConnectionManager
 import com.punchthrough.blestarterappandroid.ble.ConnectionManager.isConnected
 
 class Phase2Activity: AppCompatActivity() {
-    var session: Session = Session()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_phase_2)
 
+        if (!ConnectionManager.currDevice!!.isConnected()) {
+            Toast.makeText(this@Phase2Activity, "The pen disconnected!", Toast.LENGTH_SHORT)
+                .show()
+        }
+
         val tvDescription2 = findViewById<TextView>(R.id.tvDescription2)
 
-        tvDescription2.setText("In this phase the patient has to do the 3 exercises once a month. \n"+
-        "In the personal page of the patient there is the progression of the phase 2. \n"+"When an exercise is completed a MARK will appear.")
-
-        var phase = 2
-        startSession(phase)
-
+        tvDescription2.setText("In this phase the patient has to do the 3 exercises once a month. \n")
         val btn1= findViewById<Button>(R.id.btnEx1Ph2)
         btn1.setOnClickListener {
             val intent = getIntent()
@@ -40,28 +39,5 @@ class Phase2Activity: AppCompatActivity() {
             startActivity(intent1)
 
         }
-        if (!ConnectionManager.currDevice!!.isConnected()) {
-            Toast.makeText(this@Phase2Activity, "The pen disconnected!", Toast.LENGTH_SHORT)
-                .show()
-        }
     }
-
-    @SuppressLint("NewApi")
-    fun startSession(phase:Int) {
-        session.device = PenManager.penName.toString()
-        session.patientID = PatientsManager.selectedPatient.toString()
-        session.phase = phase
-
-        var mAuth = FirebaseAuth.getInstance()
-        val currentUser = mAuth.currentUser
-        var clinicianID:String= String()
-
-        if (currentUser != null) {
-            clinicianID= currentUser.uid
-        }
-        session.clinicianID = clinicianID
-
-        SessionManager.sessione = session
-    }
-
 }

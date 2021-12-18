@@ -34,6 +34,7 @@ import androidx.annotation.RequiresApi
 import com.example.cpsproject.ble.PenActivity
 import com.example.cpsproject.managers.PenManager
 import com.example.cpsproject.managers.SessionManager
+import com.example.cpsproject.managers.saveDocument
 import com.example.cpsproject.model.Acquisition
 import com.example.cpsproject.model.PenData
 import com.example.cpsproject.model.Session

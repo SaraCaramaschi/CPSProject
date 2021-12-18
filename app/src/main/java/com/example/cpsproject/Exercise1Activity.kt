@@ -39,6 +39,11 @@ class Exercise1Activity: AppCompatActivity() {
 
         btnStop1.setOnClickListener {
             ConnectionManager.StopOnBoard()
+            Toast.makeText(
+                this@Exercise1Activity,
+                "Remember to wait one minute in between one exercise and the other",
+                Toast.LENGTH_LONG
+            ).show()
         }
 
         btnDownloadEx1.setOnClickListener {

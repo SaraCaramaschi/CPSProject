@@ -18,6 +18,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.punchthrough.blestarterappandroid.ble.ConnectionManager
 import com.punchthrough.blestarterappandroid.ble.ConnectionManager.isConnected
 import kotlinx.android.synthetic.main.activity_schermata1.*
+import timber.log.Timber
+import android.os.AsyncTask
+
+
+
 
 class PatientListActivity : AppCompatActivity() {
     private lateinit var layoutManager: RecyclerView.LayoutManager
@@ -44,9 +49,9 @@ class PatientListActivity : AppCompatActivity() {
 
         // QUI X RECYCLER CHE SI AGGIORNA
         //Importare pazienti da firebase
-        listPatients = PatientsManager.getDocumentsPatient(this, ID)
+
         //listPatients=PatientsManager.importPatientList(this)
-        val adapter = PatientAdapter(this, listPatients)
+        val adapter = PatientAdapter(this, PatientsManager.patientsList)
         layoutManager = LinearLayoutManager(this)
         rvPatients = findViewById(R.id.rvPatients)
         rvPatients.layoutManager = layoutManager

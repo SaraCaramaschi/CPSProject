@@ -64,8 +64,8 @@ object PatientsManager {
             File(fileName).delete()
             //Timber.d("File deleted")
         }
-            .addOnFailureListener{
-                Timber.d( "Error filed to add!")
+            .addOnFailureListener {
+                Timber.d("Error filed to add!")
                 //TODO CODICE PER SALVARE IN LOCALE SE QUALOCSA VA STORTO--> verificare se funziona
                 savePatient(patient, context)
             }
@@ -105,12 +105,12 @@ object PatientsManager {
                             .getReference("Patients")
 
                     db.child(pat.taxcode.toString()).setValue(pat).addOnSuccessListener {
-                   //     Timber.d("Record added succesfully!")
+                        //     Timber.d("Record added succesfully!")
                         File(fileNameCheck).delete()
-                     //   Timber.d("File deleted")
+                        //   Timber.d("File deleted")
                     }
-                        .addOnFailureListener{
-                            Timber.d( "Error filed to add!")
+                        .addOnFailureListener {
+                            Timber.d("Error filed to add!")
                         }
 
                 }
@@ -118,7 +118,6 @@ object PatientsManager {
             }
         }
     }
-
 
 
     // Funzione per leggere documenti da realtime database-->OK TODO non mostra subito lista!
@@ -130,17 +129,25 @@ object PatientsManager {
         val myPatientsList: ArrayList<Patient> = ArrayList()
         db.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+                var i = 0
                 if (snapshot.exists()) {
                     for (patientsSnapshot in snapshot.children) {
                         var patientNew = patientsSnapshot.getValue(Patient::class.java)
+                        Timber.d("patient new %s", patientNew.toString())
+                        Timber.d("snapshot %s", patientsSnapshot.toString())
 
-                        if (patientNew != null && !myPatientsList.contains(patientNew) && patientNew.cliniciansID.contains(ID)){
+                        if (patientNew != null && !myPatientsList.contains(patientNew) && patientNew.cliniciansID.contains(
+                                ID
+                            )
+                        ) {
                             //patientNew.cliniciansID.forEach{i->
-                               // if (i==ID){
-                                    myPatientsList.add(patientNew)
+                            // if (i==ID){
+                            Timber.d("found my patient! %s", i)
+                            myPatientsList.add(patientNew)
+                            i++
 
-                               // }
-                           // }
+                            // }
+                            // }
 
 
                         }
@@ -187,7 +194,7 @@ object PatientsManager {
     }
 
     // Funzione per leggere tutti i pazienti da realtime database-->OK
-    fun getDocumentsAllPatient(context: Context, ID: String ): ArrayList<Patient> {
+    fun getDocumentsAllPatient(context: Context, ID: String): ArrayList<Patient> {
 
         val db: DatabaseReference =
             FirebaseDatabase.getInstance("https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app")
@@ -199,8 +206,11 @@ object PatientsManager {
                 if (snapshot.exists()) {
                     for (patientsSnapshot in snapshot.children) {
                         var patientNew = patientsSnapshot.getValue(Patient::class.java)
-                        if (patientNew != null && !patientsListAll.contains(patientNew) && !patientNew.cliniciansID.contains(ID)) {
-                                patientsListAll.add(patientNew)
+                        if (patientNew != null && !patientsListAll.contains(patientNew) && !patientNew.cliniciansID.contains(
+                                ID
+                            )
+                        ) {
+                            patientsListAll.add(patientNew)
                         }
                     }
                 }

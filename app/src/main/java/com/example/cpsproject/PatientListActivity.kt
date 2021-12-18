@@ -17,7 +17,6 @@ import com.example.cpsproject.model.Patient
 import com.google.firebase.auth.FirebaseAuth
 import com.punchthrough.blestarterappandroid.ble.ConnectionManager
 import com.punchthrough.blestarterappandroid.ble.ConnectionManager.isConnected
-import kotlinx.android.synthetic.main.activity_schermata1.*
 import timber.log.Timber
 import android.os.AsyncTask
 
@@ -81,10 +80,6 @@ class PatientListActivity : AppCompatActivity() {
 
         })
 
-        if (!ConnectionManager.currDevice!!.isConnected()) {
-            Toast.makeText(this@PatientListActivity, "The pen disconnected!", Toast.LENGTH_SHORT)
-                .show()
-        }
 
         //AGGIUNGE PAZIENTE
         val btnAddPatient = findViewById<Button>(R.id.btnNewPatient)

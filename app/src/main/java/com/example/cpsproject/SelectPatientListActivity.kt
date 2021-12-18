@@ -11,6 +11,7 @@ import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.managers.PatientsManager.patientsAllList
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_patient_all.*
+import timber.log.Timber
 
 class SelectPatientListActivity : AppCompatActivity() {
     private lateinit var layoutManager: RecyclerView.LayoutManager
@@ -84,14 +85,17 @@ class SelectPatientListActivity : AppCompatActivity() {
         btnAddSelectedPatient.setOnClickListener {
             var pos:Int
             pos =0
+            Timber.d("BAAAAAAAAAAAAAAAAAAAAAAAAAAAAH")
             patientsAllList.forEach{ it->
+                Timber.d("Checkkkkkkkkkkkkkkkkkkkkkkk")
                 if(checkBox.isChecked){
                     it.cliniciansID.add(ID)
+                    Timber.d("${it.cliniciansID}BAAAAAAAAAAAAAAASTA")
                     //PatientsManager.deletePatient(this,pos)
                     PatientsManager.addPatient(it, applicationContext)
                     pos=pos+1
                     //PatientsManager.patientsList.add(it)
-                    patientsAllList.remove(it)
+                    //patientsAllList.remove(it)
                     return@forEach
                 }
                 else {
@@ -100,19 +104,8 @@ class SelectPatientListActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
-
-
-
-
  }
-
-
-
-
-
-    }
-
-
+}
 
 //TODO c'è qualche errore che permette di scrivere dove non si dovrebbe quando si inseriscono
 // i dati del pz: io sono riuscita a scrivere durante l'esecuzione dell'app nella scritta "Name"

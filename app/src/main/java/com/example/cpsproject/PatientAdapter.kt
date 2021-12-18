@@ -56,8 +56,8 @@ class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : Recycl
    private lateinit var mListener: onItemClickListener
 
 
-   interface onItemClickListener{
-        fun onClick(position:Int)
+   interface onItemClickListener : SelectPatientAdapter.onItemClickListener {
+        override fun onClick(position:Int)
 
    }
 

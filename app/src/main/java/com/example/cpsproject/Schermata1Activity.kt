@@ -64,9 +64,9 @@ class Schermata1Activity : AppCompatActivity() {
 
         //listPatients = PatientsManager.getDocumentsPatient(this, ID)
         PatientsManager.patientsList = PatientsManager.getDocumentsPatient(this, ID)
-        var patientAll= PatientsManager.getDocumentsAllPatient(this,ID)
+        PatientsManager.patientsAllList = PatientsManager.getDocumentsAllPatient(this, ID)
 
-        //TODO CONTROLLO LOCALE + CARICO SU DATABSE
+        //TODO CONTROLLO LOCALE + CARICO SU DATABSE--> DOBBIAMO ARLO ANCHE PER RECORDING SESSION
         checkPatientLocal(this)
 
 
@@ -83,8 +83,6 @@ class Schermata1Activity : AppCompatActivity() {
             finish()
         }
         // bottone LISTA PAZIENTI
-        intent.putExtra("listPatients", listPatients)
-        intent.putExtra("listAllPatient", patientAll)
         val btnPatients = findViewById<Button>(R.id.btnPatients)
         btnPatients.setOnClickListener {
             val intent = Intent(this, PatientListActivity::class.java)

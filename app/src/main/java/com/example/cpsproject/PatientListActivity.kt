@@ -57,14 +57,6 @@ class PatientListActivity : AppCompatActivity() {
         rvPatients.layoutManager = layoutManager
         rvPatients.adapter = adapter
 
-        val search = findViewById<SearchView>(R.id.searchView)
-        //search.addTextChangedListener
-
-        /*override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-            menuInflater.inflate(R.menu.menu, menu)
-
-            return super.onCreateOptionsMenu(menu)
-        }*/
 
 
         //PASSA AD PAGINA PAZIENTE
@@ -183,8 +175,6 @@ class PatientListActivity : AppCompatActivity() {
         btnAllPatientToSelect.setOnClickListener {
             startActivity(intentSelectPatent)
         }
-
-
         }
 
 

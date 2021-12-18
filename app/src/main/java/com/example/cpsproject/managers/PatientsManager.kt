@@ -13,6 +13,7 @@ import java.io.File
 @SuppressLint("StaticFieldLeak")
 object PatientsManager {
     public var patientsList: ArrayList<Patient> = ArrayList()
+    public var patientsAllList: ArrayList<Patient> = ArrayList()
     public var selectedPatient: Int? = null
 
     public fun addPatient(patient: Patient, context: Context) {
@@ -140,44 +141,12 @@ object PatientsManager {
                                 ID
                             )
                         ) {
-                            //patientNew.cliniciansID.forEach{i->
-                            // if (i==ID){
                             Timber.d("found my patient! %s", i)
                             myPatientsList.add(patientNew)
                             i++
 
-                            // }
-                            // }
-
-
                         }
 
-                        /*  for(element in patientNew.cliniciansID!!){
-                                if (element==ID){
-                                    Timber.d("$element!!!!!!!!!!!!!!!!!" )
-                                    patientsList.add(patientNew)
-                                    return
-                                }
-                            }*/
-
-
-                        /* patientNew.cliniciansID.forEach { i->
-                                if (i==ID){
-                                    patientsList.add(patientNew)
-                                    return@forEach
-                                }
-                            }*/
-
-//                            (1..patientNew.cliniciansID!!.size).forEach { i ->
-//                                if (patientNew.cliniciansID!![i-1].toString() == ID) {
-//                                        patientsList.add(patientNew)
-//                                    }
-//                                }
-
-
-//                            if (patientNew.clinicianID == ID) {
-//                                patientsList.add(patientNew)
-//                            }
                     }
                 }
             }

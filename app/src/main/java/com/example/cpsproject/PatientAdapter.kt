@@ -76,12 +76,7 @@ class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : Recycl
         holder.itemName.text = names[position] + " " + surname[position]
         holder.itemPhase.text = "Phase:" + phases[position].toString()
 
-       // per cambiare il colore a un elemento selezionato (non funziona)
-        if (selectedPosition == position) {
-            holder.itemView.setBackgroundColor(Color.parseColor("#9999A1"))
-        } else {
-            holder.itemView.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
-        }
+
 
 
     }

@@ -111,7 +111,6 @@ class PatientListActivity : AppCompatActivity() {
 
                         listAllPatients = getDocumentsAllPatient(this@PatientListActivity,ID)
 
-                        //TODO fare in modo che ci sia rotellina finché non arriva la lista dei pazienti
                         //update(listAllPatients)
                         var adapterAll = PatientAdapter(this@PatientListActivity, listAllPatients)
                         layoutManager = LinearLayoutManager(this@PatientListActivity)
@@ -149,9 +148,7 @@ class PatientListActivity : AppCompatActivity() {
 
 
            /* listPatients = getDocumentsAllPatient(this)
-
-            //TODO fare in modo che ci sia rotellina finché non arriva la lista dei pazienti
-            //update(listAllPatients)
+//update(listAllPatients)
             var adapterAll = PatientAdapter(this, listPatients)
             layoutManager = LinearLayoutManager(this)
             rvPatients = findViewById(R.id.rvPatients)

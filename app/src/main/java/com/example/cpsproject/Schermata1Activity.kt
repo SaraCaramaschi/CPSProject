@@ -17,14 +17,14 @@ import com.example.cpsproject.managers.PatientsManager.checkPatientLocal
 import com.example.cpsproject.model.Clinician
 import com.example.cpsproject.model.Patient
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_schermata1.*
+import kotlinx.android.synthetic.main.home.*
 import timber.log.Timber
 
 class Schermata1Activity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_schermata1)
+        setContentView(R.layout.home)
 
         //val userId=intent.getStringExtra("user_id")
         /*   val email=intent.getStringExtra("email_id")

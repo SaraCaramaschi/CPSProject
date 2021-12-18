@@ -47,6 +47,7 @@
         <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/list_item.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/row_characteristic.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/schermata_1.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout-land/activity_register.xml" value="1.363486842105263" />
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout-large/activity_login.xml" value="0.536" />
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout-large/activity_register.xml" value="0.176" />
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout-large/login.xml" value="0.1" />
@@ -73,6 +74,10 @@
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_schermata1.xml" value="0.1" />
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/edittext_hex_payload.xml" value="0.23097826086956522" />
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/gender.xml" value="0.23097826086956522" />
+        <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/home.xml" value="0.25" />
+        <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/login2.xml" value="0.25" />
+        <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/loginn2.xml" value="0.25" />
+        <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/register.xml" value="0.25" />
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/row_characteristic.xml" value="0.23097826086956522" />
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/row_scan_result.xml" value="0.23097826086956522" />
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/schermata_1.xml" value="0.1" />

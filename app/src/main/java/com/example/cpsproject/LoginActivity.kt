@@ -13,6 +13,7 @@ import com.example.cpsproject.model.Clinician
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
+
 import timber.log.Timber
 import java.util.*
 
@@ -20,7 +21,8 @@ import java.util.*
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_login
+        )
 
         var emailLog: String = String()
         var passwordLog: String = String()

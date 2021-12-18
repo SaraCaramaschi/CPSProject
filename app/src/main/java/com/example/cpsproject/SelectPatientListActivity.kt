@@ -68,6 +68,8 @@ class SelectPatientListActivity : AppCompatActivity() {
             var pos:Int
             pos =0
             Timber.d("BAAAAAAAAAAAAAAAAAAAAAAAAAAAAH")
+
+
             patientsAllList.forEach{ it->
                 Timber.d("Checkkkkkkkkkkkkkkkkkkkkkkk")
                 if(checkBox.isChecked){
@@ -77,7 +79,10 @@ class SelectPatientListActivity : AppCompatActivity() {
                     PatientsManager.addPatient(it, applicationContext)
                     pos=pos+1
                     //PatientsManager.patientsList.add(it)
-                    //patientsAllList.remove(it)
+
+                    //Per cancellare dal locale il paziente, altrimenti rimane nella lista anche se
+                    // viene aggiunto dal clinico
+                    patientsAllList.remove(it)
                     return@forEach
                 }
                 else {

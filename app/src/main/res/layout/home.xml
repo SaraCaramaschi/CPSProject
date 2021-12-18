@@ -7,6 +7,15 @@
     tools:context=".Schermata1Activity">
 
 
+    <ImageView
+        android:id="@+id/icClinician"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_gravity="center_vertical"
+        android:src="@mipmap/ic_clinician"
+        app:layout_constraintStart_toStartOf="@+id/guidelineV1"
+        app:layout_constraintTop_toTopOf="@+id/guidelineO1" />
+
     <Button
         android:id="@+id/btnPenConnection"
         android:layout_width="wrap_content"
@@ -14,9 +23,22 @@
         android:text="@string/pen_connection"
         app:layout_constraintBottom_toTopOf="@+id/btnPatients"
         app:layout_constraintEnd_toStartOf="@+id/guidelineV2"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.403"
         app:layout_constraintStart_toStartOf="@+id/guidelineV1"
         app:layout_constraintTop_toBottomOf="@+id/tvClinician" />
+
+    <ImageView
+        android:id="@+id/icBLE"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center_vertical"
+        android:src="@mipmap/ic_bluetooth"
+        app:layout_constraintBottom_toTopOf="@+id/btnPatients"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineV2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guidelineV1"
+        app:layout_constraintTop_toBottomOf="@+id/tvClinician"
+        app:layout_constraintVertical_bias="0.486" />
 
     <Button
         android:id="@+id/btnLogOut"
@@ -25,9 +47,22 @@
         android:text="@string/log_out"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guidelineV2"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.281"
         app:layout_constraintStart_toStartOf="@+id/guidelineV1"
         app:layout_constraintTop_toBottomOf="@+id/btnPatients" />
+
+    <ImageView
+        android:id="@+id/icLoagout"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center_vertical"
+        android:src="@mipmap/ic_logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineV2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guidelineV1"
+        app:layout_constraintTop_toBottomOf="@+id/btnPatients"
+        app:layout_constraintVertical_bias="0.483" />
 
     <Button
         android:id="@+id/btnPatients"
@@ -36,21 +71,33 @@
         android:text="@string/patients_list"
         app:layout_constraintBottom_toTopOf="@+id/btnLogOut"
         app:layout_constraintEnd_toStartOf="@+id/guidelineV2"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.357"
         app:layout_constraintStart_toStartOf="@+id/guidelineV1"
         app:layout_constraintTop_toBottomOf="@+id/btnPenConnection" />
 
+    <ImageView
+        android:id="@+id/icPatientList"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center_vertical"
+        android:src="@mipmap/ic_patient_list"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogOut"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineV2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guidelineV1"
+        app:layout_constraintTop_toBottomOf="@+id/btnPenConnection"
+        app:layout_constraintVertical_bias="0.483" />
+
     <TextView
         android:id="@+id/tvClinician"
-        android:layout_width="304dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="250dp"
+        android:layout_height="65dp"
         android:layout_weight="1"
         android:ems="10"
         android:minHeight="48dp"
-        android:textSize="40dp"
+        android:textSize="55dp"
         app:layout_constraintEnd_toStartOf="@+id/guidelineV2"
-        app:layout_constraintStart_toStartOf="@+id/guidelineV1"
+        app:layout_constraintStart_toEndOf="@+id/icClinician"
         app:layout_constraintTop_toTopOf="@+id/guidelineO1" />
 
     <androidx.constraintlayout.widget.Guideline

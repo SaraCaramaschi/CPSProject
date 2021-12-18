@@ -44,20 +44,6 @@ class SelectPatientListActivity : AppCompatActivity() {
         rvPatients.layoutManager = layoutManager
         rvPatients.adapter = adapter
 
-/*        adapter.setOnItemClickListener(object : SelectPatientAdapter.onItemClickListener {
-            override fun onClick(position: Int) {
-                Toast.makeText(
-                    this@SelectPatientListActivity,
-                    "you clicked on patient $position",
-                    Toast.LENGTH_SHORT
-                ).show()
-                //TODO BOX CHECKED
-                var pos = position
-                PatientsManager.selectedPatient = pos
-
-            }
-
-        })*/
 
         adapter.setOnItemClickListener(object : PatientAdapter.onItemClickListener {
             override fun onClick(position: Int) {
@@ -72,10 +58,6 @@ class SelectPatientListActivity : AppCompatActivity() {
             }
 
         })
-
-
-
-
 
 
         var intent= Intent(this, PatientListActivity::class.java)

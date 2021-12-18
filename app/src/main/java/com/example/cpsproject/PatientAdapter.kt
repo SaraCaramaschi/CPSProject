@@ -55,25 +55,16 @@ class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : Recycl
 
    private lateinit var mListener: onItemClickListener
 
-   private lateinit var mLongListener: onItemLongClickListener
 
    interface onItemClickListener{
         fun onClick(position:Int)
 
    }
-    interface onItemLongClickListener{
-        fun onLongClick(position: Int): Boolean
-
-    }
-
 
 
     fun setOnItemClickListener(listener: onItemClickListener){
         mListener=listener
    }
-    fun setOnItemLongClickListener(listener: onItemLongClickListener){
-        mLongListener=listener
-    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientAdapter.ViewHolder {
@@ -85,12 +76,7 @@ class PatientAdapter(val c: Context, listPatients : ArrayList<Patient>) : Recycl
         holder.itemName.text = names[position] + " " + surname[position]
         holder.itemPhase.text = "Phase:" + phases[position].toString()
 
-       // per cambiare il colore a un elemento selezionato (non funziona)
-        if (selectedPosition == position) {
-            holder.itemView.setBackgroundColor(Color.parseColor("#9999A1"))
-        } else {
-            holder.itemView.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
-        }
+
 
 
     }

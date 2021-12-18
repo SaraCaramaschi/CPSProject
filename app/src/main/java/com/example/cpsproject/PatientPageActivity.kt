@@ -34,10 +34,10 @@ class PatientPageActivity : AppCompatActivity() {
 
         val intent= getIntent()
         val pos= intent.getIntExtra("position", 0)
-        if (!ConnectionManager.currDevice!!.isConnected()) {
+      /*  if (!ConnectionManager.currDevice!!.isConnected()) {
             Toast.makeText(this@PatientPageActivity, "The pen disconnected!", Toast.LENGTH_SHORT)
                 .show()
-        }
+        }*/
         //val patient = intent.getParcelableExtra<Patient>("keyPatient")
         val patient = patientsList[pos]
         if (patient != null) {

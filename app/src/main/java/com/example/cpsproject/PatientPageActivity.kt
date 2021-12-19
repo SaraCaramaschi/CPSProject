@@ -61,29 +61,26 @@ class PatientPageActivity : AppCompatActivity() {
 
         val btnPhase1 = findViewById<Button>(R.id.btnPhase1)
         btnPhase1.setOnClickListener {
-            val intent1 = Intent(this, Phase1Activity::class.java)
-            startActivity(intent1)
             // bottone CONNESSIONE PENNA
-            var phase = 1
-            startSession(phase)
+            startSession(1)
+            val intentConnection= Intent(this, DeleteMessageActivity::class.java)
+            intentConnection.putExtra("phase", 1)
+            startActivity(intentConnection)
 
-            //val intent = Intent(this, MainConnection::class.java)
-            //startActivity(intent)
         }
 
         val btnPhase2 = findViewById<Button>(R.id.btnPhase2)
         btnPhase2.setOnClickListener {
             patient.phase = 2
             //TODO: editphase (in modo che si salvi anche online)
-            editPhase()
+            //editPhase()
+            startSession(2)
 
-            var phase = 2
-            startSession(phase)
-            val intent2 = Intent(this, Phase2Activity::class.java)
-            intent2.putExtra("phase",2)
-            startActivity(intent2)
+            val intentConnection= Intent(this, DeleteMessageActivity::class.java)
+            intentConnection.putExtra("phase", 2)
+            startActivity(intentConnection)
         }
-//commento
+
         val edit= findViewById<ImageView>(R.id.edit)
         edit.setOnClickListener{
             val intentNew= Intent(this, EditPatientActivity::class.java)

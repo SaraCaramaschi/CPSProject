@@ -138,7 +138,7 @@ class EditPatientActivity: AppCompatActivity() {
             )
 
             //cancello vecchio paziente per creare nuovo file (domanda: lista mostre stesso ordine con cui salvato arrey della lista?)
-           // PatientsManager.deletePatient(this, pos)
+            // PatientsManager.deletePatient(this, pos)
             PatientsManager.deletePatient(this,pos)
             // Add patient to patientlist
             //PatientsManager.patientsList[pos]==patient

@@ -61,14 +61,14 @@ class PatientPageActivity : AppCompatActivity() {
 
         val btnPhase1 = findViewById<Button>(R.id.btnPhase1)
         btnPhase1.setOnClickListener {
-            //val intent1 = Intent(this, Phase1Activity::class.java)
-            //startActivity(intent1)
+            val intent1 = Intent(this, Phase1Activity::class.java)
+            startActivity(intent1)
             // bottone CONNESSIONE PENNA
             var phase = 1
             startSession(phase)
 
-            val intent = Intent(this, MainConnection::class.java)
-            startActivity(intent)
+            //val intent = Intent(this, MainConnection::class.java)
+            //startActivity(intent)
         }
 
         val btnPhase2 = findViewById<Button>(R.id.btnPhase2)

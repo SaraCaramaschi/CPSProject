@@ -28,7 +28,6 @@ class Exercise1Activity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exercise1)
-        tvExDescription1.text = "Make the patient write a grocery list with at least 6 elements"
 
         val intent = getIntent()
         val phase = intent.getIntExtra("phase",1)

@@ -13,7 +13,6 @@ class Exercise2Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exercise2)
 
-        tvExDescription2.text = "Make the patient write a free text (maximum 7 rows)"
 
         btnStart2.setOnClickListener {
             ConnectionManager.StartOnBoard()

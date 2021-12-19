@@ -14,8 +14,6 @@ class Exercise3Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exercise3)
 
-        tvExDescription3.text = "Read to the patient 15 words from Batteria E.N.P.A. including 7 regular words, 3 irregular words and 5 not-words. Read them in a random order"
-
         btnStart3.setOnClickListener {
             ConnectionManager.StartOnBoard()
         }

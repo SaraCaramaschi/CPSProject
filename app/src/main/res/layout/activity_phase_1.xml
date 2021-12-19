@@ -24,12 +24,16 @@
         android:layout_marginTop="40dp"
         android:text="@string/protocol_phase_1"
         android:textColor="@color/strings"
-        android:textSize="40dp"
+        android:textSize="35dp"
+        app:layout_constraintHorizontal_bias="0.661"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:textSize="27dp" />
+
+
+
 
     <TextView
         android:id="@+id/tvDescription1"
@@ -48,11 +52,12 @@
         android:id="@+id/tvSelectPh1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="100dp"
         android:text="@string/select_the_test"
         android:textColor="@color/strings"
         android:textSize="23sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDescription1" />
 

@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.widget.Toast
 import com.example.cpsproject.managers.SessionManager
 import com.example.cpsproject.managers.saveDocument
+import com.example.cpsproject.model.Acquisition
+import com.example.cpsproject.model.PenData
 import com.example.cpsproject.model.Session
 import com.punchthrough.blestarterappandroid.ble.ConnectionManager
 import kotlinx.android.synthetic.main.activity_exercise3.*
@@ -41,8 +43,19 @@ class Exercise3Activity : AppCompatActivity() {
     }
 
     private fun provaamanoSessione(): Session {
+        var data = PenData()
+        var acquisition = Acquisition()
+        acquisition.Data.add(data)
+
         var session =Session()
-        session.device = "CIAOPROVA"
+        session.device = "Pen 3"
+        session.phase = 1
+        session.clinicianID = "04"
+        session.acquisitions.add(acquisition)
+        session.patientID = "05"
+        session.nFile = 1
+        session.sessionId = 2
+
         Timber.d("ok prova a mano")
         return session
     }

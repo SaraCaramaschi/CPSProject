@@ -113,14 +113,14 @@ class PatientPageActivity : AppCompatActivity() {
         val tvTax = findViewById<TextView>(R.id.tvTax)
         val tvPhase=findViewById<TextView>(R.id.tvPhase)
 
-        tvNome.setText("Name:"+ " "+(patient.name).toString())
-        tvCognome.setText("Surname:"+ " "+(patient.surname).toString())
-        tvNote.setText("Note:"+ " "+(patient.notes).toString())
-        tvComple.setText("Birth Date:"+ " "+(patient.birthdate).toString())
-        tvPhase.setText("Phase:"+ " "+patient.phase.toString())
-        tvGenere.setText("Gender:"+ " "+patient.gender.toString())
-        tvHand.setText("Dominant Hand:"+" "+patient.dominantHand.toString())
-        tvTax.setText("Tax code:"+" "+patient.taxcode.toString())
+        tvNome.setText(":"+ " "+(patient.name).toString())
+        tvCognome.setText(":"+ " "+(patient.surname).toString())
+        tvNote.setText(":"+ " "+(patient.notes).toString())
+        tvComple.setText(":"+ " "+(patient.birthdate).toString())
+        tvPhase.setText(":"+ " "+patient.phase.toString())
+        tvGenere.setText(":"+ " "+patient.gender.toString())
+        tvHand.setText(":"+" "+patient.dominantHand.toString())
+        tvTax.setText(":"+" "+patient.taxcode.toString())
     }
 
     @SuppressLint("NewApi")

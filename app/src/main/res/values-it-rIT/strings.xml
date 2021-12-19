@@ -44,6 +44,11 @@
     <string name="acceleration_data">Dati di accelerazione</string>
     <string name="gyroscope_data">Dati del giroscopio</string>
     <string name="force_data">Forza</string>
+    <string name="notes">Note</string>
+    <string name="select_the_phase">Seleziona la fase</string>
+    <string name="phase_1">Fase 1</string>
+    <string name="phase_2">Fase 2</string>
+    <string name="patient_records">Registrazioni del paziente</string>
     <string name="all_patients">Tutti i pazienti</string>
     <string name="connention_message">Hai connesso la penna?</string>
     <string name="delete_message">Vuoi eliminare:</string>

@@ -12,5 +12,6 @@
     <color name="blue">#064A75</color>
     <color name="grey">#9999A1</color>
     <color name="lightblue">#cbf3f0</color>
-
+    <color name="sfondogine">#F5F5F5</color>
+    <color name="strings">#1b4965</color>
 </resources>

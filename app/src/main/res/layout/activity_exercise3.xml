@@ -4,32 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sfondo">
+    android:background="@color/sfondogine">
 
 
-     <TextView
-         android:id="@+id/tvExercise3"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_marginTop="80dp"
-         android:text="Exercise 3"
-         android:textSize="40sp"
-         android:textStyle="bold"
-         app:layout_constraintEnd_toEndOf="parent"
-         app:layout_constraintStart_toStartOf="parent"
-         app:layout_constraintTop_toTopOf="parent"/>
+    <ImageView
+        android:id="@+id/icExercise3"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="16dp"
+        android:src="@mipmap/ic_exercise"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tvExDescription3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.509"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvExercise3"/>
+    <TextView
+        android:id="@+id/tvExercise3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:text="Exercise 3"
+        android:textColor="@color/strings"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvExDescription3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvExercise3" />
 
 
     <TextView
@@ -38,7 +50,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="@string/press_start_to_perform_data_acquisition"
-        android:textSize="17sp"
+        android:textColor="@color/strings"
+        android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnStart3" />
@@ -61,7 +74,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="76dp"
         android:text="@string/press_stop_to_end_the_acquisition_of_the_data"
-        android:textSize="17sp"
+        android:textColor="@color/strings"
+        android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,9 +97,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="48dp"
         android:text="@string/you_will_be_able_to_download_files_once_all_three_exercises_will_be_completed"
-        android:textSize="17sp"
+        android:textColor="@color/strings"
+        android:textSize="23sp"
         app:layout_constraintTop_toBottomOf="@+id/tvExercise3"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -93,7 +108,8 @@
         android:id="@+id/btnDownloadEx3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="52dp"
+        android:backgroundTint="@color/strings"
         android:text="@string/download_files"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

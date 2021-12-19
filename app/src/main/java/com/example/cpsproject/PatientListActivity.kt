@@ -89,7 +89,7 @@ class PatientListActivity : AppCompatActivity() {
         }
 
         //Bottone per vedere tutti i pazienti
-        val btnAllPatient = findViewById<Button>(R.id.btnAllPatients)
+        /*val btnAllPatient = findViewById<Button>(R.id.btnAllPatients)
         btnAllPatient.setOnClickListener {
 
            /* val mainHandler = Handler(Looper.getMainLooper())
@@ -131,7 +131,7 @@ class PatientListActivity : AppCompatActivity() {
 //                }
   //          })
 
-        }
+        }*/
 
 
 

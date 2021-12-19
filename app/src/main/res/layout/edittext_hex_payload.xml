@@ -18,6 +18,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:maxLines="1"
+    android:background="@color/sfondogine"
     android:hint="Enter payload in hex (0-9, a-f, A-F)"
     android:digits="0123456789abcdefABCDEF"
     android:importantForAutofill="no"

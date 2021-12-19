@@ -4,46 +4,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SelectPatientListActivity"
-    android:background="@color/sfondo">
+    android:background="@color/sfondogine"
+    tools:context=".SelectPatientListActivity">
 
-    <TextView
-        android:id="@+id/tvSelectPatient"
+    <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:text="Select the patient to add to your list"
-        android:textSize="25sp"
-        android:textStyle="bold"
+        android:layout_marginTop="25dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.649"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/tvPatientList"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:minHeight="48dp"
+            android:text="List of all the patient"
+            android:textColor="@color/strings"
+            android:textSize="35dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/rvPatients"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvSelectPatient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Select the patient to add to your list"
+            android:textColor="@color/strings"
+            android:textSize="19dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPatients"
-        android:layout_width="409dp"
-        android:layout_height="550dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView"
-        app:layout_constraintVertical_bias="0.121"
-        tools:listitem="@layout/activity_patient_all" />
-
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="409dp"
-        android:layout_height="46dp"
+        android:layout_width="400dp"
+        android:layout_height="530dp"
         android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSelectPatient"
-        app:showAsAction="always" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        tools:listitem="@layout/activity_patient" />
 
     <Button
         android:id="@+id/addSelectedPatient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add patients"
+        android:backgroundTint="@color/strings"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

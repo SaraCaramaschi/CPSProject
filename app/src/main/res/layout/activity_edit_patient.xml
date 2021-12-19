@@ -5,59 +5,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddPatientActivity"
-    android:background="@color/sfondo">
+    android:background="@color/sfondogine"
+    tools:context=".AddPatientActivity">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="16dp"
+        android:src="@mipmap/ic_patient"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.053" />
 
     <LinearLayout
-        android:id="@+id/LinearLayout0"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
+        android:layout_width="309dp"
+        android:layout_height="91dp"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.843"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="55dp"
+        <TextView
+            android:id="@+id/tvEditpatient"
+            android:layout_width="310dp"
             android:layout_height="55dp"
-            android:src="@drawable/user"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="0dp"
+            android:text="@string/edit_patient"
+            android:textColor="@color/strings"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <!--<TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:orientation="vertical"
-            tools:ignore="MissingConstraints">
-
-            <TextView
-                android:id="@+id/tvEditpatient"
-                android:layout_width="236dp"
-                android:layout_height="39dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="0dp"
-                android:text="@string/edit_patient"
-                android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/fill_up_all_the_requested_information"
-                android:textSize="15sp"
-                app:layout_constraintStart_toEndOf="@+id/tvNewpatient" />
-        </LinearLayout>
+            android:text="@string/fill_up_all_the_requested_information"
+            android:textColor="@color/strings"
+            android:textSize="19dp"
+            app:layout_constraintStart_toEndOf="@+id/tvNewpatient" />-->
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/LinearLayoutItems"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/LinearLayout0">
+        app:layout_constraintBottom_toTopOf="@+id/btnPatListBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:id="@+id/LinearLayout1"
@@ -184,12 +189,13 @@
                 android:inputType="date"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/tvBirthDate" />
+
             <ImageView
                 android:id="@+id/calendarEdit"
                 android:layout_width="33dp"
                 android:layout_height="33dp"
                 android:clickable="true"
-                android:src="@drawable/ic_calendar"/>
+                android:src="@drawable/ic_calendar" />
         </LinearLayout>
 
         <LinearLayout
@@ -283,36 +289,27 @@
         </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btnEdit"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="91dp"
-        android:layout_marginBottom="60dp"
-        android:paddingTop="10dp"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/strings"
+        android:text="@string/edit_patient1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/btnEdit"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="@string/edit_patient1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btnPatListBack"
-            app:layout_constraintStart_toStartOf="parent" />
-
-
-        <Button
-            android:id="@+id/btnPatListBack"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:text="@string/back_to_patient_list"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/btnAddPat" />
-
-    </LinearLayout>
+    <Button
+        android:id="@+id/btnPatListBack"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/strings"
+        android:text="@string/back_to_patient_list"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

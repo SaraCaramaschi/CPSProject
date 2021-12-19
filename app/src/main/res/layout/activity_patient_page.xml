@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sfondo">
+    android:background="@color/sfondogine">
 
     <TextView
         android:id="@+id/textView"
@@ -12,7 +12,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/patient_personal_page"
-        android:textSize="25sp"
+        android:textColor="@color/strings"
+        android:textSize="28dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -47,22 +49,20 @@
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/user"
+        android:src="@mipmap/ic_patient"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/LinearLayout0"
-        android:layout_width="325dp"
+        android:layout_width="375dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
         android:orientation="vertical"
         android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.175">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <TextView
             android:id="@+id/tvName"
@@ -164,8 +164,9 @@
         android:id="@+id/tvSelectPhase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:text="Select the pase:"
+        android:textColor="@color/strings"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -176,7 +177,9 @@
         android:id="@+id/btnPhase1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:text="Phase 1"
+        android:backgroundTint="@color/strings"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
@@ -187,6 +190,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Phase 2"
+        android:backgroundTint="@color/strings"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnPhase1" />
@@ -196,6 +200,8 @@
         android:layout_width="111dp"
         android:layout_height="wrap_content"
         android:text="Patient's records"
+        android:backgroundTint="@color/strings"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnPenConnectionPatient"
         app:layout_constraintHorizontal_bias="0.64"
         app:layout_constraintStart_toStartOf="parent"
@@ -206,6 +212,8 @@
         android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:text="Pen Connection"
+        android:backgroundTint="@color/strings"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnPhase2" />
@@ -214,12 +222,13 @@
         android:id="@+id/btnPatListBack"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
         android:text="Back to list"
+        android:backgroundTint="@color/strings"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toEndOf="@+id/btnPenConnectionPatient"
         app:layout_constraintTop_toBottomOf="@+id/btnPhase2"
-        app:layout_constraintVertical_bias="0.933" />
+        app:layout_constraintVertical_bias="0.509" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

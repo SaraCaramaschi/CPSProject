@@ -5,52 +5,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PatientListActivity"
-    android:background="@color/sfondo">
+    android:background="@color/sfondogine">
+
+    <TextView
+        android:id="@+id/tvPatientList"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:minHeight="48dp"
+        android:text="@string/patients_list"
+        android:textStyle="bold"
+        android:textSize="35dp"
+        android:textColor="@color/strings"
+        app:layout_constraintBottom_toTopOf="@+id/rvPatients"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <Button
         android:id="@+id/btnNewPatient"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/strings"
         android:text="@string/add_a_new_patient"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.008"
+        app:layout_constraintHorizontal_bias="0.099"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rvPatients"
-        app:layout_constraintVertical_bias="0.421" />
-
-    <Button
-        android:id="@+id/btnAllPatients"
-        android:layout_width="111dp"
-        android:layout_height="57dp"
-        android:text="view all patients"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvPatients"
-        app:layout_constraintVertical_bias="0.428" />
+        app:layout_constraintVertical_bias="0.45" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPatients"
         android:layout_width="409dp"
-        android:layout_height="600dp"
+        android:layout_height="550dp"
+        android:layout_marginTop="76dp"
         app:layout_constraintEnd_toEndOf="parent"
-
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/activity_patient" />
 
     <Button
         android:id="@+id/btnAllPatientsToSelect"
-        android:layout_width="111dp"
+        android:layout_width="120dp"
         android:layout_height="57dp"
+        android:backgroundTint="@color/strings"
         android:text="All patients"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.603"
+        app:layout_constraintHorizontal_bias="0.900"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rvPatients"
-        app:layout_constraintVertical_bias="0.571" />
+        app:layout_constraintVertical_bias="0.45" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

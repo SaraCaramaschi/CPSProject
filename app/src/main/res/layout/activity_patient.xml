@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".model.Patient"
-    android:background="@color/sfondo">
+    android:background="@color/sfondogine">
 
 
     <LinearLayout
@@ -25,7 +25,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/user"/>
+            android:src="@mipmap/ic_patient"/>
 
 
         <LinearLayout

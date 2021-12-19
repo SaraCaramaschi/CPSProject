@@ -63,7 +63,7 @@ class PatientPageActivity : AppCompatActivity() {
         btnPhase1.setOnClickListener {
             // bottone CONNESSIONE PENNA
             startSession(1)
-            val intentConnection= Intent(this, DeleteMessageActivity::class.java)
+            val intentConnection= Intent(this, ConnectionMessageActivity::class.java)
             intentConnection.putExtra("phase", 1)
             startActivity(intentConnection)
 
@@ -76,7 +76,7 @@ class PatientPageActivity : AppCompatActivity() {
             //editPhase()
             startSession(2)
 
-            val intentConnection= Intent(this, DeleteMessageActivity::class.java)
+            val intentConnection= Intent(this, ConnectionMessageActivity::class.java)
             intentConnection.putExtra("phase", 2)
             startActivity(intentConnection)
         }

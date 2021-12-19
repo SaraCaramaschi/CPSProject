@@ -50,7 +50,7 @@
         android:layout_width="120dp"
         android:layout_height="57dp"
         android:backgroundTint="@color/strings"
-        android:text="All patients"
+        android:text="@string/all_patients"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.900"

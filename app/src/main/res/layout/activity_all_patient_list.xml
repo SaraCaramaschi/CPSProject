@@ -61,13 +61,27 @@
 
     <Button
         android:id="@+id/addSelectedPatient"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:text="Add patients"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
         android:backgroundTint="@color/strings"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/add_patient"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rvPatients" />
+
+    <Button
+        android:id="@+id/backToList"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="12dp"
+        android:backgroundTint="@color/strings"
+        android:text="@string/back_to_patient_list"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvPatients"
+        app:layout_constraintVertical_bias="1.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

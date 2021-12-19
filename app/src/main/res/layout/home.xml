@@ -35,10 +35,10 @@
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="112dp"
         android:src="@mipmap/ic_bluetooth"
         app:layout_constraintStart_toStartOf="@+id/guidelineV1"
-        app:layout_constraintTop_toBottomOf="@+id/icClinician" />
+        app:layout_constraintTop_toBottomOf="@+id/tvClinician" />
 
     <Button
         android:id="@+id/btnLogOut"

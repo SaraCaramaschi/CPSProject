@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.cpsproject.ble.MainConnection
 import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.model.Patient
+import timber.log.Timber
 
 class ConnectionMessageActivity: AppCompatActivity()  {
 
@@ -25,9 +26,6 @@ class ConnectionMessageActivity: AppCompatActivity()  {
         val intent= getIntent()
         val phase= intent.getIntExtra("phase", 0)
 
-        val tvMessage = findViewById<TextView>(R.id.tvMessage)
-        tvMessage.setText("Did you connect the pen?")
-
         val btnYes = findViewById<Button>(R.id.btnYes1)
         val btnNo = findViewById<Button>(R.id.btnNo1)
 
@@ -37,6 +35,7 @@ class ConnectionMessageActivity: AppCompatActivity()  {
         }
 
         btnYes.setOnClickListener{
+            Timber.d("$phase")
             if (phase == 2){
                 var intent = Intent(this, Phase2Activity::class.java)
                 startActivity(intent)

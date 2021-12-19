@@ -22,8 +22,8 @@ class DeleteMessageActivity: AppCompatActivity()  {
         val pos= intent.getIntExtra("position", 0)
         val patient = PatientsManager.patientsList[pos]
 
-        val tvMessage = findViewById<TextView>(R.id.tvMessage)
-        tvMessage.setText("Do you want to eliminate ${patient.name} ${patient.surname}")
+        val tvMessage = findViewById<TextView>(R.id.tvPatient)
+        tvMessage.setText("${patient.name} ${patient.surname}")
 
         val btnYes = findViewById<Button>(R.id.btnYes)
         val btnNo = findViewById<Button>(R.id.btnNo)

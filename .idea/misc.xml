@@ -23,30 +23,57 @@
         <entry key="..\:/Users/bonac/AndroidStudioProjects/CPSProject/app/src/main/res/layout/row_characteristic.xml" value="0.12360688956433637" />
         <entry key="..\:/Users/bonac/AndroidStudioProjects/CPSProject/app/src/main/res/layout/row_scan_result.xml" value="0.12360688956433637" />
         <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/drawable/bg_calend.xml" value="0.1546875" />
+        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/drawable/ic_calendar.xml" value="0.2703125" />
+        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/drawable/ic_clinician.xml" value="0.2703125" />
+        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/drawable/ic_delete.xml" value="0.2703125" />
+        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/drawable/ic_edit.xml" value="0.2703125" />
         <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/drawable/shape_background.xml" value="0.1578125" />
+        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout-normal/activity_schermata1.xml" value="0.2006340579710145" />
+        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activit_patient_all.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_add_clinician.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_add_patient.xml" value="0.17291666666666666" />
+        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_add_patient.xml" value="0.264" />
+        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_all_patient.xml" value="0.2" />
+        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_all_patient_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_ble_operations.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_calendar.xml" value="0.1" />
-        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_delete_message.xml" value="0.16168478260869565" />
+        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_connection_message.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_delete_message.xml" value="0.264" />
         <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_edit_patient.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_exercise1.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_exercise2.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_exercise3.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_language.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_login.xml" value="0.264" />
+        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_main_connection.xml" value="0.2504528985507246" />
         <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_patient.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_patient_page.xml" value="0.2" />
-        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_patients_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_patient_all.xml" value="0.264" />
+        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_patient_page.xml" value="0.264" />
+        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_patients_list.xml" value="0.264" />
         <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_patients_list4.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_pen.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_phase_1.xml" value="0.2" />
+        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_phase_2.xml" value="0.2504528985507246" />
+        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_real_time.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_register.xml" value="0.264" />
         <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_schermata0.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_schermata1.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activiy_all_patient.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/edittext_hex_payload.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/gender.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/home.xml" value="0.264" />
         <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/list_item.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/row_characteristic.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/row_characteristicprova.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/row_scan_result.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/layout/schermata_1.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/mipmap-anydpi-v26/ic_launcher1.xml" value="0.2703125" />
+        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2703125" />
+        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round1.xml" value="0.2703125" />
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout-large/activity_login.xml" value="0.536" />
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout-large/activity_register.xml" value="0.176" />
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout-large/login.xml" value="0.1" />
-        <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout-normal/activity_register.xml" value="0.1" />
+        <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout-normal/activity_register.xml" value="0.264" />
+        <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout-normal/activity_schermata1.xml" value="0.2" />
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout-normal/login.xml" value="0.1" />
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout-small-keysexposed/activity_register.xml" value="0.1" />
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout-small/activity_login.xml" value="0.2171875" />
@@ -57,13 +84,13 @@
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_add_clinician.xml" value="0.144" />
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_add_patient.xml" value="0.1" />
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_login.xml" value="0.152" />
-        <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_patient.xml" value="0.1" />
+        <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_patient.xml" value="0.16" />
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_patient_page.xml" value="0.264" />
-        <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_patients_list.xml" value="0.16" />
+        <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_patients_list.xml" value="0.1" />
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_pen.xml" value="0.25" />
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_phase_1.xml" value="0.2" />
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_phase_2.xml" value="0.12158054711246201" />
-        <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_register.xml" value="0.12708333333333333" />
+        <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_register.xml" value="0.6" />
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_schermata0.xml" value="0.12158054711246201" />
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_schermata1.xml" value="0.1" />
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/edittext_hex_payload.xml" value="0.23097826086956522" />
@@ -71,16 +98,14 @@
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/row_characteristic.xml" value="0.23097826086956522" />
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/row_scan_result.xml" value="0.23097826086956522" />
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/schermata_1.xml" value="0.1" />
-        <entry key="app/src/main/res/layout-land/activity_register.xml" value="1.2516447368421053" />
-        <entry key="app/src/main/res/layout-large/activity_login.xml" value="0.665" />
-        <entry key="app/src/main/res/layout-normal/activity_register.xml" value="0.27708333333333335" />
+        <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/menu/menu.xml" value="0.2064814814814815" />
+        <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/menu/show_menu.xml" value="0.2064814814814815" />
         <entry key="app/src/main/res/layout/activity_add_clinician.xml" value="0.14361702127659576" />
         <entry key="app/src/main/res/layout/activity_add_patient.xml" value="0.1958330467085044" />
         <entry key="app/src/main/res/layout/activity_ble_operations.xml" value="0.273711820755347" />
         <entry key="app/src/main/res/layout/activity_ble_operationsProva.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_ble_operationsprova.xml" value="0.28264787712951994" />
         <entry key="app/src/main/res/layout/activity_connection.xml" value="0.19972826086956522" />
-        <entry key="app/src/main/res/layout/activity_connection_message.xml" value="0.24583333333333332" />
         <entry key="app/src/main/res/layout/activity_delete_message.xml" value="0.2866847826086957" />
         <entry key="app/src/main/res/layout/activity_edit_patient.xml" value="0.16875" />
         <entry key="app/src/main/res/layout/activity_exercise1.xml" value="0.28020833333333334" />
@@ -98,7 +123,7 @@
         <entry key="app/src/main/res/layout/activity_phase_1.xml" value="0.23697916666666666" />
         <entry key="app/src/main/res/layout/activity_phase_2.xml" value="0.23697916666666666" />
         <entry key="app/src/main/res/layout/activity_real_time.xml" value="0.2953125" />
-        <entry key="app/src/main/res/layout/activity_register.xml" value="0.5081180358119698" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.16979166666666667" />
         <entry key="app/src/main/res/layout/activity_schermata0.xml" value="0.14361702127659576" />
         <entry key="app/src/main/res/layout/activity_schermata1.xml" value="0.20113198985552413" />
         <entry key="app/src/main/res/layout/activity_submit.xml" value="0.182518115942029" />

@@ -83,7 +83,7 @@ class PatientPageActivity : AppCompatActivity() {
             intent2.putExtra("phase",2)
             startActivity(intent2)
         }
-
+//commento
         val edit= findViewById<ImageView>(R.id.edit)
         edit.setOnClickListener{
             val intentNew= Intent(this, EditPatientActivity::class.java)

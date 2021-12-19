@@ -11,13 +11,13 @@
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="28dp"
         android:src="@mipmap/ic_exercise"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+    <TextView
             android:id="@+id/tvExercise2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,11 +49,12 @@
         android:id="@+id/tvStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="12dp"
         android:text="@string/press_start_to_perform_data_acquisition"
-        android:textSize="19sp"
         android:textColor="@color/strings"
+        android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnStart2" />
 
@@ -73,7 +74,7 @@
         android:id="@+id/tvStop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="20dp"
         android:text="@string/press_stop_to_end_the_acquisition_of_the_data"
         android:textColor="@color/strings"
         android:textSize="19sp"
@@ -97,11 +98,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="176dp"
+        android:layout_marginTop="112dp"
         android:text="@string/you_will_be_able_to_download_files_once_all_three_exercises_will_be_completed"
         android:textColor="@color/strings"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.733"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvExercise2" />
 
@@ -109,10 +111,11 @@
         android:id="@+id/btnDownloadEx2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="@string/download_files"
+        android:layout_marginTop="12dp"
         android:backgroundTint="@color/strings"
+        android:text="@string/download_files"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnStop2" />
 

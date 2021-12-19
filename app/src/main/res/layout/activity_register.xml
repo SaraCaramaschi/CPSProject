@@ -4,23 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity"
     android:background="@color/sfondogine"
-    >
+    tools:context=".RegisterActivity">
+
 
     <Button
         android:id="@+id/btnSubmitdata"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="164dp"
-        android:text="@string/submit"
         android:backgroundTint="@color/strings"
+        android:text="@string/submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LinearLayoutItems"
+        app:layout_constraintVertical_bias="0.34"
         tools:ignore="MissingConstraints" />
-
 
     <ImageView
         android:id="@+id/imageView"
@@ -34,6 +34,7 @@
         app:layout_constraintVertical_bias="0.062" />
 
     <LinearLayout
+        android:id="@+id/linearLayout5"
         android:layout_width="wrap_content"
         android:layout_height="91dp"
         android:layout_marginTop="28dp"
@@ -69,12 +70,13 @@
         android:id="@+id/LinearLayoutItems"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="92dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/btnSubmitdata"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
+        app:layout_constraintVertical_bias="0.112">
 
         <LinearLayout
             android:id="@+id/LinearLayout1"

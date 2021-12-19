@@ -9,15 +9,15 @@
 
     <TextView
         android:id="@+id/tvPatientList"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
+        android:layout_width="359dp"
+        android:layout_height="54dp"
         android:layout_weight="1"
         android:ems="10"
         android:minHeight="48dp"
         android:text="@string/patients_list"
-        android:textStyle="bold"
-        android:textSize="35dp"
         android:textColor="@color/strings"
+        android:textSize="35dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/rvPatients"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -31,15 +31,15 @@
         android:text="@string/add_a_new_patient"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.099"
+        app:layout_constraintHorizontal_bias="0.109"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rvPatients"
-        app:layout_constraintVertical_bias="0.45" />
+        app:layout_constraintVertical_bias="0.204" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPatients"
-        android:layout_width="409dp"
-        android:layout_height="550dp"
+        android:layout_width="388dp"
+        android:layout_height="369dp"
         android:layout_marginTop="76dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -53,9 +53,9 @@
         android:text="@string/all_patients"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.900"
+        app:layout_constraintHorizontal_bias="0.81"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rvPatients"
-        app:layout_constraintVertical_bias="0.45" />
+        app:layout_constraintVertical_bias="0.205" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

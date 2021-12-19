@@ -13,10 +13,10 @@
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginTop="436dp"
+        android:layout_marginTop="384dp"
         android:src="@mipmap/ic_real_time"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout"
-        app:layout_constraintHorizontal_bias="0.65"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,10 +37,10 @@
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginTop="328dp"
+        android:layout_marginTop="264dp"
         android:src="@mipmap/ic_protocol"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout"
-        app:layout_constraintHorizontal_bias="0.65"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,10 +48,11 @@
         android:id="@+id/btnProtocol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="65dp"
-        android:text="@string/start_protocol"
+        android:layout_marginTop="52dp"
         android:backgroundTint="@color/strings"
+        android:text="@string/start_protocol"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnDownload" />
 
@@ -60,7 +61,7 @@
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="164dp"
         android:src="@mipmap/ic_download"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout"
         app:layout_constraintHorizontal_bias="0.65"
@@ -71,9 +72,9 @@
         android:id="@+id/btnDownload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="124dp"
-        android:text="@string/download"
+        android:layout_marginTop="76dp"
         android:backgroundTint="@color/strings"
+        android:text="@string/download"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.417"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,10 +85,10 @@
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginTop="556dp"
+        android:layout_marginTop="500dp"
         android:src="@mipmap/ic_reset"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout"
-        app:layout_constraintHorizontal_bias="0.65"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

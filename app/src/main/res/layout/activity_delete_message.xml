@@ -6,8 +6,9 @@
     android:orientation="vertical"
     android:gravity="center"
     android:layout_margin="15dp"
+    android:background="@color/sfondogine"
     tools:context=".DeleteMessageActivity">
-    android:background="@color/sfondogine">
+
 
     <LinearLayout
         android:orientation="vertical"

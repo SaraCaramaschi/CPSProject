@@ -58,6 +58,9 @@
             android:name=".DeleteMessageActivity"
             android:exported="true" />
         <activity
+            android:name=".ConnectionMessageActivity"
+            android:exported="true" />
+        <activity
             android:name=".ble.MainConnection"
             android:exported="true" />
         <activity

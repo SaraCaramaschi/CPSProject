@@ -24,7 +24,6 @@
         <entry key="..\:/Users/bonac/AndroidStudioProjects/CPSProject/app/src/main/res/layout/row_scan_result.xml" value="0.12360688956433637" />
         <entry key="..\:/Users/ginev/.gradle/caches/transforms-3/98860a1a663116de9be502b58d59f400/transformed/appcompat-1.3.1/res/layout/support_simple_spinner_dropdown_item.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/drawable/bg_calend.xml" value="0.1546875" />
-        <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/drawable/color_cursor.xml" value="0.2703125" />
         <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/drawable/ic_calendar.xml" value="0.2703125" />
         <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/drawable/ic_clinician.xml" value="0.2703125" />
         <entry key="..\:/Users/ginev/OneDrive/Desktop/CPSProject/app/src/main/res/drawable/ic_delete.xml" value="0.2703125" />
@@ -88,7 +87,7 @@
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_login.xml" value="0.152" />
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_patient.xml" value="0.16" />
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_patient_page.xml" value="0.264" />
-        <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_patients_list.xml" value="0.1" />
+        <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_patients_list.xml" value="0.264" />
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_pen.xml" value="0.25" />
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_phase_1.xml" value="0.2" />
         <entry key="..\:/Users/ilari/OneDrive/Desktop/CPSProject/app/src/main/res/layout/activity_phase_2.xml" value="0.12158054711246201" />

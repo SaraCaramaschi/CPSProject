@@ -32,13 +32,13 @@ class PatientPageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patient_page)
 
-        val intent= getIntent()
-        val pos= intent.getIntExtra("position", 0)
-      /*  if (!ConnectionManager.currDevice!!.isConnected()) {
-            Toast.makeText(this@PatientPageActivity, "The pen disconnected!", Toast.LENGTH_SHORT)
-                .show()
-        }*/
-        //val patient = intent.getParcelableExtra<Patient>("keyPatient")
+        val intent = getIntent()
+        val pos = intent.getIntExtra("position", 0)
+        /*  if (!ConnectionManager.currDevice!!.isConnected()) {
+              Toast.makeText(this@PatientPageActivity, "The pen disconnected!", Toast.LENGTH_SHORT)
+                  .show()
+          }*/
+
         val patient = patientsList[pos]
         if (patient != null) {
             setupPatientPage(patient)
@@ -50,10 +50,10 @@ class PatientPageActivity : AppCompatActivity() {
         }
 
         btnPenConnectionPatient.setOnClickListener {
-            if (ConnectionManager.currDevice!!.isConnected()){
+            if (ConnectionManager.currDevice!!.isConnected()) {
                 val intent = Intent(this, PenActivity::class.java)
                 startActivity(intent)
-            }else{
+            } else {
                 val intent = Intent(this, MainConnection::class.java)
                 startActivity(intent)
             }
@@ -63,7 +63,7 @@ class PatientPageActivity : AppCompatActivity() {
         btnPhase1.setOnClickListener {
             // bottone CONNESSIONE PENNA
             startSession(1)
-            val intentConnection= Intent(this, ConnectionMessageActivity::class.java)
+            val intentConnection = Intent(this, ConnectionMessageActivity::class.java)
             intentConnection.putExtra("phase", 1)
             startActivity(intentConnection)
 
@@ -73,25 +73,25 @@ class PatientPageActivity : AppCompatActivity() {
         btnPhase2.setOnClickListener {
             patient.phase = 2
             //TODO: editphase (in modo che si salvi anche online)
-            //editPhase()
+
             startSession(2)
 
-            val intentConnection= Intent(this, ConnectionMessageActivity::class.java)
+            val intentConnection = Intent(this, ConnectionMessageActivity::class.java)
             intentConnection.putExtra("phase", 2)
             startActivity(intentConnection)
         }
 
-        val edit= findViewById<ImageView>(R.id.edit)
-        edit.setOnClickListener{
-            val intentNew= Intent(this, EditPatientActivity::class.java)
-            intentNew.putExtra("position",pos)
+        val edit = findViewById<ImageView>(R.id.edit)
+        edit.setOnClickListener {
+            val intentNew = Intent(this, EditPatientActivity::class.java)
+            intentNew.putExtra("position", pos)
             startActivity(intentNew)
         }
 
-        val delete= findViewById<ImageView>(R.id.delete)
-        delete.setOnClickListener{
-            val intentDelete= Intent(this, DeleteMessageActivity::class.java)
-            intentDelete.putExtra("position",pos)
+        val delete = findViewById<ImageView>(R.id.delete)
+        delete.setOnClickListener {
+            val intentDelete = Intent(this, DeleteMessageActivity::class.java)
+            intentDelete.putExtra("position", pos)
             startActivity(intentDelete)
         }
 
@@ -108,39 +108,38 @@ class PatientPageActivity : AppCompatActivity() {
         val tvNote = findViewById<TextView>(R.id.tvNotes)
         val tvComple = findViewById<TextView>(R.id.tvBirthDate)
         val tvGenere = findViewById<TextView>(R.id.tvGender)
-        val tvHand=findViewById<TextView>(R.id.tvDominantHand)
+        val tvHand = findViewById<TextView>(R.id.tvDominantHand)
         // inserire anche phase (default a 1) ERRORE CON LA FASE !!!
         val tvTax = findViewById<TextView>(R.id.tvTax)
-        val tvPhase=findViewById<TextView>(R.id.tvPhase)
+        val tvPhase = findViewById<TextView>(R.id.tvPhase)
 
-        tvNome.setText(":"+ " "+(patient.name).toString())
-        tvCognome.setText(":"+ " "+(patient.surname).toString())
-        tvNote.setText(":"+ " "+(patient.notes).toString())
-        tvComple.setText(":"+ " "+(patient.birthdate).toString())
-        tvPhase.setText(":"+ " "+patient.phase.toString())
-        tvGenere.setText(":"+ " "+patient.gender.toString())
-        tvHand.setText(":"+" "+patient.dominantHand.toString())
-        tvTax.setText(":"+" "+patient.taxcode.toString())
+        tvNome.setText(":" + " " + (patient.name).toString())
+        tvCognome.setText(":" + " " + (patient.surname).toString())
+        tvNote.setText(":" + " " + (patient.notes).toString())
+        tvComple.setText(":" + " " + (patient.birthdate).toString())
+        tvPhase.setText(":" + " " + patient.phase.toString())
+        tvGenere.setText(":" + " " + patient.gender.toString())
+        tvHand.setText(":" + " " + patient.dominantHand.toString())
+        tvTax.setText(":" + " " + patient.taxcode.toString())
     }
 
     @SuppressLint("NewApi")
-    fun startSession(phase:Int) {
+    fun startSession(phase: Int) {
         session.device = PenManager.penName.toString()
         session.patientID = PatientsManager.selectedPatient.toString()
         session.phase = phase
 
         var mAuth = FirebaseAuth.getInstance()
         val currentUser = mAuth.currentUser
-        var clinicianID:String= String()
+        var clinicianID: String = String()
 
         if (currentUser != null) {
-            clinicianID= currentUser.uid
+            clinicianID = currentUser.uid
         }
         session.clinicianID = clinicianID
 
         SessionManager.sessione = session
     }
-
 
 
 }

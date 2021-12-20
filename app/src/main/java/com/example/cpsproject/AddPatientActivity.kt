@@ -35,7 +35,6 @@ class AddPatientActivity : AppCompatActivity() {
         val gender = findViewById<Spinner>(R.id.spinnerGender)
         btnAddPat.setOnClickListener {
 
-            // TODO togliere commenti vincoli
             if (etName.text.toString().trim().isEmpty()) {
                 etName.error = "Name Required";
                 return@setOnClickListener
@@ -78,10 +77,10 @@ class AddPatientActivity : AppCompatActivity() {
 
             var mAuth = FirebaseAuth.getInstance()
             val currentUser = mAuth.currentUser
-            var clinicianID:String= String()
+            var clinicianID: String = String()
 
             if (currentUser != null) {
-                clinicianID= currentUser.uid
+                clinicianID = currentUser.uid
             }
 
 
@@ -109,7 +108,7 @@ class AddPatientActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        
+
 
 
         btnPatListBack.setOnClickListener {

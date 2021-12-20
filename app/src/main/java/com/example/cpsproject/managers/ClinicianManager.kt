@@ -61,7 +61,9 @@ object ClinicianManager {
         val gson = Gson()
         val jsonclinician = gson.toJson(clinician)
         val db: DatabaseReference
-        db= FirebaseDatabase.getInstance( "https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app").getReference("Clinicians")
+        db =
+            FirebaseDatabase.getInstance("https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app")
+                .getReference("Clinicians")
 
         var email = clinician.email
         var folder = context.getDir("CliniciansFolder", Context.MODE_PRIVATE)
@@ -72,83 +74,88 @@ object ClinicianManager {
             File(fileName).delete()
             Timber.d("File deleted")
         }
-            .addOnFailureListener{
-                Timber.d( "Error filed to add!")
-                //TODO CODICE PER SALVARE IN LOCALE SE QUALOCSA VA STORTO--> verificare se funziona
+            .addOnFailureListener {
+                Timber.d("Error filed to add!")
+                // CODICE PER SALVARE IN LOCALE SE QUALOCSA VA STORTO
                 saveClinician(clinician, context)
             }
 
         //TODO SALVARE IN DATABSE FILE RIMASTI IN LOCALE
     }
 
-        // Funzione per leggere documenti da realtime database
-        fun getDocumentsClinician(context: Context): ArrayList<Clinician> {
-            // [START get_document]
-            val db: DatabaseReference=FirebaseDatabase.getInstance("https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app").getReference("Clinicians")
-            //val dbPatients=db.child("Patients")
-            db.addValueEventListener(object: ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot){
-                    if(snapshot.exists()){
-                        for (clinicianSnapshot in snapshot.children){
-                            var clinicianNew=clinicianSnapshot.getValue(Clinician::class.java)
-                            if (clinicianNew != null && !clinicianList.contains(clinicianNew)) {
-                                clinicianList.add(clinicianNew)
-                            }
+    // Funzione per leggere documenti da realtime database
+    fun getDocumentsClinician(context: Context): ArrayList<Clinician> {
+        // [START get_document]
+        val db: DatabaseReference =
+            FirebaseDatabase.getInstance("https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app")
+                .getReference("Clinicians")
+        //val dbPatients=db.child("Patients")
+        db.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    for (clinicianSnapshot in snapshot.children) {
+                        var clinicianNew = clinicianSnapshot.getValue(Clinician::class.java)
+                        if (clinicianNew != null && !clinicianList.contains(clinicianNew)) {
+                            clinicianList.add(clinicianNew)
                         }
                     }
                 }
-
-                override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
-                }
             }
-            )
-            return clinicianList
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        }
+        )
+        return clinicianList
+    }
+
+
+    //Funzione elimina paziente ma solo in locale
+    fun deleteClinician(context: Context, i: Int) {
+        var clinicianDeleted = clinicianList[i]
+        clinicianList.remove(clinicianDeleted)
+        var folder = context.getDir("CliniciansFolder", Context.MODE_PRIVATE)
+        var fileName = folder.path.toString() + "/" + clinicianDeleted.email + ".txt"
+        File(fileName).delete()
+        Timber.d("File deleted")
+        var fodername = folder.path.toString()
+
+        if (!File(fodername).list().contains1(fileName)) {
+            Timber.d("File has been really deleted") //LO STAMPA! JSON LO ELIMINA, DOBBIAMO RIAGGIORNARE PAZIENTI IN KOTLIN
         }
 
+        //Firestore delete
+        val db = Firebase.firestore
+        val cliniciansRef = db.collection("patients")
+        //cerco clinico con quella email
+        val queryTaxCode = cliniciansRef.whereEqualTo("email", "${clinicianDeleted.email}")
+        queryTaxCode.get().addOnSuccessListener { result ->
 
-        //Funzione elimina paziente ma solo in locale
-        fun deleteClinician(context: Context, i: Int) {
-            var clinicianDeleted = clinicianList[i]
-            clinicianList.remove(clinicianDeleted)
-            var folder = context.getDir("CliniciansFolder", Context.MODE_PRIVATE)
-            var fileName = folder.path.toString() + "/" + clinicianDeleted.email + ".txt"
-            File(fileName).delete()
-            Timber.d("File deleted")
-            var fodername = folder.path.toString()
-
-            if (!File(fodername).list().contains1(fileName)) {
-                Timber.d("File has been really deleted") //LO STAMPA! JSON LO ELIMINA, DOBBIAMO RIAGGIORNARE PAZIENTI IN KOTLIN
-            }
-
-            //Firestore delete
-            val db = Firebase.firestore
-            val cliniciansRef = db.collection("patients")
-            //cerco clinico con quella email
-            val queryTaxCode = cliniciansRef.whereEqualTo("email", "${clinicianDeleted.email}")
-            queryTaxCode.get().addOnSuccessListener { result ->
-
-                if (result != null) {
-                    val document = result.documents
-                    document.forEach {
-                        //val patient=it.toObject(Patient::class.java)
-                        //if (patient != null){
-                        var id = it.id
-                        cliniciansRef.document(id).delete().addOnSuccessListener {
-                            Timber.d("Deleted")
-                        }
-                            .addOnFailureListener {
-                                Timber.d("Not deleted")
-                            }
+            if (result != null) {
+                val document = result.documents
+                document.forEach {
+                    //val patient=it.toObject(Patient::class.java)
+                    //if (patient != null){
+                    var id = it.id
+                    cliniciansRef.document(id).delete().addOnSuccessListener {
+                        Timber.d("Deleted")
                     }
-                } else {
-                    Timber.d("No such document")
+                        .addOnFailureListener {
+                            Timber.d("Not deleted")
+                        }
                 }
+            } else {
+                Timber.d("No such document")
             }
         }
-    fun findClinician (id: String, context: Context) {
+    }
+
+    fun findClinician(id: String, context: Context) {
         var returnedClinician: Clinician? = null
-        val db: DatabaseReference = FirebaseDatabase.getInstance("https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app").getReference("Clinicians")
+        val db: DatabaseReference =
+            FirebaseDatabase.getInstance("https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app")
+                .getReference("Clinicians")
 
 
         db.child(id)
@@ -171,7 +178,7 @@ object ClinicianManager {
 
             })
 
-}
+    }
 }
 
 

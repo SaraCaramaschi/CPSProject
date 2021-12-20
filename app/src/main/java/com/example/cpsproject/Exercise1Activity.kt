@@ -23,14 +23,14 @@ import java.time.LocalDateTime
 import java.util.*
 import java.util.stream.Collectors
 
-class Exercise1Activity: AppCompatActivity() {
+class Exercise1Activity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exercise1)
 
         val intent = getIntent()
-        val phase = intent.getIntExtra("phase",1)
+        val phase = intent.getIntExtra("phase", 1)
 
         btnStart1.setOnClickListener {
             ConnectionManager.StartOnBoard()
@@ -51,7 +51,6 @@ class Exercise1Activity: AppCompatActivity() {
                 "You need to perform all three exercises before downloading files",
                 Toast.LENGTH_LONG
             ).show()
-            //ConnectionManager.download()
         }
     }
 
@@ -65,7 +64,6 @@ class Exercise1Activity: AppCompatActivity() {
     }
 
 
-    private fun fillSession(data:PenData, session: Session) {
-        //session.data = data --> sono gine, l'ho commentato perchè se no non andava nada
+    private fun fillSession(data: PenData, session: Session) {
     }
 }

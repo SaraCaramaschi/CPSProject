@@ -78,9 +78,7 @@ class EditPatientActivity: AppCompatActivity() {
             spinHand.setSelection(h)
 
 
-            //intanto utente può cambiare tutte le varie cose
-
-        }
+                  }
 
 
 
@@ -137,16 +135,13 @@ class EditPatientActivity: AppCompatActivity() {
                 etNotes.text.toString(), etTax.text.toString(), etBirthDateEdit.text.toString(), handEnum, genderEnum
             )
 
-            //cancello vecchio paziente per creare nuovo file (domanda: lista mostre stesso ordine con cui salvato arrey della lista?)
-            // PatientsManager.deletePatient(this, pos)
+            //cancello vecchio paziente per creare nuovo file
             PatientsManager.deletePatient(this,pos)
-            // Add patient to patientlist
-            //PatientsManager.patientsList[pos]==patient
+
             PatientsManager.addPatient(patient, applicationContext)
 
             //Aggiorna lista dei pazienti
-            //PatientsManager.patientsList = PatientsManager.importPatientList(this)
-            var currentuser = FirebaseAuth.getInstance().getCurrentUser()?.getUid()
+             var currentuser = FirebaseAuth.getInstance().getCurrentUser()?.getUid()
             var ID:String=String()
             if (currentuser != null) {
                 ID = currentuser

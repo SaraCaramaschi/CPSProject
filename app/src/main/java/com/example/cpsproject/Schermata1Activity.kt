@@ -26,34 +26,21 @@ class Schermata1Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home)
 
-        //val userId=intent.getStringExtra("user_id")
-        /*   val email=intent.getStringExtra("email_id")
-           val name=intent.getStringExtra("name")
-           val surname=intent.getStringExtra("surname")
-   */
-        // TOP QUESTO MI DA LA MAIL
-        /* Timber.d("LA MAIL e': %s", ClinicianManager.email)
-
-         tvClinician.text = ClinicianManager.email*/
 
         val mainHandler = Handler(Looper.getMainLooper())
-        mainHandler.post(object: Runnable {
+        mainHandler.post(object : Runnable {
             override fun run() {
                 if (clinicianToPass != null) {
                     tvClinician.text =
                         ClinicianManager.clinicianToPass!!.name + " " + ClinicianManager.clinicianToPass!!.surname
                     return
-                }
-                else {
+                } else {
                     mainHandler.postDelayed(this, 1000)
                 }
             }
         })
 
 
-
-
-        //TODO NON FUNZIONA
         //importo subito lista pazioni da firebase
         var listPatients: ArrayList<Patient> = ArrayList()
         var currentuser = FirebaseAuth.getInstance().getCurrentUser()?.getUid()
@@ -62,17 +49,12 @@ class Schermata1Activity : AppCompatActivity() {
             ID = currentuser
         }
 
-        //listPatients = PatientsManager.getDocumentsPatient(this, ID)
         PatientsManager.patientsList = PatientsManager.getDocumentsPatient(this, ID)
         PatientsManager.patientsAllList = PatientsManager.getDocumentsAllPatient(this, ID)
 
-        //TODO CONTROLLO LOCALE + CARICO SU DATABSE--> DOBBIAMO ARLO ANCHE PER RECORDING SESSION
+
         checkPatientLocal(this)
 
-
-//PROVA PER CLINICO ILA MA I PROSSIMI DUE COMMENTI POSSONO ESSERE CANCELLATI
-        //  val tvClinician=findViewById<TextView>(R.id.tvClinician)
-        // tvClinician.setText("Doctor  ${etEmailLog} ")
 
         // bottone LOG OUT
         val btnLogOut = findViewById<Button>(R.id.btnLogOut)

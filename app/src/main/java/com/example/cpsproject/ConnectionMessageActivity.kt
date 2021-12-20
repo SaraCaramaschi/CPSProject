@@ -13,33 +13,30 @@ import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.model.Patient
 import timber.log.Timber
 
-class ConnectionMessageActivity: AppCompatActivity()  {
+class ConnectionMessageActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_connection_message)
 
-        //VOLEVO FARE UNA ACTIVITY PER FAR COMPARIRE UN MESSAGGIO PER CHIDERE CONFERMA DELL'ELIMINAZIONE
-        // poi ho visto che si può fare un "alert dialog"
-
-        val intent= getIntent()
-        val phase= intent.getIntExtra("phase", 0)
+        val intent = getIntent()
+        val phase = intent.getIntExtra("phase", 0)
 
         val btnYes = findViewById<Button>(R.id.btnYes1)
         val btnNo = findViewById<Button>(R.id.btnNo1)
 
-        btnNo.setOnClickListener{
-            var intent= Intent(this, MainConnection::class.java)
+        btnNo.setOnClickListener {
+            var intent = Intent(this, MainConnection::class.java)
             startActivity(intent)
         }
 
-        btnYes.setOnClickListener{
+        btnYes.setOnClickListener {
             Timber.d("$phase")
-            if (phase == 2){
+            if (phase == 2) {
                 var intent = Intent(this, Phase2Activity::class.java)
                 startActivity(intent)
-            }else{
+            } else {
                 var intent = Intent(this, Phase1Activity::class.java)
                 startActivity(intent)
             }

@@ -25,10 +25,7 @@ class Phase2Activity: AppCompatActivity() {
             Toast.makeText(this@Phase2Activity, "The pen disconnected!", Toast.LENGTH_SHORT)
                 .show()
         }
-
-        val tvDescription2 = findViewById<TextView>(R.id.tvDescription2)
-
-        tvDescription2.setText("In this phase the patient has to do the 3 exercises once a month. \n")
+        
         val btn1= findViewById<Button>(R.id.btnEx1Ph2)
         btn1.setOnClickListener {
             val intent = getIntent()

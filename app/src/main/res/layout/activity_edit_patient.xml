@@ -21,8 +21,8 @@
         app:layout_constraintVertical_bias="0.053" />
 
     <LinearLayout
-        android:layout_width="309dp"
-        android:layout_height="91dp"
+        android:layout_width="311dp"
+        android:layout_height="102dp"
         android:layout_marginTop="30dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,8 +33,8 @@
 
         <TextView
             android:id="@+id/tvEditpatient"
-            android:layout_width="310dp"
-            android:layout_height="55dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="0dp"
             android:text="@string/edit_patient"
@@ -42,8 +42,7 @@
             android:textSize="40sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <!--<TextView
             android:layout_width="match_parent"
@@ -58,10 +57,11 @@
         android:id="@+id/LinearLayoutItems"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="112dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/btnPatListBack"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
@@ -87,11 +87,11 @@
 
             <EditText
                 android:id="@+id/etName"
-                android:layout_weight="1"
-                android:textCursorDrawable="@drawable/color_cursor"
-                android:backgroundTint="@color/strings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/strings"
+                android:textCursorDrawable="@drawable/color_cursor"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/tvName"
                 tools:ignore="SpeakableTextPresentCheck" />
@@ -121,11 +121,11 @@
 
             <EditText
                 android:id="@+id/etSurname"
-                android:textCursorDrawable="@drawable/color_cursor"
-                android:backgroundTint="@color/strings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:backgroundTint="@color/strings"
+                android:textCursorDrawable="@drawable/color_cursor"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/tvSurname"
                 tools:ignore="SpeakableTextPresentCheck" />
@@ -190,11 +190,11 @@
                 android:id="@+id/etBirthDateEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="DD.MM.YYYY"
-                android:textCursorDrawable="@drawable/color_cursor"
-                android:backgroundTint="@color/strings"
                 android:layout_weight="1"
+                android:backgroundTint="@color/strings"
+                android:hint="DD.MM.YYYY"
                 android:inputType="date"
+                android:textCursorDrawable="@drawable/color_cursor"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/tvBirthDate" />
 
@@ -230,9 +230,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="20sp"
-                android:textCursorDrawable="@drawable/color_cursor"
                 android:backgroundTint="@color/strings"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/tvPlace"
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -262,9 +262,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@color/sfondogine"
                 android:entries="@array/dominanthand"
                 android:minHeight="48dp"
-                android:background="@color/sfondogine"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -291,11 +291,11 @@
             <EditText
                 android:id="@+id/etNotes"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:textSize="20sp"
-                android:textCursorDrawable="@drawable/color_cursor"
                 android:backgroundTint="@color/strings"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/tvPlace"
                 tools:ignore="SpeakableTextPresentCheck" />
 

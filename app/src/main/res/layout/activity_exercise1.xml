@@ -11,7 +11,7 @@
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="16dp"
         android:src="@mipmap/ic_exercise"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,7 +21,7 @@
         android:id="@+id/tvExercise1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="28dp"
         android:text="@string/exercise_1"
         android:textColor="@color/strings"
         android:textSize="40dp"
@@ -34,25 +34,25 @@
         android:id="@+id/tvExDescription1"
         android:layout_width="340dp"
         android:layout_height="64dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="60dp"
         android:text="@string/ex1"
         android:textColor="@color/strings"
         android:textSize="23dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvExercise1" />
 
     <TextView
         android:id="@+id/tvStart"
-        android:layout_width="wrap_content"
+        android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="@string/press_start_to_perform_data_acquisition"
-        android:textSize="19sp"
+        android:text="@string/press_stop_to_end_the_acquisition_of_the_data"
         android:textColor="@color/strings"
+        android:textSize="20dp"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnStart1" />
 
@@ -60,7 +60,7 @@
         android:id="@+id/btnStart1"
         android:layout_width="100dp"
         android:layout_height="55dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="#1A731E"
         android:text="@string/start"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,40 +70,29 @@
 
     <TextView
         android:id="@+id/tvStop"
-        android:layout_width="wrap_content"
+        android:layout_width="340dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
-        android:text="@string/press_stop_to_end_the_acquisition_of_the_data"
-        android:textSize="19sp"
+        android:layout_marginTop="228dp"
+        android:textAlignment="center"
+        android:text="@string/press_start_to_perform_data_acquisition"
         android:textColor="@color/strings"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDownload" />
+        app:layout_constraintTop_toBottomOf="@+id/tvExercise1" />
 
     <Button
         android:id="@+id/btnStop1"
         android:layout_width="100dp"
         android:layout_height="55dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="#8E2424"
         android:text="@string/stop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvStart" />
 
-    <TextView
-        android:id="@+id/tvDownload"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="176dp"
-        android:text="@string/you_will_be_able_to_download_files_once_all_three_exercises_will_be_completed"
-        android:textColor="@color/strings"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvExercise1" />
 
     <Button
         android:id="@+id/btnDownloadEx1"

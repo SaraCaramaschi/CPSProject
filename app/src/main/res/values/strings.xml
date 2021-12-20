@@ -74,8 +74,13 @@
     <string name="patient_records">Patient records</string>
     <string name="language">English</string>
     <string name="all_patients">All patients</string>
+    <string name="phase_1_description_1">In the same day the patient has to repeat the three exercises twice.</string>
+    <string name="phase_1_description_2">The exercises must be performed with a break of at least one minute from one to another.</string>
+    <string name="phase_1_description_3">Between the two sessions there must be a pause of at least 30 minutes.</string>
+    <string name="phase_description_dwn"> You will be able to download files once all three exercises will be completed</string>
+    <string name="phase_2_description"> In this phase the patient has to do the 3 exercises once a month.</string>
     <string name="connention_message">Have you connected the pen?</string>
-    <string name="delete_message">"Do you want to eliminate: </string>
+    <string name="delete_message">"Do you want to delete: </string>
     <string name="choose_language"> Choose your language</string>
     <string name="ex1">Make the patient write a grocery list with at least 6 elements</string>
     <string name="ex2">Make the patient write a free text (maximum 7 rows)</string>

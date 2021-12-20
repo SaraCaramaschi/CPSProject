@@ -32,7 +32,7 @@ class LanguageActivity : AppCompatActivity() {
 
         var languageList = ArrayList<String>()
         languageList.add("Select")
-        languageList.add("Italiano")
+        languageList.add("Italian")
         languageList.add("English")
 
         var languageAdapter = ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, languageList)

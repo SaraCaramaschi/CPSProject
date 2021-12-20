@@ -40,7 +40,7 @@
                     android:id="@+id/PatientName"
                     android:layout_width="match_parent"
                     android:layout_height="39dp"
-                    android:layout_marginStart="4dp"
+                    android:layout_marginStart="0dp"
                     android:layout_marginTop="0dp"
                     android:text="@string/name_surname"
                     android:textSize="20sp"

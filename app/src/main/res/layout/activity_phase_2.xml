@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-       xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/sfondogine">
 
@@ -33,40 +33,53 @@
         tools:textSize="27dp" />
 
     <TextView
-        android:id="@+id/tvDescription2"
-        android:layout_height="170dp"
-        android:layout_marginTop="28dp"
+        android:id="@+id/tvDescription2One"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="15dp"
-        android:layout_width="match_parent"
-        android:text="@string/description"
-        android:textSize="20sp"
+        android:layout_marginTop="56dp"
+        android:text="@string/phase_2_description"
         android:textColor="@color/strings"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.457"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPhase2"
-        tools:textSize="16sp" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPhase2" />
+
+    <TextView
+        android:id="@+id/tvDescription2Two"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="60dp"
+        android:text="@string/phase_description_dwn"
+        android:textColor="@color/strings"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescription2One" />
 
     <TextView
         android:id="@+id/tvSelectPh2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+
+        android:layout_marginTop="335dp"
         android:text="@string/select_the_test"
         android:textColor="@color/strings"
         android:textSize="23sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDescription2" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPhase2" />
 
     <Button
         android:id="@+id/btnEx1Ph2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="@string/exercise_1"
+        android:layout_marginTop="30dp"
         android:backgroundTint="@color/strings"
+        android:text="@string/exercise_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSelectPh2" />
@@ -75,9 +88,9 @@
         android:id="@+id/btnEx2Ph2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:text="@string/exercise_2"
+        android:layout_marginTop="30dp"
         android:backgroundTint="@color/strings"
+        android:text="@string/exercise_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnEx1Ph2" />
@@ -86,9 +99,9 @@
         android:id="@+id/btnEx3Ph2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:text="@string/exercise_3"
+        android:layout_marginTop="30dp"
         android:backgroundTint="@color/strings"
+        android:text="@string/exercise_3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnEx2Ph2" />

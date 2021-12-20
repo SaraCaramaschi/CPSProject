@@ -80,13 +80,13 @@ class EditPatientActivity: AppCompatActivity() {
 
                   }
 
-
-
-        val btnPatListBack= findViewById<Button>(R.id.btnPatListBack)
-        btnPatListBack.setOnClickListener {
-            val intent = Intent(this, PatientListActivity::class.java)
-            startActivity(intent)
+        var btnBack=findViewById<Button>(R.id.btnBackToPatientPageEdit)
+        var intentBack=Intent(this, PatientPageActivity::class.java)
+        btnBack.setOnClickListener{
+            startActivity(intentBack)
         }
+
+
         val btnEditPat= findViewById<Button>(R.id.btnEdit)
         btnEditPat.setOnClickListener{
             if (etName.text.toString().trim().isEmpty()) {
@@ -181,6 +181,8 @@ class EditPatientActivity: AppCompatActivity() {
         val sdf= SimpleDateFormat(myFormat, Locale.UK)
         etBirthDateEdit.setText(sdf.format(myCalendar.time))
     }
+
+
 }
 //TODO PROBLEMA NON SI PUO' MODIFICARE DUE VOLTE LO STESSO PAZIENTE
 

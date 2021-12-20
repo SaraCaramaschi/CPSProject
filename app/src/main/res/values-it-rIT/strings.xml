@@ -60,6 +60,7 @@
     <string name="delete_message">Vuoi eliminare:</string>
     <string name="change_language">Cambia lingua</string>
     <string name="language">Italian</string>
+    <string name="back_to_patient_page">Torna al paziente</string>
     <string name="ex1">Fai scrivere al paziente una lista della spesa con almeno 6 elementi</string>
     <string name="ex2">Fai scrivere al paziente un testo libero (massimo 7 righe)</string>
     <string name="ex3">Leggi al paziente 15 parole dalla Batteria E.N.P.A. di cui 7 parole regolari, 3 parole irregolari e 5 non-parole. Leggile in ordine sparso</string>

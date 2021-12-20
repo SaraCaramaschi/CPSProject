@@ -34,11 +34,11 @@ class ConnectionMessageActivity : AppCompatActivity() {
         btnYes.setOnClickListener {
             Timber.d("$phase")
             if (phase == 2) {
-                var intent = Intent(this, Phase2Activity::class.java)
-                startActivity(intent)
+                var intent2 = Intent(this, Phase2Activity::class.java)
+                startActivity(intent2)
             } else {
-                var intent = Intent(this, Phase1Activity::class.java)
-                startActivity(intent)
+                var intent1 = Intent(this, Phase1Activity::class.java)
+                startActivity(intent1)
             }
 
         }

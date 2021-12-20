@@ -43,6 +43,14 @@ class Phase1Activity : AppCompatActivity() {
             val intent = Intent(this, Exercise3Activity::class.java)
             startActivity(intent)
         }
+
+        var btnBack=findViewById<Button>(R.id.btnBackToPatientPage1)
+        var intentBack=Intent(this, PatientPageActivity::class.java)
+        btnBack.setOnClickListener{
+            startActivity(intentBack)
+        }
+
+
     }
 
 

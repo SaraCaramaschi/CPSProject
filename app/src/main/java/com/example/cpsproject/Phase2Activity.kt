@@ -25,7 +25,7 @@ class Phase2Activity: AppCompatActivity() {
             Toast.makeText(this@Phase2Activity, "The pen disconnected!", Toast.LENGTH_SHORT)
                 .show()
         }
-        
+
         val btn1= findViewById<Button>(R.id.btnEx1Ph2)
         btn1.setOnClickListener {
             val intent = getIntent()
@@ -35,6 +35,11 @@ class Phase2Activity: AppCompatActivity() {
             intent1.putExtra("phase",2)
             startActivity(intent1)
 
+        }
+        var btnBack=findViewById<Button>(R.id.btnBackToPatientPage1)
+        var intentBack=Intent(this, PatientPageActivity::class.java)
+        btnBack.setOnClickListener{
+            startActivity(intentBack)
         }
     }
 }

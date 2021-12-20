@@ -81,7 +81,7 @@ class MainConnection : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_connection)
         if (BuildConfig.DEBUG) {
-        Timber.plant(Timber.DebugTree())
+            Timber.plant(Timber.DebugTree())
         }
         scan_button.setOnClickListener { if (isScanning) stopBleScan() else startBleScan() }
         setupRecyclerView()
@@ -218,34 +218,44 @@ class MainConnection : AppCompatActivity() {
         ConnectionEventListener().apply {
             onConnectionSetupComplete = { gatt ->
                 // Prima di PenActivity c'era BleOperationsActivityProva
-                Intent(this@MainConnection, PenActivity::class.java).also {
-                    it.putExtra(BluetoothDevice.EXTRA_DEVICE, gatt.device)
-                    startActivity(it)
+                //val flag = intent.getIntExtra("flag", 0)
+                //if (flag == 1) {
+                    Intent(this@MainConnection, PenActivity::class.java).also {
+                        it.putExtra(BluetoothDevice.EXTRA_DEVICE, gatt.device)
+                        startActivity(it)
+                   }
+                //} else {
+                    /*Intent(this@MainConnection, PenActivity::class.java).also {
+                        it.putExtra(BluetoothDevice.EXTRA_DEVICE, gatt.device)
+                        startActivity(it)
+                    }*/
+                    ConnectionManager.unregisterListener(this)
                 }
-                ConnectionManager.unregisterListener(this)
-            }
-            onDisconnect = {
-                runOnUiThread {
-                    alert {
-                        title = "Disconnected"
-                        message = "Disconnected or unable to connect to device."
-                        positiveButton("OK") {}
-                    }.show()
+
+                onDisconnect = {
+                    runOnUiThread {
+                        alert {
+                            title = "Disconnected"
+                            message = "Disconnected or unable to connect to device."
+                            positiveButton("OK") {}
+                        }.show()
+                    }
                 }
             }
         }
-    }
 
         /*******************************************
-     * Extension functions
-     *******************************************/
+         * Extension functions
+         *******************************************/
 
-    private fun Context.hasPermission(permissionType: String): Boolean {
-        return ContextCompat.checkSelfPermission(this, permissionType) ==
-                PackageManager.PERMISSION_GRANTED
+        private fun Context.hasPermission(permissionType: String): Boolean {
+            return ContextCompat.checkSelfPermission(this, permissionType) ==
+                    PackageManager.PERMISSION_GRANTED
+        }
+
+        private fun Activity.requestPermission(permission: String, requestCode: Int) {
+            ActivityCompat.requestPermissions(this, arrayOf(permission), requestCode)
+        }
     }
 
-    private fun Activity.requestPermission(permission: String, requestCode: Int) {
-        ActivityCompat.requestPermissions(this, arrayOf(permission), requestCode)
-    }
-}
+

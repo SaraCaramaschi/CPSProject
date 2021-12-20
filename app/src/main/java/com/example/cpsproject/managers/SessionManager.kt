@@ -1,12 +1,16 @@
 package com.example.cpsproject.managers
 
 import android.content.Context
+import com.example.cpsproject.model.Patient
 
 import com.example.cpsproject.model.Session
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
 import timber.log.Timber
+import java.io.BufferedReader
 import java.io.File
 
 
@@ -92,6 +96,59 @@ object SessionManager {
             }
         }*/
 }
+
+fun readSessionJson(file: File, context: Context): Session {
+    //Creating a new Gson object to read data
+    var gson = Gson()
+    //Read the PostJSON.json file
+    val bufferedReader: BufferedReader = file.bufferedReader()
+    // Read the text from buffferReader and store in String variable
+    val inputString = bufferedReader.use { it.readText() }
+
+    //Convert the Json File to Gson Object
+    var session = gson.fromJson(inputString, Session::class.java)
+    return session
+}
+
+ fun checkRecordingsLocal(context: Context) {
+    var folder =
+        context.getDir("RecordingSessionFolder", Context.MODE_PRIVATE)
+
+    if (!folder.listFiles().isEmpty()) {
+        File(context.getDir("RecordingSessionFolder", Context.MODE_PRIVATE).path).walk().forEach {
+            //Timber.d(it.path)
+            if (it.isFile) {
+                val rec = readSessionJson(it,context)
+                val gson = Gson()
+                var jsonDoc = gson.toJson(rec)
+                var fileNameCheck = folder.path.toString() + "/" + rec.sessionId + ".txt"
+
+                //elimino da database
+                val db=Firebase.firestore
+                var mapsession: Map<String, Any> = HashMap()
+                mapsession = Gson().fromJson(jsonDoc, mapsession.javaClass)
+                db.collection("RecrdingSessions")
+                    .add(mapsession)
+                    .addOnSuccessListener {
+                        Timber.d("Record added succesfully")
+                        File(fileNameCheck).delete()
+                        Timber.d("File deleted")
+                    }
+
+                    .addOnFailureListener { e ->
+                        Timber.d("Error filed to add")
+                        saveDocument(rec, context)
+                    }
+
+            }
+
+        }
+    }
+}
+
+
+
+
 //se dovesse servire per leggere i file salvati sul database
 /* val db = Firebase.firestore
       val docRef = db.collection("patients")

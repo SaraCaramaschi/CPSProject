@@ -20,6 +20,7 @@ import kotlinx.android.synthetic.main.activity_add_patient.etTax
 import kotlinx.android.synthetic.main.activity_add_patient.spinnerDominantHand
 import kotlinx.android.synthetic.main.activity_add_patient.spinnerGender
 import kotlinx.android.synthetic.main.activity_edit_patient.*
+import timber.log.Timber
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -31,8 +32,8 @@ class EditPatientActivity: AppCompatActivity() {
         setContentView(R.layout.activity_edit_patient)
         val intent= getIntent()
         val pos= intent.getIntExtra("position", 0)
-
         val patient = PatientsManager.patientsList[pos]
+
         if (patient != null) {
             //Show patient data
             val etNome = findViewById<EditText>(R.id.etName)
@@ -71,8 +72,6 @@ class EditPatientActivity: AppCompatActivity() {
             etNote.setText(patient.notes.toString())
             etComple.setText(patient.birthdate.toString())
             etTax.setText(patient.taxcode.toString())
-
-
 
             spinGenere.setSelection(g)
             spinHand.setSelection(h)
@@ -114,7 +113,6 @@ class EditPatientActivity: AppCompatActivity() {
                 else -> {
                     Hand.Right
                 }
-
             }
 
             val genderEnum: Gender = when (spinnerGender.selectedItem) {
@@ -136,6 +134,7 @@ class EditPatientActivity: AppCompatActivity() {
             )
 
             //cancello vecchio paziente per creare nuovo file
+            Timber.d("$pos CANCELLAAAAAAAAAAAAAAAAAAAAAAAAAAA")
             PatientsManager.deletePatient(this,pos)
 
             PatientsManager.addPatient(patient, applicationContext)

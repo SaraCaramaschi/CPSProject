@@ -40,7 +40,7 @@ class SelectPatientListActivity : AppCompatActivity() {
         //listPatients=PatientsManager.importPatientList(this)
         val adapter = SelectPatientAdapter(this, patientsAllList)
         layoutManager = LinearLayoutManager(this)
-        rvPatients = findViewById(R.id.rvPatients)
+        rvPatients = findViewById(R.id.rvPatientsAll)
         rvPatients.layoutManager = layoutManager
         rvPatients.adapter = adapter
 

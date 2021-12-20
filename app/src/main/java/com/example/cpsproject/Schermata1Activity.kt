@@ -14,6 +14,8 @@ import com.example.cpsproject.managers.ClinicianManager.clinicianToPass
 import com.example.cpsproject.managers.ClinicianManager.findClinician
 import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.managers.PatientsManager.checkPatientLocal
+import com.example.cpsproject.managers.SessionManager
+import com.example.cpsproject.managers.checkRecordingsLocal
 import com.example.cpsproject.model.Clinician
 import com.example.cpsproject.model.Patient
 import com.google.firebase.auth.FirebaseAuth
@@ -54,7 +56,7 @@ class Schermata1Activity : AppCompatActivity() {
 
 
         checkPatientLocal(this)
-
+        checkRecordingsLocal(this)
 
         // bottone LOG OUT
         val btnLogOut = findViewById<Button>(R.id.btnLogOut)

@@ -48,9 +48,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="@string/press_stop_to_end_the_acquisition_of_the_data"
+        android:textAlignment="center"
         android:textColor="@color/strings"
         android:textSize="20dp"
-        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,8 +73,8 @@
         android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="190dp"
-        android:textAlignment="center"
         android:text="@string/press_start_to_perform_data_acquisition"
+        android:textAlignment="center"
         android:textColor="@color/strings"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -98,27 +98,23 @@
         android:id="@+id/btnDownloadEx1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="24dp"
         android:backgroundTint="@color/strings"
         android:text="@string/download_files"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.934"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnStop1" />
 
     <Button
         android:id="@+id/btnPatPhaseBack"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="152dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="68dp"
         android:backgroundTint="@color/strings"
         android:text="@string/back_to_phase"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnDownloadEx1"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnStop1"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/btnStop1" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

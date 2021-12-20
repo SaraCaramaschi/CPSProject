@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/sfondogine">
 
     <ImageView
@@ -17,18 +17,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tvExercise2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:text="Exercise 2"
-            android:textColor="@color/strings"
-            android:textSize="40dp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/tvExercise2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Exercise 2"
+        android:textColor="@color/strings"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
@@ -47,13 +47,15 @@
 
     <TextView
         android:id="@+id/tvStart"
-        android:layout_width="wrap_content"
+        android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="@string/press_start_to_perform_data_acquisition"
-        android:textSize="19sp"
+        android:text="@string/press_stop_to_end_the_acquisition_of_the_data"
+        android:textAlignment="center"
         android:textColor="@color/strings"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnStart2" />
 
@@ -71,13 +73,15 @@
 
     <TextView
         android:id="@+id/tvStop"
-        android:layout_width="wrap_content"
+        android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="190dp"
-        android:text="@string/press_stop_to_end_the_acquisition_of_the_data"
+        android:text="@string/press_start_to_perform_data_acquisition"
+        android:textAlignment="center"
         android:textColor="@color/strings"
-        android:textSize="19sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvExercise2" />
 
@@ -97,26 +101,23 @@
         android:id="@+id/btnDownloadEx2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="152dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="24dp"
         android:backgroundTint="@color/strings"
         android:text="@string/download_files"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnStop2" />
 
     <Button
         android:id="@+id/btnPatPhaseBack"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="68dp"
         android:backgroundTint="@color/strings"
         android:text="@string/back_to_phase"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnDownloadEx2"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnStop2"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/btnStop2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

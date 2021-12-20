@@ -2,6 +2,7 @@ package com.example.cpsproject
 
 import android.annotation.SuppressLint
 import android.content.ContentResolver
+import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -15,7 +16,9 @@ import com.example.cpsproject.managers.SessionManager
 import com.example.cpsproject.model.PenData
 import com.example.cpsproject.model.Session
 import com.punchthrough.blestarterappandroid.ble.ConnectionManager
+import kotlinx.android.synthetic.main.activity_add_patient.*
 import kotlinx.android.synthetic.main.activity_exercise1.*
+import kotlinx.android.synthetic.main.activity_exercise1.btnPatPhaseBack
 import timber.log.Timber
 import java.io.*
 import java.net.URI
@@ -51,6 +54,10 @@ class Exercise1Activity : AppCompatActivity() {
                 "You need to perform all three exercises before downloading files",
                 Toast.LENGTH_LONG
             ).show()
+        }
+        btnPatPhaseBack.setOnClickListener {
+            val intent = Intent(this, PatientPageActivity::class.java)
+            startActivity(intent)
         }
     }
 

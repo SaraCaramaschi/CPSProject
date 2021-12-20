@@ -57,11 +57,11 @@
         android:id="@+id/LinearLayoutItems"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/btnPatListBack"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/LinearLayout1"
@@ -282,7 +282,7 @@
             <EditText
                 android:id="@+id/etNotes"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/tvPlace"
@@ -295,8 +295,8 @@
         android:id="@+id/btnAddPat"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginBottom="92dp"
         android:backgroundTint="@color/strings"
         android:text="@string/add_patient"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -306,8 +306,8 @@
         android:id="@+id/btnPatListBack"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="88dp"
         android:backgroundTint="@color/strings"
         android:text="@string/back_to_patient_list"
         app:layout_constraintBottom_toBottomOf="parent"

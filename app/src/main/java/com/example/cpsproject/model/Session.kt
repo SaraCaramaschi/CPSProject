@@ -5,8 +5,6 @@ import java.time.LocalDate
 import java.util.*
 import kotlin.collections.ArrayList
 
-// Da sistemare con cose precise del data model:
-
 class Session {
     var device: String?=null
     var datetime: LocalDate?=null
@@ -17,9 +15,4 @@ class Session {
     var clinicianID: String?=null
     var nFile: Int?=null
 
-    // var device: String = ""
-    // var datetime: String = ""
-    // var patientID: String = ""
-    // var phase: Int=1
-    // var sessionData: ArrayList<PenData> = ArrayList()
-}
+ }

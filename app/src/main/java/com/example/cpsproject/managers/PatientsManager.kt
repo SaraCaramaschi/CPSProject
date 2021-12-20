@@ -31,16 +31,11 @@ object PatientsManager {
         //CREATE NEW DIRECOTY IN FILESDIR DIRECOTY (https://developer.android.com/training/data-storage/app-specific#kotlin)
 
         var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)
-        //Timber.d("questo è nuova cartella: %s", folder.path.toString())
-
 
         var fileName = folder.path.toString() + "/" + patient.taxcode + ".txt"
         var file = File(fileName) // cartella uguale ma con una roba in più
 
         val createdFile = file.createNewFile()
-//        Timber.d("Il filename e': %s", fileName)
-//        Timber.d("the file is created %s", createdFile)
-//        Timber.d("path %s", file.absolutePath)
 
         file.writeText(jsonPatient)
         saveRealtimePatient(jsonPatient, patient, context)
@@ -61,13 +56,12 @@ object PatientsManager {
         var fileName = folder.path.toString() + "/" + taxcode + ".txt"
 
         db.child(patient.taxcode.toString()).setValue(patient).addOnSuccessListener {
-            //Timber.d("Record added succesfully!")
+
             File(fileName).delete()
-            //Timber.d("File deleted")
         }
             .addOnFailureListener {
                 Timber.d("Error filed to add!")
-                //TODO CODICE PER SALVARE IN LOCALE SE QUALOCSA VA STORTO--> verificare se funziona
+                // CODICE PER SALVARE IN LOCALE SE QUALOCSA VA STORTO
                 savePatient(patient, context)
             }
 
@@ -126,7 +120,6 @@ object PatientsManager {
         val db: DatabaseReference =
             FirebaseDatabase.getInstance("https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app")
                 .getReference("Patients")
-        //val dbPatients=db.child("Patients")
         val myPatientsList: ArrayList<Patient> = ArrayList()
         db.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -168,7 +161,7 @@ object PatientsManager {
         val db: DatabaseReference =
             FirebaseDatabase.getInstance("https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app")
                 .getReference("Patients")
-        //val dbPatients=db.child("Patients")
+
         val patientsListAll: ArrayList<Patient> = ArrayList()
         db.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -186,7 +179,7 @@ object PatientsManager {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                Timber.d("patient cancelled")
             }
 
 
@@ -215,113 +208,12 @@ object PatientsManager {
         db =
             FirebaseDatabase.getInstance("https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app")
                 .getReference("Patients")
-        //val patientsRef = db.collection("patients")
+
         //cerco paziente con quel taxcode
         db.child(patientDeleted.taxcode.toString()).removeValue().addOnSuccessListener {
             Timber.d("Deleted")
         }.addOnFailureListener {
             Timber.d("Not deleted")
         }
-        /*val queryTaxCode = patientsRef.whereEqualTo("taxcode", "${patientDeleted.taxcode}")
-queryTaxCode.get().addOnSuccessListener { result ->
-
-if (result != null) {
-    val document = result.documents
-    document.forEach {
-        //val patient=it.toObject(Patient::class.java)
-        //if (patient != null){
-        var id = it.id
-        patientsRef.document(id).delete().addOnSuccessListener {
-            Timber.d("Deleted")
-        }
-            .addOnFailureListener {
-                Timber.d("Not deleted")
-            }
-    }
-} else {
-    Timber.d("No such document")
-}
-}*/
-
     }
 }
-
-
-/*
-    //DOMANDA: in teoria non serve più giusto?
-    public fun readPatient(i: Int, context: Context): Patient { // FUNZIONA !!!
-        var lastPatient = patientsList[i]
-        var folder =
-            context.getDir("PatientsFolder", Context.MODE_PRIVATE)         // ripresi da savePatient
-        var fileName =
-            folder.path.toString() + "/" + lastPatient.taxcode + ".txt"  // ripresi da savePatient
-
-        //Creating a new Gson object to read data
-        var gson = Gson()
-        //Read the PostJSON.json file
-        val bufferedReader: BufferedReader = File(fileName).bufferedReader()
-        // Read the text from buffferReader and store in String variable
-        val inputString = bufferedReader.use { it.readText() }
-
-        //Convert the Json File to Gson Object
-        var patient = gson.fromJson(inputString, Patient::class.java)
-
-        //Initialize the String Builder
-        var stringBuilder = StringBuilder("Patient Details\n---------------------")
-
-        stringBuilder?.append("\nName: " + patient.name.toString())
-        stringBuilder?.append(("\nCognome: " + patient.surname.toString()))
-        stringBuilder?.append(("\nCodice fiscale: " + patient.taxcode.toString()))
-        stringBuilder?.append(("\nNote: " + patient.notes.toString()))
-        stringBuilder?.append(("\nCompleanno: " + patient.birthdate.toString()))
-
-        //Display the all Json object in text View
-        Timber.d("Stringbuilder: %s", stringBuilder.toString())
-
-        return patient
-    }*/
-/*
-    //Da json a data class OK
-    fun readPatientDatabase(file: File, context: Context): Patient {
-        //Creating a new Gson object to read data
-        var gson = Gson()
-        //Read the PostJSON.json file
-        val bufferedReader: BufferedReader = file.bufferedReader()
-        // Read the text from buffferReader and store in String variable
-        val inputString = bufferedReader.use { it.readText() }
-
-        //Convert the Json File to Gson Object
-        var patient = gson.fromJson(inputString, Patient::class.java)
-        return patient
-    }
-
-    // Aggiorna lista pazienti da locale OK--> ma non verrà più usata
-    fun importPatientList(context: Context): ArrayList<Patient> {
-        Timber.d("Dentro a IMPORTPATIENTLIST")
-
-        var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)
-        if (folder.listFiles().isEmpty()) {
-            Timber.d("EMPTY FOLDER")
-            return ArrayList()
-        }
-
-        File(context.getDir("PatientsFolder", Context.MODE_PRIVATE).path).walk().forEach {
-            Timber.d(it.path)
-            if (it.isFile) {
-                val pat = readPatientDatabase(it, context)
-                if (!patientsList.contains(pat)) {
-                    patientsList.add(pat)
-                }
-
-            }
-        }
-
-        return patientsList
-    }
- */
-
-
-
-
-
-

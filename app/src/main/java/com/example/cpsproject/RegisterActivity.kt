@@ -88,8 +88,7 @@ class RegisterActivity : AppCompatActivity() {
                                     etName.text.toString(),
                                     etSurname.text.toString(),
                                     etEmail.text.toString(),
-                                    //etPassword1.text.toString(),
-                                    firebaseUser.uid//TODO leva la password
+                                    firebaseUser.uid
                                 )
                                 ClinicianManager.addClinician(clinician, applicationContext)
 
@@ -101,10 +100,7 @@ class RegisterActivity : AppCompatActivity() {
                                 val intent = Intent(this, LoginActivity::class.java)
                                 intent.flags =
                                     Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                //intent.putExtra("user_id", firebaseUser.uid)
-                                /*  intent.putExtra("email_id", email)
-                                  intent.putExtra("name", name)
-                                  intent.putExtra("surname", surname)*/
+
                                 startActivity(intent)
                                 finish()
                             } else {

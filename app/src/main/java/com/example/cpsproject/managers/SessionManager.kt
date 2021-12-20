@@ -54,7 +54,7 @@ object SessionManager {
 
           .addOnFailureListener { e ->
               Timber.d("Error filed to add")
-              //TODO CODICE PER SALVARE IN LOCALE SE QUALOCSA VA STORTO--> verificare se funziona
+              //CODICE PER SALVARE IN LOCALE SE QUALOCSA VA STORTO
               saveDocument(session, context)
           }
 

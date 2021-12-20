@@ -17,11 +17,12 @@ import kotlinx.android.synthetic.main.activity_register.*
 import timber.log.Timber
 import java.util.*
 
-// ok ultima versione
+
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login
+        setContentView(
+            R.layout.activity_login
         )
 
         var emailLog: String = String()
@@ -83,20 +84,15 @@ class LoginActivity : AppCompatActivity() {
                                     Toast.LENGTH_SHORT
                                 ).show()
 
-                                ClinicianManager.findClinician(FirebaseAuth.getInstance().uid!!, applicationContext)!!
+                                ClinicianManager.findClinician(
+                                    FirebaseAuth.getInstance().uid!!,
+                                    applicationContext
+                                )!!
 
                                 val intent =
                                     Intent(this@LoginActivity, Schermata1Activity::class.java)
 
-//TODO USERNAME DA PASSARE COME I DATI DEL PAZIENTE, per ora mostriamo l'id di firebase automatico
-                                /*intent.flags =
-                                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                intent.putExtra(
-                                    "user_id",
-                                    FirebaseAuth.getInstance().currentUser!!.uid
-                                )
 
-                                intent.putExtra("email_id", emailLog)*/
                                 intent.putExtra("email_id", emailLog)
                                 startActivity(intent)
                                 finish()
@@ -114,16 +110,8 @@ class LoginActivity : AppCompatActivity() {
 
                 }
 
-                //if (etEmailLog.text.trim().isNotEmpty() || etPasswordLog.text.trim().isNotEmpty()) {
-                //val intent = Intent(this, Schermata1::class.java)
-                //startActivity(intent)
-                //TODO VERIFICA IDENTITA' OK ora l'ho tolto cosi posso entrare, poi lo rimettiamo
-                //} else {
-                //Toast.makeText(this, "Imput required", Toast.LENGTH_LONG).show()
-                //}
+
             }
-
-
 
 
         }
@@ -131,19 +119,19 @@ class LoginActivity : AppCompatActivity() {
 
     private fun changeLanguage(lang: String) {
         val sharedPreferences = getDefaultSharedPreferences(applicationContext)
-        val language = sharedPreferences.getString("language",lang)
-        Toast.makeText(applicationContext,language,Toast.LENGTH_SHORT).show()
+        val language = sharedPreferences.getString("language", lang)
+        Toast.makeText(applicationContext, language, Toast.LENGTH_SHORT).show()
 
-        if(language=="English"){
-            Toast.makeText(applicationContext,"English",Toast.LENGTH_SHORT).show()
+        if (language == "English") {
+            Toast.makeText(applicationContext, "English", Toast.LENGTH_SHORT).show()
             language("en-us")
-        }else if(language=="Italian"){
-            Toast.makeText(applicationContext,"Italian",Toast.LENGTH_SHORT).show()
+        } else if (language == "Italian") {
+            Toast.makeText(applicationContext, "Italian", Toast.LENGTH_SHORT).show()
             language("it-rIT")
         }
     }
 
-    fun language(language: String){
+    fun language(language: String) {
         val locale = Locale(language)
         Locale.setDefault(locale)
         val resources = resources

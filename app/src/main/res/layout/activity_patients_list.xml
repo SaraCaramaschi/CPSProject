@@ -24,6 +24,19 @@
 
 
     <Button
+        android:id="@+id/btnLogOut"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+                android:backgroundTint="@color/strings"
+        android:text="@string/log_out"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnAllPatientsToSelect"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toEndOf="@+id/btnNewPatient"
+        app:layout_constraintTop_toBottomOf="@+id/rvPatients"
+        app:layout_constraintVertical_bias="0.45" />
+
+    <Button
         android:id="@+id/btnNewPatient"
         android:layout_width="120dp"
         android:layout_height="wrap_content"

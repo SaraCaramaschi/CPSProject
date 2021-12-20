@@ -27,14 +27,20 @@ class Phase2Activity: AppCompatActivity() {
         }
 
         val btn1= findViewById<Button>(R.id.btnEx1Ph2)
-        btn1.setOnClickListener {
-            val intent = getIntent()
-            val phase = intent.getIntExtra("phase",1)
 
+        btnEx1Ph2.setOnClickListener {
             val intent1 = Intent(this, Exercise1Activity::class.java)
-            intent1.putExtra("phase",2)
             startActivity(intent1)
+        }
 
+        btnEx2Ph2.setOnClickListener {
+            val intent = Intent(this, Exercise2Activity::class.java)
+            startActivity(intent)
+        }
+
+        btnEx3Ph2.setOnClickListener {
+            val intent = Intent(this, Exercise3Activity::class.java)
+            startActivity(intent)
         }
         var btnBack=findViewById<Button>(R.id.btnBackToPatientPage1)
         var intentBack=Intent(this, PatientPageActivity::class.java)

@@ -49,13 +49,8 @@ class PatientPageActivity : AppCompatActivity() {
         }
 
         btnPenConnectionPatient.setOnClickListener {
-            if (ConnectionManager.currDevice!!.isConnected()) {
-                val intent = Intent(this, PenActivity::class.java)
-                startActivity(intent)
-            } else {
                 val intent = Intent(this, MainConnection::class.java)
                 startActivity(intent)
-            }
         }
 
         val btnPhase1 = findViewById<Button>(R.id.btnPhase1)

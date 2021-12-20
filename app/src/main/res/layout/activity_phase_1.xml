@@ -94,7 +94,7 @@
         android:id="@+id/tvSelectPh1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="315dp"
+        android:layout_marginTop="310dp"
         android:text="@string/select_the_test"
         android:textColor="@color/strings"
         android:textSize="23sp"
@@ -138,7 +138,7 @@
 
     <Button
         android:id="@+id/btnBackToPatientPage1"
-        android:layout_width="170dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"

@@ -48,6 +48,7 @@
     <string name="select_the_phase">Seleziona la fase</string>
     <string name="phase_1">Fase 1</string>
     <string name="phase_2">Fase 2</string>
+    <string name="back_to_phase"> Torna alla fase </string>
     <string name="phase_1_description_1">Nello stesso giorno il paziente deve ripetere i tre esercizi due volte.</string>
     <string name="phase_1_description_2">Gli esercizi devono essere eseguiti con una pausa di un minuto tra uno e l\'altro.</string>
     <string name="phase_1_description_3"> Tra le due sessioni ci deve essere una pausa di almeno 30 minuti.</string>

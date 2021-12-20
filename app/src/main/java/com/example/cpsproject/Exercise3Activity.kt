@@ -1,12 +1,15 @@
 package com.example.cpsproject
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.cpsproject.managers.SessionManager
 import com.example.cpsproject.managers.saveDocument
 import com.punchthrough.blestarterappandroid.ble.ConnectionManager
+import kotlinx.android.synthetic.main.activity_exercise1.*
 import kotlinx.android.synthetic.main.activity_exercise3.*
+import kotlinx.android.synthetic.main.activity_exercise1.btnPatPhaseBack as btnPatPhaseBack1
 
 class Exercise3Activity : AppCompatActivity() {
 
@@ -30,6 +33,10 @@ class Exercise3Activity : AppCompatActivity() {
             ).show()
             saveDocument(SessionManager.sessione, applicationContext)
             ConnectionManager.download()
+        }
+        btnPatPhaseBack.setOnClickListener {
+            val intent = Intent(this, PatientPageActivity::class.java)
+            startActivity(intent)
         }
     }
 }

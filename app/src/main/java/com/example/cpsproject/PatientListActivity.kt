@@ -102,6 +102,3 @@ class PatientListActivity : AppCompatActivity() {
 
 }
 
-
-//TODO c'è qualche errore che permette di scrivere dove non si dovrebbe quando si inseriscono
-// i dati del pz: io sono riuscita a scrivere durante l'esecuzione dell'app nella scritta "Name"

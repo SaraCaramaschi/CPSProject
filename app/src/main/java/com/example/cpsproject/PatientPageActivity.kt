@@ -34,10 +34,6 @@ class PatientPageActivity : AppCompatActivity() {
 
         val intent = getIntent()
         val pos = intent.getIntExtra("position", 0)
-        /*  if (!ConnectionManager.currDevice!!.isConnected()) {
-              Toast.makeText(this@PatientPageActivity, "The pen disconnected!", Toast.LENGTH_SHORT)
-                  .show()
-          }*/
 
         val patient = patientsList[pos]
         if (patient != null) {
@@ -72,8 +68,6 @@ class PatientPageActivity : AppCompatActivity() {
         val btnPhase2 = findViewById<Button>(R.id.btnPhase2)
         btnPhase2.setOnClickListener {
             patient.phase = 2
-            //TODO: editphase (in modo che si salvi anche online)
-
             startSession(2)
 
             val intentConnection = Intent(this, ConnectionMessageActivity::class.java)
@@ -98,9 +92,6 @@ class PatientPageActivity : AppCompatActivity() {
 
     }
 
-    private fun editPhase() {
-        TODO("Not yet implemented")
-    }
 
     private fun setupPatientPage(patient: Patient) {
         val tvNome = findViewById<TextView>(R.id.tvName)
@@ -109,7 +100,6 @@ class PatientPageActivity : AppCompatActivity() {
         val tvComple = findViewById<TextView>(R.id.tvBirthDate)
         val tvGenere = findViewById<TextView>(R.id.tvGender)
         val tvHand = findViewById<TextView>(R.id.tvDominantHand)
-        // inserire anche phase (default a 1) ERRORE CON LA FASE !!!
         val tvTax = findViewById<TextView>(R.id.tvTax)
         val tvPhase = findViewById<TextView>(R.id.tvPhase)
 

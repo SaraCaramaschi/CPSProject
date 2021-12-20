@@ -13,7 +13,7 @@
     <string name="gender">Sesso</string>
     <string name="birth_date">Nata/o il</string>
     <string name="tax_code">Codice fiscale</string>
-    <string name="dom_hand">Mano Dom</string>
+    <string name="dom_hand">Mano Dominante</string>
     <string name="add_notes">Note</string>
     <string name="add_patient">Aggiungi paziente</string>
     <string name="back_to_patient_list">"Torna indietro "</string>

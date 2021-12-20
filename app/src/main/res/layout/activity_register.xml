@@ -99,6 +99,8 @@
 
             <EditText
                 android:id="@+id/etName"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:backgroundTint="@color/strings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
@@ -131,6 +133,8 @@
 
             <EditText
                 android:id="@+id/etSurname"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:backgroundTint="@color/strings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
@@ -161,6 +165,8 @@
 
             <EditText
                 android:id="@+id/etEmail"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:backgroundTint="@color/strings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
@@ -191,6 +197,8 @@
 
             <EditText
                 android:id="@+id/etPassword1"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:backgroundTint="@color/strings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
@@ -223,6 +231,8 @@
 
             <EditText
                 android:id="@+id/etPassword2"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:backgroundTint="@color/strings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"

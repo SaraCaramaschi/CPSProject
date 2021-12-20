@@ -89,6 +89,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:backgroundTint="@color/strings"
                 app:layout_constraintStart_toEndOf="@+id/tvName"
                 tools:ignore="SpeakableTextPresentCheck" />
         </LinearLayout>
@@ -121,6 +123,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="20sp"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:backgroundTint="@color/strings"
                 app:layout_constraintStart_toEndOf="@+id/tvSurname"
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -185,6 +189,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:backgroundTint="@color/strings"
                 android:hint="DD-MM-YYYY"
                 android:inputType="date"
                 android:textSize="20sp"
@@ -224,6 +230,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="20sp"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:backgroundTint="@color/strings"
                 app:layout_constraintStart_toEndOf="@+id/tvPlace"
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -285,6 +293,8 @@
                 android:layout_height="150dp"
                 android:layout_weight="1"
                 android:textSize="20sp"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:backgroundTint="@color/strings"
                 app:layout_constraintStart_toEndOf="@+id/tvPlace"
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -293,7 +303,7 @@
 
     <Button
         android:id="@+id/btnAddPat"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginBottom="30dp"

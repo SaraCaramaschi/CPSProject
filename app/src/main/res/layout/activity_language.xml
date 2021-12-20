@@ -26,24 +26,21 @@
         android:layout_width="197dp"
         android:layout_height="61dp"
         app:layout_constraintBottom_toBottomOf="parent"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.54" />
 
-    <TextView
-        android:id="@+id/tvApp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="124dp"
-        android:text="Chose your language"
-        android:textStyle="bold"
-        android:textColor="@color/strings"
-        android:textSize="25dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.745"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Spinner
+            android:id="@+id/spinnerLanguage"
+            android:background="@color/sfondogine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/tvLanguage"

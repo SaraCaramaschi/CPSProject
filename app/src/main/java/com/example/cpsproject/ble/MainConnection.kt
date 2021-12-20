@@ -218,12 +218,20 @@ class MainConnection : AppCompatActivity() {
         ConnectionEventListener().apply {
             onConnectionSetupComplete = { gatt ->
                 // Prima di PenActivity c'era BleOperationsActivityProva
-                Intent(this@MainConnection, PenActivity::class.java).also {
-                    it.putExtra(BluetoothDevice.EXTRA_DEVICE, gatt.device)
-                    startActivity(it)
+                val flag = intent.getIntExtra("flag", 0)
+                if (flag==1) {
+                    Intent(this@MainConnection, Pen1Activity::class.java).also {
+                        it.putExtra(BluetoothDevice.EXTRA_DEVICE, gatt.device)
+                        startActivity(it)
+                    }
+                }else {
+                    Intent(this@MainConnection, PenActivity::class.java).also {
+                        it.putExtra(BluetoothDevice.EXTRA_DEVICE, gatt.device)
+                        startActivity(it)
                 }
-                ConnectionManager.unregisterListener(this)
+                    ConnectionManager.unregisterListener(this)
             }
+
             onDisconnect = {
                 runOnUiThread {
                     alert {

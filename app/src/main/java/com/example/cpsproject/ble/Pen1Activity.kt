@@ -1,7 +1,12 @@
 package com.example.cpsproject.ble
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import com.example.cpsproject.R
+import com.punchthrough.blestarterappandroid.ble.ConnectionManager
+import kotlinx.android.synthetic.main.activity_pen1.*
 
 class Pen1Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

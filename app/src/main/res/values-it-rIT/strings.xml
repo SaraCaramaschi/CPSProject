@@ -50,6 +50,7 @@
     <string name="phase_2">Fase 2</string>
     <string name="patient_records">Registrazioni del paziente</string>
     <string name="all_patients">Tutti i pazienti</string>
+    <string name="choose_language">Scegli la tua lingua</string>
     <string name="connention_message">Hai connesso la penna?</string>
     <string name="delete_message">Vuoi eliminare:</string>
     <string name="change_language">Cambia lingua</string>

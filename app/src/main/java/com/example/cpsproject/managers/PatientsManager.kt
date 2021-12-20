@@ -185,8 +185,8 @@ object PatientsManager {
                 }
             }
 
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+           override fun onCancelled(error: DatabaseError) {
+               Timber.d("patient cancelled")
             }
 
 

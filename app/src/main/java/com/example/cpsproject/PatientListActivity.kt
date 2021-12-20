@@ -80,7 +80,14 @@ class PatientListActivity : AppCompatActivity() {
 
         })
 
-
+// bottone LOG OUT
+        val btnLogOut = findViewById<Button>(R.id.btnLogOut)
+        btnLogOut.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
         //AGGIUNGE PAZIENTE
         val btnAddPatient = findViewById<Button>(R.id.btnNewPatient)
         btnAddPatient.setOnClickListener {

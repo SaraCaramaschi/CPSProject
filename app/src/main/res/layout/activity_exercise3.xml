@@ -107,11 +107,11 @@
         app:layout_constraintTop_toBottomOf="@+id/btnStop3" />
 
     <Button
-        android:id="@+id/btnPatListBack"
+        android:id="@+id/btnPatPhaseBack"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/strings"
-        android:text="@string/back_to_patient_page"
+        android:text="@string/back_to_phase"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnDownloadEx3"
         app:layout_constraintHorizontal_bias="0.0"

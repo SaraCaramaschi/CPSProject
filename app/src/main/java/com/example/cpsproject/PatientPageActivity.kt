@@ -23,6 +23,7 @@ import com.punchthrough.blestarterappandroid.ble.ConnectionManager.isConnected
 import kotlinx.android.synthetic.main.activity_add_patient.*
 import kotlinx.android.synthetic.main.activity_add_patient.btnPatListBack
 import kotlinx.android.synthetic.main.activity_patient_page.*
+import timber.log.Timber
 import java.time.LocalDateTime
 
 class PatientPageActivity : AppCompatActivity() {
@@ -36,6 +37,8 @@ class PatientPageActivity : AppCompatActivity() {
         val pos = intent.getIntExtra("position", 0)
 
         val patient = patientsList[pos]
+        Timber.d("$pos!!!!!!!!!!!!!!!!!!!!!!!!")
+
         if (patient != null) {
             setupPatientPage(patient)
         }
@@ -46,13 +49,8 @@ class PatientPageActivity : AppCompatActivity() {
         }
 
         btnPenConnectionPatient.setOnClickListener {
-            if (ConnectionManager.currDevice!!.isConnected()) {
-                val intent = Intent(this, PenActivity::class.java)
-                startActivity(intent)
-            } else {
                 val intent = Intent(this, MainConnection::class.java)
                 startActivity(intent)
-            }
         }
 
         val btnPhase1 = findViewById<Button>(R.id.btnPhase1)

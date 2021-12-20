@@ -23,10 +23,7 @@ class Phase1Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_phase_1)
-       /* if (!ConnectionManager.currDevice!!.isConnected()) {
-            Toast.makeText(this@Phase1Activity, "The pen disconnected!", Toast.LENGTH_SHORT)
-                .show()
-        }*/
+
 
 
         btnEx1Ph1.setOnClickListener {
@@ -43,6 +40,14 @@ class Phase1Activity : AppCompatActivity() {
             val intent = Intent(this, Exercise3Activity::class.java)
             startActivity(intent)
         }
+
+        var btnBack=findViewById<Button>(R.id.btnBackToPatientPage1)
+        var intentBack=Intent(this, PatientPageActivity::class.java)
+        btnBack.setOnClickListener{
+            startActivity(intentBack)
+        }
+
+
     }
 
 

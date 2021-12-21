@@ -22,8 +22,6 @@ class Phase2Activity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_phase_2)
 
-        val btn1= findViewById<Button>(R.id.btnEx1Ph2)
-
         btnEx1Ph2.setOnClickListener {
             val intent1 = Intent(this, Exercise1Activity::class.java)
             startActivity(intent1)

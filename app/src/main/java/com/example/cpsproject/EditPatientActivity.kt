@@ -65,27 +65,22 @@ class EditPatientActivity: AppCompatActivity() {
                 h=1
             }
 
-
             etNome.setText(patient.name.toString())
             etCognome.setText(patient.surname.toString())
             etNote.setText(patient.notes.toString())
             etComple.setText(patient.birthdate.toString())
             etTax.setText(patient.taxcode.toString())
 
-
-
             spinGenere.setSelection(g)
             spinHand.setSelection(h)
 
-
-                  }
+        }
 
         var btnBack=findViewById<Button>(R.id.btnBackToPatientPageEdit)
         var intentBack=Intent(this, PatientPageActivity::class.java)
         btnBack.setOnClickListener{
             startActivity(intentBack)
         }
-
 
         val btnEditPat= findViewById<Button>(R.id.btnEdit)
         btnEditPat.setOnClickListener{
@@ -129,18 +124,18 @@ class EditPatientActivity: AppCompatActivity() {
                 }
             }
 
-            // Riprendo tutte le variabili del patient
+            // Reconsidering patient variable
             var patient = Patient(
                 etName.text.toString(), etSurname.text.toString(),
                 etNotes.text.toString(), etTax.text.toString(), etBirthDateEdit.text.toString(), handEnum, genderEnum
             )
 
-            //cancello vecchio paziente per creare nuovo file
+            // Delete old patient to create a new one
             PatientsManager.deletePatient(this,pos)
 
             PatientsManager.addPatient(patient, applicationContext)
 
-            //Aggiorna lista dei pazienti
+            //Update patientlist
              var currentuser = FirebaseAuth.getInstance().getCurrentUser()?.getUid()
             var ID:String=String()
             if (currentuser != null) {
@@ -148,7 +143,6 @@ class EditPatientActivity: AppCompatActivity() {
             }
 
             PatientsManager.patientsList = PatientsManager.getDocumentsPatient(this, ID)
-
 
             // Go to patient page
             val intent = Intent(this, PatientPageActivity::class.java)
@@ -165,14 +159,11 @@ class EditPatientActivity: AppCompatActivity() {
             myCalendar.set(Calendar.MONTH, month)
             myCalendar.set(Calendar.DAY_OF_MONTH,dayOfMonth)
             updateLable(myCalendar)
-
         }
         iconCalendar.setOnClickListener{
             DatePickerDialog(this, datePicker, myCalendar.get(Calendar.YEAR), myCalendar.get(
                 Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show()
-
         }
-
     }
 
     private fun updateLable(myCalendar: Calendar) {

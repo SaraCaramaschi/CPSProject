@@ -10,7 +10,5 @@ data class Patient(
     var gender: Gender=Gender.Female,
     var cliniciansID: ArrayList<String?> = ArrayList(),
     var phase: Int = 1
-
-
 )
 

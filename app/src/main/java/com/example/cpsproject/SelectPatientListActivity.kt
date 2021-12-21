@@ -18,15 +18,9 @@ class SelectPatientListActivity : AppCompatActivity() {
     private lateinit var adapterGlobal: RecyclerView.Adapter<SelectPatientAdapter.ViewHolder>
     lateinit var rvPatients: RecyclerView
 
-    //TODO NON SO SE BISOGNA RICHIAMARE ARRAY PAZIENTI PER VISUALIZZARE SUBITO LA LISTA--> in realtà basta importare in schermata 1
-
-    // QUI X RECYCLER CHE SI AGGIORNA
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_patient_list)
-
-        // GET USER
 
         var currentuser = FirebaseAuth.getInstance().getCurrentUser()?.getUid()
         var ID: String = String()
@@ -34,10 +28,7 @@ class SelectPatientListActivity : AppCompatActivity() {
             ID = currentuser
         }
 
-        // QUI X RECYCLER CHE SI AGGIORNA
 
-
-        //listPatients=PatientsManager.importPatientList(this)
         val adapter = SelectPatientAdapter(this, patientsAllList)
         layoutManager = LinearLayoutManager(this)
         rvPatients = findViewById(R.id.rvPatients)
@@ -62,26 +53,19 @@ class SelectPatientListActivity : AppCompatActivity() {
 
         var intent= Intent(this, PatientListActivity::class.java)
 
-        //AGGIUNGE ID
         val btnAddSelectedPatient = findViewById<Button>(R.id.addSelectedPatient)
         btnAddSelectedPatient.setOnClickListener {
             var pos:Int
             pos =0
-            Timber.d("BAAAAAAAAAAAAAAAAAAAAAAAAAAAAH")
-
 
             patientsAllList.forEach{ it->
-                Timber.d("Checkkkkkkkkkkkkkkkkkkkkkkk")
                 if(checkBox.isChecked){
                     it.cliniciansID.add(ID)
-                    Timber.d("${it.cliniciansID}BAAAAAAAAAAAAAAASTA")
                     //PatientsManager.deletePatient(this,pos)
                     PatientsManager.addPatient(it, applicationContext)
                     pos=pos+1
                     //PatientsManager.patientsList.add(it)
 
-                    //Per cancellare dal locale il paziente, altrimenti rimane nella lista anche se
-                    // viene aggiunto dal clinico
                     patientsAllList.remove(it)
                     return@forEach
                 }
@@ -96,10 +80,5 @@ class SelectPatientListActivity : AppCompatActivity() {
         btnBack.setOnClickListener{
             startActivity(intentBack)
         }
-
  }
 }
-
-//TODO c'è qualche errore che permette di scrivere dove non si dovrebbe quando si inseriscono
-// i dati del pz: io sono riuscita a scrivere durante l'esecuzione dell'app nella scritta "Name"
-

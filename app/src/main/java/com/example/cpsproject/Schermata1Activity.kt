@@ -56,7 +56,7 @@ class Schermata1Activity : AppCompatActivity() {
         checkPatientLocal(this)
 
 
-        // bottone LOG OUT
+        // Log out
         val btnLogOut = findViewById<Button>(R.id.btnLogOut)
         btnLogOut.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
@@ -64,13 +64,14 @@ class Schermata1Activity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-        // bottone LISTA PAZIENTI
+        // Patient list
         val btnPatients = findViewById<Button>(R.id.btnPatients)
         btnPatients.setOnClickListener {
             val intent = Intent(this, PatientListActivity::class.java)
             startActivity(intent)
         }
 
+        // Pen Connection
         val btnPen = findViewById<Button>(R.id.btnPenConnection)
         btnPen.setOnClickListener {
             val intent = Intent(this, MainConnection::class.java)

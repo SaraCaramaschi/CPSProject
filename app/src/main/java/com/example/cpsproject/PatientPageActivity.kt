@@ -37,7 +37,6 @@ class PatientPageActivity : AppCompatActivity() {
         val pos = intent.getIntExtra("position", 0)
 
         val patient = patientsList[pos]
-        Timber.d("$pos!!!!!!!!!!!!!!!!!!!!!!!!")
 
         if (patient != null) {
             setupPatientPage(patient)
@@ -55,7 +54,6 @@ class PatientPageActivity : AppCompatActivity() {
 
         val btnPhase1 = findViewById<Button>(R.id.btnPhase1)
         btnPhase1.setOnClickListener {
-            // bottone CONNESSIONE PENNA
             startSession(1)
             val intentConnection = Intent(this, ConnectionMessageActivity::class.java)
             intentConnection.putExtra("phase", 1)
@@ -89,7 +87,6 @@ class PatientPageActivity : AppCompatActivity() {
 
 
     }
-
 
     private fun setupPatientPage(patient: Patient) {
         val tvNome = findViewById<TextView>(R.id.tvName)
@@ -128,7 +125,5 @@ class PatientPageActivity : AppCompatActivity() {
 
         SessionManager.sessione = session
     }
-
-
 }
 

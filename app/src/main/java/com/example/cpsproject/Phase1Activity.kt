@@ -46,11 +46,7 @@ class Phase1Activity : AppCompatActivity() {
         btnBack.setOnClickListener{
             startActivity(intentBack)
         }
-
-
     }
-
-
 }
 
 

@@ -26,7 +26,7 @@ class PatientListActivity : AppCompatActivity() {
     private lateinit var adapterGlobal: RecyclerView.Adapter<PatientAdapter.ViewHolder>
     lateinit var rvPatients: RecyclerView
 
-    // QUI X RECYCLER CHE SI AGGIORNA
+    // Update of recycler view
     var listPatients: ArrayList<Patient> = ArrayList()
     var listAllPatients: ArrayList<Patient> = ArrayList()
 
@@ -34,18 +34,11 @@ class PatientListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patients_list)
 
-
-        // GET USER
-
         var currentuser = FirebaseAuth.getInstance().getCurrentUser()?.getUid()
         var ID: String = String()
         if (currentuser != null) {
             ID = currentuser
         }
-
-        // QUI X RECYCLER CHE SI AGGIORNA
-        //Importare pazienti da firebase
-
 
         val adapter = PatientAdapter(this, PatientsManager.patientsList)
         layoutManager = LinearLayoutManager(this)
@@ -54,28 +47,21 @@ class PatientListActivity : AppCompatActivity() {
         rvPatients.adapter = adapter
 
 
-        //PASSA AD PAGINA PAZIENTE
+        //Go to patient page
         val intentPage = Intent(this, PatientPageActivity::class.java)
 
         adapter.setOnItemClickListener(object : PatientAdapter.onItemClickListener {
             override fun onClick(position: Int) {
-                /*Toast.makeText(
-                    this@PatientListActivity,
-                    "you clicked on patient $position",
-                    Toast.LENGTH_SHORT
-                ).show()*/
 
                 var pos = position
                 PatientsManager.selectedPatient = pos
 
                 intentPage.putExtra("position", pos)
                 startActivity(intentPage)
-
             }
-
         })
 
-// bottone LOG OUT
+        // Log out button
         val btnLogOut = findViewById<Button>(R.id.btnLogOut)
         btnLogOut.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
@@ -83,15 +69,13 @@ class PatientListActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-        //AGGIUNGE PAZIENTE
+        // Add patient
         val btnAddPatient = findViewById<Button>(R.id.btnNewPatient)
         btnAddPatient.setOnClickListener {
             val intent = Intent(this, AddPatientActivity::class.java)
             startActivity(intent)
         }
 
-
-        //Bottone per vedere tutti i pazienti e selezionare i nuovi del clinico
         val btnAllPatientToSelect = findViewById<Button>(R.id.btnAllPatientsToSelect)
         val intentSelectPatent = Intent(this, SelectPatientListActivity::class.java)
         btnAllPatientToSelect.setOnClickListener {

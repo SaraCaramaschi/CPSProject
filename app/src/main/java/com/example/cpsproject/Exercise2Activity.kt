@@ -31,7 +31,6 @@ class Exercise2Activity : AppCompatActivity() {
                 "You need to perform all three exercises before downloading files",
                 Toast.LENGTH_LONG
             ).show()
-
         }
 
         btnPatPhaseBack.setOnClickListener {

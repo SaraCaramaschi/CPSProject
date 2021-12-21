@@ -42,9 +42,5 @@ class ConnectionMessageActivity : AppCompatActivity() {
             }
 
         }
-
-
     }
-
-
 }

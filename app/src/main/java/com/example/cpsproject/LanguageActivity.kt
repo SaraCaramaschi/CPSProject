@@ -51,7 +51,6 @@ class LanguageActivity : AppCompatActivity() {
                     Timber.d("You selected italian")}
                 }
             }
-
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
         }

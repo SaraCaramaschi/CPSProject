@@ -7,9 +7,7 @@ import timber.log.Timber
 import java.io.File
 
 object PenManager {
-    public var penName: String?=null
-    public var battery : Double?=null
-    public var penData: PenData = PenData()
-
-
+    var penName: String?=null
+    var battery : Double?=null
+    var penData: PenData = PenData()
 }

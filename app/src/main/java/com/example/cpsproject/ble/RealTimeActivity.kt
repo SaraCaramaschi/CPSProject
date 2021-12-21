@@ -21,9 +21,7 @@ class RealTimeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_real_time)
 
-        //tvRealBattery.text = PenManager.battery.toString()
         mainHandler = Handler(Looper.getMainLooper())
-
 
         Timber.d("batteriaaaaa:  %s", PenManager.battery.toString())
 
@@ -48,10 +46,4 @@ class RealTimeActivity : AppCompatActivity() {
             mainHandler.postDelayed(this, 5)
         }
     }
-
-    /*override fun onResume() {
-        super.onResume()
-        tvBatteryProva.text = PenManager.battery.toString()
-    }*/
-
 }

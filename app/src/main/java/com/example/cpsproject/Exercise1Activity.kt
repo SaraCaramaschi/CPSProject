@@ -70,7 +70,6 @@ class Exercise1Activity : AppCompatActivity() {
         ConnectionManager.readData(datiPennaBA)
     }
 
-
     private fun fillSession(data: PenData, session: Session) {
     }
 }

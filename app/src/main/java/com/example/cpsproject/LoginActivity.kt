@@ -45,7 +45,6 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // bottone da schermata login a schermata register
         val btnSubmit = findViewById<Button>(R.id.btnSubmit)
         btnSubmit.setOnClickListener {
 
@@ -106,14 +105,8 @@ class LoginActivity : AppCompatActivity() {
 
                             }
                         }
-
-
                 }
-
-
             }
-
-
         }
     }
 

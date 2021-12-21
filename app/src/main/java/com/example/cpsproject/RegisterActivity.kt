@@ -113,17 +113,10 @@ class RegisterActivity : AppCompatActivity() {
 
                             }
                         }
-
-
                 }
-
             }
-
-
         }
     }
-
-
 }
 
 

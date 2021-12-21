@@ -8,7 +8,7 @@ import kotlin.collections.ArrayList
 class Session {
     var device: String?=null
     var datetime: LocalDate?=null
-    var sessionId: Int?=null //penso serva?
+    var sessionId: Int?=null
     var phase: Int?=null
     var acquisitions: ArrayList<Acquisition> = arrayListOf()
     var patientID: String?=null

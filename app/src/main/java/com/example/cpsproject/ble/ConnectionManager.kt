@@ -127,7 +127,6 @@ object ConnectionManager {
                 .toDouble() / 10
         }
 
-        //down = true
         if (!down) {
             PenManager.penData.acc_x = acc_x
             PenManager.penData.acc_y = acc_y
@@ -147,9 +146,7 @@ object ConnectionManager {
             sessData.gyr_z = gyr_z
             sessData.press = press
 
-            //SessionManager.sessione.sessionData!!.add(sessData)
             acquisition.Data.add(sessData)
-            //SessionManager.sessione.acquisitions[acquisition.tag==tag]
             Timber.d("datiiii $acc_x $acc_y $acc_z $gyr_x $gyr_y $gyr_z $press")
             Timber.d("Riga di dati aggiunta")
         }
@@ -221,10 +218,6 @@ object ConnectionManager {
             disableNotifications(currDevice!!, consoleChar!!)
             Timber.d("download finito")
 
-            //  SessionManager.saveDocument(SessionManager.sessione, this)
-            //  SessionManager.ereaseSessione(SessionManager.sessione)
-
-
         } else if (down && data.size == 16) {
             readData(data)
         }
@@ -244,8 +237,7 @@ object ConnectionManager {
 
     fun StartOnBoard() {
         enableNotifications(currDevice!!, consoleChar!!)
-        var tag = (System.currentTimeMillis() * 1000).toInt().toString() //timestamp momento in cui crei recording
-        //recording sulla penna ha ID timestamp. poi lista di recording nell'app
+        var tag = (System.currentTimeMillis() * 1000).toInt().toString()
         var message = (tag + onBoard).toByteArray()
         writeCharacteristic(currDevice!!, consoleChar!!, message)
         Timber.d("Onboard con tag OK iniziato")
@@ -286,7 +278,7 @@ object ConnectionManager {
         )
     }
 
-    fun registerListener(listener: ConnectionEventListener) { // riempire il listener
+    fun registerListener(listener: ConnectionEventListener) {
         if (listeners.map { it.get() }.contains(listener)) {
             return
         }
@@ -405,7 +397,7 @@ object ConnectionManager {
         }
     }
 
-    fun requestMtu(device: BluetoothDevice, mtu: Int) { // funzione che: ottenere questo MTU codice
+    fun requestMtu(device: BluetoothDevice, mtu: Int) {
         if (device.isConnected()) {
             enqueueOperation(MtuRequest(device, mtu.coerceIn(GATT_MIN_MTU_SIZE, GATT_MAX_MTU_SIZE)))
         } else {
@@ -413,7 +405,6 @@ object ConnectionManager {
         }
     }
 
-    //Beginning of PRIVATE functions
 
     @Synchronized
     private fun enqueueOperation(operation: BleOperationType) {
@@ -490,7 +481,7 @@ object ConnectionManager {
             }
             is CharacteristicRead -> with(operation) {
                 gatt.findCharacteristic(characteristicUuid)?.let { characteristic ->
-                    gatt.readCharacteristic(characteristic) // funzionr nativa che chiama dopo che ha controllato la coda
+                    gatt.readCharacteristic(characteristic)
                 } ?: this@ConnectionManager.run {
                     Timber.e("Cannot find $characteristicUuid to read from")
                     signalEndOfOperation()
@@ -612,7 +603,7 @@ object ConnectionManager {
                         when (it.uuid) {
                             batteryuuid -> {
                                 batteryChar = it
-                                enableNotifications(gatt.device, it)  // funzioni create dal tizio
+                                enableNotifications(gatt.device, it)
                                 readCharacteristic(gatt.device, it)
                             }
                             datauuid -> {

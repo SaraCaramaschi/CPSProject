@@ -16,7 +16,6 @@ object ClinicianManager {
 
     public var clinicianList: ArrayList<Clinician> = ArrayList()
 
-    //public var selectedPatient: Int?=null
     var email: String = String()
     var password: String = String()
     var name: String = String()
@@ -29,19 +28,16 @@ object ClinicianManager {
 
     }
 
-    //salva in locale
+    //Saving on local storage
     fun saveClinician(clinician: Clinician, context: Context) {
         val gson = Gson()
         val jsonClinician = gson.toJson(clinician)
 
         Timber.d("json %s", jsonClinician)
 
-        //CREATE NEW DIRECOTY IN FILESDIR DIRECOTY (https://developer.android.com/training/data-storage/app-specific#kotlin)
-
         var folder = context.getDir("CliniciansFolder", Context.MODE_PRIVATE)
         Timber.d("questo è nuova cartella: %s", folder.path.toString())
 
-        //var fileName = context.filesDir.path.toString() + "/" + patient.taxcode + ".txt" (Chiara)
         var fileName = folder.path.toString() + "/" + clinician.email + ".txt"
         var file = File(fileName) // cartella uguale ma con una roba in più
 
@@ -55,8 +51,7 @@ object ClinicianManager {
 
     }
 
-
-    // Funzione che salva nuovo paziente su firestore
+    // Saving on Firestore
     fun saveRealtimeClinician(clinician: Clinician, context: Context) {
         val gson = Gson()
         val jsonclinician = gson.toJson(clinician)
@@ -76,20 +71,17 @@ object ClinicianManager {
         }
             .addOnFailureListener {
                 Timber.d("Error filed to add!")
-                // CODICE PER SALVARE IN LOCALE SE QUALOCSA VA STORTO
                 saveClinician(clinician, context)
             }
 
         //TODO SALVARE IN DATABSE FILE RIMASTI IN LOCALE
     }
 
-    // Funzione per leggere documenti da realtime database
+    // Reading from realtime database
     fun getDocumentsClinician(context: Context): ArrayList<Clinician> {
-        // [START get_document]
         val db: DatabaseReference =
             FirebaseDatabase.getInstance("https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app")
                 .getReference("Clinicians")
-        //val dbPatients=db.child("Patients")
         db.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
@@ -111,7 +103,7 @@ object ClinicianManager {
     }
 
 
-    //Funzione elimina paziente ma solo in locale
+    //Deleting patient on local storage
     fun deleteClinician(context: Context, i: Int) {
         var clinicianDeleted = clinicianList[i]
         clinicianList.remove(clinicianDeleted)
@@ -157,7 +149,6 @@ object ClinicianManager {
             FirebaseDatabase.getInstance("https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app")
                 .getReference("Clinicians")
 
-
         db.child(id)
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
@@ -165,19 +156,14 @@ object ClinicianManager {
                         var clinicianLog = snapshot.getValue(Clinician::class.java)
                         if (clinicianLog != null) {
                             clinicianToPass = clinicianLog
-                            Timber.d("ciaoaooaoaoaooaoa" + clinicianLog.name)
+                            Timber.d("Clinician name" + clinicianLog.name)
                         }
-
                     }
                 }
-
                 override fun onCancelled(error: DatabaseError) {
                     Timber.d("clinician cancelled")
                 }
-
-
             })
-
     }
 }
 

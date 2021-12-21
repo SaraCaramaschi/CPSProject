@@ -12,38 +12,33 @@ import java.io.File
 
 @SuppressLint("StaticFieldLeak")
 object PatientsManager {
-    public var patientsList: ArrayList<Patient> = ArrayList()
-    public var patientsAllList: ArrayList<Patient> = ArrayList()
-    public var selectedPatient: Int? = null
+    var patientsList: ArrayList<Patient> = ArrayList()
+    var patientsAllList: ArrayList<Patient> = ArrayList()
+    var selectedPatient: Int? = null
 
-    public fun addPatient(patient: Patient, context: Context) {
+    fun addPatient(patient: Patient, context: Context) {
         patientsList.add(patient)
         savePatient(patient, context)
     }
 
-    //In locale --> OK
-    public fun savePatient(patient: Patient, context: Context) {
+    //Saving in local storage
+    fun savePatient(patient: Patient, context: Context) {
         val gson = Gson()
         val jsonPatient = gson.toJson(patient)
 
         Timber.d("json %s", jsonPatient)
 
-        //CREATE NEW DIRECOTY IN FILESDIR DIRECOTY (https://developer.android.com/training/data-storage/app-specific#kotlin)
-
         var folder = context.getDir("PatientsFolder", Context.MODE_PRIVATE)
-
         var fileName = folder.path.toString() + "/" + patient.taxcode + ".txt"
         var file = File(fileName) // cartella uguale ma con una roba in più
-
         val createdFile = file.createNewFile()
 
         file.writeText(jsonPatient)
         saveRealtimePatient(jsonPatient, patient, context)
-
     }
 
 
-    // Funzione che salva nuovo paziente su realtime database-->OK
+    // Saving new patient on realtime database
     fun saveRealtimePatient(jsonpatient: String, patient: Patient, context: Context) {
 
         val db: DatabaseReference
@@ -56,15 +51,12 @@ object PatientsManager {
         var fileName = folder.path.toString() + "/" + taxcode + ".txt"
 
         db.child(patient.taxcode.toString()).setValue(patient).addOnSuccessListener {
-
             File(fileName).delete()
         }
             .addOnFailureListener {
                 Timber.d("Error filed to add!")
-                // CODICE PER SALVARE IN LOCALE SE QUALOCSA VA STORTO
                 savePatient(patient, context)
             }
-
     }
 
     fun readPatientJson(file: File, context: Context): Patient {
@@ -80,7 +72,7 @@ object PatientsManager {
         return patient
     }
 
-    public fun checkPatientLocal(context: Context) {
+    fun checkPatientLocal(context: Context) {
         var folder =
             context.getDir("PatientsFolder", Context.MODE_PRIVATE)
 
@@ -107,15 +99,12 @@ object PatientsManager {
                         .addOnFailureListener {
                             Timber.d("Error filed to add!")
                         }
-
                 }
-
             }
         }
     }
 
-
-    // Funzione per leggere documenti da realtime database-->OK TODO non mostra subito lista!
+    // Reading from realtime database
     fun getDocumentsPatient(context: Context, ID: String): ArrayList<Patient> {
         val db: DatabaseReference =
             FirebaseDatabase.getInstance("https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app")
@@ -143,19 +132,15 @@ object PatientsManager {
                     }
                 }
             }
-
-
             override fun onCancelled(error: DatabaseError) {
                 Timber.d("cancelled")
             }
-
-
         }
         )
         return myPatientsList
     }
 
-    // Funzione per leggere tutti i pazienti da realtime database-->OK
+    // Reading all patients from realtime database
     fun getDocumentsAllPatient(context: Context, ID: String): ArrayList<Patient> {
 
         val db: DatabaseReference =
@@ -177,19 +162,15 @@ object PatientsManager {
                     }
                 }
             }
-
             override fun onCancelled(error: DatabaseError) {
                 Timber.d("patient cancelled")
             }
-
-
         }
         )
         return patientsListAll
     }
 
-
-    //Funzione elimina paziente ma in locale e realtime database-->OK
+    //Delete patient
     fun deletePatient(context: Context, i: Int) {
         var patientDeleted = patientsList[i]
         patientsList.remove(patientDeleted)
@@ -208,8 +189,6 @@ object PatientsManager {
         db =
             FirebaseDatabase.getInstance("https://thinkpen-28d8a-default-rtdb.europe-west1.firebasedatabase.app")
                 .getReference("Patients")
-
-        //cerco paziente con quel taxcode
         db.child(patientDeleted.taxcode.toString()).removeValue().addOnSuccessListener {
             Timber.d("Deleted")
         }.addOnFailureListener {

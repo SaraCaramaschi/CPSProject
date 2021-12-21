@@ -30,7 +30,7 @@ class AddPatientActivity : AppCompatActivity() {
         val phase = intent.getStringExtra("phase")
 
 
-        // Activity related to the button add patient, notifica OK !!!
+        // Activity related to the button add patient
         val btnAddPat = findViewById<Button>(R.id.btnAddPat)
         val gender = findViewById<Spinner>(R.id.spinnerGender)
         btnAddPat.setOnClickListener {
@@ -83,7 +83,6 @@ class AddPatientActivity : AppCompatActivity() {
                 clinicianID = currentUser.uid
             }
 
-
             // Variabile patient
             var patient = Patient(
                 etName.text.toString(),
@@ -107,9 +106,6 @@ class AddPatientActivity : AppCompatActivity() {
             intent.putExtra("position", pos)
             startActivity(intent)
         }
-
-
-
 
         btnPatListBack.setOnClickListener {
             val intent = Intent(this, PatientListActivity::class.java)
@@ -144,8 +140,6 @@ class AddPatientActivity : AppCompatActivity() {
         val birthDateAdd = findViewById<EditText>(R.id.etBirthDateAdd)
         val sdf = SimpleDateFormat(myFormat, Locale.UK)
         birthDateAdd.setText(sdf.format(myCalendar.time))
-
-
     }
 }
 

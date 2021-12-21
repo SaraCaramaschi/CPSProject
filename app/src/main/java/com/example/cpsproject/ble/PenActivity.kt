@@ -40,7 +40,6 @@ class PenActivity : AppCompatActivity() {
 
         // Downloading files from the pen to computer
         btnDownload.setOnClickListener {
-            //PenManager.downloadJson(PenManager.penData!!, this)
             ConnectionManager.download()
             Toast.makeText(this@PenActivity,"Successful download ", Toast.LENGTH_SHORT).show()
         }

@@ -27,40 +27,31 @@ class PatientAdapter(val c: Context, listPatients: ArrayList<Patient>) :
     private var surname = listPatients.map { it.surname }
     private val selectedPosition = -1
 
-
     inner class ViewHolder(itemView: View, listener: onItemClickListener) :
         RecyclerView.ViewHolder(itemView) {
         var itemName: TextView
         var itemPhase: TextView
 
-
         init {
             itemName = itemView.findViewById(R.id.PatientName) as TextView
             itemPhase = itemView.findViewById(R.id.tvPatientPhase) as TextView
 
-
             itemView.setOnClickListener {
                 listener.onClick(adapterPosition)
             }
-
         }
-
-
     }
 
     private lateinit var mListener: onItemClickListener
-
 
     interface onItemClickListener : SelectPatientAdapter.onItemClickListener {
         override fun onClick(position: Int)
 
     }
 
-
     fun setOnItemClickListener(listener: onItemClickListener) {
         mListener = listener
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientAdapter.ViewHolder {
         val v =
@@ -71,8 +62,6 @@ class PatientAdapter(val c: Context, listPatients: ArrayList<Patient>) :
     override fun onBindViewHolder(holder: PatientAdapter.ViewHolder, position: Int) {
         holder.itemName.text = names[position] + " " + surname[position]
         holder.itemPhase.text = "Phase:" + phases[position].toString()
-
-
     }
 
     override fun getItemCount(): Int {

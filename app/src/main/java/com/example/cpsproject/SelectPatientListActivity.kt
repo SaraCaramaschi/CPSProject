@@ -58,7 +58,7 @@ class SelectPatientListActivity : AppCompatActivity() {
         btnAddSelectedPatient.setOnClickListener {
             var pos:Int
             pos =0
-*/
+
 
             patientsAllList.forEach{ it->
                 if(checkBox.isChecked){
@@ -76,7 +76,7 @@ class SelectPatientListActivity : AppCompatActivity() {
                 }
             }
             startActivity(intent)
-        }
+        }*/
         var btnBack=findViewById<Button>(R.id.backToList)
         var intentBack=Intent(this, PatientListActivity::class.java)
         btnBack.setOnClickListener{

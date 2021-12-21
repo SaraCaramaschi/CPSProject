@@ -82,11 +82,8 @@
     <string name="connention_message">Have you connected the pen?</string>
     <string name="delete_message">"Do you want to delete: </string>
     <string name="choose_language"> Choose your language</string>
-
     <string name="back_to_patient_page">Back to patient page</string>
-
-    <string name="back_to_phase"> Back to patient phase </string>
-
+    <string name="back_to_phase"> Back to phase </string>
     <string name="ex1">Make the patient write a grocery list with at least 6 elements</string>
     <string name="ex2">Make the patient write a free text (maximum 7 rows)</string>
     <string name="ex3">Read to the patient 15 words from Batteria E.N.P.A. including 7 regular words, 3 irregular words and 5 not-words. Read them in a random order</string>

@@ -53,10 +53,12 @@ class SelectPatientListActivity : AppCompatActivity() {
 
         var intent= Intent(this, PatientListActivity::class.java)
 
-        val btnAddSelectedPatient = findViewById<Button>(R.id.addSelectedPatient)
+        //AGGIUNGE ID
+       /* val btnAddSelectedPatient = findViewById<Button>(R.id.addSelectedPatient)
         btnAddSelectedPatient.setOnClickListener {
             var pos:Int
             pos =0
+*/
 
             patientsAllList.forEach{ it->
                 if(checkBox.isChecked){

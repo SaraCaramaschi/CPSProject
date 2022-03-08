@@ -75,6 +75,8 @@ class SelectPatientListActivity : AppCompatActivity() {
                     pos = pos + 1
                 }
             }
+
+        /*
             startActivity(intent)
         }*/
         var btnBack=findViewById<Button>(R.id.backToList)

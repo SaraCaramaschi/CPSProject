@@ -76,13 +76,14 @@ class SelectPatientListActivity : AppCompatActivity() {
                 }
             }
 
-        /*
+
             startActivity(intent)
-        }*/
+        }
         var btnBack=findViewById<Button>(R.id.backToList)
         var intentBack=Intent(this, PatientListActivity::class.java)
         btnBack.setOnClickListener{
             startActivity(intentBack)
-        }
+        }*/
  }
+
 }

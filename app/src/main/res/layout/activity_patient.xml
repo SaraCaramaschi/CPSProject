@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".model.Patient"
-    android:background="@color/sfondogine">
+    android:background="@color/color5">
 
 
     <LinearLayout
@@ -25,7 +25,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_gravity="center_vertical"
-            android:src="@mipmap/ic_patient"/>
+            android:src="@drawable/old_man"/>
 
 
         <LinearLayout
@@ -39,6 +39,7 @@
                 <TextView
                     android:id="@+id/PatientName"
                     android:layout_width="match_parent"
+                    android:textColor="@color/color1"
                     android:layout_height="39dp"
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="0dp"
@@ -52,6 +53,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textColor="@color/color1"
                     android:text="@string/phase"
                     android:textSize="15sp"
                     app:layout_constraintStart_toEndOf="@+id/PatientName" />

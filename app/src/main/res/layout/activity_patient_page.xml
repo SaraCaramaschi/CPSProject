@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sfondogine">
+    android:background="@color/color2">
 
     <TextView
         android:id="@+id/textView"
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/patient_personal_page"
-        android:textColor="@color/strings"
+        android:textColor="@color/color3"
         android:textSize="28dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,23 +22,23 @@
 
     <ImageView
         android:id="@+id/edit"
-        android:layout_width="27dp"
-        android:layout_height="27dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:clickable="true"
-        android:src="@drawable/ic_edit"
+        android:src="@drawable/edit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/delete"
-        android:layout_width="27dp"
-        android:layout_height="27dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:clickable="true"
-        android:src="@drawable/ic_delete"
+        android:src="@drawable/trash"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit" />
 
@@ -49,7 +49,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:src="@mipmap/ic_patient"
+        android:src="@drawable/old_man"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -57,6 +57,8 @@
         android:id="@+id/LinearLayout0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/shape_background"
         android:layout_marginTop="36dp"
         android:orientation="vertical"
         android:padding="16dp"
@@ -79,6 +81,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="39dp"
                 android:inputType="text"
+                android:textColor="@color/color1"
                 android:text="@string/name"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
@@ -89,6 +92,7 @@
                 android:id="@+id/tvName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:textColor="@color/color1"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginEnd="0dp"
@@ -111,6 +115,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="39dp"
                 android:inputType="text"
+                android:textColor="@color/color1"
                 android:text="@string/surname"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
@@ -124,6 +129,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="0dp"
                 android:layout_marginEnd="0dp"
+                android:textColor="@color/color1"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -142,6 +148,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="39dp"
                 android:inputType="text"
+                android:textColor="@color/color1"
                 android:text="@string/tax_code"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
@@ -153,6 +160,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="0dp"
+                android:textColor="@color/color1"
                 android:layout_marginEnd="0dp"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -171,6 +179,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="39dp"
                 android:inputType="text"
+                android:textColor="@color/color1"
                 android:text="@string/gender"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
@@ -182,6 +191,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="0dp"
+                android:textColor="@color/color1"
                 android:layout_marginEnd="0dp"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -200,6 +210,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="39dp"
                 android:inputType="text"
+                android:textColor="@color/color1"
                 android:text="@string/birth_date"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
@@ -211,6 +222,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="0dp"
+                android:textColor="@color/color1"
                 android:layout_marginEnd="0dp"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -229,6 +241,7 @@
                 android:layout_width="100dp"
                 android:layout_height="39dp"
                 android:inputType="text"
+                android:textColor="@color/color1"
                 android:text="@string/dom_hand"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
@@ -240,6 +253,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="0dp"
+                android:textColor="@color/color1"
                 android:layout_marginEnd="0dp"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -259,6 +273,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="39dp"
                 android:inputType="text"
+                android:textColor="@color/color1"
                 android:text="@string/phase"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
@@ -270,6 +285,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="0dp"
+                android:textColor="@color/color1"
                 android:layout_marginEnd="0dp"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -289,6 +305,7 @@
                 android:layout_height="39dp"
                 android:inputType="text"
                 android:text="@string/notes"
+                android:textColor="@color/color1"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -300,6 +317,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="0dp"
                 android:layout_marginEnd="0dp"
+                android:textColor="@color/color1"
                 android:textSize="20sp" />
         </LinearLayout>
     </LinearLayout>
@@ -311,7 +329,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/select_the_phase"
-        android:textColor="@color/strings"
+        android:textColor="@color/color5"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -323,7 +341,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:backgroundTint="@color/strings"
+        android:backgroundTint="@color/color4"
         android:text="@string/phase_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -334,7 +352,7 @@
         android:id="@+id/btnPhase2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/strings"
+        android:backgroundTint="@color/color4"
         android:text="@string/phase_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -346,7 +364,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="25dp"
-        android:backgroundTint="@color/strings"
+        android:backgroundTint="@color/color1"
         android:text="@string/pen_connection"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnPhase2" />
@@ -357,7 +375,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="40dp"
-        android:backgroundTint="@color/strings"
+        android:backgroundTint="@color/color1"
         android:text="@string/back_to_patient_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnPhase2" />

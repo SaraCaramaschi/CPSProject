@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color5"
+    android:background="@color/sfondogine"
     tools:context=".Schermata1Activity">
 
 
@@ -14,7 +14,7 @@
         android:layout_height="65dp"
         android:layout_gravity="center_vertical"
         android:layout_marginTop="8dp"
-        android:src="@drawable/stethoscope"
+        android:src="@mipmap/ic_clinician"
         app:layout_constraintStart_toStartOf="@+id/guidelineV1"
         app:layout_constraintTop_toTopOf="@+id/guidelineO1" />
 
@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="112dp"
-        android:backgroundTint="@color/color1"
+        android:backgroundTint="@color/strings"
         android:text="@string/pen_connection"
         app:layout_constraintEnd_toStartOf="@+id/guidelineV2"
         app:layout_constraintHorizontal_bias="0.235"
@@ -45,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="112dp"
-        android:backgroundTint="@color/color1"
+        android:backgroundTint="@color/strings"
         android:text="@string/log_out"
         app:layout_constraintEnd_toStartOf="@+id/guidelineV2"
         app:layout_constraintHorizontal_bias="0.142"
@@ -67,7 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="112dp"
-        android:backgroundTint="@color/color1"
+        android:backgroundTint="@color/strings"
         android:text="@string/patients_list"
         app:layout_constraintEnd_toStartOf="@+id/guidelineV2"
         app:layout_constraintHorizontal_bias="0.196"
@@ -80,7 +80,7 @@
         android:layout_height="55dp"
         android:layout_gravity="center_vertical"
         android:layout_marginTop="96dp"
-        android:src="@drawable/old"
+        android:src="@mipmap/ic_patient_list"
         app:layout_constraintStart_toStartOf="@+id/guidelineV1"
         app:layout_constraintTop_toBottomOf="@+id/icBLE" />
 
@@ -90,7 +90,6 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:ems="10"
-        android:textColor="@color/color4"
         android:minHeight="48dp"
         android:textSize="40dp"
         app:layout_constraintEnd_toStartOf="@+id/guidelineV2"

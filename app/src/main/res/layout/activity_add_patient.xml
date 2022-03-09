@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color22"
+    android:background="@color/sfondogine"
     tools:context=".AddPatientActivity">
 
 
@@ -14,11 +14,11 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
-        android:src="@drawable/add"
+        android:src="@mipmap/ic_patient"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.062" />
+        app:layout_constraintVertical_bias="0.074" />
 
     <LinearLayout
         android:layout_width="309dp"
@@ -38,7 +38,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginTop="0dp"
             android:text="@string/new_patient"
-            android:textColor="@color/color4"
+            android:textColor="@color/strings"
             android:textSize="40sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:text="@string/fill_up_all_the_requested_information"
-            android:textColor="@color/color5"
+            android:textColor="@color/strings"
             android:textSize="19dp"
             app:layout_constraintStart_toEndOf="@+id/tvNewpatient" />
     </LinearLayout>
@@ -56,11 +56,9 @@
     <LinearLayout
         android:id="@+id/LinearLayoutItems"
         android:layout_width="match_parent"
-        android:layout_marginHorizontal="10dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
         android:orientation="vertical"
-        android:background="@drawable/shape_background"
         app:layout_constraintBottom_toTopOf="@+id/btnPatListBack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -81,7 +79,6 @@
                 android:layout_height="39dp"
                 android:inputType="text"
                 android:text="@string/name"
-                android:textColor="@color/color1"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -115,7 +112,6 @@
                 android:layout_height="39dp"
                 android:inputType="text"
                 android:text="@string/surname"
-                android:textColor="@color/color1"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -150,7 +146,6 @@
                 android:layout_width="100dp"
                 android:layout_height="39dp"
                 android:text="@string/gender"
-                android:textColor="@color/color1"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -160,7 +155,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@color/color5"
+                android:background="@color/sfondogine"
                 android:entries="@array/gender"
                 android:minHeight="48dp"
                 app:layout_constraintStart_toEndOf="parent"
@@ -185,7 +180,6 @@
                 android:layout_width="100dp"
                 android:layout_height="39dp"
                 android:text="@string/birth_date"
-                android:textColor="@color/color1"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -226,7 +220,6 @@
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:text="@string/tax_code"
-                android:textColor="@color/color1"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -259,7 +252,6 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:text="@string/dom_hand"
-                android:textColor="@color/color1"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -269,7 +261,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@color/color5"
+                android:background="@color/sfondogine"
                 android:entries="@array/dominanthand"
                 android:minHeight="48dp"
                 app:layout_constraintStart_toEndOf="parent"
@@ -291,7 +283,6 @@
                 android:layout_width="120dp"
                 android:layout_height="39dp"
                 android:text="@string/add_notes"
-                android:textColor="@color/color1"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color2">
+    android:background="@color/sfondogine">
 
     <ImageView
         android:id="@+id/icExercise1"
@@ -13,7 +13,7 @@
         android:layout_gravity="center_vertical"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="16dp"
-        android:src="@drawable/writing__1_"
+        android:src="@mipmap/ic_exercise"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="@string/exercise_1"
-        android:textColor="@color/color3"
+        android:textColor="@color/strings"
         android:textSize="40dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,14 +32,11 @@
 
     <TextView
         android:id="@+id/tvExDescription1"
-        android:layout_height="86dp"
-        android:layout_width="match_parent"
-        android:layout_marginHorizontal="10dp"
+        android:layout_width="340dp"
+        android:layout_height="64dp"
         android:layout_marginTop="60dp"
-        android:gravity="center"
-        android:background="@drawable/shape_background"
         android:text="@string/ex1"
-        android:textColor="@color/color1"
+        android:textColor="@color/strings"
         android:textSize="23dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +49,7 @@
         android:layout_marginTop="40dp"
         android:text="@string/press_stop_to_end_the_acquisition_of_the_data"
         android:textAlignment="center"
-        android:textColor="@color/color5"
+        android:textColor="@color/strings"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -78,7 +75,7 @@
         android:layout_marginTop="190dp"
         android:text="@string/press_start_to_perform_data_acquisition"
         android:textAlignment="center"
-        android:textColor="@color/color5"
+        android:textColor="@color/strings"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -103,7 +100,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
         android:layout_marginEnd="24dp"
-        android:backgroundTint="@color/color1"
+        android:backgroundTint="@color/strings"
         android:text="@string/download_files"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnStop1" />
@@ -114,7 +111,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="68dp"
-        android:backgroundTint="@color/color1"
+        android:backgroundTint="@color/strings"
         android:text="@string/back_to_phase"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnStop1" />

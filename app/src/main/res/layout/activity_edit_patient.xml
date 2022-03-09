@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color2"
+    android:background="@color/sfondogine"
     tools:context=".AddPatientActivity">
 
 
@@ -14,15 +14,15 @@
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_marginStart="16dp"
-        android:src="@drawable/edit1"
+        android:src="@mipmap/ic_patient"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.044" />
+        app:layout_constraintVertical_bias="0.053" />
 
     <LinearLayout
         android:layout_width="311dp"
-        android:layout_height="wrap_content"
+        android:layout_height="102dp"
         android:layout_marginTop="30dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +38,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginTop="0dp"
             android:text="@string/edit_patient"
-            android:textColor="@color/color4"
+            android:textColor="@color/strings"
             android:textSize="40sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -56,16 +56,12 @@
     <LinearLayout
         android:id="@+id/LinearLayoutItems"
         android:layout_width="match_parent"
-        android:layout_marginHorizontal="10dp"
-        android:layout_height="400dp"
-        android:layout_marginBottom="80dp"
-        android:background="@drawable/shape_background"
-        android:gravity="center"
-        android:foregroundGravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="112dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/btnBackToPatientPageEdit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
@@ -84,7 +80,6 @@
                 android:layout_height="39dp"
                 android:inputType="text"
                 android:text="@string/name"
-                android:textColor="@color/color1"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -95,7 +90,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="@color/color1"
+                android:backgroundTint="@color/strings"
                 android:textCursorDrawable="@drawable/color_cursor"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/tvName"
@@ -119,7 +114,6 @@
                 android:layout_height="39dp"
                 android:inputType="text"
                 android:text="@string/surname"
-                android:textColor="@color/color1"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -130,7 +124,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="@color/color1"
+                android:backgroundTint="@color/strings"
                 android:textCursorDrawable="@drawable/color_cursor"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/tvSurname"
@@ -154,7 +148,6 @@
                 android:layout_width="120dp"
                 android:layout_height="39dp"
                 android:text="@string/gender"
-                android:textColor="@color/color1"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -164,7 +157,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@color/color5"
+                android:background="@color/sfondogine"
                 android:entries="@array/gender"
                 android:minHeight="48dp"
                 app:layout_constraintStart_toEndOf="parent"
@@ -189,7 +182,6 @@
                 android:layout_width="120dp"
                 android:layout_height="39dp"
                 android:text="@string/birth_date"
-                android:textColor="@color/color1"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -199,7 +191,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="@color/color1"
+                android:backgroundTint="@color/strings"
                 android:hint="DD.MM.YYYY"
                 android:inputType="date"
                 android:textCursorDrawable="@drawable/color_cursor"
@@ -208,11 +200,10 @@
 
             <ImageView
                 android:id="@+id/calendarEdit"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center_vertical"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
                 android:clickable="true"
-                android:src="@drawable/calendar2" />
+                android:src="@drawable/ic_calendar" />
         </LinearLayout>
 
         <LinearLayout
@@ -230,7 +221,6 @@
                 android:layout_width="120dp"
                 android:layout_height="match_parent"
                 android:text="@string/tax_code"
-                android:textColor="@color/color1"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -240,7 +230,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="@color/color1"
+                android:backgroundTint="@color/strings"
                 android:textCursorDrawable="@drawable/color_cursor"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/tvPlace"
@@ -263,7 +253,6 @@
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="@string/dom_hand"
-                android:textColor="@color/color1"
                 android:textSize="21sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -273,7 +262,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@color/color5"
+                android:background="@color/sfondogine"
                 android:entries="@array/dominanthand"
                 android:minHeight="48dp"
                 app:layout_constraintStart_toEndOf="parent"
@@ -295,7 +284,6 @@
                 android:layout_width="120dp"
                 android:layout_height="match_parent"
                 android:text="@string/add_notes"
-                android:textColor="@color/color1"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -305,7 +293,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:backgroundTint="@color/color1"
+                android:backgroundTint="@color/strings"
                 android:textCursorDrawable="@drawable/color_cursor"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/tvPlace"

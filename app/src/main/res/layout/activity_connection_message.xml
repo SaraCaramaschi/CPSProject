@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:gravity="center"
-    android:layout_margin="15dp"
-    android:background="@color/sfondogine"
+    android:background="@color/color2"
     tools:context=".ConnectionMessageActivity">
 
     <LinearLayout
@@ -16,27 +15,44 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
+        <LinearLayout
+            android:orientation="horizontal"
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_margin="10dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/bell" />
+
+            <TextView
             android:id="@+id/tvMessage"
             android:textStyle="bold"
             android:textSize="19sp"
-            android:textColor="@color/strings"
+            android:textColor="@color/color1"
             android:text="@string/connention_message"
             android:padding="10dp"
             android:layout_gravity="center"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
+        </LinearLayout>
+
         <Button
-            android:backgroundTint="@color/strings"
+            android:backgroundTint="@color/color1"
             android:id="@+id/btnYes1"
             android:layout_width="wrap_content"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:text="@string/yes" />
 
         <Button
-            android:backgroundTint="@color/strings"
+            android:backgroundTint="@color/color1"
             android:id="@+id/btnNo1"
+            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/no" />

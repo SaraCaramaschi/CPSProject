@@ -82,6 +82,7 @@
                 android:inputType="text"
                 android:text="@string/name"
                 android:textSize="20sp"
+                android:textColor="@color/color1"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TouchTargetSizeCheck" />
@@ -113,6 +114,7 @@
                 android:layout_width="100dp"
                 android:layout_height="39dp"
                 android:inputType="text"
+                android:textColor="@color/color1"
                 android:text="@string/surname"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
@@ -148,6 +150,7 @@
                 android:layout_width="100dp"
                 android:layout_height="39dp"
                 android:text="@string/gender"
+                android:textColor="@color/color1"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -157,7 +160,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@color/sfondogine"
+                android:background="@color/color5"
                 android:entries="@array/gender"
                 android:minHeight="48dp"
                 app:layout_constraintStart_toEndOf="parent"
@@ -183,6 +186,7 @@
                 android:layout_height="39dp"
                 android:text="@string/birth_date"
                 android:textSize="20sp"
+                android:textColor="@color/color1"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -200,10 +204,10 @@
 
             <ImageView
                 android:id="@+id/calendar"
-                android:layout_width="33dp"
-                android:layout_height="33dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:clickable="true"
-                android:src="@drawable/ic_calendar" />
+                android:src="@drawable/calendar_" />
 
         </LinearLayout>
 
@@ -222,6 +226,7 @@
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:text="@string/tax_code"
+                android:textColor="@color/color1"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -232,6 +237,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="20sp"
+                android:textColor="@color/color1"
                 android:textCursorDrawable="@drawable/color_cursor"
                 android:backgroundTint="@color/strings"
                 app:layout_constraintStart_toEndOf="@+id/tvPlace"
@@ -255,6 +261,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/dom_hand"
                 android:textSize="20sp"
+                android:textColor="@color/color1"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -263,7 +270,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@color/sfondogine"
+                android:background="@color/color5"
                 android:entries="@array/dominanthand"
                 android:minHeight="48dp"
                 app:layout_constraintStart_toEndOf="parent"
@@ -285,6 +292,7 @@
                 android:layout_width="120dp"
                 android:layout_height="39dp"
                 android:text="@string/add_notes"
+                android:textColor="@color/color1"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -309,7 +317,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginBottom="30dp"
-        android:backgroundTint="@color/strings"
+        android:textColor="@color/color5"
+        android:backgroundTint="@color/color1"
         android:text="@string/add_patient"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -320,7 +329,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="30dp"
-        android:backgroundTint="@color/strings"
+        android:textColor="@color/color5"
+        android:backgroundTint="@color/color1"
         android:text="@string/back_to_patient_list"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

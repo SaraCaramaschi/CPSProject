@@ -13,6 +13,9 @@
     <color name="grey">#9999A1</color>
     <color name="lightblue">#cbf3f0</color>
     <color name="sfondogine">#E2E7EC</color>
-    <color name="strings">#074A75</color>
+    <color name="strings">#FFAD05</color>
+   /*
+    <color name="blu">#074A75</color>
+    */
 </resources>
 

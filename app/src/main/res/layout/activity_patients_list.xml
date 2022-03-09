@@ -22,49 +22,58 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/rvPatients"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.877"
         app:layout_constraintStart_toStartOf="parent" />
+
 
     <Button
         android:id="@+id/btnLogOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="16dp"
         android:backgroundTint="@color/strings"
         android:text="@string/log_out"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvPatients" />
+        app:layout_constraintHorizontal_bias="0.948"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.937" />
 
     <Button
         android:id="@+id/btnNewPatient"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="28dp"
         android:backgroundTint="@color/strings"
         android:text="@string/add_a_new_patient"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.134"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvPatients" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.802" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPatients"
-        android:layout_width="409dp"
-        android:layout_height="550dp"
-        android:layout_marginTop="76dp"
+        android:layout_width="359dp"
+        android:layout_height="358dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.227"
         tools:listitem="@layout/activity_patient" />
 
     <Button
         android:id="@+id/btnAllPatientsToSelect"
         android:layout_width="120dp"
         android:layout_height="57dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginEnd="52dp"
         android:backgroundTint="@color/strings"
         android:text="@string/all_patients"
-        app:layout_constraintEnd_toStartOf="@+id/btnLogOut"
-        app:layout_constraintStart_toEndOf="@+id/btnNewPatient"
-        app:layout_constraintTop_toBottomOf="@+id/rvPatients" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.804" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,13 +7,14 @@
     android:background="@color/sfondogine"
     tools:ignore="ExtraText">
 
+
     <ImageView
         android:id="@+id/icProtocol"
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="12dp"
         android:src="@mipmap/ic_protocol"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,17 +23,16 @@
         android:id="@+id/tvPhase1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="24dp"
         android:text="@string/protocol_phase_1"
         android:textColor="@color/strings"
-        android:textSize="35dp"
+        android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.661"
+        app:layout_constraintHorizontal_bias="0.625"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:textSize="27dp" />
-
 
     <TextView
         android:id="@+id/tvDescription1One"
@@ -42,7 +42,7 @@
         android:layout_marginTop="24dp"
         android:text="@string/phase_1_description_1"
         android:textColor="@color/strings"
-        android:textSize="19sp"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +55,7 @@
         android:layout_marginHorizontal="60dp"
         android:text="@string/phase_1_description_2"
         android:textColor="@color/strings"
-        android:textSize="19sp"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,7 +69,7 @@
         android:layout_marginTop="18dp"
         android:text="@string/phase_1_description_3"
         android:textColor="@color/strings"
-        android:textSize="19sp"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,7 +83,7 @@
         android:layout_marginTop="18dp"
         android:text="@string/phase_description_dwn"
         android:textColor="@color/strings"
-        android:textSize="19sp"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
@@ -106,7 +106,7 @@
         android:id="@+id/btnEx1Ph1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="@color/strings"
         android:text="@string/exercise_1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -117,7 +117,7 @@
         android:id="@+id/btnEx2Ph1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="4dp"
         android:backgroundTint="@color/strings"
         android:text="@string/exercise_2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -128,7 +128,7 @@
         android:id="@+id/btnEx3Ph1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="4dp"
         android:backgroundTint="@color/strings"
         android:text="@string/exercise_3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -137,14 +137,16 @@
 
     <Button
         android:id="@+id/btnBackToPatientPage1"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="157dp"
+        android:layout_height="68dp"
         android:backgroundTint="@color/strings"
         android:text="@string/back_to_patient_page"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.062"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnEx3Ph1"
+        app:layout_constraintVertical_bias="0.105" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

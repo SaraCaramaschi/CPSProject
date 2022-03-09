@@ -6,26 +6,27 @@
     android:layout_height="match_parent"
     android:background="@color/sfondogine">
 
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:text="@string/patient_personal_page"
         android:textColor="@color/strings"
         android:textSize="28dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.676"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <ImageView
         android:id="@+id/edit"
         android:layout_width="27dp"
         android:layout_height="27dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="4dp"
         android:clickable="true"
         android:src="@drawable/ic_edit"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,36 +34,35 @@
 
     <ImageView
         android:id="@+id/delete"
-        android:layout_width="27dp"
+        android:layout_width="25dp"
         android:layout_height="27dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="4dp"
         android:clickable="true"
         android:src="@drawable/ic_delete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit" />
 
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="24dp"
         android:src="@mipmap/ic_patient"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/LinearLayout0"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_width="465dp"
+        android:layout_height="377dp"
         android:orientation="vertical"
         android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.285">
 
         <LinearLayout
             android:id="@+id/LinearLayout1"
@@ -115,8 +115,7 @@
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TouchTargetSizeCheck"
-                />
+                tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/tvSurname"
@@ -150,7 +149,7 @@
 
             <TextView
                 android:id="@+id/tvTax"
-                android:layout_width="match_parent"
+                android:layout_width="292dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="0dp"
                 android:layout_marginEnd="0dp"
@@ -226,7 +225,7 @@
 
             <TextView
                 android:id="@+id/wrap_content"
-                android:layout_width="100dp"
+                android:layout_width="163dp"
                 android:layout_height="39dp"
                 android:inputType="text"
                 android:text="@string/dom_hand"
@@ -304,31 +303,33 @@
         </LinearLayout>
     </LinearLayout>
 
-
     <TextView
         android:id="@+id/tvSelectPhase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:text="@string/select_the_phase"
         android:textColor="@color/strings"
         android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LinearLayout0" />
+        app:layout_constraintTop_toBottomOf="@+id/LinearLayout0"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btnPhase1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
         android:backgroundTint="@color/strings"
         android:text="@string/phase_1"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.105"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSelectPhase" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.862" />
 
     <Button
         android:id="@+id/btnPhase2"
@@ -336,16 +337,19 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/strings"
         android:text="@string/phase_2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnPhase1" />
+        app:layout_constraintHorizontal_bias="0.763"
+        app:layout_constraintStart_toEndOf="@+id/btnPhase1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.862" />
 
     <Button
         android:id="@+id/btnPenConnectionPatient"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="25dp"
+        android:layout_width="158dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="@color/strings"
         android:text="@string/pen_connection"
         app:layout_constraintStart_toStartOf="parent"
@@ -355,8 +359,8 @@
         android:id="@+id/btnPatListBack"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
         android:backgroundTint="@color/strings"
         android:text="@string/back_to_patient_list"
         app:layout_constraintEnd_toEndOf="parent"

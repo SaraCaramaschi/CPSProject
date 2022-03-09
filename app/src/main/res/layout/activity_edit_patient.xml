@@ -21,12 +21,12 @@
         app:layout_constraintVertical_bias="0.053" />
 
     <LinearLayout
-        android:layout_width="311dp"
-        android:layout_height="102dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="266dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="36dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.843"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
@@ -39,7 +39,7 @@
             android:layout_marginTop="0dp"
             android:text="@string/edit_patient"
             android:textColor="@color/strings"
-            android:textSize="40sp"
+            android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="parent" />
@@ -57,12 +57,11 @@
         android:id="@+id/LinearLayoutItems"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="112dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/btnBackToPatientPageEdit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.464"
+        tools:layout_editor_absoluteX="16dp">
 
         <LinearLayout
             android:id="@+id/LinearLayout1"
@@ -250,7 +249,7 @@
 
             <TextView
                 android:id="@+id/tvHand"
-                android:layout_width="120dp"
+                android:layout_width="201dp"
                 android:layout_height="wrap_content"
                 android:text="@string/dom_hand"
                 android:textSize="21sp"

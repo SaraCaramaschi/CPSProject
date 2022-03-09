@@ -32,13 +32,14 @@
 
     <TextView
         android:id="@+id/tvExDescription1"
-        android:layout_width="340dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="60dp"
+        android:layout_width="358dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="28dp"
         android:text="@string/ex1"
         android:textColor="@color/strings"
         android:textSize="23dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvExercise1" />
 
@@ -70,15 +71,15 @@
 
     <TextView
         android:id="@+id/tvStop"
-        android:layout_width="340dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="190dp"
+        android:layout_width="387dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="112dp"
         android:text="@string/press_start_to_perform_data_acquisition"
         android:textAlignment="center"
         android:textColor="@color/strings"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvExercise1" />
 
@@ -96,23 +97,26 @@
 
     <Button
         android:id="@+id/btnDownloadEx1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="24dp"
+        android:layout_width="145dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="32dp"
         android:backgroundTint="@color/strings"
         android:text="@string/download_files"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.958"
+        app:layout_constraintStart_toEndOf="@+id/btnPatPhaseBack"
         app:layout_constraintTop_toBottomOf="@+id/btnStop1" />
 
     <Button
         android:id="@+id/btnPatPhaseBack"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="68dp"
+        android:layout_width="134dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="36dp"
         android:backgroundTint="@color/strings"
         android:text="@string/back_to_phase"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.126"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnStop1" />
 

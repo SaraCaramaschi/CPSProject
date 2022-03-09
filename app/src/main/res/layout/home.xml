@@ -13,7 +13,8 @@
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
         android:src="@mipmap/ic_clinician"
         app:layout_constraintStart_toStartOf="@+id/guidelineV1"
         app:layout_constraintTop_toTopOf="@+id/guidelineO1" />
@@ -22,11 +23,11 @@
         android:id="@+id/btnPenConnection"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="44dp"
         android:backgroundTint="@color/strings"
         android:text="@string/pen_connection"
         app:layout_constraintEnd_toStartOf="@+id/guidelineV2"
-        app:layout_constraintHorizontal_bias="0.235"
+        app:layout_constraintHorizontal_bias="0.163"
         app:layout_constraintStart_toEndOf="@+id/icBLE"
         app:layout_constraintTop_toBottomOf="@+id/tvClinician" />
 
@@ -35,7 +36,8 @@
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginTop="112dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="44dp"
         android:src="@mipmap/ic_bluetooth"
         app:layout_constraintStart_toStartOf="@+id/guidelineV1"
         app:layout_constraintTop_toBottomOf="@+id/tvClinician" />
@@ -44,11 +46,11 @@
         android:id="@+id/btnLogOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="44dp"
         android:backgroundTint="@color/strings"
         android:text="@string/log_out"
         app:layout_constraintEnd_toStartOf="@+id/guidelineV2"
-        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintHorizontal_bias="0.095"
         app:layout_constraintStart_toEndOf="@+id/icLoagout"
         app:layout_constraintTop_toBottomOf="@+id/btnPatients" />
 
@@ -57,7 +59,8 @@
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginTop="112dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
         android:src="@mipmap/ic_logout"
         app:layout_constraintStart_toStartOf="@+id/guidelineV1"
         app:layout_constraintTop_toBottomOf="@+id/icPatientList" />
@@ -66,11 +69,11 @@
         android:id="@+id/btnPatients"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="48dp"
         android:backgroundTint="@color/strings"
         android:text="@string/patients_list"
         app:layout_constraintEnd_toStartOf="@+id/guidelineV2"
-        app:layout_constraintHorizontal_bias="0.196"
+        app:layout_constraintHorizontal_bias="0.134"
         app:layout_constraintStart_toEndOf="@+id/icPatientList"
         app:layout_constraintTop_toBottomOf="@+id/btnPenConnection" />
 
@@ -79,7 +82,8 @@
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginTop="96dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
         android:src="@mipmap/ic_patient_list"
         app:layout_constraintStart_toStartOf="@+id/guidelineV1"
         app:layout_constraintTop_toBottomOf="@+id/icBLE" />
@@ -88,11 +92,13 @@
         android:id="@+id/tvClinician"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:layout_weight="1"
         android:ems="10"
         android:minHeight="48dp"
         android:textSize="40dp"
         app:layout_constraintEnd_toStartOf="@+id/guidelineV2"
+        app:layout_constraintHorizontal_bias="0.562"
         app:layout_constraintStart_toEndOf="@+id/icClinician"
         app:layout_constraintTop_toTopOf="@+id/guidelineO1" />
 
@@ -101,28 +107,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.0" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineV2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.90" />
+        app:layout_constraintGuide_percent="1.0" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineO1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.10" />
+        app:layout_constraintGuide_percent="0.02" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineO2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.90" />
+        app:layout_constraintGuide_begin="689dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

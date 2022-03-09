@@ -64,11 +64,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            tools:text="&#8203;"
             android:buttonTint="@color/strings"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="&#8203;" />
     </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

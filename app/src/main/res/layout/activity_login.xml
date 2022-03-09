@@ -12,7 +12,7 @@
         android:id="@+id/tvLogIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="248dp"
+        android:layout_marginTop="216dp"
         android:text="@string/log_in"
         android:textColor="@color/strings"
         android:textSize="24sp"
@@ -23,76 +23,79 @@
 
     <TextView
         android:id="@+id/tvApp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_width="610dp"
+        android:layout_height="165dp"
+        android:layout_marginTop="36dp"
         android:text="THink Pen"
-        android:textSize="50dp"
+        android:textColor="@color/strings"
+        android:textSize="100dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/strings"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etEmailLog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:textCursorDrawable="@drawable/color_cursor"
+        android:layout_width="440dp"
+        android:layout_height="118dp"
+        android:layout_marginTop="112dp"
         android:backgroundTint="@color/strings"
+        android:ems="10"
         android:hint="@string/e_mail"
         android:inputType="textEmailAddress"
+        android:textCursorDrawable="@drawable/color_cursor"
+        android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.53"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvLogIn" />
 
     <EditText
         android:id="@+id/etPasswordLog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_width="437dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="56dp"
+        android:backgroundTint="@color/strings"
         android:ems="10"
         android:hint="@string/password"
-        android:textCursorDrawable="@drawable/color_cursor"
-        android:backgroundTint="@color/strings"
         android:inputType="textPassword"
+        android:textCursorDrawable="@drawable/color_cursor"
+        android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.534"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etEmailLog" />
 
     <Button
         android:id="@+id/btnSubmit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_width="222dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="96dp"
         android:backgroundTint="@color/strings"
         android:text="@string/submit"
+        android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPasswordLog" />
 
     <Button
         android:id="@+id/btnSignIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_width="224dp"
+        android:layout_height="89dp"
+        android:layout_marginTop="60dp"
         android:backgroundTint="@color/strings"
         android:text="@string/sign_in"
+        android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSubmit" />
 
     <ImageView
         android:id="@+id/icClinician"
-        android:layout_width="85dp"
-        android:layout_height="80dp"
+        android:layout_width="153dp"
+        android:layout_height="133dp"
         android:layout_gravity="center_vertical"
         android:layout_marginTop="16dp"
         android:src="@mipmap/ic_launcher1"
@@ -102,15 +105,17 @@
 
     <Button
         android:id="@+id/btnLanguage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
+        android:layout_width="311dp"
+        android:layout_height="81dp"
         android:backgroundTint="@color/strings"
         android:text="@string/change_language"
+        android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.07"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.037"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.96" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

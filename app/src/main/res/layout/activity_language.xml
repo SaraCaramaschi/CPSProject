@@ -13,12 +13,12 @@
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_gravity="center_vertical"
+        android:layout_marginStart="16dp"
         android:src="@mipmap/ic_language"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerLanguage"
-                app:layout_constraintHorizontal_bias="0.858"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.343" />
+        app:layout_constraintVertical_bias="0.186" />
 
     <Spinner
         android:id="@+id/spinnerLanguage"
@@ -46,11 +46,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="124dp"
         android:text="@string/choose_language"
-        android:textStyle="bold"
         android:textColor="@color/strings"
         android:textSize="25dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.745"
+        app:layout_constraintHorizontal_bias="0.899"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

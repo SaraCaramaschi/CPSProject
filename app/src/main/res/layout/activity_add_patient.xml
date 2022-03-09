@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sfondogine"
+    android:background="@color/color2"
     tools:context=".AddPatientActivity">
 
 
@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:text="@string/fill_up_all_the_requested_information"
-            android:textColor="@color/strings"
+            android:textColor="@color/color5"
             android:textSize="19dp"
             app:layout_constraintStart_toEndOf="@+id/tvNewpatient" />
     </LinearLayout>
@@ -57,6 +57,8 @@
         android:id="@+id/LinearLayoutItems"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/shape_background"
         android:layout_marginBottom="50dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/btnPatListBack"

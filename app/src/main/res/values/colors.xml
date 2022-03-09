@@ -17,5 +17,10 @@
    /*
     <color name="blu">#074A75</color>
     */
+    <color name="color1">#204668</color>
+    <color name="color2">#1467BF</color>
+    <color name="color3">#F58A07</color>
+    <color name="color4">#DA325C</color>
+    <color name="color5">#F7F7F7</color>
 </resources>
 

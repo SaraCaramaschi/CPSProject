@@ -11,37 +11,38 @@
 
     <ImageView
         android:id="@+id/icRealTime"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="136dp"
         android:src="@drawable/fast_time"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvRealTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_width="324dp"
+        android:layout_height="112dp"
+        android:layout_marginTop="152dp"
         android:text="@string/real_time"
         android:textColor="@color/strings"
-        android:textSize="40dp"
+        android:textSize="50dp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.554"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnStartRealTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="@string/start"
+        android:layout_width="220dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="176dp"
         android:backgroundTint="@color/strings"
+        android:text="@string/start"
+        android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvRealTime" />
 
@@ -50,12 +51,12 @@
         android:layout_width="match_parent"
         android:layout_height="450dp"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="72dp"
         android:background="@drawable/shape_background"
-        android:orientation="vertical"
         android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@+id/btnStartRealTime"
-        tools:layout_editor_absoluteX="0dp">
+        tools:layout_editor_absoluteX="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -67,8 +68,8 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="50dp"
                 android:layout_marginStart="10dp"
+                android:layout_marginBottom="50dp"
                 android:text="@string/battery"
                 android:textColor="@color/color1"
                 android:textSize="23sp"
@@ -79,9 +80,9 @@
             <TextView
                 android:id="@+id/tvRealBattery"
                 android:layout_width="49dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:textColor="@color/color1"
-                android:layout_height="wrap_content"
                 android:textSize="23sp"
                 app:layout_constraintBottom_toTopOf="@+id/llRealTime"
                 app:layout_constraintEnd_toEndOf="parent"

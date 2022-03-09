@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/icClinician"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_gravity="center_vertical"
         android:layout_marginTop="8dp"
         android:src="@drawable/stethoscope1"
@@ -20,65 +20,71 @@
 
     <Button
         android:id="@+id/btnPenConnection"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="192dp"
         android:backgroundTint="@color/color1"
         android:text="@string/pen_connection"
+        android:textSize="25dp"
         app:layout_constraintEnd_toStartOf="@+id/guidelineV2"
-        app:layout_constraintHorizontal_bias="0.235"
+        app:layout_constraintHorizontal_bias="0.153"
         app:layout_constraintStart_toEndOf="@+id/icBLE"
         app:layout_constraintTop_toBottomOf="@+id/tvClinician" />
 
     <ImageView
         android:id="@+id/icBLE"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginTop="112dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="164dp"
         android:src="@drawable/bluetooth"
         app:layout_constraintStart_toStartOf="@+id/guidelineV1"
         app:layout_constraintTop_toBottomOf="@+id/tvClinician" />
 
     <Button
         android:id="@+id/btnLogOut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="136dp"
         android:backgroundTint="@color/color1"
         android:text="@string/log_out"
+        android:textSize="25dp"
         app:layout_constraintEnd_toStartOf="@+id/guidelineV2"
-        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintHorizontal_bias="0.12"
         app:layout_constraintStart_toEndOf="@+id/icLoagout"
         app:layout_constraintTop_toBottomOf="@+id/btnPatients" />
 
     <ImageView
         android:id="@+id/icLoagout"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginTop="112dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="92dp"
         android:src="@drawable/logout__1_"
         app:layout_constraintStart_toStartOf="@+id/guidelineV1"
         app:layout_constraintTop_toBottomOf="@+id/icPatientList" />
 
     <Button
         android:id="@+id/btnPatients"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="148dp"
         android:backgroundTint="@color/color1"
         android:text="@string/patients_list"
+        android:textSize="25dp"
         app:layout_constraintEnd_toStartOf="@+id/guidelineV2"
-        app:layout_constraintHorizontal_bias="0.196"
+        app:layout_constraintHorizontal_bias="0.12"
         app:layout_constraintStart_toEndOf="@+id/icPatientList"
         app:layout_constraintTop_toBottomOf="@+id/btnPenConnection" />
 
     <ImageView
         android:id="@+id/icPatientList"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_gravity="center_vertical"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="96dp"
         android:src="@drawable/grandparents"
         app:layout_constraintStart_toStartOf="@+id/guidelineV1"
@@ -88,13 +94,15 @@
         android:id="@+id/tvClinician"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
         android:layout_weight="1"
         android:ems="10"
-        android:textStyle="italic|bold"
-        android:textColor="@color/color3"
         android:minHeight="48dp"
-        android:textSize="40dp"
+        android:textColor="@color/color3"
+        android:textSize="50dp"
+        android:textStyle="italic|bold"
         app:layout_constraintEnd_toStartOf="@+id/guidelineV2"
+        app:layout_constraintHorizontal_bias="0.3"
         app:layout_constraintStart_toEndOf="@+id/icClinician"
         app:layout_constraintTop_toTopOf="@+id/guidelineO1" />
 

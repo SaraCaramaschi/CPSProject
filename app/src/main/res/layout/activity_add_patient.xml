@@ -11,22 +11,22 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="72dp"
         android:src="@mipmap/ic_patient"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.074" />
+        app:layout_constraintVertical_bias="0.128" />
 
     <LinearLayout
-        android:layout_width="309dp"
-        android:layout_height="91dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="397dp"
+        android:layout_height="103dp"
+        android:layout_marginTop="168dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.843"
+        app:layout_constraintHorizontal_bias="0.66"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
@@ -39,7 +39,7 @@
             android:layout_marginTop="0dp"
             android:text="@string/new_patient"
             android:textColor="@color/strings"
-            android:textSize="40sp"
+            android:textSize="50dp"
             android:textStyle="bold|italic"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="parent" />
@@ -49,7 +49,7 @@
             android:layout_height="30dp"
             android:text="@string/fill_up_all_the_requested_information"
             android:textColor="@color/color5"
-            android:textSize="19dp"
+            android:textSize="25dp"
             app:layout_constraintStart_toEndOf="@+id/tvNewpatient" />
     </LinearLayout>
 
@@ -58,8 +58,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
+        android:layout_marginBottom="92dp"
         android:background="@drawable/shape_background"
-        android:layout_marginBottom="50dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/btnPatListBack"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,8 +81,8 @@
                 android:layout_height="39dp"
                 android:inputType="text"
                 android:text="@string/name"
-                android:textSize="20sp"
                 android:textColor="@color/color1"
+                android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TouchTargetSizeCheck" />
@@ -91,9 +91,9 @@
                 android:id="@+id/etName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:textCursorDrawable="@drawable/color_cursor"
                 android:backgroundTint="@color/strings"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/tvName"
                 tools:ignore="SpeakableTextPresentCheck" />
         </LinearLayout>
@@ -114,8 +114,8 @@
                 android:layout_width="100dp"
                 android:layout_height="39dp"
                 android:inputType="text"
-                android:textColor="@color/color1"
                 android:text="@string/surname"
+                android:textColor="@color/color1"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -126,9 +126,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="20sp"
-                android:textCursorDrawable="@drawable/color_cursor"
                 android:backgroundTint="@color/strings"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/tvSurname"
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -185,8 +185,8 @@
                 android:layout_width="100dp"
                 android:layout_height="39dp"
                 android:text="@string/birth_date"
-                android:textSize="20sp"
                 android:textColor="@color/color1"
+                android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -195,10 +195,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textCursorDrawable="@drawable/color_cursor"
                 android:backgroundTint="@color/strings"
                 android:hint="DD-MM-YYYY"
                 android:inputType="date"
+                android:textCursorDrawable="@drawable/color_cursor"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/tvBirthDate" />
 
@@ -236,10 +236,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="20sp"
+                android:backgroundTint="@color/strings"
                 android:textColor="@color/color1"
                 android:textCursorDrawable="@drawable/color_cursor"
-                android:backgroundTint="@color/strings"
+                android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/tvPlace"
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -257,11 +257,11 @@
 
             <TextView
                 android:id="@+id/tvHand"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
+                android:layout_width="131dp"
+                android:layout_height="60dp"
                 android:text="@string/dom_hand"
-                android:textSize="20sp"
                 android:textColor="@color/color1"
+                android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -302,9 +302,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_weight="1"
-                android:textSize="20sp"
-                android:textCursorDrawable="@drawable/color_cursor"
                 android:backgroundTint="@color/strings"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/tvPlace"
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -313,25 +313,27 @@
 
     <Button
         android:id="@+id/btnAddPat"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="30dp"
-        android:textColor="@color/color5"
+        android:layout_width="220dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginBottom="228dp"
         android:backgroundTint="@color/color1"
         android:text="@string/add_patient"
+        android:textColor="@color/color5"
+        android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnPatListBack"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="30dp"
-        android:textColor="@color/color5"
+        android:layout_width="220dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="120dp"
+        android:layout_marginBottom="228dp"
         android:backgroundTint="@color/color1"
         android:text="@string/back_to_patient_list"
+        android:textColor="@color/color5"
+        android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

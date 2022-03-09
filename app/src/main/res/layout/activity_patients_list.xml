@@ -9,37 +9,37 @@
 
     <ImageView
         android:id="@+id/icClinician"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="64dp"
         android:src="@drawable/grandparents"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvPatientList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginBottom="20dp"
+        android:layout_width="280dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="40dp"
         android:layout_weight="1"
         android:ems="10"
+        android:gravity="center"
         android:minHeight="48dp"
         android:text="@string/patients_list"
         android:textColor="@color/strings"
-        android:textSize="35dp"
+        android:textSize="50dp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@+id/rvPatients"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnLogOut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="220dp"
+        android:layout_height="100dp"
         android:layout_marginTop="28dp"
+        android:textSize="25dp"
         android:layout_marginEnd="44dp"
         android:backgroundTint="@color/color1"
         android:text="@string/log_out"
@@ -48,10 +48,11 @@
 
     <Button
         android:id="@+id/btnNewPatient"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
+        android:layout_width="220dp"
+        android:layout_height="100dp"
         android:layout_marginStart="44dp"
         android:layout_marginTop="28dp"
+        android:textSize="25dp"
         android:backgroundTint="@color/color1"
         android:text="@string/add_a_new_patient"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,10 +60,11 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPatients"
-        android:layout_width="match_parent"
-        android:layout_height="550dp"
-        android:layout_marginTop="88dp"
+        android:layout_width="777dp"
+        android:layout_height="726dp"
         android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="224dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/shape_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

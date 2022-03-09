@@ -10,26 +10,26 @@
 
     <ImageView
         android:id="@+id/icLanguage"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
+        android:layout_width="190dp"
+        android:layout_height="190dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="56dp"
         android:src="@drawable/translating"
         app:layout_constraintBottom_toTopOf="@+id/spinnerLanguage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.343" />
+        app:layout_constraintVertical_bias="0.371" />
 
     <Spinner
         android:id="@+id/spinnerLanguage"
-        android:layout_width="197dp"
-        android:layout_height="61dp"
+        android:layout_width="320dp"
+        android:layout_height="180dp"
         android:background="@drawable/shape_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.54"/>
+        app:layout_constraintVertical_bias="0.54" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -45,13 +45,13 @@
         android:id="@+id/tvApp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="124dp"
+        android:layout_marginTop="204dp"
         android:text="@string/choose_language"
-        android:textStyle="bold"
         android:textColor="@color/color3"
-        android:textSize="25dp"
+        android:textSize="50dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.745"
+        app:layout_constraintHorizontal_bias="0.868"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -63,7 +63,7 @@
         android:layout_marginBottom="15dp"
         android:text="@string/language"
         android:textColor="@color/color1"
-        android:textSize="25sp"
+        android:textSize="50dp"
         app:layout_constraintBottom_toBottomOf="@+id/spinnerLanguage"
         app:layout_constraintEnd_toEndOf="@+id/spinnerLanguage"
         app:layout_constraintStart_toStartOf="@+id/spinnerLanguage"
@@ -71,14 +71,15 @@
 
     <Button
         android:id="@+id/btnBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="195dp"
+        android:layout_height="105dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="52dp"
+        android:textSize="25dp"
         android:backgroundTint="@color/color1"
         android:text="@string/back_to_log_in"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.289" />
-
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

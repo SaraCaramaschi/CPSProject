@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sfondogine">
+    android:background="@color/color2">
 
     <ImageView
         android:id="@+id/icProtocol"
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="36dp"
         android:layout_marginTop="28dp"
-        android:src="@mipmap/ic_protocol"
+        android:src="@drawable/clipboard2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:text="@string/protocol_phase_2"
-        android:textColor="@color/strings"
+        android:textColor="@color/color3"
         android:textSize="35dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,14 +32,28 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:textSize="27dp" />
 
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="112dp"
+        android:background="@drawable/shape_background"
+        android:foregroundGravity="center_vertical"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
     <TextView
         android:id="@+id/tvDescription2One"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="35dp"
         android:text="@string/phase_2_description"
-        android:textColor="@color/strings"
+        android:textColor="@color/color1"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,14 +64,17 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:text="@string/phase_description_dwn"
-        android:textColor="@color/strings"
+        android:textColor="@color/color1"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDescription2One" />
+
+    </LinearLayout>
+
 
     <TextView
         android:id="@+id/tvSelectPh2"
@@ -65,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="296dp"
         android:text="@string/select_the_test"
-        android:textColor="@color/strings"
+        android:textColor="@color/color5"
         android:textSize="23sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -77,7 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:backgroundTint="@color/strings"
+        android:backgroundTint="@color/color4"
         android:text="@string/exercise_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +105,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:backgroundTint="@color/strings"
+        android:backgroundTint="@color/color4"
         android:text="@string/exercise_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,7 +116,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:backgroundTint="@color/strings"
+        android:backgroundTint="@color/color4"
         android:text="@string/exercise_3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -111,7 +128,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/strings"
+        android:backgroundTint="@color/color1"
         android:text="@string/back_to_patient_page"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

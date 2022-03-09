@@ -76,11 +76,11 @@ class PatientListActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val btnAllPatientToSelect = findViewById<Button>(R.id.btnAllPatientsToSelect)
+       /* val btnAllPatientToSelect = findViewById<Button>(R.id.btnAllPatientsToSelect)
         val intentSelectPatent = Intent(this, SelectPatientListActivity::class.java)
         btnAllPatientToSelect.setOnClickListener {
             startActivity(intentSelectPatent)
-        }
+        }*/
     }
 
 

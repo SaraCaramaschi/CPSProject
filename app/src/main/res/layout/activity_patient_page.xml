@@ -8,13 +8,14 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/patient_personal_page"
         android:textColor="@color/color3"
+        android:gravity="center"
         android:textSize="28dp"
-        android:textStyle="bold"
+        android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,9 +23,9 @@
 
     <ImageView
         android:id="@+id/edit"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
         android:clickable="true"
         android:src="@drawable/edit"
@@ -33,26 +34,25 @@
 
     <ImageView
         android:id="@+id/delete"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
         android:clickable="true"
         android:src="@drawable/trash"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit" />
 
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/old_man"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/user__2_"
+        android:background="@color/color1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <LinearLayout
         android:id="@+id/LinearLayout0"

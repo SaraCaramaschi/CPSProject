@@ -27,7 +27,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
-        android:src="@mipmap/ic_clinician"
+        android:src="@drawable/stethoscope1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -50,9 +50,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
             android:text="@string/new_clinician"
-            android:textColor="@color/strings"
+            android:textColor="@color/color3"
             android:textSize="40sp"
-            android:textStyle="bold"
+            android:textStyle="bold|italic"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="parent" />
 

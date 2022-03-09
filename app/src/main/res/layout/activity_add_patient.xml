@@ -40,7 +40,7 @@
             android:text="@string/new_patient"
             android:textColor="@color/strings"
             android:textSize="40sp"
-            android:textStyle="bold"
+            android:textStyle="bold|italic"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="parent" />
 

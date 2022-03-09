@@ -80,7 +80,7 @@
         android:layout_height="55dp"
         android:layout_gravity="center_vertical"
         android:layout_marginTop="96dp"
-        android:src="@drawable/old"
+        android:src="@drawable/grandparents"
         app:layout_constraintStart_toStartOf="@+id/guidelineV1"
         app:layout_constraintTop_toBottomOf="@+id/icBLE" />
 
@@ -90,6 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:ems="10"
+        android:textStyle="italic|bold"
         android:textColor="@color/color3"
         android:minHeight="48dp"
         android:textSize="40dp"

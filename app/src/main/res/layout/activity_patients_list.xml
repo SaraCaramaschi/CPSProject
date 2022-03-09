@@ -7,11 +7,20 @@
     android:background="@color/color2"
     tools:context=".PatientListActivity">
 
+    <ImageView
+        android:id="@+id/icClinician"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/grandparents"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvPatientList"
-        android:layout_width="354dp"
-        android:layout_height="49dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_marginBottom="20dp"
         android:layout_weight="1"
@@ -20,7 +29,7 @@
         android:text="@string/patients_list"
         android:textColor="@color/strings"
         android:textSize="35dp"
-        android:textStyle="bold"
+        android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@+id/rvPatients"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"

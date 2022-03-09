@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sfondogine"
+    android:background="@color/color2"
     tools:ignore="ExtraText">
 
     <ImageView
@@ -14,7 +14,7 @@
         android:layout_gravity="center_vertical"
         android:layout_marginStart="20dp"
         android:layout_marginTop="28dp"
-        android:src="@mipmap/ic_protocol"
+        android:src="@drawable/clipboard2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

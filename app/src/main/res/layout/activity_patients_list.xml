@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sfondogine"
+    android:background="@color/color2"
     tools:context=".PatientListActivity">
 
 
@@ -12,7 +12,8 @@
         android:id="@+id/tvPatientList"
         android:layout_width="354dp"
         android:layout_height="49dp"
-        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
         android:layout_weight="1"
         android:ems="10"
         android:minHeight="48dp"
@@ -30,8 +31,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/strings"
+        android:layout_marginEnd="44dp"
+        android:backgroundTint="@color/color1"
         android:text="@string/log_out"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rvPatients" />
@@ -40,31 +41,23 @@
         android:id="@+id/btnNewPatient"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
+        android:layout_marginStart="44dp"
         android:layout_marginTop="28dp"
-        android:backgroundTint="@color/strings"
+        android:backgroundTint="@color/color1"
         android:text="@string/add_a_new_patient"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rvPatients" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPatients"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="550dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/shape_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/activity_patient" />
 
-    <Button
-        android:id="@+id/btnAllPatientsToSelect"
-        android:layout_width="120dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="28dp"
-        android:backgroundTint="@color/strings"
-        android:text="@string/all_patients"
-        app:layout_constraintEnd_toStartOf="@+id/btnLogOut"
-        app:layout_constraintStart_toEndOf="@+id/btnNewPatient"
-        app:layout_constraintTop_toBottomOf="@+id/rvPatients" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

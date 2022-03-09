@@ -53,16 +53,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <LinearLayout
         android:id="@+id/LinearLayout0"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="380dp"
         android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="52dp"
         android:background="@drawable/shape_background"
-        android:layout_marginTop="36dp"
+        android:gravity="center"
         android:orientation="vertical"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.842"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
@@ -81,8 +84,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="39dp"
                 android:inputType="text"
-                android:textColor="@color/color1"
                 android:text="@string/name"
+                android:textColor="@color/color1"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -92,10 +95,10 @@
                 android:id="@+id/tvName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textColor="@color/color1"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginEnd="0dp"
+                android:textColor="@color/color1"
                 android:textSize="20sp" />
 
         </LinearLayout>
@@ -115,13 +118,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="39dp"
                 android:inputType="text"
-                android:textColor="@color/color1"
                 android:text="@string/surname"
+                android:textColor="@color/color1"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TouchTargetSizeCheck"
-                />
+                tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/tvSurname"
@@ -148,8 +150,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="39dp"
                 android:inputType="text"
-                android:textColor="@color/color1"
                 android:text="@string/tax_code"
+                android:textColor="@color/color1"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -160,8 +162,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="0dp"
-                android:textColor="@color/color1"
                 android:layout_marginEnd="0dp"
+                android:textColor="@color/color1"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -179,8 +181,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="39dp"
                 android:inputType="text"
-                android:textColor="@color/color1"
                 android:text="@string/gender"
+                android:textColor="@color/color1"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -191,8 +193,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="0dp"
-                android:textColor="@color/color1"
                 android:layout_marginEnd="0dp"
+                android:textColor="@color/color1"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -210,8 +212,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="39dp"
                 android:inputType="text"
-                android:textColor="@color/color1"
                 android:text="@string/birth_date"
+                android:textColor="@color/color1"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -222,8 +224,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="0dp"
-                android:textColor="@color/color1"
                 android:layout_marginEnd="0dp"
+                android:textColor="@color/color1"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -241,8 +243,8 @@
                 android:layout_width="100dp"
                 android:layout_height="39dp"
                 android:inputType="text"
-                android:textColor="@color/color1"
                 android:text="@string/dom_hand"
+                android:textColor="@color/color1"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -253,8 +255,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="0dp"
-                android:textColor="@color/color1"
                 android:layout_marginEnd="0dp"
+                android:textColor="@color/color1"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -273,8 +275,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="39dp"
                 android:inputType="text"
-                android:textColor="@color/color1"
                 android:text="@string/phase"
+                android:textColor="@color/color1"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -285,8 +287,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="0dp"
-                android:textColor="@color/color1"
                 android:layout_marginEnd="0dp"
+                android:textColor="@color/color1"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -321,7 +323,6 @@
                 android:textSize="20sp" />
         </LinearLayout>
     </LinearLayout>
-
 
     <TextView
         android:id="@+id/tvSelectPhase"

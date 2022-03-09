@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".model.Patient"
-    android:background="@color/sfondogine">
+    android:background="@color/color5">
 
 
     <LinearLayout
@@ -43,6 +43,7 @@
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="0dp"
                 android:text="@string/name_surname"
+                android:textColor="@color/color1"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -52,6 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textColor="@color/color1"
                 android:text="@string/phase"
                 android:textSize="15sp"
                 app:layout_constraintStart_toEndOf="@+id/PatientName" />

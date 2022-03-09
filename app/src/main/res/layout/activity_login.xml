@@ -5,27 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity"
-    android:background="@color/sfondogine">
+    android:background="@color/color22">
 
 
-    <TextView
-        android:id="@+id/tvLogIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="248dp"
-        android:text="@string/log_in"
-        android:textColor="@color/strings"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvApp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="35dp"
         android:text="THink Pen"
         android:textSize="50dp"
         android:textStyle="bold"
@@ -33,22 +21,23 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/strings"/>
+        android:textColor="@color/color5"/>
 
     <EditText
         android:id="@+id/etEmailLog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="95dp"
         android:ems="10"
         android:textCursorDrawable="@drawable/color_cursor"
-        android:backgroundTint="@color/strings"
+        android:backgroundTint="@color/color4"
         android:hint="@string/e_mail"
+        android:textColorHint="@color/color4"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvLogIn" />
+        app:layout_constraintTop_toBottomOf="@+id/icClinician" />
 
     <EditText
         android:id="@+id/etPasswordLog"
@@ -57,8 +46,9 @@
         android:layout_marginTop="40dp"
         android:ems="10"
         android:hint="@string/password"
+        android:textColorHint="@color/color4"
         android:textCursorDrawable="@drawable/color_cursor"
-        android:backgroundTint="@color/strings"
+        android:backgroundTint="@color/color4"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -70,8 +60,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:backgroundTint="@color/strings"
         android:text="@string/submit"
+        android:backgroundTint="@color/color4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,7 +72,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:backgroundTint="@color/strings"
+        android:backgroundTint="@color/color1"
         android:text="@string/sign_in"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -94,9 +84,10 @@
         android:layout_width="85dp"
         android:layout_height="80dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="44dp"
         android:src="@mipmap/ic_launcher1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvApp" />
 

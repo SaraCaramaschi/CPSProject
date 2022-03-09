@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sfondogine"
+    android:background="@color/color22"
     tools:context=".SelectPatientListActivity">
 
     <LinearLayout
@@ -27,7 +27,7 @@
             android:ems="10"
             android:minHeight="48dp"
             android:text="List of all the patient"
-            android:textColor="@color/strings"
+            android:textColor="@color/color4"
             android:textSize="35dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/rvPatients"
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="Select the patient to add to your list"
-            android:textColor="@color/strings"
+            android:textColor="@color/color5"
             android:textSize="19dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
@@ -51,9 +51,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPatientsAll"
-        android:layout_width="wrap_content"
+        android:layout_width="400dp"
         android:layout_height="530dp"
         android:layout_marginTop="12dp"
+        android:background="@drawable/shape_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
@@ -65,7 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
         android:layout_marginStart="25dp"
-        android:backgroundTint="@color/strings"
+        android:backgroundTint="@color/color1"
         android:text="@string/add_patient"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rvPatientsAll" />
@@ -76,7 +77,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
         android:layout_marginEnd="25dp"
-        android:backgroundTint="@color/strings"
+        android:backgroundTint="@color/color1"
         android:text="@string/back_to_patient_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rvPatientsAll" />

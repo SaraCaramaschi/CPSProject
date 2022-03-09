@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sfondogine"
+    android:background="@color/color5"
     tools:context=".ble.RealTimeActivity">
 
 
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:text="@string/real_time"
-        android:textColor="@color/strings"
+        android:textColor="@color/color4"
         android:textSize="40dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="@string/start"
-        android:backgroundTint="@color/strings"
+        android:backgroundTint="@color/color1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +60,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
             android:text="@string/acceleration_data"
-            android:textColor="@color/strings"
+            android:textColor="@color/color1"
             android:textSize="23sp"
 
             android:textStyle="bold" />
@@ -134,7 +134,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
             android:text="@string/gyroscope_data"
-            android:textColor="@color/strings"
+            android:textColor="@color/color1"
             android:textSize="23sp"
             android:textStyle="bold" />
 
@@ -206,7 +206,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
             android:text="@string/force_data"
-            android:textColor="@color/strings"
+            android:textColor="@color/color1"
             android:textSize="23sp"
             android:textStyle="bold" />
 
@@ -260,7 +260,7 @@
         android:layout_marginBottom="100dp"
         android:text="@string/battery"
         android:textSize="23sp"
-        android:textColor="@color/strings"
+        android:textColor="@color/color1"
         app:layout_constraintBottom_toTopOf="@+id/llRealTime"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="0.646" />

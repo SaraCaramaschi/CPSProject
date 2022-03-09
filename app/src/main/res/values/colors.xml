@@ -13,9 +13,15 @@
     <color name="grey">#9999A1</color>
     <color name="lightblue">#cbf3f0</color>
     <color name="sfondogine">#E2E7EC</color>
-    <color name="strings">#FFAD05</color>
-   /*
-    <color name="blu">#074A75</color>
-    */
+    <color name="strings">#074A75</color>
+    <color name="color1">#204668</color>
+    <color name="color2">#14678F</color>
+    <color name="color22">#31789B</color>
+    <color name="color222">#4E9BC2</color>
+    <color name="color3">#DA325C</color>
+    <color name="color33">#D34B6D</color>
+    <color name="color4">#F58A07</color>
+    <color name="color44">#F88D0A</color>
+    <color name="color5">#F7F7F7</color>
 </resources>
 

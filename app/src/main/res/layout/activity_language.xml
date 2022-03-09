@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LanguageActivity"
-    android:background="@color/sfondogine">
+    android:background="@color/color5">
 
 
     <ImageView
@@ -47,7 +47,7 @@
         android:layout_marginTop="124dp"
         android:text="@string/choose_language"
         android:textStyle="bold"
-        android:textColor="@color/strings"
+        android:textColor="@color/color1"
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.745"
@@ -61,7 +61,7 @@
         android:layout_marginTop="12dp"
         android:layout_marginBottom="15dp"
         android:text="@string/language"
-        android:textColor="@color/strings"
+        android:textColor="@color/color1"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="@+id/spinnerLanguage"
         app:layout_constraintEnd_toEndOf="@+id/spinnerLanguage"

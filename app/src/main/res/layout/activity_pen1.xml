@@ -13,7 +13,7 @@
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginTop="436dp"
+        android:layout_marginTop="332dp"
         android:src="@mipmap/ic_real_time"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout"
         app:layout_constraintHorizontal_bias="0.65"
@@ -30,29 +30,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.409"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnProtocol" />
-
-    <ImageView
-        android:id="@+id/icProtocol"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_gravity="center_vertical"
-        android:layout_marginTop="328dp"
-        android:src="@mipmap/ic_protocol"
-        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
-        app:layout_constraintHorizontal_bias="0.65"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btnProtocol"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="65dp"
-        android:text="@string/start_protocol"
-        android:backgroundTint="@color/color1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnDownload" />
 
     <ImageView
@@ -61,7 +38,7 @@
         android:layout_height="65dp"
         android:layout_gravity="center_vertical"
         android:layout_marginTop="200dp"
-        android:src="@mipmap/ic_download"
+        android:src="@drawable/download"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout"
         app:layout_constraintHorizontal_bias="0.65"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,10 +61,10 @@
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginTop="556dp"
+        android:layout_marginTop="448dp"
         android:src="@mipmap/ic_reset"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout"
-        app:layout_constraintHorizontal_bias="0.65"
+        app:layout_constraintHorizontal_bias="0.825"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -109,7 +86,7 @@
         android:layout_height="65dp"
         android:layout_gravity="center_vertical"
         android:layout_marginTop="28dp"
-        android:src="@mipmap/ic_pen"
+        android:src="@drawable/stylus"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout"
         app:layout_constraintHorizontal_bias="0.65"
         app:layout_constraintStart_toStartOf="parent"

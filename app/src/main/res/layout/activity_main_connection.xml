@@ -21,7 +21,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ble.MainConnection"
-    android:background="@color/sfondogine">
+    android:background="@color/color5">
 
 
     <Button
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:backgroundTint="@color/strings"
+        android:backgroundTint="@color/color1"
         />
 
     <androidx.recyclerview.widget.RecyclerView

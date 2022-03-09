@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sfondogine">
+    android:background="@color/color22">
 
     <ImageView
         android:id="@+id/icExercise2"
@@ -13,7 +13,7 @@
         android:layout_gravity="center_vertical"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="16dp"
-        android:src="@mipmap/ic_exercise"
+        android:src="@drawable/writing__1_"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="Exercise 2"
-        android:textColor="@color/strings"
+        android:textColor="@color/color3"
         android:textSize="40dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,12 +33,14 @@
 
     <TextView
         android:id="@+id/tvExDescription2"
-        android:layout_width="332dp"
         android:layout_height="64dp"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="10dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="60dp"
         android:text="@string/ex2"
-        android:textColor="@color/strings"
+        android:textColor="@color/color1"
+        android:background="@drawable/shape_background"
         android:textSize="23sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
@@ -52,7 +54,7 @@
         android:layout_marginTop="40dp"
         android:text="@string/press_stop_to_end_the_acquisition_of_the_data"
         android:textAlignment="center"
-        android:textColor="@color/strings"
+        android:textColor="@color/color1"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -78,7 +80,7 @@
         android:layout_marginTop="190dp"
         android:text="@string/press_start_to_perform_data_acquisition"
         android:textAlignment="center"
-        android:textColor="@color/strings"
+        android:textColor="@color/color1"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -103,7 +105,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
         android:layout_marginEnd="24dp"
-        android:backgroundTint="@color/strings"
+        android:backgroundTint="@color/color1"
         android:text="@string/download_files"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnStop2" />
@@ -114,7 +116,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="68dp"
-        android:backgroundTint="@color/strings"
+        android:backgroundTint="@color/color1"
         android:text="@string/back_to_phase"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnStop2" />

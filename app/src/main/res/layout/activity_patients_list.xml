@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sfondogine"
+    android:background="@color/color5"
     tools:context=".PatientListActivity">
 
 
@@ -17,7 +17,7 @@
         android:ems="10"
         android:minHeight="48dp"
         android:text="@string/patients_list"
-        android:textColor="@color/strings"
+        android:textColor="@color/color4"
         android:textSize="35dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/rvPatients"
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/strings"
+        android:backgroundTint="@color/color1"
         android:text="@string/log_out"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rvPatients" />
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
         android:layout_marginTop="28dp"
-        android:backgroundTint="@color/strings"
+        android:backgroundTint="@color/color1"
         android:text="@string/add_a_new_patient"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rvPatients" />
@@ -61,7 +61,7 @@
         android:layout_width="120dp"
         android:layout_height="57dp"
         android:layout_marginTop="28dp"
-        android:backgroundTint="@color/strings"
+        android:backgroundTint="@color/color1"
         android:text="@string/all_patients"
         app:layout_constraintEnd_toStartOf="@+id/btnLogOut"
         app:layout_constraintStart_toEndOf="@+id/btnNewPatient"

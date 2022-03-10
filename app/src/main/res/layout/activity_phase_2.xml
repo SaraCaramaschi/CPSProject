@@ -6,130 +6,133 @@
     android:layout_height="match_parent"
     android:background="@color/color2">
 
+
     <ImageView
         android:id="@+id/icProtocol"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="76dp"
         android:src="@drawable/clipboard2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvPhase2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_width="460dp"
+        android:layout_height="95dp"
+        android:layout_marginTop="100dp"
         android:text="@string/protocol_phase_2"
         android:textColor="@color/color3"
-        android:textSize="35dp"
+        android:textSize="50dp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.661"
+        app:layout_constraintHorizontal_bias="0.55"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:textSize="27dp" />
+        tools:textSize="40dp" />
 
     <LinearLayout
         android:id="@+id/linear"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="244dp"
         android:background="@drawable/shape_background"
         android:foregroundGravity="center_vertical"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/tvDescription2One"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="15dp"
-        android:text="@string/phase_2_description"
-        android:textColor="@color/color1"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPhase2" />
+        <TextView
+            android:id="@+id/tvDescription2One"
+            android:layout_width="707dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:text="@string/phase_2_description"
+            android:textColor="@color/color1"
+            android:textSize="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPhase2" />
 
-    <TextView
-        android:id="@+id/tvDescription2Two"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/phase_description_dwn"
-        android:textColor="@color/color1"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDescription2One" />
+        <TextView
+            android:id="@+id/tvDescription2Two"
+            android:layout_width="707dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/phase_description_dwn"
+            android:textColor="@color/color1"
+            android:textSize="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.508"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDescription2One" />
 
     </LinearLayout>
 
-
     <TextView
         android:id="@+id/tvSelectPh2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="329dp"
+        android:layout_height="54dp"
         android:layout_marginTop="296dp"
         android:text="@string/select_the_test"
         android:textColor="@color/color5"
-        android:textSize="23sp"
+        android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.573"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPhase2" />
 
     <Button
         android:id="@+id/btnEx1Ph2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="90dp"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/color4"
         android:text="@string/exercise_1"
+        android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSelectPh2" />
 
     <Button
         android:id="@+id/btnEx2Ph2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="90dp"
         android:layout_marginTop="25dp"
         android:backgroundTint="@color/color4"
         android:text="@string/exercise_2"
+        android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnEx1Ph2" />
 
     <Button
         android:id="@+id/btnEx3Ph2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="90dp"
         android:layout_marginTop="25dp"
         android:backgroundTint="@color/color4"
         android:text="@string/exercise_3"
+        android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnEx2Ph2" />
 
     <Button
         android:id="@+id/btnBackToPatientPage2"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="220dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginBottom="32dp"
         android:backgroundTint="@color/color1"
         android:text="@string/back_to_patient_page"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

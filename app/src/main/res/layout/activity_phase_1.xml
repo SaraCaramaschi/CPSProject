@@ -63,7 +63,7 @@
 
         <TextView
             android:id="@+id/tvDescription1Two"
-            android:layout_width="703dp"
+            android:layout_width="707dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="60dp"
             android:text="@string/phase_1_description_2"
@@ -76,7 +76,7 @@
 
         <TextView
             android:id="@+id/tvDescription1Three"
-            android:layout_width="705dp"
+            android:layout_width="707dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="60dp"
             android:layout_marginTop="18dp"
@@ -90,7 +90,7 @@
 
         <TextView
             android:id="@+id/tvDescription1Four"
-            android:layout_width="698dp"
+            android:layout_width="707dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="60dp"
             android:layout_marginTop="18dp"
@@ -118,8 +118,8 @@
 
     <Button
         android:id="@+id/btnEx1Ph1"
-        android:layout_width="220dp"
-        android:layout_height="100dp"
+        android:layout_width="200dp"
+        android:layout_height="90dp"
         android:layout_marginTop="44dp"
         android:backgroundTint="@color/color4"
         android:text="@string/exercise_1"
@@ -130,8 +130,8 @@
 
     <Button
         android:id="@+id/btnEx2Ph1"
-        android:layout_width="220dp"
-        android:layout_height="100dp"
+        android:layout_width="200dp"
+        android:layout_height="90dp"
         android:layout_marginTop="24dp"
         android:backgroundTint="@color/color4"
         android:text="@string/exercise_2"
@@ -142,8 +142,8 @@
 
     <Button
         android:id="@+id/btnEx3Ph1"
-        android:layout_width="220dp"
-        android:layout_height="100dp"
+        android:layout_width="200dp"
+        android:layout_height="90dp"
         android:layout_marginTop="25dp"
         android:backgroundTint="@color/color4"
         android:text="@string/exercise_3"
@@ -154,10 +154,10 @@
 
     <Button
         android:id="@+id/btnBackToPatientPage1"
-        android:layout_width="253dp"
+        android:layout_width="220dp"
         android:layout_height="90dp"
         android:layout_marginStart="56dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="28dp"
         android:backgroundTint="@color/color1"
         android:text="@string/back_to_patient_page"
         android:textSize="20dp"

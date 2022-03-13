@@ -14,21 +14,20 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ble.MainConnection"
-    android:background="@color/color2">
+    android:background="@color/color2"
+    tools:context=".ble.MainConnection">
 
 
     <Button
         android:id="@+id/scan_button"
         android:layout_width="240dp"
         android:layout_height="100dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="740dp"
         android:backgroundTint="@color/strings"
         android:text="@string/start_scan"
         android:textSize="25dp"
@@ -39,16 +38,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/scan_results_recycler_view"
-        android:layout_width="795dp"
-        android:layout_height="1011dp"
-        android:layout_margin="10dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="798dp"
+        android:layout_height="288dp"
         android:background="@drawable/shape_background"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/scan_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/scan_button"
-        app:layout_constraintVertical_bias="0.682"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.769"
         tools:listitem="@layout/row_scan_result" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

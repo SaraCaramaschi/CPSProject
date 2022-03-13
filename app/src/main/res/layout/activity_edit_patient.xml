@@ -56,16 +56,16 @@
 
     <LinearLayout
         android:id="@+id/LinearLayoutItems"
-        android:layout_width="match_parent"
-        android:layout_height="420dp"
+        android:layout_width="769dp"
+        android:layout_height="502dp"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginBottom="140dp"
+        android:layout_marginBottom="92dp"
         android:background="@drawable/shape_background"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/btnBackToPatientPageEdit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintHorizontal_bias="0.161"
         app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
@@ -80,12 +80,12 @@
 
             <TextView
                 android:id="@+id/tvName"
-                android:layout_width="120dp"
+                android:layout_width="201dp"
                 android:layout_height="39dp"
                 android:inputType="text"
                 android:text="@string/name"
                 android:textColor="@color/color1"
-                android:textSize="20sp"
+                android:textSize="30dp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TouchTargetSizeCheck" />
@@ -98,7 +98,7 @@
                 android:backgroundTint="@color/color1"
                 android:textColor="@color/color1"
                 android:textCursorDrawable="@drawable/color_cursor"
-                android:textSize="20sp"
+                android:textSize="30dp"
                 app:layout_constraintStart_toEndOf="@+id/tvName"
                 tools:ignore="SpeakableTextPresentCheck" />
         </LinearLayout>
@@ -116,12 +116,12 @@
 
             <TextView
                 android:id="@+id/tvSurname"
-                android:layout_width="120dp"
+                android:layout_width="204dp"
                 android:layout_height="39dp"
                 android:inputType="text"
                 android:text="@string/surname"
                 android:textColor="@color/color1"
-                android:textSize="20sp"
+                android:textSize="30dp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TouchTargetSizeCheck" />
@@ -133,7 +133,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/strings"
                 android:textCursorDrawable="@drawable/color_cursor"
-                android:textSize="20sp"
+                android:textSize="30dp"
                 app:layout_constraintStart_toEndOf="@+id/tvSurname"
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -152,11 +152,11 @@
 
             <TextView
                 android:id="@+id/tvGender"
-                android:layout_width="120dp"
-                android:layout_height="39dp"
+                android:layout_width="208dp"
+                android:layout_height="match_parent"
                 android:text="@string/gender"
                 android:textColor="@color/color1"
-                android:textSize="20sp"
+                android:textSize="30dp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -187,11 +187,11 @@
 
             <TextView
                 android:id="@+id/tvBirthDate"
-                android:layout_width="120dp"
-                android:layout_height="39dp"
+                android:layout_width="208dp"
+                android:layout_height="62dp"
                 android:text="@string/birth_date"
                 android:textColor="@color/color1"
-                android:textSize="20sp"
+                android:textSize="30dp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -204,7 +204,7 @@
                 android:hint="DD.MM.YYYY"
                 android:inputType="date"
                 android:textCursorDrawable="@drawable/color_cursor"
-                android:textSize="20sp"
+                android:textSize="30dp"
                 app:layout_constraintStart_toEndOf="@+id/tvBirthDate" />
 
             <ImageView
@@ -227,11 +227,11 @@
 
             <TextView
                 android:id="@+id/tvTax"
-                android:layout_width="120dp"
-                android:layout_height="match_parent"
+                android:layout_width="208dp"
+                android:layout_height="70dp"
                 android:text="@string/tax_code"
                 android:textColor="@color/color1"
-                android:textSize="20sp"
+                android:textSize="30dp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -242,7 +242,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/strings"
                 android:textCursorDrawable="@drawable/color_cursor"
-                android:textSize="20sp"
+                android:textSize="30dp"
                 app:layout_constraintStart_toEndOf="@+id/tvPlace"
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -260,11 +260,11 @@
 
             <TextView
                 android:id="@+id/tvHand"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
+                android:layout_width="267dp"
+                android:layout_height="48dp"
                 android:text="@string/dom_hand"
                 android:textColor="@color/color1"
-                android:textSize="21sp"
+                android:textSize="30dp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -292,11 +292,11 @@
 
             <TextView
                 android:id="@+id/tvNotes"
-                android:layout_width="120dp"
+                android:layout_width="210dp"
                 android:layout_height="match_parent"
                 android:text="@string/add_notes"
                 android:textColor="@color/color1"
-                android:textSize="20sp"
+                android:textSize="30dp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -307,7 +307,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/strings"
                 android:textCursorDrawable="@drawable/color_cursor"
-                android:textSize="20sp"
+                android:textSize="30dp"
                 app:layout_constraintStart_toEndOf="@+id/tvPlace"
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -319,7 +319,7 @@
         android:layout_width="220dp"
         android:layout_height="100dp"
         android:layout_marginStart="124dp"
-        android:layout_marginBottom="308dp"
+        android:layout_marginBottom="256dp"
         android:backgroundTint="@color/color1"
         android:text="@string/edit_patient1"
         android:textSize="25dp"
@@ -330,8 +330,8 @@
         android:id="@+id/btnBackToPatientPageEdit"
         android:layout_width="220dp"
         android:layout_height="100dp"
-        android:layout_marginEnd="124dp"
-        android:layout_marginBottom="304dp"
+        android:layout_marginEnd="128dp"
+        android:layout_marginBottom="256dp"
         android:backgroundTint="@color/color1"
         android:text="@string/back_to_patient_page"
         android:textSize="25dp"

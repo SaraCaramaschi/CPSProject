@@ -19,8 +19,8 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -44,7 +44,7 @@
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="0dp"
                     android:text="@string/name_surname"
-                    android:textSize="20sp"
+                    android:textSize="30dp"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -55,7 +55,7 @@
                     android:layout_weight="1"
                     android:textColor="@color/color1"
                     android:text="@string/phase"
-                    android:textSize="15sp"
+                    android:textSize="30dp"
                     app:layout_constraintStart_toEndOf="@+id/PatientName" />
 
         </LinearLayout>

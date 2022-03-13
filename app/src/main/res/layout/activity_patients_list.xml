@@ -11,8 +11,8 @@
         android:id="@+id/icClinician"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="60dp"
         android:src="@drawable/grandparents"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,6 +32,7 @@
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@+id/rvPatients"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.606"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button

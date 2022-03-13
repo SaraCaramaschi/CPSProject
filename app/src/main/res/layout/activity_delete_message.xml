@@ -45,12 +45,13 @@
 
         <TextView
             android:id="@+id/tvPatient"
-            android:layout_width="646dp"
+            android:layout_width="637dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:padding="10dp"
             android:textColor="@color/color1"
+            android:textAlignment="center"
             android:textSize="30dp"
             android:textStyle="italic|bold" />
 

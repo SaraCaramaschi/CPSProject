@@ -4,57 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity"
     android:background="@color/color2"
-    >
+    tools:context=".RegisterActivity"
+    tools:layout_editor_absoluteX="26dp"
+    tools:layout_editor_absoluteY="0dp">
 
 
     <Button
         android:id="@+id/btnSubmitdata"
         android:layout_width="200dp"
         android:layout_height="90dp"
-        android:layout_marginBottom="208dp"
         android:backgroundTint="@color/strings"
         android:text="@string/submit"
         android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="269dp"
+        tools:layout_editor_absoluteY="818dp" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="68dp"
+        android:layout_marginStart="100dp"
         android:src="@drawable/stethoscope1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.199" />
+        app:layout_constraintVertical_bias="0.111" />
 
     <LinearLayout
-        android:layout_width="446dp"
-        android:layout_height="148dp"
-        android:layout_marginTop="232dp"
+        android:id="@+id/linearLayout4"
+        android:layout_width="447dp"
+        android:layout_height="122dp"
+        android:layout_marginTop="196dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.553"
+        app:layout_constraintHorizontal_bias="0.61"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
-
-        <TextView
-            android:id="@+id/tvNewClinician"
-            android:layout_width="460dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:text="@string/new_clinician"
-            android:textColor="@color/color3"
-            android:textSize="50dp"
-            android:textStyle="bold|italic"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:layout_width="461dp"
@@ -62,22 +50,22 @@
             android:text="@string/fill_up_all_the_requested_information"
             android:textColor="@color/color5"
             android:textSize="40dp"
-            app:layout_constraintStart_toEndOf="@+id/tvNewClinician" />
+            app:layout_constraintStart_toEndOf="@+id/tvNewClinician"
+            tools:layout_editor_absoluteY="188dp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/LinearLayoutItems"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_width="781dp"
+        android:layout_height="381dp"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginBottom="212dp"
         android:background="@drawable/shape_background"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/btnSubmitdata"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
         <LinearLayout
             android:id="@+id/LinearLayout1"
@@ -91,12 +79,12 @@
 
             <TextView
                 android:id="@+id/idName"
-                android:layout_width="100dp"
-                android:layout_height="39dp"
+                android:layout_width="166dp"
+                android:layout_height="69dp"
                 android:inputType="text"
                 android:text="@string/name"
                 android:textColor="@color/color1"
-                android:textSize="20sp"
+                android:textSize="30dp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TouchTargetSizeCheck" />
@@ -108,7 +96,7 @@
                 android:backgroundTint="@color/strings"
                 android:textColor="@color/color1"
                 android:textCursorDrawable="@drawable/color_cursor"
-                android:textSize="20sp"
+                android:textSize="30dp"
                 app:layout_constraintStart_toEndOf="@+id/idName"
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -127,12 +115,12 @@
 
             <TextView
                 android:id="@+id/idSurname"
-                android:layout_width="100dp"
-                android:layout_height="39dp"
+                android:layout_width="171dp"
+                android:layout_height="69dp"
                 android:inputType="text"
                 android:text="Surname"
                 android:textColor="@color/color1"
-                android:textSize="20sp"
+                android:textSize="30dp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TouchTargetSizeCheck" />
@@ -144,7 +132,7 @@
                 android:backgroundTint="@color/strings"
                 android:textColor="@color/color1"
                 android:textCursorDrawable="@drawable/color_cursor"
-                android:textSize="20sp"
+                android:textSize="30dp"
                 app:layout_constraintStart_toEndOf="@+id/idName"
                 tools:ignore="SpeakableTextPresentCheck" />
         </LinearLayout>
@@ -161,12 +149,12 @@
 
             <TextView
                 android:id="@+id/tvEmail"
-                android:layout_width="100dp"
-                android:layout_height="39dp"
+                android:layout_width="169dp"
+                android:layout_height="75dp"
                 android:inputType="text"
                 android:text="@string/e_mail"
                 android:textColor="@color/color1"
-                android:textSize="20sp"
+                android:textSize="30dp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TouchTargetSizeCheck" />
@@ -178,7 +166,7 @@
                 android:backgroundTint="@color/strings"
                 android:textColor="@color/color1"
                 android:textCursorDrawable="@drawable/color_cursor"
-                android:textSize="20sp"
+                android:textSize="30dp"
                 app:layout_constraintStart_toEndOf="@+id/idName"
                 tools:ignore="SpeakableTextPresentCheck" />
         </LinearLayout>
@@ -195,12 +183,12 @@
 
             <TextView
                 android:id="@+id/tvPassword1"
-                android:layout_width="100dp"
-                android:layout_height="39dp"
+                android:layout_width="174dp"
+                android:layout_height="60dp"
                 android:inputType="text"
                 android:text="@string/password"
                 android:textColor="@color/color1"
-                android:textSize="20sp"
+                android:textSize="30dp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TouchTargetSizeCheck" />
@@ -213,7 +201,7 @@
                 android:inputType="textPassword"
                 android:textColor="@color/color1"
                 android:textCursorDrawable="@drawable/color_cursor"
-                android:textSize="20sp"
+                android:textSize="30dp"
                 app:layout_constraintStart_toEndOf="@+id/idName"
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -231,12 +219,12 @@
 
             <TextView
                 android:id="@+id/tvPassword2"
-                android:layout_width="199dp"
-                android:layout_height="39dp"
+                android:layout_width="286dp"
+                android:layout_height="54dp"
                 android:inputType="text"
                 android:text="@string/confirm_password"
                 android:textColor="@color/color1"
-                android:textSize="20sp"
+                android:textSize="30dp"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TouchTargetSizeCheck" />
@@ -248,12 +236,25 @@
                 android:backgroundTint="@color/strings"
                 android:inputType="textPassword"
                 android:textCursorDrawable="@drawable/color_cursor"
-                android:textSize="20sp"
+                android:textSize="30dp"
                 app:layout_constraintStart_toEndOf="@+id/idName"
                 tools:ignore="SpeakableTextPresentCheck" />
         </LinearLayout>
 
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvNewClinician"
+        android:layout_width="460dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="124dp"
+        android:text="@string/new_clinician"
+        android:textColor="@color/color3"
+        android:textSize="60dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

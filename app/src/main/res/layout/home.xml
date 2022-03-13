@@ -13,7 +13,8 @@
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
         android:src="@drawable/stethoscope1"
         app:layout_constraintStart_toStartOf="@+id/guidelineV1"
         app:layout_constraintTop_toTopOf="@+id/guidelineO1" />
@@ -22,12 +23,12 @@
         android:id="@+id/btnPenConnection"
         android:layout_width="250dp"
         android:layout_height="100dp"
-        android:layout_marginTop="192dp"
+        android:layout_marginTop="104dp"
         android:backgroundTint="@color/color1"
         android:text="@string/pen_connection"
         android:textSize="25dp"
         app:layout_constraintEnd_toStartOf="@+id/guidelineV2"
-        app:layout_constraintHorizontal_bias="0.153"
+        app:layout_constraintHorizontal_bias="0.17"
         app:layout_constraintStart_toEndOf="@+id/icBLE"
         app:layout_constraintTop_toBottomOf="@+id/tvClinician" />
 
@@ -37,7 +38,7 @@
         android:layout_height="130dp"
         android:layout_gravity="center_vertical"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="164dp"
+        android:layout_marginTop="92dp"
         android:src="@drawable/bluetooth"
         app:layout_constraintStart_toStartOf="@+id/guidelineV1"
         app:layout_constraintTop_toBottomOf="@+id/tvClinician" />
@@ -46,12 +47,12 @@
         android:id="@+id/btnLogOut"
         android:layout_width="220dp"
         android:layout_height="100dp"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="124dp"
         android:backgroundTint="@color/color1"
         android:text="@string/log_out"
         android:textSize="25dp"
         app:layout_constraintEnd_toStartOf="@+id/guidelineV2"
-        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintHorizontal_bias="0.152"
         app:layout_constraintStart_toEndOf="@+id/icLoagout"
         app:layout_constraintTop_toBottomOf="@+id/btnPatients" />
 
@@ -70,7 +71,7 @@
         android:id="@+id/btnPatients"
         android:layout_width="220dp"
         android:layout_height="100dp"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="124dp"
         android:backgroundTint="@color/color1"
         android:text="@string/patients_list"
         android:textSize="25dp"
@@ -92,9 +93,9 @@
 
     <TextView
         android:id="@+id/tvClinician"
-        android:layout_width="554dp"
-        android:layout_height="104dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="565dp"
+        android:layout_height="226dp"
+        android:layout_marginTop="4dp"
         android:layout_weight="1"
         android:ems="10"
         android:minHeight="48dp"
@@ -125,7 +126,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.10" />
+        app:layout_constraintGuide_percent="0.05" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineO2"

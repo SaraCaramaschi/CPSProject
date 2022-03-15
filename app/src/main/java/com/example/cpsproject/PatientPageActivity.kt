@@ -108,13 +108,7 @@ class PatientPageActivity : AppCompatActivity() {
         tvPhase.setText(":" + " " + patient.phase.toString())
         tvGenere.setText(":" + " " + patient.gender.toString())
         tvTax.setText(":" + " " + patient.taxcode.toString())
-
-        if (patient.dominantHand==Hand.Left) {
-            tvHand.setText(":" + " " + "@string/left")
-        }
-        else{
-            tvHand.setText(":" + " " + "@string/right")
-        }
+        tvHand.setText(":" + " " + patient.dominantHand.toString())
 
     }
 

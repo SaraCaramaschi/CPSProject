@@ -15,6 +15,7 @@ import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.managers.PatientsManager.patientsList
 import com.example.cpsproject.managers.PenManager
 import com.example.cpsproject.managers.SessionManager
+import com.example.cpsproject.model.Hand
 import com.example.cpsproject.model.Patient
 import com.example.cpsproject.model.Session
 import com.google.firebase.auth.FirebaseAuth
@@ -88,6 +89,7 @@ class PatientPageActivity : AppCompatActivity() {
 
     }
 
+
     private fun setupPatientPage(patient: Patient) {
         val tvNome = findViewById<TextView>(R.id.tvName)
         val tvCognome = findViewById<TextView>(R.id.tvSurname)
@@ -98,14 +100,22 @@ class PatientPageActivity : AppCompatActivity() {
         val tvTax = findViewById<TextView>(R.id.tvTax)
         val tvPhase = findViewById<TextView>(R.id.tvPhase)
 
+
         tvNome.setText(":" + " " + (patient.name).toString())
         tvCognome.setText(":" + " " + (patient.surname).toString())
         tvNote.setText(":" + " " + (patient.notes).toString())
         tvComple.setText(":" + " " + (patient.birthdate).toString())
         tvPhase.setText(":" + " " + patient.phase.toString())
         tvGenere.setText(":" + " " + patient.gender.toString())
-        tvHand.setText(":" + " " + patient.dominantHand.toString())
         tvTax.setText(":" + " " + patient.taxcode.toString())
+
+        if (patient.dominantHand==Hand.Left) {
+            tvHand.setText(":" + " " + "@string/left")
+        }
+        else{
+            tvHand.setText(":" + " " + "@string/right")
+        }
+
     }
 
     @SuppressLint("NewApi")

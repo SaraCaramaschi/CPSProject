@@ -66,8 +66,10 @@
     <string name="ex2">Fai scrivere al paziente un testo libero (massimo 7 righe)</string>
     <string name="ex3">Leggi al paziente 15 parole dalla Batteria E.N.P.A. di cui 7 parole regolari, 3 parole irregolari e 5 non-parole. Leggile in ordine sparso</string>
     <string name="back_to_log_in" translatable="false">Torna indietro</string>
-
     <string name="start_protocol">Inizia Protocollo</string>
+    <string name="left">sinistra</string>
+    <string name="right">destra</string>
+
 
     <string-array name="gender">
         <item>maschio</item>

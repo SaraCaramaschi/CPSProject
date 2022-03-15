@@ -107,6 +107,12 @@ class EditPatientActivity: AppCompatActivity() {
                 "left" -> {
                     Hand.Left
                 }
+            "sinistra" -> {
+            Hand.Left
+            }
+            "right" -> {
+            Hand.Right
+            }
                 else -> {
                     Hand.Right
                 }
@@ -116,7 +122,13 @@ class EditPatientActivity: AppCompatActivity() {
                 "male" -> {
                     Gender.Male
                 }
+                "maschio" -> {
+                    Gender.Male
+                }
                 "female" -> {
+                    Gender.Female
+                }
+                "femmina" -> {
                     Gender.Female
                 }
                 else -> {

@@ -90,6 +90,9 @@
     <string name="ex3">Read to the patient 15 words from Batteria E.N.P.A. including 7 regular words, 3 irregular words and 5 not-words. Read them in a random order</string>
     <string name="back_to_log_in">Back to log in</string>
        <string name="start_protocol">Start Protocol</string>
+    <string name="left">left</string>
+    <string name="right">right</string>
+
 
 
     <string-array name="gender">

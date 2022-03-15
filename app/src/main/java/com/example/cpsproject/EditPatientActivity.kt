@@ -87,19 +87,19 @@ class EditPatientActivity: AppCompatActivity() {
         btnEditPat.setOnClickListener{
             if (etName.text.toString().trim().isEmpty()) {
                 //Toast.makeText(this, "Name required", Toast.LENGTH_SHORT).show();
-                etName.error = "Name Required";
+                etName.error = "Nome richiesto";
                 return@setOnClickListener
             } else if (etSurname.text.toString().trim().isEmpty()) {
-                etSurname.error = "Surname Required"
+                etSurname.error = "Cognome richiesto"
                 return@setOnClickListener
             } else if (etTax.text.toString().trim().isEmpty()) {
-                etTax.error = "Tax Code Required"
+                etTax.error = "Codice fiscale richiesto"
                 return@setOnClickListener
             } else if (etTax.text.toString().trim().length != 16) {
-                etTax.error = "Tax Code not correct"
+                etTax.error = "Codice fiscale non corretto"
                 return@setOnClickListener
             } else if (etBirthDateEdit.text.toString().trim().length != 10) {
-                etBirthDateEdit.error = "Birth Date not correct"
+                etBirthDateEdit.error = "Data di nascita non corretta"
                 return@setOnClickListener
            }
 

@@ -26,7 +26,7 @@ class RegisterActivity : AppCompatActivity() {
                 TextUtils.isEmpty(etName.text.toString().trim() { it <= ' ' }) -> {
                     Toast.makeText(
                         this@RegisterActivity,
-                        "Please insert your name",
+                        "Inserisci il tuo nome",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -34,21 +34,21 @@ class RegisterActivity : AppCompatActivity() {
                 TextUtils.isEmpty(etSurname.text.toString().trim() { it <= ' ' }) -> {
                     Toast.makeText(
                         this@RegisterActivity,
-                        "Please insert your surname",
+                        "Inserisci il tuo cognome",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
                 TextUtils.isEmpty(etEmail.text.toString().trim() { it <= ' ' }) -> {
                     Toast.makeText(
                         this@RegisterActivity,
-                        "Please enter Email", Toast.LENGTH_SHORT
+                        "Inserisci la mail", Toast.LENGTH_SHORT
                     )
                         .show()
                 }
                 TextUtils.isEmpty(etPassword1.text.toString().trim() { it <= ' ' }) -> {
                     Toast.makeText(
                         this@RegisterActivity,
-                        "Please write a password",
+                        "Inserisci la password",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -56,14 +56,14 @@ class RegisterActivity : AppCompatActivity() {
                 TextUtils.isEmpty(etPassword2.text.toString().trim() { it <= ' ' }) -> {
                     Toast.makeText(
                         this@RegisterActivity,
-                        "Please confirm the password",
+                        "Conferma la password",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
                 etPassword1.text.toString().trim() != etPassword2.text.toString().trim() -> {
                     Toast.makeText(
                         this@RegisterActivity,
-                        "Password does not match",
+                        "La password non corrisponde",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -93,7 +93,7 @@ class RegisterActivity : AppCompatActivity() {
                                 ClinicianManager.addClinician(clinician, applicationContext)
 
                                 Toast.makeText(
-                                    this@RegisterActivity, "You are regisetred succesfully!",
+                                    this@RegisterActivity, "Ti sei registrato correttamente",
                                     Toast.LENGTH_SHORT
                                 ).show()
 

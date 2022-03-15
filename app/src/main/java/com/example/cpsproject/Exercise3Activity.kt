@@ -28,7 +28,7 @@ class Exercise3Activity : AppCompatActivity() {
         btnDownloadEx3.setOnClickListener {
             Toast.makeText(
                 this@Exercise3Activity,
-                "Download started",
+                "Download iniziato",
                 Toast.LENGTH_SHORT
             ).show()
             saveDocument(SessionManager.sessione, applicationContext)

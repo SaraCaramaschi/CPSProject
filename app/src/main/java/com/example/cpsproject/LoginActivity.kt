@@ -52,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
                 TextUtils.isEmpty(etEmailLog.text.toString().trim() { it <= ' ' }) -> {
                     Toast.makeText(
                         this@LoginActivity,
-                        "Please insert the emil",
+                        "Inserisci la mail",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -60,7 +60,7 @@ class LoginActivity : AppCompatActivity() {
                 TextUtils.isEmpty(etPasswordLog.text.toString().trim() { it <= ' ' }) -> {
                     Toast.makeText(
                         this@LoginActivity,
-                        "Please enter the password", Toast.LENGTH_SHORT
+                        "Inserisci la password", Toast.LENGTH_SHORT
                     )
                         .show()
                 }
@@ -79,7 +79,7 @@ class LoginActivity : AppCompatActivity() {
                             if (task.isSuccessful) {
 
                                 Toast.makeText(
-                                    this@LoginActivity, "You are logged in succesfully!",
+                                    this@LoginActivity, "Accesso effettuato",
                                     Toast.LENGTH_SHORT
                                 ).show()
 

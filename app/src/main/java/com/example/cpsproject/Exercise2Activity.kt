@@ -28,7 +28,7 @@ class Exercise2Activity : AppCompatActivity() {
         btnDownloadEx2.setOnClickListener {
             Toast.makeText(
                 this@Exercise2Activity,
-                "You need to perform all three exercises before downloading files",
+                "Devi fare tutti i tre esercizi prima del download",
                 Toast.LENGTH_LONG
             ).show()
         }

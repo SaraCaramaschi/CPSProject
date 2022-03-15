@@ -25,7 +25,7 @@ class PenActivity : AppCompatActivity() {
 
 
         // Accessing to real time activity
-        Toast.makeText(this@PenActivity,"Pen connected", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this@PenActivity,"Penna connessa", Toast.LENGTH_SHORT).show()
 
         btnRealTime.setOnClickListener {
             val intent = Intent(this, RealTimeActivity::class.java)
@@ -35,13 +35,13 @@ class PenActivity : AppCompatActivity() {
         // Formatting the pen
         btnFormat.setOnClickListener {
             ConnectionManager.format()
-            Toast.makeText(this@PenActivity,"The pen has been formatted", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@PenActivity,"La penna è stata resettata", Toast.LENGTH_SHORT).show()
         }
 
         // Downloading files from the pen to computer
         btnDownload.setOnClickListener {
             ConnectionManager.download()
-            Toast.makeText(this@PenActivity,"Successful download ", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@PenActivity,"Download eseguito", Toast.LENGTH_SHORT).show()
         }
 
         btnProtocol.setOnClickListener {

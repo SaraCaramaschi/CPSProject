@@ -57,8 +57,8 @@
 
     <TextView
         android:id="@+id/tvLanguage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="195dp"
+        android:layout_height="69dp"
         android:layout_marginTop="12dp"
         android:layout_marginBottom="15dp"
         android:text="@string/language"
@@ -66,6 +66,7 @@
         android:textSize="50dp"
         app:layout_constraintBottom_toBottomOf="@+id/spinnerLanguage"
         app:layout_constraintEnd_toEndOf="@+id/spinnerLanguage"
+        app:layout_constraintHorizontal_bias="0.904"
         app:layout_constraintStart_toStartOf="@+id/spinnerLanguage"
         app:layout_constraintTop_toTopOf="@+id/spinnerLanguage" />
 

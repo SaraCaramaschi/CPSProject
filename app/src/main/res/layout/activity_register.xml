@@ -17,9 +17,13 @@
         android:backgroundTint="@color/strings"
         android:text="@string/submit"
         android:textSize="30dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="269dp"
-        tools:layout_editor_absoluteY="818dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.708"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -62,10 +66,12 @@
         android:background="@drawable/shape_background"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/btnSubmitdata"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.462">
 
         <LinearLayout
             android:id="@+id/LinearLayout1"
@@ -118,7 +124,7 @@
                 android:layout_width="171dp"
                 android:layout_height="69dp"
                 android:inputType="text"
-                android:text="Surname"
+                android:text="@string/surname"
                 android:textColor="@color/color1"
                 android:textSize="30dp"
                 app:layout_constraintStart_toEndOf="parent"

@@ -43,7 +43,7 @@ class Exercise1Activity : AppCompatActivity() {
             ConnectionManager.StopOnBoard()
             Toast.makeText(
                 this@Exercise1Activity,
-                "Remember to wait one minute in between one exercise and the other",
+                "Ricorda di aspettare un minuto tra un esercizio e l'altro",
                 Toast.LENGTH_LONG
             ).show()
         }
@@ -51,7 +51,7 @@ class Exercise1Activity : AppCompatActivity() {
         btnDownloadEx1.setOnClickListener {
             Toast.makeText(
                 this@Exercise1Activity,
-                "You need to perform all three exercises before downloading files",
+                "Devi fare tutti i tre gli esercizi prima del download",
                 Toast.LENGTH_LONG
             ).show()
         }

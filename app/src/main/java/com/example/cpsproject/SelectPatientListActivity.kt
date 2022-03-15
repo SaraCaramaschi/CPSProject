@@ -40,7 +40,7 @@ class SelectPatientListActivity : AppCompatActivity() {
             override fun onClick(position: Int) {
                 Toast.makeText(
                     this@SelectPatientListActivity,
-                    "you clicked on patient $position",
+                    "Hai cliccato sul paziente $position",
                     Toast.LENGTH_SHORT
                 ).show()
 

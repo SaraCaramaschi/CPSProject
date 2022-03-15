@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cpsproject.ble.MainConnection
 import com.example.cpsproject.ble.PenActivity
+import com.example.cpsproject.managers.LanguageManager
 import com.example.cpsproject.managers.PatientsManager
 import com.example.cpsproject.managers.PatientsManager.patientsList
 import com.example.cpsproject.managers.PenManager
@@ -110,10 +111,18 @@ class PatientPageActivity : AppCompatActivity() {
         tvTax.setText(":" + " " + patient.taxcode.toString())
 
         if (patient.dominantHand==Hand.Left) {
-            tvHand.setText(":" + " " + "@string/left")
+            if (LanguageManager.language == 1) {
+                tvHand.setText(":" + " " + "sinistra")
+            } else {
+                tvHand.setText(":" + " " + "left")
+            }
         }
         else{
-            tvHand.setText(":" + " " + "@string/right")
+            if(LanguageManager.language==1){
+                tvHand.setText(":" + " " + "destra")
+            }else {
+                tvHand.setText(":" + " " + "right")
+            }
         }
 
     }

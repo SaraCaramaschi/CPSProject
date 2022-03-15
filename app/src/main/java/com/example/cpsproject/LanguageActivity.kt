@@ -8,6 +8,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.databinding.DataBindingUtil.*
 import com.example.cpsproject.databinding.ActivityLanguageBinding
+import com.example.cpsproject.managers.LanguageManager
 import kotlinx.android.synthetic.main.activity_language.*
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_login.btnLanguage
@@ -50,6 +51,7 @@ class LanguageActivity : AppCompatActivity() {
                     2 -> { setLocale("en")
                     Timber.d("You selected italian")}
                 }
+                LanguageManager.language=position
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }

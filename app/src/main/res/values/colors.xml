@@ -16,11 +16,12 @@
     <color name="strings">#FFAD05</color>
     <color name="color1">#204668</color>
     <color name="color22">#1467BF</color>
-    <color name="color2">#6F98B1</color>
+    <color name="color2">#95B3C6</color>
     <color name="color6">#3B89BA</color>
-    <color name="color33">#F58A07</color>
-    <color name="color3">#F7A80A</color>
-    <color name="color44">#DA325C</color>
+    <color name="color66">#5389DA</color>
+    <color name="color3">#F49315</color>
+    <color name="color33">#F7A80A</color>
+        <color name="color44">#DA325C</color>
     <color name="color4">#E24169</color>
     <color name="color5">#F7F7F7</color>
 </resources>

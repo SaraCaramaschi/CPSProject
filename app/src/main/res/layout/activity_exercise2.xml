@@ -24,7 +24,7 @@
         android:layout_height="100dp"
         android:layout_marginTop="80dp"
         android:text="Exercise 2"
-        android:textColor="@color/strings"
+        android:textColor="@color/color3"
         android:textSize="50dp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"

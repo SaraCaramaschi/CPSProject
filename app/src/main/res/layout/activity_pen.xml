@@ -177,7 +177,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/pen_310"
-            android:textColor="@color/strings"
+            android:textColor="@color/color3"
             android:textSize="50dp"
             android:textStyle="bold|italic"
             app:layout_constraintTop_toTopOf="parent" />
